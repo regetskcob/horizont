@@ -225,8 +225,12 @@ Einrichtungen.
   `tool/export_icons.py` aus den Partials; Icons in den Apps nie von Hand
   zeichnen oder skalieren, sondern kopieren. Nach einer Änderung an Icon oder
   Farben das Skript neu laufen lassen.
-- **Glyphe** für Kopf, Fuß und Favicon unter 32 px:
+- **Glyphe** für Kopf und Fuß unter 32 px:
   `web/partials/mark.html`, Strich 7 von 100, eckige Enden.
+- **Favicon:** das App-Icon, wie auf dem Homescreen. Die Glyphe auf ihrem
+  Feld nur, wenn ein Produkt sie ausdrücklich will (`$glyphFavicon` in
+  `site/layouts/home.html`) oder kein App-Icon hat (Blog, Horizont,
+  Kalkar IT).
 - **Absender:** Jedes Produkt trägt in Fußzeile, Über-Dialog und Store-Text
   „ein Projekt von regetskcob“ mit der Glyphe.
 - **UI-Ikonen:** Material Symbols **Sharp**, Strichstärke 300, als Subset
@@ -347,7 +351,7 @@ Nutzer entschieden, nicht von der Sitzung.
 - Jede Änderung, die Apps oder Seiten betrifft, kommt in
   [CHANGELOG.md](CHANGELOG.md) unter die nächste Version.
 - Versionen: Tokens (`version` im JSON), Paket (`flutter/pubspec.yaml`) und
-  Git-Tag (`v0.8.8`) laufen gemeinsam. Die Apps hängen an einem Tag, nie an
+  Git-Tag (`v0.8.9`) laufen gemeinsam. Die Apps hängen an einem Tag, nie an
   `main`. Hugo hängt die
   Ordner per `module.mounts` ein (`hugo.toml`).
 - Lokal ansehen:

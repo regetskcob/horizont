@@ -1,5 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 100 100"><rect width="100" height="100" rx="22.4" fill="#1B1C19"/><svg x="10" y="8" width="80" height="80" viewBox="0 0 100 100"><svg xmlns="http://www.w3.org/2000/svg" class="hz-mark" width="80" height="80" viewBox="0 0 100 100" role="img" aria-label="regetskcob" fill="none" stroke="#FAFAF7" stroke-width="7" stroke-linecap="square" stroke-linejoin="miter">
-  <path d="M4 66.7H96M50 66.7V48"/>
-  <path d="M50 48c-12 0-19-6-19-15s8-17 19-17 19 8 19 17-7 15-19 15z"/>
+<svg xmlns="http://www.w3.org/2000/svg" class="hz-app-icon" width="64" height="64" viewBox="0 0 100 100" role="img" aria-label="App-Icon regetskcob">
+  <defs>
+    <clipPath id="hzi7c"><rect x="0" y="0" width="100" height="100" rx="22.4"/></clipPath>
+    <linearGradient id="hzi7s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1EFE6"/><stop offset="1" stop-color="#D3D1C6"/></linearGradient>
+    <filter id="hzi7b" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+    <filter id="hzi7f" x="-50%" y="-200%" width="200%" height="500%"><feGaussianBlur stdDeviation="1.2"/></filter>
+    <filter id="hzi7d" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="1.2" dy="2.4" stdDeviation="1.6" flood-color="#151612" flood-opacity=".5"/></filter>
+  </defs>
+  <g clip-path="url(#hzi7c)">
+    <rect x="0" y="0" width="100" height="66.7" fill="url(#hzi7s)"/>
+    <circle cx="74" cy="66.7" r="9" fill="#FFFFFF" opacity=".95"/>
+    <rect x="0" y="66.7" width="100" height="33.3" fill="#3A3B35"/>
+    <g filter="url(#hzi7b)" opacity=".7">
+      <ellipse cx="18" cy="22" rx="24" ry="11" fill="#D3D1C6"/>
+      <ellipse cx="80" cy="44" rx="22" ry="9" fill="#F1EFE6"/>
+      <ellipse cx="62" cy="10" rx="20" ry="8" fill="#F1EFE6"/>
+      <ellipse cx="24" cy="86" rx="26" ry="8" fill="#26271F"/>
+      <ellipse cx="82" cy="94" rx="22" ry="7" fill="#26271F"/>
+    </g>
+    <g fill="#D3D1C6">
+      <path d="M12.6 66.7v-4h1v4z"/><ellipse cx="13.1" cy="60" rx="5" ry="3.6"/>
+      <path d="M23.6 66.7v-3h.8v3z"/><ellipse cx="24" cy="62" rx="3.4" ry="2.5"/>
+    </g>
+
+    <rect x="0" y="65.9" width="100" height="1.6" fill="#FBFAF4"/>
+    <g filter="url(#hzi7d)" stroke="#151612" stroke-width="1.6" stroke-linejoin="round">
+      <path d="M48 52l-8-6M52 52l8-7" stroke-width="5" stroke-linecap="round"/>
+      <path d="M48 52l-8-6M52 52l8-7" stroke="#A4A69A" stroke-width="2.8" stroke-linecap="round"/>
+      <path d="M42 66.7c2.6-1 3.6-3.4 3.6-7.6V45h8.8v14.1c0 4.2 1 6.6 3.6 7.6z" fill="#A4A69A"/>
+      <path d="M48.6 54c.7 2.6.7 6 .1 9.2M51.6 57.5c.3 1.6.3 3.2 0 4.6" stroke="#7F8176" stroke-width=".8" fill="none" stroke-linecap="round"/>
+      <g fill="#151612" stroke-width="3.2"><circle cx="33" cy="40" r="10"/><circle cx="46" cy="43" r="10"/><circle cx="58" cy="42" r="11"/><circle cx="70" cy="38" r="9"/><circle cx="25" cy="32" r="9"/><circle cx="76" cy="29" r="8"/><circle cx="36" cy="26" r="12"/><circle cx="52" cy="22" r="13"/><circle cx="66" cy="26" r="11"/><circle cx="48" cy="33" r="13"/><circle cx="42" cy="15" r="8"/><circle cx="60" cy="14" r="7"/></g>
+      <g stroke="none">
+        <g fill="#4A4C44"><circle cx="33" cy="40" r="10"/><circle cx="46" cy="43" r="10"/><circle cx="58" cy="42" r="11"/><circle cx="70" cy="38" r="9"/><circle cx="25" cy="32" r="9"/><circle cx="76" cy="29" r="8"/><circle cx="36" cy="26" r="12"/><circle cx="52" cy="22" r="13"/><circle cx="66" cy="26" r="11"/><circle cx="48" cy="33" r="13"/><circle cx="42" cy="15" r="8"/><circle cx="60" cy="14" r="7"/></g>
+        <g fill="#7F8176"><circle cx="32" cy="37.5" r="7.8"/><circle cx="45" cy="40.5" r="7.8"/><circle cx="57" cy="39.5" r="8.8"/><circle cx="69" cy="35.5" r="6.8"/><circle cx="24" cy="29.5" r="6.8"/><circle cx="75" cy="26.5" r="5.8"/><circle cx="35" cy="23.5" r="9.8"/><circle cx="51" cy="19.5" r="10.8"/><circle cx="65" cy="23.5" r="8.8"/><circle cx="47" cy="30.5" r="10.8"/><circle cx="41" cy="12.5" r="5.8"/><circle cx="59" cy="11.5" r="4.8"/></g>
+        <g fill="#B9BBAF" opacity=".9"><circle cx="22.5" cy="27.5" r="3.5"/><circle cx="73.5" cy="24.5" r="2.5"/><circle cx="33.5" cy="21.5" r="6.5"/><circle cx="49.5" cy="17.5" r="7.5"/><circle cx="63.5" cy="21.5" r="5.5"/><circle cx="45.5" cy="28.5" r="7.5"/><circle cx="39.5" cy="10.5" r="2.5"/></g>
+      </g>
+    </g>
+  </g>
 </svg>
-</svg></svg>

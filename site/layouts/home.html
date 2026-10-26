@@ -8,6 +8,10 @@
 {{- $tokens := resources.Get "css/horizont/tokens.css" | resources.ExecuteAsTemplate "css/horizont-tokens.css" $hz -}}
 {{- $css := slice $tokens (resources.Get "css/horizont/components.css") (resources.Get "css/site/page.css") | resources.Concat "css/horizont.css" | minify | fingerprint -}}
 {{- $products := slice "regetskcob" "jagdaufseher" "knx" "panzergefecht" -}}
+{{- /* Products whose favicon is the glyph on its field instead of the app
+       icon: only where a product asks for it. Every other product shows in
+       the browser tab the icon it has on the home screen. */ -}}
+{{- $glyphFavicon := slice -}}
 {{- $neutrals := slice "bg" "surface" "sunken" "line" "line-strong" "text-faint" "text-muted" "text" -}}
 {{- /* The icon sources of every product as files under icons/<product>/,
        for download and for tool/export_icons.py, which renders the
@@ -23,7 +27,9 @@
       "tv-back.svg" (partial "horizont/app-icon.html" (dict "product" $p "size" 1280 "shape" "tv" "layer" "back"))
       "tv-front.svg" (partial "horizont/app-icon.html" (dict "product" $p "size" 1280 "shape" "tv" "layer" "front"))
       "glyph.svg" (partial "horizont/mark.html" (dict "product" $p "size" 1024 "color" "#000000"))
-      "favicon.svg" (printf `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 100 100"><rect width="100" height="100" rx="22.4" fill="%s"/><svg x="10" y="8" width="80" height="80" viewBox="0 0 100 100">%s</svg></svg>` $c.field (partial "horizont/mark.html" (dict "product" $p "size" 80 "color" $c.glyph)))
+      "favicon.svg" (cond (in $glyphFavicon $p)
+        (printf `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 100 100"><rect width="100" height="100" rx="22.4" fill="%s"/><svg x="10" y="8" width="80" height="80" viewBox="0 0 100 100">%s</svg></svg>` $c.field (partial "horizont/mark.html" (dict "product" $p "size" 80 "color" $c.glyph)))
+        (partial "horizont/app-icon.html" (dict "product" $p "size" 64)))
   }}
   {{- range $name, $svg := $files }}
     {{- $r := $svg | resources.FromString (printf "icons/%s/%s" $p $name) }}
@@ -141,7 +147,7 @@
       {{- end }}
     </div>
     <h3 class="t-title-3">Reduzierte Marke für Kopf- und Fußzeilen</h3>
-    <p>Unter 32 px trägt keine Illustration. Kopfzeilen, Fußzeilen und Favicons nutzen deshalb die Glyphe: dieselbe Linie und derselbe Gegenstand, nur als Strich.</p>
+    <p>Unter 32 px trägt keine Illustration. Kopf- und Fußzeilen nutzen deshalb die Glyphe: dieselbe Linie und derselbe Gegenstand, nur als Strich. Das Favicon ist das App-Icon, damit der Browser-Tab dasselbe Bild zeigt wie der Homescreen; die Glyphe nur, wo ein Produkt sie ausdrücklich will oder kein App-Icon hat.</p>
     <div class="doc-lockups">
       {{- range after 1 $products }}
       {{- $d := index $hz.color.product . }}
