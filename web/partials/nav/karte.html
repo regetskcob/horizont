@@ -1,66 +1,75 @@
 {{- /*
   The Flurkarte: every page of the family as a field seen from above, from
-  tokens/flur.yaml. The first gemarkung (regetskcob) is a field map, its
-  fields as large as their content; the products lie behind a field path,
-  one parcel each. The field you are on carries the mark and the accent.
+  tokens/flur.yaml. One gemarkung is drawn as a field map, its fields as
+  large as their content: regetskcob by default, a product with its own
+  domain and fields (KNX Monitor) on its own pages. The other sites lie
+  behind a field path, one parcel each. The field you are on carries the
+  mark and the accent.
 
     partial "horizont/nav/karte.html" (dict
       "home" "regetskcob"            gemarkung of this site: its links stay
-                                     relative (relURL), the others go to
-                                     flur.yaml's site
+                                     relative (relLangURL), the others go to
+                                     their "site" (or flur.yaml's site)
       "here" "regetskcob"            gemarkung you are in
       "field" "blog"                 field you are on, if any
-      "counts" (dict "blog" 151))    live numbers, override flur.yaml
+      "counts" (dict "blog" 151)     live numbers, override flur.yaml
+      "map" "knx"                    gemarkung drawn as the field map
+                                     (default: the first, regetskcob)
+      "projects" false)              without the other sites (a product's
+                                     own domain); default true
 
-  A nav of links in reading order; the grid only places them. Shortcode
-  hz-karte puts it on a page (/karte/, the map without JavaScript).
+  Names and notes switch to name_en / note_en on English pages. A nav of
+  links in reading order; the grid only places them. Shortcode hz-karte
+  puts it on a page (/karte/, the map without JavaScript).
 */ -}}
 {{- $flur := site.Data.flur -}}
 {{- $home := .home | default "regetskcob" -}}
 {{- $here := .here | default $home -}}
 {{- $field := .field | default "" -}}
 {{- $counts := .counts | default dict -}}
-{{- $names := site.Data.horizont.color.product -}}
-<nav class="hz-karte" aria-label="Flurkarte" lang="de">
-<div class="hz-karte-grid">
-{{- range $i, $g := $flur.gemarkungen }}
-  {{- $base := cond (eq $g.id $home) "" $flur.site -}}
-  {{- $href := cond (eq $g.id $home) (relURL (strings.TrimPrefix "/" $g.path)) (printf "%s%s" $base $g.path) -}}
-  {{- if eq $i 0 }}
-  <div class="hz-gem" data-product="{{ $g.product }}">
-    <p class="t-kennung hz-kennung"><a href="{{ $href }}">Gemarkung {{ $g.name }}</a></p>
+{{- $mapID := .map | default (index $flur.gemarkungen 0).id -}}
+{{- $projects := true }}{{ if isset . "projects" }}{{ $projects = .projects }}{{ end -}}
+{{- $en := eq site.Language.Lang "en" -}}
+{{- $m := index (where $flur.gemarkungen "id" $mapID) 0 -}}
+{{- /* Links stay relative on this site's own gemarkung, else go to its site. */ -}}
+<nav class="hz-karte" aria-label="Flurkarte" lang="{{ cond $en "en" "de" }}">
+<div class="hz-karte-grid{{ if not $projects }} hz-karte-grid--solo{{ end }}">
+  <div class="hz-gem" data-product="{{ $m.product }}">
+    <p class="t-kennung hz-kennung"><a href="{{ cond (eq $m.id $home) (relLangURL (strings.TrimPrefix "/" $m.path)) (printf "%s%s" ($m.site | default $flur.site) $m.path) }}">{{ if not $en }}Gemarkung {{ end }}{{ $m.name }}</a></p>
     <ul class="hz-parzellen">
-    {{- range $f := $g.fields }}
-      {{- $fh := cond (eq $g.id $home) (relURL (strings.TrimPrefix "/" $f.path)) (printf "%s%s" $base $f.path) -}}
+    {{- range $f := $m.fields }}
+      {{- $fh := cond (eq $m.id $home) (relLangURL (strings.TrimPrefix "/" $f.path)) (printf "%s%s" ($m.site | default $flur.site) $f.path) -}}
       {{- $n := index $counts $f.id | default $f.count -}}
+      {{- $note := cond (and $en $f.note_en) $f.note_en $f.note -}}
       {{- $span := $f.span | default (slice 1 1) -}}
-      {{- $on := and (eq $g.id $here) (eq $f.id $field) }}
+      {{- $on := and (eq $m.id $here) (eq $f.id $field) }}
       <li style="--cols:{{ index $span 0 }};--rows:{{ index $span 1 }};--ang:{{ $f.angle | default 0 }}deg">
         <a class="hz-parzelle" href="{{ $fh }}"{{ if $on }} aria-current="page"{{ end }}>
-          {{- if $on }}{{ partial "horizont/mark.html" (dict "product" ($f.mark | default $g.product) "size" 24) }}{{ end }}
-          <span class="hz-parzelle-count">{{ with $n }}{{ . }} {{ cond (eq . 1) (index $f.unit 0) (index $f.unit 1) }}{{ else }}{{ $f.note }}{{ end }}{{ if and $n $f.note }} · {{ $f.note }}{{ end }}</span>
-          <span class="hz-parzelle-name">{{ $f.name }}</span>
+          {{- if $on }}{{ partial "horizont/mark.html" (dict "product" ($f.mark | default $m.product) "size" 24) }}{{ end }}
+          <span class="hz-parzelle-count">{{ with $n }}{{ . }} {{ cond (eq . 1) (index $f.unit 0) (index $f.unit 1) }}{{ else }}{{ $note }}{{ end }}{{ if and $n $note }} · {{ $note }}{{ end }}</span>
+          <span class="hz-parzelle-name">{{ cond (and $en $f.name_en) $f.name_en $f.name }}</span>
         </a>
       </li>
     {{- end }}
     </ul>
   </div>
+  {{- if $projects }}
   <span class="hz-weg" aria-hidden="true"></span>
   <div class="hz-gem hz-gem--prod">
-    <p class="t-kennung hz-kennung">Projekte</p>
+    <p class="t-kennung hz-kennung">{{ cond $en "Projects" "Projekte" }}</p>
     <ul class="hz-parzellen">
-  {{- else }}
+    {{- range $g := $flur.gemarkungen }}{{ if ne $g.id $m.id }}
       {{- $on := eq $g.id $here }}
       <li data-product="{{ $g.product }}">
-        <a class="hz-parzelle hz-parzelle--prod" href="{{ $href }}"{{ if $on }} aria-current="page"{{ end }}>
+        <a class="hz-parzelle hz-parzelle--prod" href="{{ cond (eq $g.id $home) (relLangURL (strings.TrimPrefix "/" $g.path)) (printf "%s%s" ($g.site | default $flur.site) $g.path) }}"{{ if $on }} aria-current="page"{{ end }}>
           <span class="hz-parzelle-count">{{ with $g.status }}{{ . }} · {{ end }}{{ $g.note }}</span>
           <span class="hz-parzelle-name">{{ partial "horizont/mark.html" (dict "product" ($g.mark | default $g.product) "size" 20) }}{{ $g.name }}</span>
         </a>
       </li>
-  {{- end }}
-{{- end }}
+    {{- end }}{{ end }}
     </ul>
   </div>
+  {{- end }}
 </div>
 </nav>
 {{- /**/ -}}

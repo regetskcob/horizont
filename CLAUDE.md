@@ -101,8 +101,9 @@ wird daher für alle Formfaktoren mitgedacht, nicht nur für das Telefon.
   Linie oben, auf Touch unten (Streichen springt). Das Zeichen öffnet die
   Flurkarte (`horizont/nav/karte.html`): alle Seiten der Familie als Felder
   von oben, Fläche nach Inhalt, die Produkte hinter einem Feldweg; Daten in
-  `tokens/flur.yaml`. Ohne JavaScript bleiben Ankerlinks und die Seite
-  `/karte/`. Die Apps behalten ihre eigene Navigation.
+  `tokens/flur.yaml`. Ein Produkt mit eigener Domain zeigt dort nur seine
+  eigene Gemarkung (`map`, `projects`). Ohne JavaScript bleiben Ankerlinks
+  und die Seite `/karte/`. Die Apps behalten ihre eigene Navigation.
 
 ## Werte (Tokens)
 
@@ -346,7 +347,7 @@ Nutzer entschieden, nicht von der Sitzung.
 - Jede Änderung, die Apps oder Seiten betrifft, kommt in
   [CHANGELOG.md](CHANGELOG.md) unter die nächste Version.
 - Versionen: Tokens (`version` im JSON), Paket (`flutter/pubspec.yaml`) und
-  Git-Tag (`v0.8.6`) laufen gemeinsam. Die Apps hängen an einem Tag, nie an
+  Git-Tag (`v0.8.7`) laufen gemeinsam. Die Apps hängen an einem Tag, nie an
   `main`. Hugo hängt die
   Ordner per `module.mounts` ein (`hugo.toml`).
 - Lokal ansehen:
