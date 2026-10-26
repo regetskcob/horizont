@@ -4,6 +4,38 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.8.7
+
+Die Flurkarte einer Produktseite zeigt die Produktseite.
+
+### Neu
+
+- **Eigene Gemarkung als Feldkarte** (`web/partials/nav/karte.html`):
+  `map` wählt, welche Gemarkung als Feldkarte erscheint (Standard: die
+  erste, regetskcob), `projects false` lässt Feldweg und übrige Seiten weg.
+  Auf knx-monitor.de zeigt die Karte damit Start, Add-on, KNX-Box und
+  Feedback statt des Portfolios.
+- **Produkte mit eigener Domain** (`tokens/flur.yaml`): `site` je
+  Gemarkung, KNX Monitor liegt auf https://knx-monitor.de und hat eigene
+  Felder. Die Parzelle auf regetskcob.de führt direkt dorthin.
+- **Englische Namen** für Felder (`name_en`, `note_en`); auf englischen
+  Seiten heißen auch Kennung und Projekte englisch, das Kartenfenster
+  „Map“ mit „Close“ statt „Flurkarte“ und „Schließen“.
+
+### Geändert
+
+- Links auf der eigenen Gemarkung mit `relLangURL` statt `relURL`, damit
+  englische Seiten auf englische Seiten zeigen. Für einsprachige Seiten
+  ändert sich nichts.
+
+### Heben
+
+- Seiten: `hugo mod get github.com/regetskcob/horizont@v0.8.7`. Wer die
+  Karte nicht anders aufruft, sieht nichts Neues außer dem KNX-Link.
+- KNX-Monitor-Teaser: `"karte" (dict "home" "knx" "here" "knx" "map" "knx"
+  "projects" false "field" …)`.
+- Apps: nichts.
+
 ## 0.8.6
 
 Seitentasten, die mit dem Geräterahmen mitwachsen.

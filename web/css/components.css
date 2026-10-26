@@ -707,6 +707,8 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
    breaks with a hyphen rather than running over the field's edge. */
 .hz-karte { container: hz-karte / inline-size; }
 .hz-karte-grid { display: grid; grid-template-columns: minmax(0, 3fr) var(--s-16) minmax(0, 1.2fr); gap: var(--s-8); align-items: stretch; }
+/* A product's own domain: its field map alone, without the other sites. */
+.hz-karte-grid--solo { grid-template-columns: minmax(0, 1fr); }
 .hz-gem { display: flex; flex-direction: column; gap: var(--s-8); min-width: 0; }
 .hz-gem > .hz-kennung { margin: 0; }
 .hz-gem > .hz-kennung a { color: inherit; text-decoration: none; }

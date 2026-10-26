@@ -3,7 +3,9 @@
 # partials/nav/karte.html) and, later, the about page of the apps.
 #
 # Gemarkungen are the sites. The first one is regetskcob with its fields;
-# the products follow behind a field path, one parcel each. A project's
+# the products follow behind a field path, one parcel each. A product with
+# its own domain sets "site" and may have "fields" too: on its own pages the
+# map shows that gemarkung as the field map (karte.html, "map"). A project's
 # "note" is its line on the map, "text" one sentence for the landing page,
 # "status" a word for a project that is not out yet ("Vorschau").
 #
@@ -19,6 +21,7 @@
 #   angle   direction of the furrows; neighbours differ, as on the land
 #   mark    the glyph when it is not the gemarkung's (mark.html): the blog's
 #           book; a project may set its own (Horizont's sun)
+#   name_en, note_en  for pages in English (a product site with /en/)
 #
 # Jagdaufseher is off the map since 2026-10-22: its landing page is offline
 # and its backend deleted while the work goes into KNX Monitor. Its entry
@@ -89,10 +92,40 @@ gemarkungen:
   - id: knx
     name: KNX Monitor
     product: knx
-    path: /knx/
+    site: https://knx-monitor.de
+    path: /
     status: Vorschau
     note: Busmonitor & Diagnose
     text: "Zeigt jedes Telegramm auf dem KNX-Bus, ordnet es dem ETS-Projekt zu und prüft die Anlage."
+    fields:
+      - id: start
+        name: KNX Monitor
+        path: /
+        note: Busmonitor & Diagnose
+        note_en: Bus monitor & diagnostics
+        span: [3, 3]
+        angle: 45
+      - id: addon
+        name: Add-on
+        path: /addon/
+        note: Home Assistant
+        span: [3, 2]
+        angle: 0
+      - id: box
+        name: KNX-Box
+        name_en: KNX box
+        path: /box/
+        note: Raspberry Pi · Vorschau
+        note_en: Raspberry Pi · preview
+        span: [2, 1]
+        angle: 90
+      - id: feedback
+        name: Feedback
+        path: /feedback/
+        note: Diagnosepaket
+        note_en: Diagnostics package
+        span: [1, 1]
+        angle: 135
 
   - id: panzergefecht
     name: Panzergefecht

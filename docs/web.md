@@ -147,7 +147,7 @@ den Tokens. Eigene Werte in einem Layout sind ein Fehler.
 | `horizont/facts.html` | Begriff und Wert auf einer Grundlinie (`items`, `term`) |
 | `horizont/device.html` | Screenshot im Geräterahmen (`device`, `width`, `image` oder `src`, `alt`, `cropped`) |
 | `horizont/nav/horizon.html` | die Navigation: Horizontlinie mit Zeichen, Kapitelstrichen und Flurkarte (siehe „Navigation“) |
-| `horizont/nav/karte.html` | die Flurkarte allein (`home`, `here`, `field`, `counts`) |
+| `horizont/nav/karte.html` | die Flurkarte allein (`home`, `here`, `field`, `counts`, `map`, `projects`) |
 | `horizont/nav/script.html` | das Skript dazu, einmal am Ende der Seite |
 | `horizont/feld/head.html`, `hero.html`, `section.html`, `foot.html` | die Feldseite (siehe unten); `feld/head.html` ist ab 0.7.0 durch den Horizont ersetzt und bleibt bis 0.8.0 |
 | `horizont/lightbox.html` | Bildansicht: Links mit `data-lightbox` öffnen ihr Bild groß, mit Untertitel (`data-caption`), Blättern innerhalb von `data-lightbox-group` und Zoom per Klick (`lang`) |
@@ -206,7 +206,10 @@ kein Hamburger, keine Dropdowns.
   nach dem Inhalt, die Furchen je Feld in eigenem Winkel; die Produkte
   hinter einem Feldweg. Das Feld, auf dem man ist, trägt Akzent und
   Zeichen. Daten in `tokens/flur.yaml`; eigene Zahlen gibt die Seite live
-  mit (`counts`).
+  mit (`counts`). Ein Produkt mit eigener Domain (KNX Monitor) zeigt auf
+  seinen Seiten seine eigene Gemarkung als Feldkarte, ohne die übrigen
+  Seiten: `"map" "knx" "home" "knx" "projects" false`. Auf englischen
+  Seiten gelten `name_en` und `note_en`.
 - **Ohne JavaScript** sind die Striche Ankerlinks in einer Reihe und das
   Zeichen ein Link auf `/karte/` (Shortcode `hz-karte`).
 

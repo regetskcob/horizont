@@ -55,6 +55,8 @@
 {{- $marks := .marks | default slice -}}
 {{- if eq (printf "%v" $marks) "auto" }}{{ $auto = .auto | default ".hz-feld-section[id]" }}{{ $marks = slice }}{{ end -}}
 {{- $k := .karte | default dict -}}
+{{- $en := eq site.Language.Lang "en" -}}
+{{- $map := cond $en "Map" "Flurkarte" -}}
 {{- $maxN := 0 -}}
 {{- range $marks }}{{ with .n }}{{ if gt . $maxN }}{{ $maxN = . }}{{ end }}{{ end }}{{ end -}}
 <nav class="hz-horizon" data-hz-horizon data-product="{{ $p }}" aria-label="Horizont">
@@ -75,7 +77,7 @@
   {{- with .link }}
   <a class="hz-walker" href="{{ .url }}" data-hint="{{ .hint }}" data-place="{{ $.place }}" aria-label="{{ .hint }}{{ with $.place }}, du bist in {{ . }}{{ end }}">{{ partial "horizont/mark.html" (dict "product" ($.mark | default $p) "size" 28 "object" true) }}</a>
   {{- else }}
-  <a class="hz-walker" href="{{ $k.url | default (relURL "karte/") }}" data-hz-open-karte data-hint="Karte" data-place="{{ .place }}" aria-label="Flurkarte{{ with .place }}, du bist in {{ . }}{{ end }}">{{ partial "horizont/mark.html" (dict "product" (.mark | default $p) "size" 28 "object" true) }}</a>
+  <a class="hz-walker" href="{{ $k.url | default (relURL "karte/") }}" data-hz-open-karte data-hint="{{ cond $en "Map" "Karte" }}" data-place="{{ .place }}" aria-label="{{ $map }}{{ with .place }}{{ cond $en ", you are in " ", du bist in " }}{{ . }}{{ end }}">{{ partial "horizont/mark.html" (dict "product" (.mark | default $p) "size" 28 "object" true) }}</a>
   {{- end }}
   {{- with .lang }}
   <span class="hz-horizon-lang">
@@ -85,12 +87,12 @@
   {{- end }}
 </nav>
 {{- if not .link }}
-<dialog class="hz-karte-dialog" data-hz-karte aria-label="Flurkarte">
+<dialog class="hz-karte-dialog" data-hz-karte aria-label="{{ $map }}">
   <form method="dialog" class="hz-karte-top">
-    <span class="t-kennung hz-kennung">Flurkarte{{ with .place }} · {{ . }}{{ end }}</span>
+    <span class="t-kennung hz-kennung">{{ $map }}{{ with .place }} · {{ . }}{{ end }}</span>
     <span class="hz-karte-actions">
       <button class="hz-button hz-button--secondary" type="button" data-hz-back hidden>Zurück</button>
-      <button class="hz-button hz-button--secondary" type="submit">Schließen</button>
+      <button class="hz-button hz-button--secondary" type="submit">{{ cond $en "Close" "Schließen" }}</button>
     </span>
   </form>
   {{ partial "horizont/nav/karte.html" $k }}
