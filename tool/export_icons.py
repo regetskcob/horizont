@@ -249,7 +249,9 @@ def main() -> None:
         if p == "panzergefecht":
             wide_sets(svg, out, shot, work)
 
-        # Web: the glyph favicon for small sizes, the illustration above.
+        # Web: the favicon as site/layouts/home.html publishes it, the app
+        # icon unless the product asked for its glyph, and the illustration
+        # above.
         (out / "web").mkdir(parents=True, exist_ok=True)
         shutil.copy(svg / "favicon.svg", out / "web/favicon.svg")
         fav = render(img(svg / "favicon.svg", 128, 128), 128, 128, shot, work)

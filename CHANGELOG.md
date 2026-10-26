@@ -4,6 +4,26 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.8.9
+
+Das Favicon ist das App-Icon.
+
+### Geändert
+
+- **Favicon** (`site/layouts/home.html`, `tool/export_icons.py`): Der
+  Browser-Tab zeigt das App-Icon jedes Produkts, dasselbe Bild wie der
+  Homescreen, statt der Glyphe auf ihrem Feld. `icons/export/<produkt>/web/`
+  liefert `favicon.svg` und `favicon-32.png` aus dem App-Icon. Die Glyphe
+  bleibt für Kopf und Fuß und als Favicon nur, wo ein Produkt sie in
+  `$glyphFavicon` ausdrücklich wünscht oder kein App-Icon hat (Blog,
+  Horizont, Kalkar IT).
+
+### Heben
+
+- Apps und Seiten, die ihr Favicon aus `icons/export/<produkt>/web/`
+  kopieren: neu kopieren (Panzergefecht: `store/tool/horizont_icons.py`).
+- Seiten mit eigenem Favicon-Partial: nichts.
+
 ## 0.8.8
 
 Panzergefecht zieht auf panzergefecht.de.

@@ -1,12 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" class="hz-app-icon" width="1024" height="1024" viewBox="-25 -25 150 150" role="img" aria-label="App-Icon Jagdaufseher">
   <defs>
-    <clipPath id="hzi10c"><rect x="-25" y="-25" width="150" height="150"/></clipPath>
-    <linearGradient id="hzi10s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B9CCAA"/><stop offset="1" stop-color="#7E9C72"/></linearGradient>
-    <filter id="hzi10b" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
-    <filter id="hzi10d" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="1.2" dy="2.4" stdDeviation="1.6" flood-color="#1A2116" flood-opacity=".5"/></filter>
+    <clipPath id="hzi11c"><rect x="-25" y="-25" width="150" height="150"/></clipPath>
+    <linearGradient id="hzi11s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B9CCAA"/><stop offset="1" stop-color="#7E9C72"/></linearGradient>
+    <filter id="hzi11b" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+    <filter id="hzi11f" x="-50%" y="-200%" width="200%" height="500%"><feGaussianBlur stdDeviation="1.2"/></filter>
+    <filter id="hzi11d" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="1.2" dy="2.4" stdDeviation="1.6" flood-color="#1A2116" flood-opacity=".5"/></filter>
   </defs>
-  <g clip-path="url(#hzi10c)">
-    <g filter="url(#hzi10d)" stroke="#1A2116" stroke-width="1.6" stroke-linejoin="round">
+  <g clip-path="url(#hzi11c)">
+    <g filter="url(#hzi11d)" stroke="#1A2116" stroke-width="1.6" stroke-linejoin="round">
       <path d="M35 44h4l-5.5 22.7h-4zM61 44h4l5.5 22.7h-4z" fill="#AC8550"/>
       <path d="M44 44h2.5l-3 22.7H41zM53.5 44H56l3 22.7h-2.5z" fill="#DDBB80"/>
       <path d="M44.6 49h10.8v2.2H44.6zM43.9 54.5h12.2v2.2H43.9zM43.2 60h13.6v2.2H43.2z" fill="#DDBB80"/>

@@ -5,7 +5,7 @@ und Panzergefecht. Leitbild: minimalistisch wie die niederrheinische Feldflur.
 
 Dokumentation und Entwürfe: https://www.regetskcob.de/horizont/
 
-Stand: v0.8.8, Panzergefecht liegt auf seiner eigenen Domain panzergefecht.de. KNX Monitor ist als erste App umgestellt (App auf v0.6.1,
+Stand: v0.8.9, das Favicon jedes Produkts ist sein App-Icon. KNX Monitor ist als erste App umgestellt (App auf v0.6.1,
 Landingpage auf v0.7.9), Jagdaufseher als zweite (App inklusive Web auf v0.7.7,
 Landingpage offline seit 22.10.2026), Panzergefecht als dritte (Spiel und Landingpage auf
 v0.7.8, regetskcob/wargame#31);
@@ -64,7 +64,7 @@ und erzeugen sie nicht selbst.
 | `macos/AppIcon.iconset/` | nach Apples Vorlage (824 auf 1024, Schatten), alle Größen; `iconutil -c icns` macht daraus die `.icns` |
 | `android/` | adaptive Ebenen (Vorder-, Hintergrund, monochrom) für alle Dichten, `ic_launcher.xml`, das klassische Icon, `playstore-512.png` |
 | `tvos/` | Vorder- und Hintergrundebene in 400×240, 800×480 und 1280×768 |
-| `web/` | `favicon.svg` und `favicon-32.png` (Glyphe), `apple-touch-icon.png`, `icon-192/512.png`, `icon-512-maskable.png` |
+| `web/` | `favicon.svg` und `favicon-32.png` (App-Icon, die Glyphe nur auf Wunsch), `apple-touch-icon.png`, `icon-192/512.png`, `icon-512-maskable.png` |
 
 Neu erzeugen, nachdem sich ein Icon oder seine Farben geändert haben:
 
