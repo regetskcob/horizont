@@ -4,6 +4,22 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.8.8
+
+Panzergefecht zieht auf panzergefecht.de.
+
+### Geändert
+
+- **Panzergefecht mit eigener Domain** (`tokens/flur.yaml`): `site`
+  https://panzergefecht.de und `path` `/` statt `/wargame/`. Die Parzelle
+  auf regetskcob.de führt direkt dorthin, auf panzergefecht.de selbst zeigt
+  sie auf die Startseite statt auf `/wargame/`, das dort nicht mehr besteht.
+
+### Heben
+
+- Seiten: `hugo mod get github.com/regetskcob/horizont@v0.8.8`.
+- Apps: nichts.
+
 ## 0.8.7
 
 Die Flurkarte einer Produktseite zeigt die Produktseite.

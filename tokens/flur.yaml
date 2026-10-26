@@ -130,7 +130,8 @@ gemarkungen:
   - id: panzergefecht
     name: Panzergefecht
     product: panzergefecht
-    path: /wargame/
+    site: https://panzergefecht.de
+    path: /
     status: Vorschau
     note: Panzerduelle und Verteidigung
     text: "Ein schnelles Panzerduell von oben: allein, gegeneinander oder im Trupp, im Browser und als App."

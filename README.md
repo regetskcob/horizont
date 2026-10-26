@@ -5,7 +5,7 @@ und Panzergefecht. Leitbild: minimalistisch wie die niederrheinische Feldflur.
 
 Dokumentation und Entwürfe: https://www.regetskcob.de/horizont/
 
-Stand: v0.8.7, die Flurkarte einer Produktseite zeigt deren eigene Felder. KNX Monitor ist als erste App umgestellt (App auf v0.6.1,
+Stand: v0.8.8, Panzergefecht liegt auf seiner eigenen Domain panzergefecht.de. KNX Monitor ist als erste App umgestellt (App auf v0.6.1,
 Landingpage auf v0.7.9), Jagdaufseher als zweite (App inklusive Web auf v0.7.7,
 Landingpage offline seit 22.10.2026), Panzergefecht als dritte (Spiel und Landingpage auf
 v0.7.8, regetskcob/wargame#31);
