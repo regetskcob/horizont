@@ -240,5 +240,18 @@
   "hotel": "0xe549",
   "dry_cleaning": "0xea58",
   "car_repair": "0xea56",
-  "spa": "0xeb4c"
+  "spa": "0xeb4c",
+  "sports_soccer": "0xea2f",
+  "sports_handball": "0xea33",
+  "sports_tennis": "0xea32",
+  "golf_course": "0xeb45",
+  "pool": "0xeb48",
+  "sailing": "0xe502",
+  "scuba_diving": "0xebce",
+  "target": "0xe719",
+  "sports_martial_arts": "0xeae9",
+  "sports_gymnastics": "0xebc4",
+  "fitness_center": "0xeb43",
+  "horseshoe": "0x100003",
+  "playground": "0xf28e"
 }
