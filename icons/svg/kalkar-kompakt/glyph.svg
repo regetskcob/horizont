@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" class="hz-mark" width="1024" height="1024" viewBox="0 0 100 100" role="img" aria-label="Kalkar Kompakt" fill="none" stroke="#000000" stroke-width="7" stroke-linecap="square" stroke-linejoin="miter">
   <path d="M4 66.7H96"/>
   <path d="M22 66.7V40l12-14h9V22l7-18 7 18v4h9l12 14v26.7"/>
+  <path d="M43 26v40.7M57 26v40.7" stroke-width="3.5"/>
 </svg>

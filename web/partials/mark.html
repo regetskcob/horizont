@@ -101,9 +101,11 @@
   <path d="M24 24l20 15-20 15"/>
   {{- end }}
   {{- else if eq $p "kalkar-kompakt" }}
-  {{- /* The town hall as one outline: walls, steep roof, the tower's spire. */}}
+  {{- /* The town hall as one outline: walls, steep roof, the tower's spire;
+         two light lines set the tower off down to the ground. */}}
   <path d="M{{ cond $icon 0 4 }} 66.7H{{ cond $icon 100 96 }}"/>
   <path d="M22 66.7V40l12-14h9V22l7-18 7 18v4h9l12 14v26.7"/>
+  <path d="M43 26v40.7M57 26v40.7" stroke-width="{{ cond $icon 2.5 3.5 }}"/>
   {{- else if eq $p "panzergefecht" }}
   <path d="M{{ cond $icon 0 4 }} 66.7H{{ cond $icon 100 96 }}"/>
   <path d="M24 66.7l4-12h44l4 12M40 54.7V44h18v10.7M58 49h24"/>
