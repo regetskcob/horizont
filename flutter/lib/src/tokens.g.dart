@@ -1116,4 +1116,16 @@ abstract final class HorizontSymbols {
   static const IconData horseshoe = IconData(0x100003, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
   /// `playground`
   static const IconData playground = IconData(0xf28e, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `local_hospital`
+  static const IconData localHospital = IconData(0xe548, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `stethoscope`
+  static const IconData stethoscope = IconData(0xf805, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `dentistry`
+  static const IconData dentistry = IconData(0xe0a6, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `child_care`
+  static const IconData childCare = IconData(0xeb41, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `local_library`
+  static const IconData localLibrary = IconData(0xe54b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `local_atm`
+  static const IconData localAtm = IconData(0xe53e, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
 }

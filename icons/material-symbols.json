@@ -253,5 +253,11 @@
   "sports_gymnastics": "0xebc4",
   "fitness_center": "0xeb43",
   "horseshoe": "0x100003",
-  "playground": "0xf28e"
+  "playground": "0xf28e",
+  "local_hospital": "0xe548",
+  "stethoscope": "0xf805",
+  "dentistry": "0xe0a6",
+  "child_care": "0xeb41",
+  "local_library": "0xe54b",
+  "local_atm": "0xe53e"
 }

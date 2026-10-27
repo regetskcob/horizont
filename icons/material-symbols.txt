@@ -282,3 +282,11 @@ sports_gymnastics
 fitness_center
 horseshoe
 playground
+# Health, care, education and money
+# school and local_post_office are listed above.
+local_hospital
+stethoscope
+dentistry
+child_care
+local_library
+local_atm

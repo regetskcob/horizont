@@ -6,7 +6,8 @@ an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
 ## 0.8.13
 
-Symbole für Sport und Freizeit auf dem Stadtplan von Kalkar Kompakt.
+Symbole für Sport und Freizeit, Gesundheit, Bildung und Geldautomaten auf
+dem Stadtplan von Kalkar Kompakt.
 
 ### Neu
 
@@ -18,13 +19,17 @@ Symbole für Sport und Freizeit auf dem Stadtplan von Kalkar Kompakt.
 - **`horseshoe`** (`HorizontSymbols.horseshoe`, eigenes Symbol, `0x100003`):
   ein Hufeisen mit drei Nägeln je Schenkel, für Reitsport. Material Symbols
   hat kein Pferd.
+- **Gesundheit, Betreuung, Bildung, Geld, 6 neue:** `local_hospital`
+  (Krankenhaus), `stethoscope` (Arzt), `dentistry` (Zahnarzt), `child_care`
+  (Kita), `local_library` (Bücherei), `local_atm` (Geldautomat).
 - Schon vorher im Subset und ebenfalls passend: `flight` und `paragliding`
-  (Modellflug).
+  (Modellflug), `school` (Schule), `local_post_office` (Post).
 
 ### Heben
 
 - Apps: `ref: v0.8.13`. Kalkar Kompakt ersetzt den Platzhalter
-  `emojiEvents` je Sportart durch das passende Symbol.
+  `emojiEvents` je Sportart durch das passende Symbol und nimmt die neuen
+  Kartenarten auf.
 - Seiten: nichts zu tun.
 
 ## 0.8.12
