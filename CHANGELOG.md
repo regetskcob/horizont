@@ -4,6 +4,20 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.8.11
+
+Kalkar Kompakt: Rathaus heller.
+
+### Geändert
+
+- **Kalkar Kompakt** (`color.mark.kalkar-kompakt.icon.obj`): Backstein heller
+  und röter (`brick`, `brickLight`, `brickTower`, `brickDark`), damit sich das
+  Rathaus auch klein vom Schieferdach und vom Himmel abhebt.
+
+### Heben
+
+Nichts zu tun; Kalkar Kompakt kopiert die neuen Icons.
+
 ## 0.8.10
 
 App-Icon für Kalkar Kompakt.
