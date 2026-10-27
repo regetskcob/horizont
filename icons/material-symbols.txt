@@ -230,6 +230,10 @@ wb_sunny
 workspace_premium
 
 # Kalkar Kompakt
-# Places on the town map: a farm shop, a shop in town.
-shopping_basket
+# Places on the town map: a farm shop, a butcher, a florist, a shop in town.
+# basket_woven and steak are Horizont's own (icons/symbols/).
+basket_woven
+steak
+local_florist
 storefront
+shopping_cart

@@ -211,6 +211,9 @@
   "waves": "0xe176",
   "wb_sunny": "0xe430",
   "workspace_premium": "0xe7af",
-  "shopping_basket": "0xe8cb",
-  "storefront": "0xea12"
+  "basket_woven": "0x100000",
+  "steak": "0x100001",
+  "local_florist": "0xe545",
+  "storefront": "0xea12",
+  "shopping_cart": "0xe8cc"
 }

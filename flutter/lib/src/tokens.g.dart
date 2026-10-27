@@ -1030,8 +1030,14 @@ abstract final class HorizontSymbols {
   static const IconData wbSunny = IconData(0xe430, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
   /// `workspace_premium`
   static const IconData workspacePremium = IconData(0xe7af, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
-  /// `shopping_basket`
-  static const IconData shoppingBasket = IconData(0xe8cb, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `basket_woven`
+  static const IconData basketWoven = IconData(0x100000, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `steak`
+  static const IconData steak = IconData(0x100001, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `local_florist`
+  static const IconData localFlorist = IconData(0xe545, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
   /// `storefront`
   static const IconData storefront = IconData(0xea12, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `shopping_cart`
+  static const IconData shoppingCart = IconData(0xe8cc, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
 }

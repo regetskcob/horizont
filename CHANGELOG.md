@@ -6,13 +6,24 @@ an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
 ## 0.8.12
 
-Zwei Symbole für Kalkar Kompakt.
+Symbole für die Orte auf dem Stadtplan von Kalkar Kompakt, die ersten zwei
+davon von Horizont selbst gezeichnet.
 
 ### Neu
 
-- **`shopping_basket`** (`HorizontSymbols.shoppingBasket`) für Hofläden und
-  **`storefront`** (`HorizontSymbols.storefront`) für Geschäfte in der Stadt,
-  als Pin auf der Karte und in der Liste.
+- **Eigene Symbole:** Was Material Symbols fehlt, zeichnet Horizont in
+  dessen Raster und Strich (960er-Raster, Strich 60, scharfe Ecken).
+  `tool/draw_symbols.py` legt die Umrisse in `icons/symbols/<name>.svg` ab,
+  die Codepoints stehen fest in `icons/symbols/codepoints` (ab `0x100000`,
+  private Ebene 16). `tool/build_symbols.py` nimmt sie ins Subset auf; in
+  der Liste stehen sie wie jeder andere Name.
+- **`basket_woven`** (`HorizontSymbols.basketWoven`, eigenes Symbol): ein
+  geflochtener Henkelkorb, für Hofläden.
+- **`steak`** (`HorizontSymbols.steak`, eigenes Symbol): ein Rib-Eye mit
+  Knochen und Fettrand, für Metzgereien.
+- **`local_florist`** (`HorizontSymbols.localFlorist`) für Blumenläden,
+  **`storefront`** (`HorizontSymbols.storefront`) und **`shopping_cart`**
+  (`HorizontSymbols.shoppingCart`) für Geschäfte in der Stadt.
 
 ### Heben
 

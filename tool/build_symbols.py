@@ -15,6 +15,12 @@ A line `name:fill` adds the filled form (FILL 1) of that icon as
 0xf09a -> star_fill 0xff09a). Filled forms mark a state that is on (pinned,
 favourite), never decoration.
 
+What Material Symbols lacks, Horizont draws in its grid and stroke
+(tool/draw_symbols.py): a name in the list with an outline in
+icons/symbols/<name>.svg and a fixed codepoint in icons/symbols/codepoints,
+in the private-use plane 16 (0x100000 and up), clear of Material and of
+the filled forms.
+
 Needs fontTools and brotli. Usage:
 
   python tool/build_symbols.py <MaterialSymbolsSharp[...].ttf> <...codepoints>
@@ -27,11 +33,14 @@ import sys
 from pathlib import Path
 
 from fontTools import subset
+from fontTools.pens.ttGlyphPen import TTGlyphPen
+from fontTools.svgLib import SVGPath
 from fontTools.ttLib import TTFont
 from fontTools.ttLib.tables._c_m_a_p import CmapSubtable
 from fontTools.varLib import instancer
 
 ROOT = Path(__file__).resolve().parent.parent
+OWN = ROOT / "icons/symbols"
 
 
 def main(font_path: str, codepoints_path: str) -> None:
@@ -46,36 +55,49 @@ def main(font_path: str, codepoints_path: str) -> None:
     for line in Path(codepoints_path).read_text().splitlines():
         name, code = line.split()
         table.setdefault(name, int(code, 16))
-    missing = [n for n in names + filled if n not in table]
+    own = {}
+    for line in (OWN / "codepoints").read_text().splitlines():
+        name, code = line.split()
+        own[name] = int(code, 16)
+    missing = [n for n in names + filled if n not in table and n not in own]
     if missing:
         sys.exit(f"not in Material Symbols: {', '.join(missing)}")
-    chosen = {n: table[n] for n in names}
+    chosen = {n: table[n] for n in names if n not in own}
 
     font = cut(font_path, 0, sorted(set(chosen.values())))
+    added = {}  # codepoint -> (glyph name, glyph, (advance, lsb))
     if filled:
         solid = cut(font_path, 1, sorted({table[n] for n in filled}))
         solid_cmap = solid.getBestCmap()
-        order = list(font.getGlyphOrder())
         for name in filled:
-            code = 0xF0000 + table[name]
-            glyph = f"{name}_fill"
             source = solid_cmap[table[name]]
-            font["glyf"][glyph] = solid["glyf"][source]
-            font["hmtx"][glyph] = solid["hmtx"][source]
-            if glyph not in order:
-                order.append(glyph)
+            added[0xF0000 + table[name]] = (
+                f"{name}_fill", solid["glyf"][source], solid["hmtx"][source]
+            )
+            chosen[f"{name}_fill"] = 0xF0000 + table[name]
+    for name in names:
+        if name in own:
+            glyph = draw(OWN / f"{name}.svg")
+            added[own[name]] = (name, glyph, (960, glyph.xMin))
+            chosen[name] = own[name]
+    if added:
+        order = list(font.getGlyphOrder())
+        for code, (name, glyph, metrics) in added.items():
+            font["glyf"][name] = glyph
+            font["hmtx"][name] = metrics
+            if name not in order:
+                order.append(name)
             for t in font["cmap"].tables:
                 if t.isUnicode() and (code <= 0xFFFF or t.format == 12):
-                    t.cmap[code] = glyph
-            chosen[f"{name}_fill"] = code
+                    t.cmap[code] = name
         font.setGlyphOrder(order)
         if not any(t.format == 12 for t in font["cmap"].tables):
             # Codepoints above 0xFFFF need a format 12 subtable.
             t12 = CmapSubtable.newSubtable(12)
             t12.platformID, t12.platEncID, t12.language = 3, 10, 0
             t12.cmap = dict(font.getBestCmap())
-            for name in filled:
-                t12.cmap[0xF0000 + table[name]] = f"{name}_fill"
+            for code, (name, _, _) in added.items():
+                t12.cmap[code] = name
             font["cmap"].tables.append(t12)
         font["maxp"].numGlyphs = len(order)
 
@@ -99,6 +121,16 @@ def main(font_path: str, codepoints_path: str) -> None:
     )
     print(f"{len(chosen)} icons, {ttf.stat().st_size // 1024} KB ttf, "
           f"{woff2.stat().st_size // 1024} KB woff2")
+
+
+def draw(svg_path: Path):
+    """The glyph of an outline in icons/symbols/, flipped from SVG to font."""
+    svg = SVGPath(str(svg_path), transform=(1, 0, 0, -1, 0, 0))
+    pen = TTGlyphPen(None)
+    svg.draw(pen)
+    glyph = pen.glyph()
+    glyph.recalcBounds(None)
+    return glyph
 
 
 def cut(font_path: str, fill: int, unicodes: list[int]) -> TTFont:

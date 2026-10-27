@@ -27,8 +27,8 @@ bzw. [docs/web.md](docs/web.md) für Hugo-Seiten.
 | `web/shortcodes/` | Hugo-Shortcodes für Inhalte: `hz-device`, `hz-kennung`, `hz-badge`, `hz-symbol`, `hz-facts` |
 | `web/fonts/` | Literata, Mona Sans, Monaspace Argon (SIL OFL, `OFL.txt`) und Material Symbols Sharp als Subset (Apache 2.0), als WOFF2 |
 | `flutter/` | Flutter-Paket `horizont`: Theme, Widgets, Schriften (`flutter/fonts/`), Showcase-App und Goldens (`flutter/example/`) |
-| `icons/` | Material-Symbols-Liste und Codepoints, die SVG-Quellen der App-Icons (`icons/svg/`) und die fertigen Sätze je Plattform (`icons/export/`) |
-| `tool/` | `generate_tokens.dart` (Tokens für Flutter), `build_symbols.py` (Material Symbols zuschneiden), `subset_fonts.py` (Schriften auf Latein kürzen), `export_icons.py` (App-Icons für alle Plattformen) |
+| `icons/` | Material-Symbols-Liste und Codepoints, eigene Symbole (`icons/symbols/`), die SVG-Quellen der App-Icons (`icons/svg/`) und die fertigen Sätze je Plattform (`icons/export/`) |
+| `tool/` | `generate_tokens.dart` (Tokens für Flutter), `build_symbols.py` (Material Symbols zuschneiden), `draw_symbols.py` (eigene Symbole zeichnen), `subset_fonts.py` (Schriften auf Latein kürzen), `export_icons.py` (App-Icons für alle Plattformen) |
 | `site/` | Nur die Dokumentationsseite |
 | `docs/` | Umsetzungsleitfäden für Flutter und Web |
 | `CLAUDE.md` | Kurzfassung aller Regeln für Claude-Sitzungen |
