@@ -6,8 +6,9 @@ an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
 ## 0.8.12
 
-Symbole für die Orte auf dem Stadtplan von Kalkar Kompakt, die ersten zwei
-davon von Horizont selbst gezeichnet.
+Symbole für die Orte auf dem Stadtplan von Kalkar Kompakt, je eins für jede
+Art von Geschäft und Dienst, die ersten drei davon von Horizont selbst
+gezeichnet.
 
 ### Neu
 
@@ -17,13 +18,19 @@ davon von Horizont selbst gezeichnet.
   die Codepoints stehen fest in `icons/symbols/codepoints` (ab `0x100000`,
   private Ebene 16). `tool/build_symbols.py` nimmt sie ins Subset auf; in
   der Liste stehen sie wie jeder andere Name.
-- **`basket_woven`** (`HorizontSymbols.basketWoven`, eigenes Symbol): ein
-  geflochtener Henkelkorb, für Hofläden.
-- **`steak`** (`HorizontSymbols.steak`, eigenes Symbol): ein Rib-Eye mit
-  Knochen und Fettrand, für Metzgereien.
-- **`local_florist`** (`HorizontSymbols.localFlorist`) für Blumenläden,
-  **`storefront`** (`HorizontSymbols.storefront`) und **`shopping_cart`**
-  (`HorizontSymbols.shoppingCart`) für Geschäfte in der Stadt.
+- **Eigene Symbole für Lebensmittel:** `basket_woven` (geflochtener
+  Henkelkorb, Hofladen), `steak` (Rib-Eye mit Knochen und Fettrand,
+  Metzger), `pretzel` (Brezel, Bäcker).
+- **Aus Material Symbols, 27 neue:**
+  - Geschäft allgemein: `storefront`, `shopping_cart`
+  - Essen und Trinken: `liquor`, `restaurant`, `local_cafe`, `local_pizza`,
+    `lunch_dining`, `icecream`, `sports_bar`, `wine_bar`, `set_meal` (Fisch)
+  - Handel: `local_florist`, `local_pharmacy`, `apparel`, `menu_book`,
+    `eyeglasses`, `newspaper`, `hardware`, `pedal_bike`, `devices`
+  - Dienste: `content_cut` (Friseur), `local_post_office`,
+    `account_balance` (Bank), `hotel`, `dry_cleaning`, `car_repair`, `spa`
+  - Schon vorher im Subset und ebenfalls für Geschäfte nutzbar: `diamond`,
+    `pets`, `toys`, `photo_camera`.
 
 ### Heben
 

@@ -83,6 +83,19 @@ def steak():
     ])
 
 
+def pretzel():
+    """A pretzel: two lobes on top, the belly below, the arms crossed."""
+    return unary_union([
+        arc(285, 600, 175, 175, 0, 180),
+        arc(675, 600, 175, 175, 0, 180),
+        arc(480, 470, 370, 330, 180, 360),
+        line((110, 610), (110, 440)),
+        line((850, 610), (850, 440)),
+        line((460, 610), (660, 160)),
+        line((500, 610), (300, 160)),
+    ])
+
+
 def svg(shape) -> str:
     """One path, y flipped into Material's viewBox; outer contours clockwise in the font."""
     parts = []
@@ -97,7 +110,7 @@ def svg(shape) -> str:
     )
 
 
-SYMBOLS = {"basket_woven": basket_woven, "steak": steak}
+SYMBOLS = {"basket_woven": basket_woven, "steak": steak, "pretzel": pretzel}
 
 if __name__ == "__main__":
     out = ROOT / "icons/symbols"
