@@ -54,7 +54,9 @@ ROOT = Path(__file__).resolve().parent.parent
 CHROME = os.environ.get(
     "CHROME", "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 )
-PRODUCTS = ["regetskcob", "jagdaufseher", "knx", "panzergefecht"]
+# Kalkar Kompakt is no product of the family (color.mark) but has an app
+# icon, so its set is made like a product's.
+PRODUCTS = ["regetskcob", "jagdaufseher", "knx", "panzergefecht", "kalkar-kompakt"]
 ANDROID = {"mdpi": 1, "hdpi": 1.5, "xhdpi": 2, "xxhdpi": 3, "xxxhdpi": 4}
 
 

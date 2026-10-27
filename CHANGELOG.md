@@ -4,6 +4,23 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.8.10
+
+App-Icon für Kalkar Kompakt.
+
+### Neu
+
+- **Kalkar Kompakt** (`color.mark.kalkar-kompakt`, `app-icon.html`,
+  `mark.html`): Die Bürger-App von Kalkar IT ist kein Produkt der Familie
+  (keine Akzentfarbe), bekommt aber ein App-Icon: das Rathaus Kalkar auf der
+  Linie, Backstein unter Schieferdach, der Turm mit Uhr und rotem Wappen,
+  davor Kopfsteinpflaster. Die Glyphe ist der Umriss des Rathauses.
+  `tool/export_icons.py` erzeugt `icons/export/kalkar-kompakt/`.
+
+### Heben
+
+Nichts zu tun; Kalkar Kompakt kopiert die Icons aus `icons/export/kalkar-kompakt/`.
+
 ## 0.8.9
 
 Das Favicon ist das App-Icon.

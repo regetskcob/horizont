@@ -3,7 +3,7 @@ description: >-
   Horizont, the design system of regetskcob, Jagdaufseher, KNX Monitor and
   Panzergefecht: tokens, theme, fonts, icons and the few widgets every app
   needs.
-version: 0.8.9
+version: 0.8.10
 publish_to: none
 repository: https://github.com/regetskcob/horizont
 

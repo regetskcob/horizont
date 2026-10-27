@@ -31,7 +31,7 @@
 {{- /* Three marks are glyphs only, no product with colours and app icon:
        the blog (an open book), Horizont itself (the sun on the line) and
        Kalkar IT Solutions (a prompt above the line). */ -}}
-{{- $glyphs := dict "blog" "Blog" "horizont" "Horizont" "kalkar-it" "Kalkar IT Solutions" -}}
+{{- $glyphs := dict "blog" "Blog" "horizont" "Horizont" "kalkar-it" "Kalkar IT Solutions" "kalkar-kompakt" "Kalkar Kompakt" -}}
 {{- $colors := dict -}}
 {{- $label := index $glyphs $p -}}
 {{- with index site.Data.horizont.color.product $p }}{{ $colors = .icon }}{{ $label = .name }}{{ end -}}
@@ -100,6 +100,10 @@
   {{- else }}
   <path d="M24 24l20 15-20 15"/>
   {{- end }}
+  {{- else if eq $p "kalkar-kompakt" }}
+  {{- /* The town hall as one outline: walls, steep roof, the tower's spire. */}}
+  <path d="M{{ cond $icon 0 4 }} 66.7H{{ cond $icon 100 96 }}"/>
+  <path d="M22 66.7V40l12-14h9V22l7-18 7 18v4h9l12 14v26.7"/>
   {{- else if eq $p "panzergefecht" }}
   <path d="M{{ cond $icon 0 4 }} 66.7H{{ cond $icon 100 96 }}"/>
   <path d="M24 66.7l4-12h44l4 12M40 54.7V44h18v10.7M58 49h24"/>
