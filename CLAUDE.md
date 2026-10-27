@@ -248,7 +248,7 @@ Einrichtungen.
   Kopf der Datei). Hat Material Symbols keins, zeichnet Horizont es selbst
   in dessen Raster und Strich (`tool/draw_symbols.py`, Umrisse in
   `icons/symbols/`, feste Codepoints ab `0x100000`), etwa `basket_woven`,
-  `steak` und `pretzel`. Nie den ganzen Font bündeln. Die SVGs in
+  `steak`, `pretzel` und `horseshoe`. Nie den ganzen Font bündeln. Die SVGs in
   `web/partials/icons.html` sind Platzhalter der Doku.
 
 ## Screenshots

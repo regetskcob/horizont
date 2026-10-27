@@ -8,7 +8,7 @@
 import 'package:flutter/widgets.dart';
 
 /// Version of the tokens this file was generated from.
-const String horizontTokensVersion = '0.8.12';
+const String horizontTokensVersion = '0.8.13';
 
 /// The neutral colours of one brightness.
 @immutable
@@ -1090,4 +1090,42 @@ abstract final class HorizontSymbols {
   static const IconData carRepair = IconData(0xea56, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
   /// `spa`
   static const IconData spa = IconData(0xeb4c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `sports_soccer`
+  static const IconData sportsSoccer = IconData(0xea2f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `sports_handball`
+  static const IconData sportsHandball = IconData(0xea33, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `sports_tennis`
+  static const IconData sportsTennis = IconData(0xea32, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `golf_course`
+  static const IconData golfCourse = IconData(0xeb45, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `pool`
+  static const IconData pool = IconData(0xeb48, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `sailing`
+  static const IconData sailing = IconData(0xe502, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `scuba_diving`
+  static const IconData scubaDiving = IconData(0xebce, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `target`
+  static const IconData target = IconData(0xe719, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `sports_martial_arts`
+  static const IconData sportsMartialArts = IconData(0xeae9, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `sports_gymnastics`
+  static const IconData sportsGymnastics = IconData(0xebc4, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `fitness_center`
+  static const IconData fitnessCenter = IconData(0xeb43, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `horseshoe`
+  static const IconData horseshoe = IconData(0x100003, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `playground`
+  static const IconData playground = IconData(0xf28e, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `local_hospital`
+  static const IconData localHospital = IconData(0xe548, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `stethoscope`
+  static const IconData stethoscope = IconData(0xf805, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `dentistry`
+  static const IconData dentistry = IconData(0xe0a6, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `child_care`
+  static const IconData childCare = IconData(0xeb41, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `local_library`
+  static const IconData localLibrary = IconData(0xe54b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `local_atm`
+  static const IconData localAtm = IconData(0xe53e, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
 }

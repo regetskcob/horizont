@@ -96,6 +96,18 @@ def pretzel():
     ])
 
 
+def horseshoe():
+    """A horseshoe, open at the top: the band as outline, three nails a side."""
+    band = ellipse(480, 470, 370, 400).difference(ellipse(480, 470, 150, 190))
+    band = band.difference(Polygon([(480, 470), (1040, 1400), (-80, 1400)]))
+    nails = [
+        Point(480 + 260 * math.cos(math.radians(a)), 470 + 295 * math.sin(math.radians(a)))
+        .buffer(26, cap_style="square")
+        for a in (35, -10, -55, 145, 190, 235)
+    ]
+    return unary_union([ring(band), *nails])
+
+
 def svg(shape) -> str:
     """One path, y flipped into Material's viewBox; outer contours clockwise in the font."""
     parts = []
@@ -110,7 +122,12 @@ def svg(shape) -> str:
     )
 
 
-SYMBOLS = {"basket_woven": basket_woven, "steak": steak, "pretzel": pretzel}
+SYMBOLS = {
+    "basket_woven": basket_woven,
+    "steak": steak,
+    "pretzel": pretzel,
+    "horseshoe": horseshoe,
+}
 
 if __name__ == "__main__":
     out = ROOT / "icons/symbols"

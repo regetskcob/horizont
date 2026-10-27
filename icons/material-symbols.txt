@@ -266,3 +266,27 @@ hotel
 dry_cleaning
 car_repair
 spa
+# Sport and leisure
+# horseshoe (riding) is Horizont's own (icons/symbols/), Material has no
+# horse; flight and paragliding (model flying) are listed above.
+sports_soccer
+sports_handball
+sports_tennis
+golf_course
+pool
+sailing
+scuba_diving
+target
+sports_martial_arts
+sports_gymnastics
+fitness_center
+horseshoe
+playground
+# Health, care, education and money
+# school and local_post_office are listed above.
+local_hospital
+stethoscope
+dentistry
+child_care
+local_library
+local_atm
