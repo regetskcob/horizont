@@ -8,7 +8,7 @@
 import 'package:flutter/widgets.dart';
 
 /// Version of the tokens this file was generated from.
-const String horizontTokensVersion = '0.8.11';
+const String horizontTokensVersion = '0.8.12';
 
 /// The neutral colours of one brightness.
 @immutable
@@ -1030,4 +1030,8 @@ abstract final class HorizontSymbols {
   static const IconData wbSunny = IconData(0xe430, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
   /// `workspace_premium`
   static const IconData workspacePremium = IconData(0xe7af, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `shopping_basket`
+  static const IconData shoppingBasket = IconData(0xe8cb, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `storefront`
+  static const IconData storefront = IconData(0xea12, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
 }

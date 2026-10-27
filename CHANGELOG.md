@@ -4,6 +4,22 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.8.12
+
+Zwei Symbole für Kalkar Kompakt.
+
+### Neu
+
+- **`shopping_basket`** (`HorizontSymbols.shoppingBasket`) für Hofläden und
+  **`storefront`** (`HorizontSymbols.storefront`) für Geschäfte in der Stadt,
+  als Pin auf der Karte und in der Liste.
+
+### Heben
+
+- Apps: `ref: v0.8.12`. Kalkar Kompakt ersetzt die Platzhalter `grass`
+  (Hofladen) und `inventory2` (Geschäft).
+- Seiten: nichts zu tun.
+
 ## 0.8.11
 
 Kalkar Kompakt: Rathaus heller.

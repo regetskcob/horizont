@@ -228,3 +228,8 @@ warning_amber
 waves
 wb_sunny
 workspace_premium
+
+# Kalkar Kompakt
+# Places on the town map: a farm shop, a shop in town.
+shopping_basket
+storefront

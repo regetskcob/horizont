@@ -210,5 +210,7 @@
   "warning_amber": "0xf083",
   "waves": "0xe176",
   "wb_sunny": "0xe430",
-  "workspace_premium": "0xe7af"
+  "workspace_premium": "0xe7af",
+  "shopping_basket": "0xe8cb",
+  "storefront": "0xea12"
 }
