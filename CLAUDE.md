@@ -245,7 +245,10 @@ Einrichtungen.
   Form dazu (`name_fill`, etwa `star_fill`, `push_pin_fill`); gefüllt heißt
   „an“ (angeheftet, Favorit), nie Zierde. Fehlt ein Symbol: Namen in die Liste
   eintragen, dann `tool/build_symbols.py` neu laufen lassen (Anleitung im
-  Kopf der Datei). Nie den ganzen Font bündeln. Die SVGs in
+  Kopf der Datei). Hat Material Symbols keins, zeichnet Horizont es selbst
+  in dessen Raster und Strich (`tool/draw_symbols.py`, Umrisse in
+  `icons/symbols/`, feste Codepoints ab `0x100000`), etwa `basket_woven`,
+  `steak` und `pretzel`. Nie den ganzen Font bündeln. Die SVGs in
   `web/partials/icons.html` sind Platzhalter der Doku.
 
 ## Screenshots

@@ -8,7 +8,7 @@
 import 'package:flutter/widgets.dart';
 
 /// Version of the tokens this file was generated from.
-const String horizontTokensVersion = '0.8.11';
+const String horizontTokensVersion = '0.8.12';
 
 /// The neutral colours of one brightness.
 @immutable
@@ -1030,4 +1030,64 @@ abstract final class HorizontSymbols {
   static const IconData wbSunny = IconData(0xe430, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
   /// `workspace_premium`
   static const IconData workspacePremium = IconData(0xe7af, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `storefront`
+  static const IconData storefront = IconData(0xea12, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `shopping_cart`
+  static const IconData shoppingCart = IconData(0xe8cc, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `basket_woven`
+  static const IconData basketWoven = IconData(0x100000, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `steak`
+  static const IconData steak = IconData(0x100001, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `pretzel`
+  static const IconData pretzel = IconData(0x100002, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `liquor`
+  static const IconData liquor = IconData(0xea60, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `restaurant`
+  static const IconData restaurant = IconData(0xe56c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `local_cafe`
+  static const IconData localCafe = IconData(0xeb44, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `local_pizza`
+  static const IconData localPizza = IconData(0xe552, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `lunch_dining`
+  static const IconData lunchDining = IconData(0xea61, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `icecream`
+  static const IconData icecream = IconData(0xea69, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `sports_bar`
+  static const IconData sportsBar = IconData(0xf1f3, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `wine_bar`
+  static const IconData wineBar = IconData(0xf1e8, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `set_meal`
+  static const IconData setMeal = IconData(0xf1ea, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `local_florist`
+  static const IconData localFlorist = IconData(0xe545, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `local_pharmacy`
+  static const IconData localPharmacy = IconData(0xe550, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `apparel`
+  static const IconData apparel = IconData(0xef7b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `menu_book`
+  static const IconData menuBook = IconData(0xea19, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `eyeglasses`
+  static const IconData eyeglasses = IconData(0xf6ee, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `newspaper`
+  static const IconData newspaper = IconData(0xeb81, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `hardware`
+  static const IconData hardware = IconData(0xea59, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `pedal_bike`
+  static const IconData pedalBike = IconData(0xeb29, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `devices`
+  static const IconData devices = IconData(0xe326, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `content_cut`
+  static const IconData contentCut = IconData(0xe14e, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `local_post_office`
+  static const IconData localPostOffice = IconData(0xe554, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `account_balance`
+  static const IconData accountBalance = IconData(0xe84f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `hotel`
+  static const IconData hotel = IconData(0xe549, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `dry_cleaning`
+  static const IconData dryCleaning = IconData(0xea58, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `car_repair`
+  static const IconData carRepair = IconData(0xea56, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `spa`
+  static const IconData spa = IconData(0xeb4c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
 }

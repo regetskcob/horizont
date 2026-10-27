@@ -4,6 +4,40 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.8.12
+
+Symbole für die Orte auf dem Stadtplan von Kalkar Kompakt, je eins für jede
+Art von Geschäft und Dienst, die ersten drei davon von Horizont selbst
+gezeichnet.
+
+### Neu
+
+- **Eigene Symbole:** Was Material Symbols fehlt, zeichnet Horizont in
+  dessen Raster und Strich (960er-Raster, Strich 60, scharfe Ecken).
+  `tool/draw_symbols.py` legt die Umrisse in `icons/symbols/<name>.svg` ab,
+  die Codepoints stehen fest in `icons/symbols/codepoints` (ab `0x100000`,
+  private Ebene 16). `tool/build_symbols.py` nimmt sie ins Subset auf; in
+  der Liste stehen sie wie jeder andere Name.
+- **Eigene Symbole für Lebensmittel:** `basket_woven` (geflochtener
+  Henkelkorb, Hofladen), `steak` (Rib-Eye mit Knochen und Fettrand,
+  Metzger), `pretzel` (Brezel, Bäcker).
+- **Aus Material Symbols, 27 neue:**
+  - Geschäft allgemein: `storefront`, `shopping_cart`
+  - Essen und Trinken: `liquor`, `restaurant`, `local_cafe`, `local_pizza`,
+    `lunch_dining`, `icecream`, `sports_bar`, `wine_bar`, `set_meal` (Fisch)
+  - Handel: `local_florist`, `local_pharmacy`, `apparel`, `menu_book`,
+    `eyeglasses`, `newspaper`, `hardware`, `pedal_bike`, `devices`
+  - Dienste: `content_cut` (Friseur), `local_post_office`,
+    `account_balance` (Bank), `hotel`, `dry_cleaning`, `car_repair`, `spa`
+  - Schon vorher im Subset und ebenfalls für Geschäfte nutzbar: `diamond`,
+    `pets`, `toys`, `photo_camera`.
+
+### Heben
+
+- Apps: `ref: v0.8.12`. Kalkar Kompakt ersetzt die Platzhalter `grass`
+  (Hofladen) und `inventory2` (Geschäft).
+- Seiten: nichts zu tun.
+
 ## 0.8.11
 
 Kalkar Kompakt: Rathaus heller.

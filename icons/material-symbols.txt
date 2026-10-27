@@ -228,3 +228,41 @@ warning_amber
 waves
 wb_sunny
 workspace_premium
+
+# Kalkar Kompakt
+# Places on the town map, one symbol per kind of shop or service.
+# basket_woven, steak and pretzel are Horizont's own (icons/symbols/);
+# diamond, pets, toys and photo_camera are listed above.
+storefront
+shopping_cart
+# Food and drink
+basket_woven
+steak
+pretzel
+liquor
+restaurant
+local_cafe
+local_pizza
+lunch_dining
+icecream
+sports_bar
+wine_bar
+set_meal
+# Shops
+local_florist
+local_pharmacy
+apparel
+menu_book
+eyeglasses
+newspaper
+hardware
+pedal_bike
+devices
+# Services
+content_cut
+local_post_office
+account_balance
+hotel
+dry_cleaning
+car_repair
+spa
