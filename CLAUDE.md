@@ -215,6 +215,10 @@ Einrichtungen.
   (`app-icon.html`, `product` "kalkar-it") (`mark.html`, `product` "blog",
   "horizont" bzw. "kalkar-it"). Kalkar IT ist kein Produkt der Familie und
   hat keine eigenen Farben; die Seite nimmt den Akzent Tinte.
+  Kalkar Kompakt (Bürger-App von Kalkar IT) ist ebenso kein Produkt und hat
+  keine Akzentfarbe, aber ein App-Icon: das Rathaus Kalkar auf der Linie,
+  Farben unter `color.mark.kalkar-kompakt`; die Glyphe zeichnet das Rathaus
+  im Strich.
 - **App-Icon:** illustriert (`web/partials/app-icon.html`). Die Bühne ist
   Himmel oben und Boden unten mit einer hellen Horizontlinie bei zwei
   Dritteln. Davor steht ein Gegenstand in drei Tönen mit dunkler Kontur (1,6

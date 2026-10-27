@@ -16,9 +16,11 @@
 {{- /* The icon sources of every product as files under icons/<product>/,
        for download and for tool/export_icons.py, which renders the
        platform sets from them. */ -}}
-{{- range $products }}
+{{- /* Kalkar Kompakt is no product of the family (no accent) but has an
+       app icon, so its sources are made too. */ -}}
+{{- range $products | append "kalkar-kompakt" }}
   {{- $p := . }}
-  {{- $c := index $hz.color.product $p "icon" }}
+  {{- $c := (index $hz.color.product $p | default (index $hz.color.mark $p)).icon }}
   {{- $files := dict
       "rounded.svg" (partial "horizont/app-icon.html" (dict "product" $p "size" 1024))
       "bleed.svg" (partial "horizont/app-icon.html" (dict "product" $p "size" 1024 "shape" "bleed"))
@@ -128,7 +130,7 @@
       <dt>Jagdaufseher</dt><dd>Eine Kanzel am Waldrand, Holz vor Tanne.</dd>
       <dt>KNX Monitor</dt><dd>Das grüne Buskabel ist der Horizont, darauf sitzt die rot-graue Busklemme mit ihren Leitereinführungen. Mehr braucht es nicht, jeder Elektriker erkennt sie.</dd>
       <dt>Panzergefecht</dt><dd>Der Panzer in Seitenansicht, auf dem Horizont wie Kanzel und Buche. Farben und Zeichenweise vom bisherigen Icon.</dd>
-      <dt>Nur Glyphe</dt><dd>Ohne App-Icon und eigene Farbe: {{ range slice (slice "blog" "das offene Buch für den Blog") (slice "horizont" "die Sonne auf der Linie für Horizont") (slice "kalkar-it" "der Prompt über der Linie für Kalkar IT Solutions, die Linie ist sein Cursor") }}<span class="hz-lockup">{{ partial "horizont/mark.html" (dict "product" (index . 0) "size" 20 "object" true) }}<span>{{ index . 1 }}</span></span> {{ end }}Kalkar IT hat dazu ein Bild für Avatare, etwa die GitHub-Organisation, ohne Produktfarben: <span class="doc-avatar">{{ partial "horizont/app-icon.html" (dict "product" "kalkar-it" "size" 96) }}{{ partial "horizont/app-icon.html" (dict "product" "kalkar-it" "size" 40) }}</span></dd>
+      <dt>Nur Glyphe</dt><dd>Ohne App-Icon und eigene Farbe: {{ range slice (slice "blog" "das offene Buch für den Blog") (slice "horizont" "die Sonne auf der Linie für Horizont") (slice "kalkar-it" "der Prompt über der Linie für Kalkar IT Solutions, die Linie ist sein Cursor") }}<span class="hz-lockup">{{ partial "horizont/mark.html" (dict "product" (index . 0) "size" 20 "object" true) }}<span>{{ index . 1 }}</span></span> {{ end }}Kalkar IT hat dazu ein Bild für Avatare, etwa die GitHub-Organisation, ohne Produktfarben: <span class="doc-avatar">{{ partial "horizont/app-icon.html" (dict "product" "kalkar-it" "size" 96) }}{{ partial "horizont/app-icon.html" (dict "product" "kalkar-it" "size" 40) }}</span> Kalkar Kompakt, die Bürger-App von Kalkar IT, hat ebenfalls keine Akzentfarbe, aber ein App-Icon: das Rathaus Kalkar auf der Linie. <span class="doc-avatar">{{ partial "horizont/app-icon.html" (dict "product" "kalkar-kompakt" "size" 96) }}{{ partial "horizont/app-icon.html" (dict "product" "kalkar-kompakt" "size" 40) }}{{ partial "horizont/mark.html" (dict "product" "kalkar-kompakt" "size" 40) }}</span></dd>
     </dl>
     <div class="doc-marks">
       {{- range $products }}
