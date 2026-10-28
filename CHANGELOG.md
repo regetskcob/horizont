@@ -4,6 +4,26 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.8.14
+
+Horizont hat eine Lizenz.
+
+### Neu
+
+- **MIT-Lizenz** (`LICENSE`, gleichlautend in `flutter/LICENSE`): Code,
+  Tokens, CSS, Partials, Werkzeuge, Doku und die Grafiken des Systems sind
+  frei nutzbar, auch kommerziell, mit Copyright-Hinweis. Ausgenommen: die
+  Schriften (eigene Lizenzen, unverändert), die Marken, App-Icons und Namen
+  der Produkte sowie das Flutter-Logo der Showcase-App.
+- Die Lizenztexte von Material Symbols nennen jetzt Urheber und die
+  Änderungen des Subsets (Apache 2.0, Abschnitt 4b).
+
+### Heben
+
+- Apps: `ref: v0.8.14`. Nichts weiter zu tun: Flutter nimmt `flutter/LICENSE`
+  des Pakets von selbst in die Lizenzseite auf (`showLicensePage`), unter
+  „horizont“.
+
 ## 0.8.13
 
 Symbole für Sport und Freizeit, Gesundheit, Bildung und Geldautomaten auf
