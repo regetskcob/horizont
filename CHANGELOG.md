@@ -67,7 +67,7 @@ dasselbe. Entschieden in CLAUDE.md unter „Entscheidungen für 0.9.0“.
 - **Tab-Bar:** Die Polster um Icon und Wort sind schmaler (8 statt 12 innen,
   2 statt 4 außen). Mit fünf Zielen am Telefon brach „Übersicht“ sonst
   mitten im Wort um.
-- **`HorizontLockup`** bricht den Namen um, statt bei großer Schrift über
+- **`HorizontLockup`** und **`HorizontBadge`** brechen ihr Wort um, statt bei großer Schrift über
   den Rand zu laufen.
 - **Keine Sonderwerte mehr im Paket:** `HorizontEmptyHint` ist höchstens
   `HzSize.form` (400) breit statt 360. Der Rand der Checkbox ist die
