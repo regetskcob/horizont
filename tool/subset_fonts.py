@@ -11,6 +11,12 @@ grew by 1.1 MB gzipped with the uncut fonts).
 Layout features stay (tabular figures, Monaspace's texture healing, kerning),
 hinting goes: the platforms render without it at these sizes.
 
+A cut font is a Modified Version under the SIL OFL 1.1, and Mona Sans
+("Mona") and Monaspace ("Monaspace") reserve their names. So the cut files
+are renamed inside: Horizont Sans, Horizont Sans Display and Horizont Mono.
+Copyright, trademark, designer and licence entries stay as they are. The
+families in pubspec.yaml and the CSS keep their names and file names.
+
 Writes in place, so the range can only shrink; to widen it, start from the
 original files (Literata: Google Fonts, Mona Sans and Monaspace:
 github.com/githubnext) placed under flutter/fonts/ first.
@@ -74,6 +80,44 @@ FONTS = {
 }
 
 
+# Reserved name -> Horizont name, longest first.
+RENAMES = [
+    ("Mona Sans Display Expanded", "Horizont Sans Display"),
+    ("MonaSansDisplayExpanded", "HorizontSansDisplay"),
+    ("Monaspace Argon", "Horizont Mono"),
+    ("MonaspaceArgon", "HorizontMono"),
+    ("Mona Sans", "Horizont Sans"),
+    ("MonaSans", "HorizontSans"),
+    ("Monaspace", "Horizont Mono"),
+]
+
+# Name IDs that credit the original and stay: copyright, trademark,
+# manufacturer, designer, description, URLs, licence.
+KEEP_NAME_IDS = {0, 7, 8, 9, 10, 11, 12, 13, 14}
+
+
+def renamed(text: str) -> str:
+    for reserved, own in RENAMES:
+        text = text.replace(reserved, own)
+    return text
+
+
+def rename(font: TTFont) -> None:
+    """Takes the Reserved Font Names out of the names of [font]."""
+    for record in font["name"].names:
+        # 256 and up name features (stylistic sets), not the font.
+        if record.nameID in KEEP_NAME_IDS or record.nameID >= 256:
+            continue
+        record.string = renamed(record.toUnicode())
+    if "CFF " in font:
+        cff = font["CFF "].cff
+        cff.fontNames = [renamed(name) for name in cff.fontNames]
+        top = cff.topDictIndex[0]
+        for key in ("FullName", "FamilyName"):
+            if hasattr(top, key):
+                setattr(top, key, renamed(getattr(top, key)))
+
+
 def cut(source: Path, target: Path, flavor: str | None) -> None:
     options = subset.Options()
     options.layout_features = ["*"]
@@ -89,6 +133,7 @@ def cut(source: Path, target: Path, flavor: str | None) -> None:
         unicodes=[c for start, end in UNICODES for c in range(start, end + 1)]
     )
     subsetter.subset(font)
+    rename(font)
     font.flavor = flavor
     font.save(target)
 
