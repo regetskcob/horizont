@@ -134,6 +134,12 @@ Höhe). `--w` ist die Außenbreite, alles andere folgt daraus:
 </figure>
 ```
 
+Fotos und Medien: `horizont/lightbox.html` zeigt Bilder groß auf dem Scrim.
+Für einen Balken auf einem Foto, etwa den Titel auf einem Cover, gibt es
+`.hz-scrim-bar`: Schrift in `--scrim-text`, der Grund läuft zum Bild hin
+aus. `--fade-solid` ist die Höhe des festen Teils (Text samt Abstand),
+`--hz-scrim-fade` die Länge des Verlaufs.
+
 ## Partials (für Layouts)
 
 Jede Datei erklärt ihre Parameter im Kopf. Alle lesen Farben und Werte aus

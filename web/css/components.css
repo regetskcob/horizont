@@ -781,10 +781,10 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
 .hz-lightbox {
   /* The bars sit on the top and bottom edge of the window, slightly see-
      through, and fade out towards the photo. */
-  --hz-lightbox-alpha: var(--scrim-bar-alpha);
-  --hz-lightbox-bar: rgb(from var(--scrim-bg) r g b / var(--hz-lightbox-alpha));
+  --hz-scrim-alpha: var(--scrim-bar-alpha);
+  --hz-scrim-bar: rgb(from var(--scrim-bg) r g b / var(--hz-scrim-alpha));
   --hz-lightbox-bar-height: 4.4rem;
-  --hz-lightbox-fade: 5rem;
+  --hz-scrim-fade: 5rem;
   /* A fixed frame, not one that follows the photo: portrait and landscape
      photos change in turn while paging, and the bars' content must stay put.
      On a wide screen the frame is no wider than a 3:2 photo that fills its
@@ -810,21 +810,36 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
    the window edge; --fade-solid is how far the bar is solid (its height for
    the top and bottom bar, its width for the shooting data on the left). */
 .hz-lightbox-bar,
-.hz-lightbox-exif {
-  --hz-lightbox-fadeout:
-    var(--hz-lightbox-bar) var(--fade-solid),
-    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.995)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.083),
-    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.965)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.167),
-    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.896)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.250),
-    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.790)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.333),
-    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.653)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.417),
-    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.500)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.500),
-    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.347)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.583),
-    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.210)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.667),
-    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.104)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.750),
-    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.035)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.833),
-    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.005)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.917),
-    transparent calc(var(--fade-solid) + var(--hz-lightbox-fade));
+.hz-lightbox-exif,
+.hz-scrim-bar {
+  --hz-scrim-fadeout:
+    var(--hz-scrim-bar) var(--fade-solid),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-scrim-alpha) * 0.995)) calc(var(--fade-solid) + var(--hz-scrim-fade) * 0.083),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-scrim-alpha) * 0.965)) calc(var(--fade-solid) + var(--hz-scrim-fade) * 0.167),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-scrim-alpha) * 0.896)) calc(var(--fade-solid) + var(--hz-scrim-fade) * 0.250),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-scrim-alpha) * 0.790)) calc(var(--fade-solid) + var(--hz-scrim-fade) * 0.333),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-scrim-alpha) * 0.653)) calc(var(--fade-solid) + var(--hz-scrim-fade) * 0.417),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-scrim-alpha) * 0.500)) calc(var(--fade-solid) + var(--hz-scrim-fade) * 0.500),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-scrim-alpha) * 0.347)) calc(var(--fade-solid) + var(--hz-scrim-fade) * 0.583),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-scrim-alpha) * 0.210)) calc(var(--fade-solid) + var(--hz-scrim-fade) * 0.667),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-scrim-alpha) * 0.104)) calc(var(--fade-solid) + var(--hz-scrim-fade) * 0.750),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-scrim-alpha) * 0.035)) calc(var(--fade-solid) + var(--hz-scrim-fade) * 0.833),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-scrim-alpha) * 0.005)) calc(var(--fade-solid) + var(--hz-scrim-fade) * 0.917),
+    transparent calc(var(--fade-solid) + var(--hz-scrim-fade));
+}
+
+/* A bar on a picture, e.g. the title on a cover photo: words in the scrim's
+   white on the scrim, fading out towards the picture with the lightbox's
+   fade. --fade-solid is the height of the solid part (the text with its
+   padding), --hz-scrim-fade the length of the fade above it. */
+.hz-scrim-bar {
+  --hz-scrim-alpha: var(--scrim-bar-alpha);
+  --hz-scrim-bar: rgb(from var(--scrim-bg) r g b / var(--hz-scrim-alpha));
+  --hz-scrim-fade: 2.6rem;
+  --fade-solid: 3.7rem;
+  padding-top: var(--hz-scrim-fade);
+  background: linear-gradient(to top, var(--hz-scrim-fadeout));
+  color: var(--scrim-text);
 }
 
 /* Nothing in the lightbox can be selected. Fast clicks on the paging buttons are
@@ -934,16 +949,16 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
 
 .hz-lightbox-bar-top {
   top: 0;
-  height: calc(var(--hz-lightbox-bar-height) + var(--hz-lightbox-fade));
-  padding-bottom: var(--hz-lightbox-fade);
-  background: linear-gradient(to bottom, var(--hz-lightbox-fadeout));
+  height: calc(var(--hz-lightbox-bar-height) + var(--hz-scrim-fade));
+  padding-bottom: var(--hz-scrim-fade);
+  background: linear-gradient(to bottom, var(--hz-scrim-fadeout));
 }
 
 .hz-lightbox-bar-bottom {
   bottom: 0;
-  height: calc(var(--hz-lightbox-bar-height) + var(--hz-lightbox-fade));
-  padding-top: var(--hz-lightbox-fade);
-  background: linear-gradient(to top, var(--hz-lightbox-fadeout));
+  height: calc(var(--hz-lightbox-bar-height) + var(--hz-scrim-fade));
+  padding-top: var(--hz-scrim-fade);
+  background: linear-gradient(to top, var(--hz-scrim-fadeout));
 }
 
 .hz-lightbox-bar p {
@@ -990,13 +1005,13 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
   left: 0;
   top: var(--hz-lightbox-bar-height);
   bottom: var(--hz-lightbox-bar-height);
-  width: calc(var(--fade-solid) + var(--hz-lightbox-fade));
+  width: calc(var(--fade-solid) + var(--hz-scrim-fade));
   box-sizing: border-box;
-  padding: 1rem var(--hz-lightbox-fade) 1rem 1.2rem;
+  padding: 1rem var(--hz-scrim-fade) 1rem 1.2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: linear-gradient(to right, var(--hz-lightbox-fadeout));
+  background: linear-gradient(to right, var(--hz-scrim-fadeout));
   color: var(--scrim-text);
   cursor: default;
 }
@@ -1087,7 +1102,7 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
   /* More room for the text on a phone, in the bars and in the fade. */
   .hz-lightbox {
     --hz-lightbox-bar-height: 4.6rem;
-    --hz-lightbox-fade: 5.4rem;
+    --hz-scrim-fade: 5.4rem;
   }
 
   .hz-lightbox-exif {

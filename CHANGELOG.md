@@ -44,6 +44,11 @@ dasselbe. Entschieden in CLAUDE.md unter „Entscheidungen für 0.9.0“.
   gebraucht.
 - **`color.scrim`** (`HzScrim`, `--scrim-*`): der dunkle Grund unter Fotos
   und Medien, für Lightbox, Bildbetrachter und Webcams.
+- **`.hz-scrim-bar`**: ein Balken auf einem Foto (Titel auf einem Cover), in
+  Weiß auf dem Scrim, der zum Bild hin mit dem Verlauf der Lightbox ausläuft.
+  Der Blog hatte dafür die Variablen der Lightbox mitbenutzt. Die Variablen
+  heißen jetzt `--hz-scrim-alpha`, `--hz-scrim-fade` und
+  `--hz-scrim-fadeout` statt `--hz-lightbox-*`.
 - **`tv`** (`HzTv`, `--tv-*`): sicherer Rand 80/60, Schrift × 1,5, Fokusring
   3, Kachel +6 %, bisher nur als Text in CLAUDE.md.
 
@@ -82,7 +87,9 @@ dasselbe. Entschieden in CLAUDE.md unter „Entscheidungen für 0.9.0“.
   `regetskcob`.
 - Seiten: `hugo mod get github.com/regetskcob/horizont@v0.9.0`. Wer noch
   `horizont/feld/head.html` aufruft, ersetzt ihn durch den Horizont
-  (`horizont/nav/horizon.html`).
+  (`horizont/nav/horizon.html`). Eigene Lightbox-Kopien (Blog) durch
+  `horizont/lightbox.html` ersetzen, Gruppen mit `data-lightbox-group`
+  markieren.
 
 ## 0.8.15
 
