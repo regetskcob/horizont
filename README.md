@@ -86,7 +86,10 @@ mitkommt. Ausgenommen sind:
 - **Schriften:** Literata, Mona Sans und Monaspace unter der SIL Open Font
   License 1.1 (`OFL.txt`), Material Symbols unter Apache 2.0
   (`MaterialSymbols-LICENSE.txt`), jeweils neben den Schriften in
-  `flutter/fonts/` und `web/fonts/`.
+  `flutter/fonts/` und `web/fonts/`. Die zugeschnittenen Fassungen von
+  Mona Sans und Monaspace heißen intern „Horizont Sans“, „Horizont Sans
+  Display“ und „Horizont Mono“, weil die OFL ihre Namen für veränderte
+  Fassungen reserviert.
 - **Marken und Namen der Produkte** (Zeichen, App-Icons, `icons/svg/`,
   `icons/export/`): Sie kennzeichnen regetskcob und seine Projekte und sind
   nicht für andere Produkte freigegeben.

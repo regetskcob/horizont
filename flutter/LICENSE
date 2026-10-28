@@ -35,7 +35,9 @@ Not covered by the MIT License:
 
    - Literata, Mona Sans (with Mona Sans Display Expanded) and Monaspace
      Argon, in flutter/fonts/ and web/fonts/: SIL Open Font License 1.1,
-     see flutter/fonts/OFL.txt and web/fonts/OFL.txt.
+     see flutter/fonts/OFL.txt and web/fonts/OFL.txt. The cut files of Mona
+     Sans and Monaspace are named Horizont Sans, Horizont Sans Display and
+     Horizont Mono inside, as their Reserved Font Names require.
    - Material Symbols Sharp, as a subset in
      flutter/fonts/MaterialSymbolsSharp-300.ttf and
      web/fonts/MaterialSymbols/MaterialSymbolsSharp-300.woff2: Apache

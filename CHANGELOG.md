@@ -4,6 +4,28 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.8.15
+
+Die zugeschnittenen Schriften tragen nicht mehr die reservierten Namen von
+Mona Sans und Monaspace.
+
+### Geändert
+
+- **Horizont Sans, Horizont Sans Display, Horizont Mono:** Zugeschnitten sind
+  die Schriften veränderte Fassungen im Sinn der SIL OFL 1.1, und „Mona“ und
+  „Monaspace“ sind dort reservierte Namen. Die Namenstabelle (Familie, voller
+  Name, PostScript-Name) heißt jetzt nach Horizont; Urheber, Marke und
+  Lizenz bleiben eingetragen. Glyphen, Features und Maße sind unverändert.
+  `tool/subset_fonts.py` benennt bei jedem Zuschnitt neu um. `OFL.txt`,
+  `LICENSE` und README nennen die Herkunft.
+- Nach außen ändert sich nichts: Die Familien in `pubspec.yaml`
+  (`MonaSans`, `MonaSansDisplayExpanded`, `MonaspaceArgon`), die
+  `font-family` im CSS und die Dateinamen bleiben.
+
+### Heben
+
+- Apps: `ref: v0.8.15`. Nichts weiter zu tun.
+
 ## 0.8.14
 
 Horizont hat eine Lizenz.
