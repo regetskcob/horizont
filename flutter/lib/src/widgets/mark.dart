@@ -67,7 +67,8 @@ class HorizontLockup extends StatelessWidget {
       children: [
         HorizontMark(product, size: size, color: markColor ?? theme.colors.accentText),
         SizedBox(width: size * 0.35),
-        Text(label, style: s),
+        // Wraps instead of running over the edge at large text sizes.
+        Flexible(child: Text(label, style: s)),
       ],
     );
   }

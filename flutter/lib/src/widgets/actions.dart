@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../colors.dart';
 import '../horizont_theme.dart';
 import '../tokens.g.dart';
 import 'status.dart';
@@ -135,28 +136,36 @@ EdgeInsets horizontSheetPadding(BuildContext context) => EdgeInsets.only(
       bottom: MediaQuery.viewInsetsOf(context).bottom + HzSpace.s16,
     );
 
+/// The snack bar of [showHorizontMessage], for when the messenger was taken
+/// before an `await` or a `Navigator.pop` (the context may be gone by then):
+///
+/// ```dart
+/// final messenger = ScaffoldMessenger.of(context);
+/// final colors = HorizontTheme.of(context).colors;
+/// await save();
+/// messenger.showSnackBar(horizontMessageSnackBar(colors, l10n.saved, status: HorizontStatus.positive));
+/// ```
+SnackBar horizontMessageSnackBar(HorizontColors colors, String message, {HorizontStatus? status}) => SnackBar(
+      content: status == null
+          ? Text(message)
+          : Row(
+              children: [
+                ExcludeSemantics(
+                  child: Icon(status.icon, size: HzIconSize.inline, color: status.tint(colors)),
+                ),
+                const SizedBox(width: HzSpace.s8),
+                Expanded(child: Text(message)),
+              ],
+            ),
+    );
+
 /// Says what just happened in a line at the foot of the screen. With
 /// [status] the line carries that state's glyph, so the message never speaks
 /// by colour alone. The snack bar is inverted (text colour as ground), so
 /// the glyph takes the state's tint, which is light where the bar is dark
 /// and the other way round; the state's own colour would sink into it.
 void showHorizontMessage(BuildContext context, String message, {HorizontStatus? status}) {
-  final colors = HorizontTheme.of(context).colors;
   ScaffoldMessenger.of(context)
     ..clearSnackBars()
-    ..showSnackBar(
-      SnackBar(
-        content: status == null
-            ? Text(message)
-            : Row(
-                children: [
-                  ExcludeSemantics(
-                    child: Icon(status.icon, size: HzIconSize.inline, color: status.tint(colors)),
-                  ),
-                  const SizedBox(width: HzSpace.s8),
-                  Expanded(child: Text(message)),
-                ],
-              ),
-      ),
-    );
+    ..showSnackBar(horizontMessageSnackBar(HorizontTheme.of(context).colors, message, status: status));
 }

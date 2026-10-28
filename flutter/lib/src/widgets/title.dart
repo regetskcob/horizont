@@ -52,7 +52,9 @@ class HorizontTitle extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Kennung(kennung, count: count, oneLine: true),
+        // Wraps at large text sizes: a date or place in the Kennung is
+        // content, nothing is cut.
+        Kennung(kennung, count: count),
         Semantics(
           header: true,
           child: Text(title, style: style),

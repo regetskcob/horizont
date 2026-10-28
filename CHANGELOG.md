@@ -34,7 +34,9 @@ dasselbe. Entschieden in CLAUDE.md unter „Entscheidungen für 0.9.0“.
 - **`HorizontSheetActions`**, **`horizontSheetPadding`**: der Fuß eines
   Formular-Sheets, „Abbrechen“ und „Speichern“ aus den Plattformwörtern, mit
   Spinner beim Speichern.
-- **`showHorizontMessage`**: Snackbar mit dem Zeichen des Zustands.
+- **`showHorizontMessage`**: Snackbar mit dem Zeichen des Zustands;
+  `horizontMessageSnackBar` baut dieselbe für einen `ScaffoldMessenger`, der
+  vor einem `await` oder `pop` gemerkt wurde.
 - **`HorizontEmptyHint(status:)`**: derselbe Hinweis für Fehler und fehlende
   Verbindung, das Zeichen in der Statusfarbe; `icon` ist dann optional.
 - **`HorizontSectionHeader(collapsed:, onToggle:)`**: der Abschnitt klappt,
@@ -65,6 +67,8 @@ dasselbe. Entschieden in CLAUDE.md unter „Entscheidungen für 0.9.0“.
 - **Tab-Bar:** Die Polster um Icon und Wort sind schmaler (8 statt 12 innen,
   2 statt 4 außen). Mit fünf Zielen am Telefon brach „Übersicht“ sonst
   mitten im Wort um.
+- **`HorizontLockup`** bricht den Namen um, statt bei großer Schrift über
+  den Rand zu laufen.
 - **Keine Sonderwerte mehr im Paket:** `HorizontEmptyHint` ist höchstens
   `HzSize.form` (400) breit statt 360. Der Rand der Checkbox ist die
   Haarlinie (1 statt 1,5), Schriftgrößen in Badge, Listen und Rail kommen

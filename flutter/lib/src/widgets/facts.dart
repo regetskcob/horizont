@@ -69,9 +69,11 @@ class HorizontFact extends StatelessWidget {
         ? Align(alignment: AlignmentDirectional.centerStart, child: child)
         : (selectable && onTap == null ? SelectableText(value!, style: style) : Text(value!, style: style));
     if (onTap != null) {
+      // The arrow at the end of the row, so arrows under each other line up
+      // whether the value is short or wraps.
       valueWidget = Row(
         children: [
-          Flexible(child: valueWidget),
+          Expanded(child: valueWidget),
           const SizedBox(width: HzSpace.s4),
           ExcludeSemantics(
             child: Icon(
