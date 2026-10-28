@@ -475,6 +475,7 @@
     "safe-vertical": 60,
     "type-scale": 1.5,
     "focus": 3,
+    "focus-gap": 4,
     "focus-scale": 1.06
   },
   "_icon": "App-Icons: Buehne aus Himmel (sky->sky2) und Boden (ground) mit der Horizontlinie auf dem unteren Drittel, ein illustrierter Gegenstand mit dunkler Kontur (outline) in drei Toenen (obj), weicher Schatten. field/glyph gelten fuer die reduzierte Marke in Kopf- und Fusszeilen.",

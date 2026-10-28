@@ -75,9 +75,11 @@ class Kennung extends StatelessWidget {
 /// „Alle“ or icon buttons) at the end. No background, no line: white space
 /// separates.
 ///
-/// With [onToggle] the section folds: the whole head is the button, a
-/// chevron at the end says which way, [collapsed] goes to screen readers as
-/// expanded or not.
+/// With [onToggle] the section folds: the whole head is the button (at least
+/// 44 high on touch), `expand_more` when folded and `expand_less` when open
+/// at the end, [collapsed] goes to screen readers as expanded or not. Trees
+/// disclose differently: `chevron_right` folded, `expand_more` open, at the
+/// start of the row.
 class HorizontSectionHeader extends StatelessWidget {
   /// Creates a section head for [title].
   const HorizontSectionHeader(
@@ -134,10 +136,18 @@ class HorizontSectionHeader extends StatelessWidget {
       ),
     );
     if (onToggle == null) return head;
+    final pointer = HorizontTheme.of(context).density == HorizontDensity.pointer;
     return Semantics(
       button: true,
       expanded: !collapsed,
-      child: InkWell(onTap: onToggle, child: head),
+      child: InkWell(
+        onTap: onToggle,
+        // A head that folds is a button: at least the touch target high.
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: pointer ? HzSize.rowDense : HzSize.touch),
+          child: Align(alignment: AlignmentDirectional.bottomStart, child: head),
+        ),
+      ),
     );
   }
 }

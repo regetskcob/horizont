@@ -368,7 +368,8 @@ Vom Nutzer entschieden bei der Durchsicht vor v1.0 (28.10.2026):
   Weile läuft; ab 1.0 brechen Änderungen nur mit einem Major-Sprung.
 - **Bausteine statt Nachbau.** Bauen zwei Apps dasselbe Muster selbst, kommt
   es ins Paket (0.9.0: `HorizontFact`, `HorizontTitle`,
-  `HorizontSelectable`, `HorizontPrimaryAction`, `HorizontSheetActions`,
+  `HorizontSelectable`, `HorizontSelectableCard`, `HorizontNotice`,
+  `HorizontPrimaryAction`, `HorizontSheetActions`,
   `showHorizontMessage`, der einklappbare `HorizontSectionHeader`,
   `HorizontEmptyHint` mit Status). Was nur eine App braucht (der
   TV-Fokusrahmen von Panzergefecht, der Board-Kopf von KNX Monitor), bleibt

@@ -27,7 +27,15 @@ dasselbe. Entschieden in CLAUDE.md unter „Entscheidungen für 0.9.0“.
   beide Zeilen bei großer Schrift brauchen.
 - **`HorizontSelectable`** und **`horizontSelectionDecoration`**: die gewählte
   Zeile mit Tönung und 2-px-Linie am Anfang (oder unten), statt sie in jeder
-  App von Hand zu zeichnen.
+  App von Hand zu zeichnen. Die Tönung liegt als `Ink` unter dem Tipp-Effekt,
+  `alignment: null` schrumpft auf den Inhalt (Chips), `divider` behält die
+  Trennlinie einer Zeile.
+- **`HorizontSelectableCard`**: die gewählte Karte (2 px Akzent als Umriss,
+  `accent-tint`, Häkchen oben), wie in KNX Monitor entschieden und in
+  Panzergefecht von Hand gebaut.
+- **`HorizontNotice`**: der Hinweis vor einer Aktion, Statustönung mit
+  Zeichen und Satz, Radius 6 (KNX Monitor und Panzergefecht hatten ihn je
+  selbst).
 - **`HorizontPrimaryAction`**: die eine Hauptaktion, auf Touch als FAB (unter
   600 nur Symbol, ab 600 mit Wort), mit Zeiger als Knopf in der
   Werkzeugleiste.
@@ -53,7 +61,12 @@ dasselbe. Entschieden in CLAUDE.md unter „Entscheidungen für 0.9.0“.
   heißen jetzt `--hz-scrim-alpha`, `--hz-scrim-fade` und
   `--hz-scrim-fadeout` statt `--hz-lightbox-*`.
 - **`tv`** (`HzTv`, `--tv-*`): sicherer Rand 80/60, Schrift × 1,5, Fokusring
-  3, Kachel +6 %, bisher nur als Text in CLAUDE.md.
+  3 mit Abstand 4, Kachel +6 %, bisher nur als Text in CLAUDE.md.
+- **`HzColors` exportiert**: die rohen Werte als Konstanten, für `const`
+  in Malern und Spielen; Widgets lesen weiter `HorizontTheme.of(context)`.
+- **`HorizontTitle(style:)`** für den kleineren Titel im Sheet,
+  **`showHorizontMessage(action:, duration:)`**, und ein einklappbarer
+  `HorizontSectionHeader` ist mindestens 44 hoch.
 
 ### Geändert
 

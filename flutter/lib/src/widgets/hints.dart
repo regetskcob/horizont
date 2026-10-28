@@ -157,7 +157,11 @@ class HorizontEmptyHint extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               ExcludeSemantics(
-                child: Icon(icon ?? status!.icon, size: HzSpace.s32, color: status?.color(c) ?? c.textFaint),
+                child: Icon(
+                  icon ?? status!.icon,
+                  size: HzSpace.s32,
+                  color: status?.color(c) ?? c.textFaint,
+                ),
               ),
               const SizedBox(height: HzSpace.s8),
               Text(
@@ -235,4 +239,60 @@ Widget horizontDialogAction(
     ),
     _ => TextButton(onPressed: onPressed, child: Text(label)),
   };
+}
+
+/// A note before an action or about the situation: the state's tint as
+/// ground, its glyph in the state's colour, the words in ink, radius 6 like
+/// the buttons beside it (e.g. the warning before an irreversible action).
+/// Not a badge: it says a sentence, not a state.
+class HorizontNotice extends StatelessWidget {
+  /// Creates a note in [status] with [child], usually a `Text`.
+  const HorizontNotice(
+    this.status, {
+    required this.child,
+    this.icon,
+    super.key,
+  });
+
+  /// The state whose tint and glyph it takes.
+  final HorizontStatus status;
+
+  /// The words.
+  final Widget child;
+
+  /// A glyph of the app's own instead of the state's.
+  final IconData? icon;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = HorizontTheme.of(context).colors;
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: status.tint(c),
+        borderRadius: const BorderRadius.all(Radius.circular(HzRadius.r6)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(HzSpace.s12),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ExcludeSemantics(
+              child: Icon(
+                icon ?? status.icon,
+                size: HzIconSize.row,
+                color: status.color(c),
+              ),
+            ),
+            const SizedBox(width: HzSpace.s12),
+            Expanded(
+              child: DefaultTextStyle.merge(
+                style: horizontTextStyle(HzType.callout, c.text),
+                child: child,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

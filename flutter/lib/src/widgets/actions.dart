@@ -145,7 +145,15 @@ EdgeInsets horizontSheetPadding(BuildContext context) => EdgeInsets.only(
 /// await save();
 /// messenger.showSnackBar(horizontMessageSnackBar(colors, l10n.saved, status: HorizontStatus.positive));
 /// ```
-SnackBar horizontMessageSnackBar(HorizontColors colors, String message, {HorizontStatus? status}) => SnackBar(
+SnackBar horizontMessageSnackBar(
+  HorizontColors colors,
+  String message, {
+  HorizontStatus? status,
+  SnackBarAction? action,
+  Duration? duration,
+}) => SnackBar(
+      action: action,
+      duration: duration ?? const Duration(milliseconds: 4000),
       content: status == null
           ? Text(message)
           : Row(
@@ -164,8 +172,22 @@ SnackBar horizontMessageSnackBar(HorizontColors colors, String message, {Horizon
 /// by colour alone. The snack bar is inverted (text colour as ground), so
 /// the glyph takes the state's tint, which is light where the bar is dark
 /// and the other way round; the state's own colour would sink into it.
-void showHorizontMessage(BuildContext context, String message, {HorizontStatus? status}) {
+void showHorizontMessage(
+  BuildContext context,
+  String message, {
+  HorizontStatus? status,
+  SnackBarAction? action,
+  Duration? duration,
+}) {
   ScaffoldMessenger.of(context)
     ..clearSnackBars()
-    ..showSnackBar(horizontMessageSnackBar(HorizontTheme.of(context).colors, message, status: status));
+    ..showSnackBar(
+      horizontMessageSnackBar(
+        HorizontTheme.of(context).colors,
+        message,
+        status: status,
+        action: action,
+        duration: duration,
+      ),
+    );
 }

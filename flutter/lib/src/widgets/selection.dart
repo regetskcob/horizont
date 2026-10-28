@@ -20,19 +20,20 @@ enum HorizontSelectionEdge {
 /// there too, transparent, so rows do not shift when chosen.
 ///
 /// [selected] goes to screen readers too; the tint is not the only signal.
+///
+/// [divider] is the hairline under a row (lists, tables); it stays while the
+/// selection line is at the start.
 BoxDecoration horizontSelectionDecoration(
   HorizontColors colors, {
   required bool selected,
   HorizontSelectionEdge edge = HorizontSelectionEdge.start,
+  BorderSide divider = BorderSide.none,
 }) {
-  final line = BorderSide(
-    color: selected ? colors.accent : Colors.transparent,
-    width: HzLine.selection,
-  );
+  final line = BorderSide(color: selected ? colors.accent : Colors.transparent, width: HzLine.selection);
   return BoxDecoration(
     color: selected ? colors.accentTint : null,
     border: switch (edge) {
-      HorizontSelectionEdge.start => BorderDirectional(start: line),
+      HorizontSelectionEdge.start => BorderDirectional(start: line, bottom: divider),
       HorizontSelectionEdge.bottom => BorderDirectional(bottom: line),
     },
   );
@@ -59,9 +60,13 @@ class HorizontSelectable extends StatelessWidget {
     this.edge = HorizontSelectionEdge.start,
     this.padding = const EdgeInsetsDirectional.symmetric(horizontal: HzSpace.s12, vertical: HzSpace.s4),
     this.minHeight,
+    this.alignment = AlignmentDirectional.centerStart,
     this.semanticsLabel,
     super.key,
   });
+
+  /// Where the child sits; null shrink-wraps it (a chip in a `Wrap`).
+  final AlignmentGeometry? alignment;
 
   /// Whether this one is chosen.
   final bool selected;
@@ -90,7 +95,10 @@ class HorizontSelectable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = HorizontTheme.of(context);
-    final height = minHeight ?? (theme.density == HorizontDensity.pointer ? HzSize.rowDense : HzSize.touch);
+    final full = minHeight ?? (theme.density == HorizontDensity.pointer ? HzSize.rowDense : HzSize.touch);
+    // Ink lays the line outside its child: a line at the bottom adds to the
+    // height, so the child is that much lower.
+    final height = edge == HorizontSelectionEdge.bottom ? (full - HzLine.selection).clamp(0.0, full) : full;
     return Semantics(
       button: onTap != null,
       selected: selected,
@@ -107,9 +115,85 @@ class HorizontSelectable extends StatelessWidget {
             decoration: horizontSelectionDecoration(theme.colors, selected: selected, edge: edge),
             child: Container(
               constraints: BoxConstraints(minHeight: height),
-              alignment: AlignmentDirectional.centerStart,
+              alignment: alignment,
               padding: padding,
               child: child,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// A card that can be chosen, e.g. one of several plans or vehicles: the
+/// hairline in `line-strong` and radius 10; chosen, 2 px of the accent as
+/// its outline, `accent-tint` as its ground and a tick in the top corner.
+/// The outline is painted over the card, so nothing moves when choosing.
+class HorizontSelectableCard extends StatelessWidget {
+  /// Creates a choosable card around [child].
+  const HorizontSelectableCard({
+    required this.selected,
+    required this.child,
+    this.onTap,
+    this.padding = const EdgeInsets.all(HzSpace.s12),
+    this.semanticsLabel,
+    super.key,
+  });
+
+  /// Whether this one is chosen.
+  final bool selected;
+
+  /// The content.
+  final Widget child;
+
+  /// Chooses it; null for a card that cannot be chosen (locked).
+  final VoidCallback? onTap;
+
+  /// Space inside.
+  final EdgeInsetsGeometry padding;
+
+  /// Replaces the child's own semantics with one label.
+  final String? semanticsLabel;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = HorizontTheme.of(context).colors;
+    const radius = BorderRadius.all(Radius.circular(HzRadius.r10));
+    return Semantics(
+      button: onTap != null,
+      selected: selected,
+      label: semanticsLabel,
+      excludeSemantics: semanticsLabel != null,
+      child: Material(
+        color: selected ? c.accentTint : c.surface,
+        shape: RoundedRectangleBorder(
+          borderRadius: radius,
+          side: BorderSide(color: c.lineStrong),
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: onTap,
+          child: Container(
+            padding: padding,
+            foregroundDecoration: selected
+                ? BoxDecoration(
+                    borderRadius: radius,
+                    border: Border.all(color: c.accent, width: HzLine.selection),
+                  )
+                : null,
+            child: Stack(
+              children: [
+                child,
+                if (selected)
+                  PositionedDirectional(
+                    top: 0,
+                    end: 0,
+                    child: ExcludeSemantics(
+                      child: Icon(HorizontSymbols.check, size: HzIconSize.row, color: c.accentText),
+                    ),
+                  ),
+              ],
             ),
           ),
         ),

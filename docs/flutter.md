@@ -323,8 +323,13 @@ App nie nachbauen:
 - **Formular-Sheet:** `horizontSheetPadding(context)` (Rand 16 und die
   Tastatur), oben `HorizontTitle`, unten `HorizontSheetActions(onSave:,
   saving:)` mit „Abbrechen“ und „Speichern“ aus den Plattformwörtern.
-- **Meldung:** `showHorizontMessage(context, text, status:)`, eine Snackbar
-  mit dem Zeichen des Zustands.
+- **Meldung:** `showHorizontMessage(context, text, status:, action:)`, eine
+  Snackbar mit dem Zeichen des Zustands; nach einem `await` oder `pop` mit
+  vorab gemerktem Messenger `messenger.showSnackBar(horizontMessageSnackBar(
+  colors, text, status:))`.
+- **Hinweis:** `HorizontNotice(status, child: Text(…))`, die Statustönung mit
+  Zeichen und Satz, etwa die Warnung vor einer unumkehrbaren Aktion.
+- **Karte wählen:** `HorizontSelectableCard(selected:, onTap:, child:)`.
 - **Leer und Fehler:** `HorizontEmptyHint(text:, icon:)` für leere Listen,
   `HorizontEmptyHint(text:, status: HorizontStatus.critical, action: (label:
   l10n.retry, onPressed: …))` für Fehler und fehlende Verbindung.

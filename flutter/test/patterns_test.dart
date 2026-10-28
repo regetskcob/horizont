@@ -260,6 +260,52 @@ void main() {
     expect(horizontShareSymbol(TargetPlatform.windows), HorizontSymbols.share);
   });
 
+  testWidgets('a bottom selection line keeps the row at its height', (tester) async {
+    await tester.pumpWidget(
+      _app(
+        const Align(
+          alignment: Alignment.topLeft,
+          child: HorizontSelectable(
+            selected: true,
+            edge: HorizontSelectionEdge.bottom,
+            alignment: null,
+            child: Text('Karte'),
+          ),
+        ),
+        density: HorizontDensity.touch,
+      ),
+    );
+    final size = tester.getSize(find.byType(HorizontSelectable));
+    expect(size.height, HzSize.touch);
+    expect(size.width, lessThan(200), reason: 'without alignment it shrink-wraps');
+  });
+
+  testWidgets('a folding head is at least the touch target high', (tester) async {
+    await tester.pumpWidget(
+      _app(
+        Align(alignment: Alignment.topLeft, child: HorizontSectionHeader('Abfall', onToggle: () {})),
+        density: HorizontDensity.touch,
+      ),
+    );
+    expect(tester.getSize(find.byType(InkWell)).height, greaterThanOrEqualTo(HzSize.touch));
+  });
+
+  testWidgets('a notice has the tint, the glyph and the words', (tester) async {
+    await tester.pumpWidget(_app(const HorizontNotice(HorizontStatus.warning, child: Text('Nicht umkehrbar'))));
+    final colors = HorizontTheme.of(tester.element(find.text('Nicht umkehrbar'))).colors;
+    final box = tester.widget<DecoratedBox>(find.byType(DecoratedBox).first);
+    expect((box.decoration as BoxDecoration).color, colors.warningTint);
+    expect(find.byIcon(HorizontStatus.warning.icon), findsOneWidget);
+  });
+
+  testWidgets('a chosen card carries the tick and says it is chosen', (tester) async {
+    final handle = tester.ensureSemantics();
+    await tester.pumpWidget(_app(HorizontSelectableCard(selected: true, onTap: () {}, child: const Text('Pro'))));
+    expect(find.byIcon(HorizontSymbols.check), findsOneWidget);
+    expect(tester.getSemantics(find.byType(HorizontSelectableCard)), isSemantics(isSelected: true));
+    handle.dispose();
+  });
+
   test('Kalkar Kompakt is a product with the accent Backstein', () {
     expect(HorizontProduct.kalkarKompakt.accentName, 'Backstein');
   });

@@ -479,6 +479,8 @@ abstract final class HzTv {
   static const double typeScale = 1.5;
   /// 3
   static const double focus = 3.0;
+  /// 4
+  static const double focusGap = 4.0;
   /// 1.06
   static const double focusScale = 1.06;
 }

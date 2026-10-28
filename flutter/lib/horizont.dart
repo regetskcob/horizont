@@ -19,6 +19,7 @@ export 'src/tokens.g.dart'
         HorizontProduct,
         HorizontSymbols,
         HzBreakpoint,
+        HzColors,
         HzFont,
         HzIconSize,
         HzLine,

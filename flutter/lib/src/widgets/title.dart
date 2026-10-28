@@ -19,8 +19,12 @@ class HorizontTitle extends StatelessWidget {
     required this.title,
     this.below,
     this.count,
+    this.style,
     super.key,
   });
+
+  /// The title's style; `titleLarge` by default, `titleMedium` in a sheet.
+  final TextStyle? style;
 
   /// The Kennung, in normal case.
   final String kennung;
@@ -47,7 +51,7 @@ class HorizontTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final style = Theme.of(context).textTheme.titleLarge;
+    final titleStyle = style ?? Theme.of(context).textTheme.titleLarge;
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,7 +61,7 @@ class HorizontTitle extends StatelessWidget {
         Kennung(kennung, count: count),
         Semantics(
           header: true,
-          child: Text(title, style: style),
+          child: Text(title, style: titleStyle),
         ),
         ?below,
       ],
