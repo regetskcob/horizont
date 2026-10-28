@@ -88,7 +88,7 @@ body.hz { margin: 0; }
 .hz-button--quiet { background: transparent; color: var(--accent-text); padding: 0 var(--s-8); }
 .hz-button--quiet:hover { background: var(--accent-tint); }
 .hz-button--critical { background: transparent; color: var(--critical); border-color: currentColor; }
-.hz-button--dense { min-height: 32px; padding: 0 var(--s-12); font-size: 0.8125rem; }
+.hz-button--dense { min-height: var(--size-control-desktop); padding: 0 var(--s-12); font-size: 0.8125rem; }
 .hz-button:disabled { opacity: 1; background: var(--sunken); color: var(--text-faint); border-color: var(--line); cursor: not-allowed; }
 
 /* --- Fields --- */
@@ -460,7 +460,7 @@ body.hz { margin: 0; }
    other line up. */
 .hz-facts {
   display: grid;
-  grid-template-columns: var(--facts-term, 8rem) minmax(0, 1fr);
+  grid-template-columns: var(--facts-term, var(--size-fact-term)) minmax(0, 1fr);
   gap: var(--s-8) var(--s-16);
   align-items: baseline;
   align-content: start;
@@ -475,18 +475,11 @@ body.hz { margin: 0; }
 .hz-facts dd { margin: 0; }
 
 /* --- Feldseite: the landing page of every product ---
-   Head with lockup, hero left (Kennung, Literata headline, one primary
+   The horizon on top (horizont/nav/horizon.html), hero left (Kennung, Literata headline, one primary
    action) with the product in its device on the right, the horizon line in
    the accent, numbered sections, the footer with the sender. Built by the
    partials under horizont/feld/. */
 .hz-feld { container-type: inline-size; max-width: var(--size-page); margin: 0 auto; }
-.hz-feld-head { display: flex; align-items: baseline; gap: var(--s-12); padding: var(--s-16) var(--s-32); border-bottom: var(--line-hairline) solid var(--line); }
-.hz-feld-head .hz-lockup { color: var(--text); text-decoration: none; font-weight: 600; }
-.hz-feld-head .hz-lockup .hz-mark { color: var(--accent-text); }
-.hz-feld-head nav { margin-left: auto; display: flex; gap: var(--s-24); font-size: 0.8125rem; }
-.hz-feld-head nav a { color: var(--text-muted); text-decoration: none; }
-.hz-feld-head nav a:hover, .hz-feld-head nav a[aria-current] { color: var(--text); }
-.hz-feld-head nav a[aria-current] { text-decoration: underline var(--accent) var(--line-selection); text-underline-offset: 0.4em; }
 .hz-feld-hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: var(--s-48); padding: var(--s-64) var(--s-32) 0; align-items: end; }
 .hz-feld-hero h1 { margin: var(--s-16) 0 var(--s-24); font-size: clamp(2rem, 5.2cqw, 3.25rem); line-height: 1.08; text-wrap: balance; }
 .hz-feld-hero p { color: var(--text-muted); max-width: 46ch; margin: 0 0 var(--s-32); }
@@ -496,14 +489,12 @@ body.hz { margin: 0; }
 .hz-feld-horizon { border: 0; border-top: var(--line-selection) solid var(--accent); margin: 0; }
 .hz-feld-section { display: grid; grid-template-columns: 180px 1fr 1fr; gap: var(--s-32); padding: var(--s-48) var(--s-32); border-bottom: var(--line-hairline) solid var(--line); }
 .hz-feld-section h2 { margin: 0 0 var(--s-12); font: 300 1.5rem/1.25 var(--font-serif); text-wrap: balance; }
-.hz-feld-section p { margin: 0; color: var(--text-muted); font-size: 0.9375rem; }
+.hz-feld-section p { margin: 0; color: var(--text-muted); }
 .hz-feld-section .hz-facts { --facts-term: 5.5rem; font-size: 0.875rem; }
 .hz-feld-foot { display: flex; align-items: baseline; gap: var(--s-8); padding: var(--s-24) var(--s-32); color: var(--text-muted); font-size: 0.8125rem; }
 .hz-feld-foot .hz-feld-links { margin-left: auto; display: flex; gap: var(--s-16); }
 .hz-feld-foot a { color: inherit; }
 @container (max-width: 720px) {
-  .hz-feld-head { padding: var(--s-16); }
-  .hz-feld-head nav { display: none; }
   .hz-feld-hero { grid-template-columns: 1fr; padding: var(--s-48) var(--s-16) 0; }
   .hz-feld-aside { display: none; }
   .hz-feld-section { grid-template-columns: 1fr; gap: var(--s-12); padding: var(--s-32) var(--s-16); }
@@ -790,8 +781,8 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
 .hz-lightbox {
   /* The bars sit on the top and bottom edge of the window, slightly see-
      through, and fade out towards the photo. */
-  --hz-lightbox-alpha: 0.65;
-  --hz-lightbox-bar: rgb(0 0 0 / var(--hz-lightbox-alpha));
+  --hz-lightbox-alpha: var(--scrim-bar-alpha);
+  --hz-lightbox-bar: rgb(from var(--scrim-bg) r g b / var(--hz-lightbox-alpha));
   --hz-lightbox-bar-height: 4.4rem;
   --hz-lightbox-fade: 5rem;
   /* A fixed frame, not one that follows the photo: portrait and landscape
@@ -822,17 +813,17 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
 .hz-lightbox-exif {
   --hz-lightbox-fadeout:
     var(--hz-lightbox-bar) var(--fade-solid),
-    rgb(0 0 0 / calc(var(--hz-lightbox-alpha) * 0.995)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.083),
-    rgb(0 0 0 / calc(var(--hz-lightbox-alpha) * 0.965)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.167),
-    rgb(0 0 0 / calc(var(--hz-lightbox-alpha) * 0.896)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.250),
-    rgb(0 0 0 / calc(var(--hz-lightbox-alpha) * 0.790)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.333),
-    rgb(0 0 0 / calc(var(--hz-lightbox-alpha) * 0.653)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.417),
-    rgb(0 0 0 / calc(var(--hz-lightbox-alpha) * 0.500)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.500),
-    rgb(0 0 0 / calc(var(--hz-lightbox-alpha) * 0.347)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.583),
-    rgb(0 0 0 / calc(var(--hz-lightbox-alpha) * 0.210)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.667),
-    rgb(0 0 0 / calc(var(--hz-lightbox-alpha) * 0.104)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.750),
-    rgb(0 0 0 / calc(var(--hz-lightbox-alpha) * 0.035)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.833),
-    rgb(0 0 0 / calc(var(--hz-lightbox-alpha) * 0.005)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.917),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.995)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.083),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.965)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.167),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.896)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.250),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.790)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.333),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.653)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.417),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.500)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.500),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.347)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.583),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.210)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.667),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.104)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.750),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.035)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.833),
+    rgb(from var(--scrim-bg) r g b / calc(var(--hz-lightbox-alpha) * 0.005)) calc(var(--fade-solid) + var(--hz-lightbox-fade) * 0.917),
     transparent calc(var(--fade-solid) + var(--hz-lightbox-fade));
 }
 
@@ -858,7 +849,7 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
 }
 
 .hz-lightbox::backdrop {
-  background: rgb(0 0 0 / 0.88);
+  background: rgb(from var(--scrim-bg) r g b / 0.88);
 }
 
 /* The photo keeps its own aspect ratio, centred between the bars, and is
@@ -937,7 +928,7 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
   /* A percentage of the window width here. */
   padding-inline: calc((100% - var(--hz-lightbox-width)) / 2 + 1rem);
   box-sizing: border-box;
-  color: #fff;
+  color: var(--scrim-text);
   cursor: default;
 }
 
@@ -968,24 +959,25 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
 
 .hz-lightbox-count,
 .hz-lightbox-exif-toggle {
-  padding: 0.15rem 0.7rem;
-  border: 1px solid rgb(255 255 255 / 0.55);
-  border-radius: 1rem;
+  padding: var(--s-2) var(--s-8);
+  border: var(--line-hairline) solid rgb(from var(--scrim-text) r g b / 0.55);
+  border-radius: var(--r-6);
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
 .hz-lightbox-exif-toggle {
   background: transparent;
-  color: #fff;
+  color: var(--scrim-text);
   cursor: pointer;
 }
 
 .hz-lightbox-exif-toggle:hover,
 .hz-lightbox-exif-toggle[aria-pressed="true"] {
-  background: rgb(255 255 255 / 0.15);
-  border-color: rgb(255 255 255 / 0.85);
+  background: rgb(from var(--scrim-text) r g b / 0.15);
+  border-color: rgb(from var(--scrim-text) r g b / 0.85);
 }
 
 /* The shooting data: a bar on the left edge between the top and the bottom
@@ -1005,7 +997,7 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
   flex-direction: column;
   justify-content: center;
   background: linear-gradient(to right, var(--hz-lightbox-fadeout));
-  color: #fff;
+  color: var(--scrim-text);
   cursor: default;
 }
 
@@ -1018,10 +1010,11 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
 }
 
 .hz-lightbox-exif dt {
-  margin-top: 0.9rem;
-  font-size: 0.7rem;
-  line-height: 1.2;
-  opacity: 0.7;
+  margin-top: var(--s-12);
+  font: 600 0.6875rem/1.4545 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--scrim-text-muted);
 }
 
 .hz-lightbox-exif dt:first-child {
@@ -1029,9 +1022,9 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
 }
 
 .hz-lightbox-exif dd {
-  margin: 0.1rem 0 0;
-  font-size: 0.9rem;
-  line-height: 1.3;
+  margin: var(--s-2) 0 0;
+  font: 400 0.875rem/1.4286 var(--font-mono);
+  font-variant-numeric: tabular-nums;
   overflow-wrap: anywhere;
 }
 
@@ -1042,22 +1035,22 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: center;
-  font-size: 0.95rem;
+  font-size: 1.0625rem;
   font-weight: 600;
 }
 
 .hz-lightbox-close,
 .hz-lightbox-nav {
-  width: 2.6rem;
-  height: 2.6rem;
+  width: var(--size-touch);
+  height: var(--size-touch);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
-  border: 1px solid rgb(255 255 255 / 0.55);
-  border-radius: 50%;
+  border: var(--line-hairline) solid rgb(from var(--scrim-text) r g b / 0.55);
+  border-radius: var(--r-6);
   background: transparent;
-  color: #fff;
+  color: var(--scrim-text);
   cursor: pointer;
 }
 
@@ -1073,16 +1066,16 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
 
 .hz-lightbox-close:hover,
 .hz-lightbox-nav:hover {
-  background: rgb(255 255 255 / 0.15);
-  border-color: rgb(255 255 255 / 0.85);
+  background: rgb(from var(--scrim-text) r g b / 0.15);
+  border-color: rgb(from var(--scrim-text) r g b / 0.85);
 }
 
 /* The alt text, between the buttons, at most two lines (three on a phone). */
 .hz-lightbox-caption {
   min-width: 0;
   text-align: center;
-  font-size: 0.85rem;
-  line-height: 1.35;
+  font-size: 0.875rem;
+  line-height: 1.4286;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -1108,7 +1101,7 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
 
   .hz-lightbox-caption {
     font-size: 0.75rem;
-    line-height: 1.3;
+    line-height: 1.3333;
     -webkit-line-clamp: 3;
     line-clamp: 3;
   }

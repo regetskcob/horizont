@@ -207,6 +207,14 @@ ThemeData buildHorizontTheme(
       scaffoldBackgroundColor: c.bg,
     ),
     iconTheme: IconThemeData(color: c.text, size: HzIconSize.bar, weight: 300),
+    // Back, close and the drawer in Horizont's symbols, not Material's font:
+    // BackButton and CloseButton stay adaptive (a chevron on Apple platforms).
+    actionIconTheme: ActionIconThemeData(
+      backButtonIconBuilder: (context) => Icon(horizontBackSymbol(Theme.of(context).platform)),
+      closeButtonIconBuilder: (context) => const Icon(HorizontSymbols.close),
+      drawerButtonIconBuilder: (context) => const Icon(HorizontSymbols.menu),
+      endDrawerButtonIconBuilder: (context) => const Icon(HorizontSymbols.menu),
+    ),
     extensions: [
       HorizontTheme(
         product: product,
@@ -260,7 +268,7 @@ ThemeData buildHorizontTheme(
       subtitleTextStyle: t(
         HzType.data,
         c.textMuted,
-      ).copyWith(fontSize: 12, height: 16 / 12),
+      ).copyWith(fontSize: HzType.caption.size, height: HzType.caption.line / HzType.caption.size),
       selectedColor: c.text,
       selectedTileColor: c.accentTint,
     ),
@@ -396,7 +404,7 @@ ThemeData buildHorizontTheme(
         (s) => s.contains(WidgetState.selected) ? c.accent : Colors.transparent,
       ),
       checkColor: WidgetStatePropertyAll(c.onAccent),
-      side: BorderSide(color: c.lineStrong, width: 1.5),
+      side: BorderSide(color: c.lineStrong, width: HzLine.hairline),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(HzRadius.r2)),
       ),
@@ -476,3 +484,11 @@ class _CupertinoSwitch extends Adaptation<SwitchThemeData> {
         _ => defaultValue,
       };
 }
+
+/// The back symbol of [platform]: a chevron on iOS and macOS, an arrow
+/// elsewhere, both from Horizont's symbols. `BackButton` uses it through the
+/// theme; take it for your own back buttons instead of `Icons.adaptive`.
+IconData horizontBackSymbol(TargetPlatform platform) => switch (platform) {
+      TargetPlatform.iOS || TargetPlatform.macOS => HorizontSymbols.chevronLeft,
+      _ => HorizontSymbols.arrowBack,
+    };

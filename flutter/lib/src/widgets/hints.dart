@@ -113,21 +113,30 @@ class HorizontLetterBadge extends StatelessWidget {
 /// What an empty view says: a faint glyph, one sentence, an optional
 /// explanation in muted text and the obvious next action. Centred, at most
 /// 360 wide.
+///
+/// With [status] it says what went wrong or is missing (no connection, no
+/// data from the source): the glyph in the state's colour, by default the
+/// state's own glyph, and the action is the way out, typically „Erneut
+/// versuchen“.
 class HorizontEmptyHint extends StatelessWidget {
   /// Creates a hint with [text].
   const HorizontEmptyHint({
     required this.text,
-    required this.icon,
+    this.icon,
+    this.status,
     this.detail,
     this.action,
     super.key,
-  });
+  }) : assert(icon != null || status != null, 'Pass an icon or a status.');
 
   /// What is (not) there, one sentence.
   final String text;
 
-  /// The glyph, decorative.
-  final IconData icon;
+  /// The glyph, decorative; defaults to the glyph of [status].
+  final IconData? icon;
+
+  /// The state, for failures and gaps; null for a plain empty view.
+  final HorizontStatus? status;
 
   /// What one can do about it.
   final String? detail;
@@ -147,7 +156,9 @@ class HorizontEmptyHint extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ExcludeSemantics(child: Icon(icon, size: 32, color: c.textFaint)),
+              ExcludeSemantics(
+                child: Icon(icon ?? status!.icon, size: HzSpace.s32, color: status?.color(c) ?? c.textFaint),
+              ),
               const SizedBox(height: HzSpace.s8),
               Text(
                 text,

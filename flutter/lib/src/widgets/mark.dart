@@ -102,7 +102,20 @@ class _MarkPainter extends CustomPainter {
       ..strokeCap = StrokeCap.square
       ..strokeJoin = StrokeJoin.miter;
     canvas.drawPath(_path(product), paint);
+    final thin = _thin(product);
+    if (thin != null) canvas.drawPath(thin, paint..strokeWidth = 3.5);
   }
+
+  /// Lines drawn at half the stroke: the tower of the town hall, set off
+  /// from the walls down to the ground.
+  static Path? _thin(HorizontProduct product) => switch (product) {
+    HorizontProduct.kalkarKompakt => Path()
+      ..moveTo(43, 26)
+      ..lineTo(43, 66.7)
+      ..moveTo(57, 26)
+      ..lineTo(57, 66.7),
+    _ => null,
+  };
 
   static Path _path(HorizontProduct product) {
     final p = Path();
@@ -146,6 +159,9 @@ class _MarkPainter extends CustomPainter {
         poly([24, 66.7, 28, 54.7, 72, 54.7, 76, 66.7]);
         poly([40, 54.7, 40, 44, 58, 44, 58, 54.7]);
         line(58, 49, 82, 49);
+      case HorizontProduct.kalkarKompakt:
+        line(4, 66.7, 96, 66.7);
+        poly([22, 66.7, 22, 40, 34, 26, 43, 26, 43, 22, 50, 4, 57, 22, 57, 26, 66, 26, 78, 40, 78, 66.7]);
     }
     return p;
   }

@@ -1,6 +1,6 @@
 {
   "_comment": "Horizont, das Designsystem von regetskcob und seinen Projekten. Einzige Quelle der Tokens: die Dokumentation (site/layouts/home.html) und die CSS-Schicht (web/css/tokens.css) lesen sie hier, Generatoren fuer Flutter und Swift sollen es ebenso tun. Farben je light und dark, beide von Hand gesetzt, nie aus einem Seed abgeleitet.",
-  "version": "0.8.15",
+  "version": "0.9.0",
   "color": {
     "neutral": {
       "light": {
@@ -198,6 +198,47 @@
             "wheel": "#5A5B55"
           }
         }
+      },
+      "kalkar-kompakt": {
+        "name": "Kalkar Kompakt",
+        "role": "Buerger-App fuer Kalkar von Kalkar IT, iOS, Android und Web",
+        "accentName": "Backstein",
+        "light": {
+          "accent": "#A2452C",
+          "on-accent": "#FFFFFF",
+          "accent-tint": "#F6E7E1",
+          "accent-text": "#9A4129"
+        },
+        "dark": {
+          "accent": "#E8906F",
+          "on-accent": "#24120C",
+          "accent-tint": "#2E1D17",
+          "accent-text": "#EE9F81"
+        },
+        "icon": {
+          "_comment": "App-Icon von Kalkar Kompakt: die Buehne von regetskcob, davor das Rathaus Kalkar in Backstein mit Schieferdach, der Turm mit Uhr und rotem Wappen.",
+          "field": "#1B1C19",
+          "glyph": "#FAFAF7",
+          "sky": "#F1EFE6",
+          "sky2": "#D3D1C6",
+          "ground": "#3A3B35",
+          "ground2": "#26271F",
+          "horizon": "#FBFAF4",
+          "outline": "#151612",
+          "obj": {
+            "brick": "#BF5E43",
+            "brickLight": "#E08A68",
+            "brickTower": "#CC6B4E",
+            "brickDark": "#A7523C",
+            "roof": "#4E5058",
+            "roofLight": "#62646C",
+            "spireLight": "#6E707A",
+            "window": "#2E2A28",
+            "clock": "#F1EFE6",
+            "shield": "#D9473A",
+            "cobble": "#4D4E47"
+          }
+        }
       }
     },
     "data": {
@@ -231,6 +272,13 @@
         }
       }
     },
+    "scrim": {
+      "_comment": "Der dunkle Grund unter Fotos und Medien (Lightbox, Bildbetrachter, Webcams), hell wie dunkel gleich: Schwarz, darauf Weiss, die Leisten in Schwarz mit 65 %.",
+      "bg": "#000000",
+      "text": "#FFFFFF",
+      "text-muted": "#B3B3B3",
+      "bar-alpha": 0.65
+    },
     "mark": {
       "_comment": "Farben der Glyphen ohne Produkt (mark.html mit object true): die Sonne von Horizont, die auf der Linie aufgeht, und das Buch des Blogs, weisse Seiten im braunen Einband, das ueber der Linie schwebt; flache Toene, ohne Verlauf. Dazu der Prompt von Kalkar IT in Weidengruen, dem Graugruen der Kopfweiden, hell und dunkel von Hand gesetzt (4,6:1 bzw. 8,7:1 zu bg); kein Akzent, Knoepfe und Auswahl der Seite bleiben Tinte. Die Linie bleibt currentColor.",
       "horizont": {
@@ -259,33 +307,6 @@
             "mid": "#7E9E6E",
             "beech": "#BFBDB1",
             "beechDark": "#AAA89C"
-          }
-        }
-      },
-      "kalkar-kompakt": {
-        "name": "Kalkar Kompakt",
-        "icon": {
-          "_comment": "App-Icon von Kalkar Kompakt, kein Produkt der Familie (keine Akzentfarbe): die Buehne von regetskcob, davor das Rathaus Kalkar in Backstein mit Schieferdach, der Turm mit Uhr und rotem Wappen.",
-          "field": "#1B1C19",
-          "glyph": "#FAFAF7",
-          "sky": "#F1EFE6",
-          "sky2": "#D3D1C6",
-          "ground": "#3A3B35",
-          "ground2": "#26271F",
-          "horizon": "#FBFAF4",
-          "outline": "#151612",
-          "obj": {
-            "brick": "#BF5E43",
-            "brickLight": "#E08A68",
-            "brickTower": "#CC6B4E",
-            "brickDark": "#A7523C",
-            "roof": "#4E5058",
-            "roofLight": "#62646C",
-            "spireLight": "#6E707A",
-            "window": "#2E2A28",
-            "clock": "#F1EFE6",
-            "shield": "#D9473A",
-            "cobble": "#4D4E47"
           }
         }
       }
@@ -431,6 +452,7 @@
     "inspector": 300,
     "grid-card": 240,
     "form": 400,
+    "fact-term": 128,
     "search": 320,
     "control-desktop": 28,
     "toolbar-desktop": 52
@@ -447,6 +469,13 @@
     "medium": 600,
     "expanded": 840,
     "large": 1200
+  },
+  "tv": {
+    "safe-horizontal": 80,
+    "safe-vertical": 60,
+    "type-scale": 1.5,
+    "focus": 3,
+    "focus-scale": 1.06
   },
   "_icon": "App-Icons: Buehne aus Himmel (sky->sky2) und Boden (ground) mit der Horizontlinie auf dem unteren Drittel, ein illustrierter Gegenstand mit dunkler Kontur (outline) in drei Toenen (obj), weicher Schatten. field/glyph gelten fuer die reduzierte Marke in Kopf- und Fusszeilen.",
   "device": {

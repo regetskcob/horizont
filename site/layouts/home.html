@@ -7,7 +7,7 @@
 {{- $hz := site.Data.horizont -}}
 {{- $tokens := resources.Get "css/horizont/tokens.css" | resources.ExecuteAsTemplate "css/horizont-tokens.css" $hz -}}
 {{- $css := slice $tokens (resources.Get "css/horizont/components.css") (resources.Get "css/site/page.css") | resources.Concat "css/horizont.css" | minify | fingerprint -}}
-{{- $products := slice "regetskcob" "jagdaufseher" "knx" "panzergefecht" -}}
+{{- $products := slice "regetskcob" "jagdaufseher" "knx" "panzergefecht" "kalkar-kompakt" -}}
 {{- /* Products whose favicon is the glyph on its field instead of the app
        icon: only where a product asks for it. Every other product shows in
        the browser tab the icon it has on the home screen. */ -}}
@@ -16,11 +16,9 @@
 {{- /* The icon sources of every product as files under icons/<product>/,
        for download and for tool/export_icons.py, which renders the
        platform sets from them. */ -}}
-{{- /* Kalkar Kompakt is no product of the family (no accent) but has an
-       app icon, so its sources are made too. */ -}}
-{{- range $products | append "kalkar-kompakt" }}
+{{- range $products }}
   {{- $p := . }}
-  {{- $c := (index $hz.color.product $p | default (index $hz.color.mark $p)).icon }}
+  {{- $c := (index $hz.color.product $p).icon }}
   {{- $files := dict
       "rounded.svg" (partial "horizont/app-icon.html" (dict "product" $p "size" 1024))
       "bleed.svg" (partial "horizont/app-icon.html" (dict "product" $p "size" 1024 "shape" "bleed"))
@@ -77,7 +75,7 @@
 <main class="doc-main" id="top">
 
 <section class="doc-hero">
-  <span class="t-kennung hz-kennung">Designsystem · regetskcob · Jagdaufseher · KNX Monitor · Panzergefecht</span>
+  <span class="t-kennung hz-kennung">Designsystem · regetskcob · Jagdaufseher · KNX Monitor · Panzergefecht · Kalkar Kompakt</span>
   <h1 class="t-display">Minimalistisch wie die niederrheinische Feldflur.</h1>
   <p class="t-reading">Weites Land, ein tiefer Horizont, wenige klare Linien: Feldränder, Gräben, eine Reihe Kopfweiden. Dort steht nichts, was nicht hingehört. Nach diesem Bild arbeitet Horizont, die Designsprache für den Blog und drei Produkte, über iOS, Android, macOS, Web, TV und Uhr.</p>
 </section>
@@ -404,10 +402,10 @@ Fotos | je Einrichtung
       <div class="doc-hugo-row"><pre>{{ `{{< hz-device src="uebersicht.png"
     device="iphone" width="300"
     alt="Übersicht des Reviers" >}}` }}</pre><div class="doc-hugo-live" data-product="jagdaufseher">{{ partial "horizont/device.html" (dict "device" "iphone" "width" 160 "inner" "<div style=\"position:absolute;inset:0;display:grid;place-items:center;text-align:center\"><span class=\"t-kennung hz-kennung\">Bild aus dem Beitrag</span></div>") }}</div></div>
-      <div class="doc-hugo-row"><pre>{{ `{{ partial "horizont/feld/head.html" … }}
+      <div class="doc-hugo-row"><pre>{{ `{{ partial "horizont/nav/horizon.html" … }}
 {{ partial "horizont/feld/hero.html" … }}
 {{ partial "horizont/feld/section.html" … }}
-{{ partial "horizont/feld/foot.html" … }}` }}</pre><div><p class="hz-muted t-callout" style="margin:0">Die ganze Landingpage aus fünf Teilen, siehe „Landingpage · Feldseite“ unter Entwürfe. Parameter stehen im Kopf jeder Datei in <span class="hz-mono">web/partials/feld/</span>.</p></div></div>
+{{ partial "horizont/feld/foot.html" … }}` }}</pre><div><p class="hz-muted t-callout" style="margin:0">Die ganze Landingpage aus vier Teilen, den Kopf bildet der Horizont, siehe „Landingpage · Feldseite“ unter Entwürfe. Parameter stehen im Kopf jeder Datei in <span class="hz-mono">web/partials/feld/</span>.</p></div></div>
     </div>
   </div>
 </section>
@@ -548,12 +546,11 @@ Fotos | je Einrichtung
     </div>
 
     <h3 class="t-title-2">Landingpage · Feldseite</h3>
-    <p>Gebaut aus den Hugo-Partials von Horizont (<span class="hz-mono">horizont/feld/*</span>, siehe „Für Hugo-Seiten“ bei den Komponenten). Jede Landingpage ruft dieselben fünf Teile auf.</p>
+    <p>Gebaut aus den Hugo-Partials von Horizont (<span class="hz-mono">horizont/feld/*</span>, siehe „Für Hugo-Seiten“ bei den Komponenten). Jede Landingpage ruft dieselben Teile auf, den Kopf bildet der Horizont.</p>
     <div class="mock-stage" data-product="jagdaufseher">
       <div class="mock-browser" data-theme="light">
         <div class="mock-browser-bar"><span class="mock-lights" style="display:flex;gap:6px"><i style="width:10px;height:10px;border-radius:50%;background:var(--line-strong)"></i><i style="width:10px;height:10px;border-radius:50%;background:var(--line-strong)"></i><i style="width:10px;height:10px;border-radius:50%;background:var(--line-strong)"></i></span><div class="mock-url">regetskcob.de/jagdaufseher/</div></div>
         <div class="hz-feld">
-          {{ partial "horizont/feld/head.html" (dict "product" "jagdaufseher" "href" "#" "nav" (slice (dict "name" "Funktionen" "url" "#") (dict "name" "Datenschutz" "url" "#") (dict "name" "EN" "url" "#"))) }}
           {{ partial "horizont/feld/hero.html" (dict
               "kennung" "01 — In Entwicklung · iPhone · iPad · Android"
               "title" "Das Revier im Blick, auch ohne Netz."
@@ -574,7 +571,6 @@ Fotos | je Einrichtung
       <div class="mock-browser" data-theme="light">
         <div class="mock-browser-bar"><span></span><div class="mock-url">regetskcob.de/knx/</div></div>
         <div class="hz-feld">
-          {{ partial "horizont/feld/head.html" (dict "product" "knx" "href" "#" "nav" (slice (dict "name" "Funktionen" "url" "#") (dict "name" "Add-on" "url" "#") (dict "name" "Datenschutz" "url" "#") (dict "name" "EN" "url" "#"))) }}
           {{ partial "horizont/feld/hero.html" (dict
               "kennung" "01 — Version 1.4 · Mac · Windows · Linux · iOS · Android · Home Assistant"
               "title" "Der Bus, lesbar gemacht."
@@ -591,7 +587,6 @@ Fotos | je Einrichtung
       <div class="mock-browser" data-theme="dark">
         <div class="mock-browser-bar"><span></span><div class="mock-url">panzergefecht.de</div></div>
         <div class="hz-feld">
-          {{ partial "horizont/feld/head.html" (dict "product" "panzergefecht" "href" "#" "nav" (slice (dict "name" "Modi" "url" "#") (dict "name" "Geräte" "url" "#") (dict "name" "Hilfe" "url" "#") (dict "name" "EN" "url" "#"))) }}
           {{ partial "horizont/feld/hero.html" (dict
               "kennung" "01 — Im Browser · iPhone · Mac · Apple TV · Android"
               "title" "Gefecht im Wohnzimmer."

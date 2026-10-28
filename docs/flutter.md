@@ -21,13 +21,13 @@ dependencies:
     git:
       url: https://github.com/regetskcob/horizont.git
       path: flutter
-      ref: v0.8.0
+      ref: v0.9.0
 ```
 
-Am Paket ändern v0.6.3, v0.7.9 (`HzMotion.calm` und `settle`) und v0.8.0
-(Feldhöhen, `HorizontFieldIconButton`, `HorizontFieldDropdown`); die
-übrigen 0.7er-Tags ändern nur das Web und die Exporte und lassen sich ohne
-Weiteres eintragen.
+Alle Projekte heben jeden Tag, auch wenn er nur das Web oder die Exporte
+ändert: So hängen alle am selben Stand, und niemand muss nachsehen, welcher
+Tag das Paket berührt. Was beim Heben zu tun ist, steht im
+[CHANGELOG](../CHANGELOG.md) unter „Heben“.
 
 Es bringt mit:
 
@@ -37,15 +37,20 @@ Es bringt mit:
 - Die Extension `HorizontTheme`, gelesen mit `HorizontTheme.of(context)`.
   Sie assertet, statt still auf einen Ersatz zurückzufallen.
 - `HorizontColors`, `HorizontSymbols`, die Werte `HzSpace`, `HzRadius`,
-  `HzLine`, `HzSize`, `HzIconSize`, `HzBreakpoint`, `HzMotion`, `HzType`.
+  `HzLine`, `HzSize`, `HzIconSize`, `HzBreakpoint`, `HzMotion`, `HzType`,
+  `HzScrim` (Grund unter Fotos) und `HzTv` (Fernseher).
 - Die Widgets `Kennung` (mit `count` und `oneLine`),
   `HorizontSectionHeader`, `HorizontField`, `HorizontFieldIconButton`,
   `HorizontFieldDropdown`, `HorizontBadge`,
   `HorizontStatusLine`, `HorizontLetterBadge`, `HorizontMetric`,
   `HorizontMetricRow`, `HorizontEmptyHint`, `HorizontTabBar`,
-  `HorizontRail`, `HorizontMark` und `HorizontLockup`, dazu
-  `horizontDialogAction`, `resolveMotion` und
-  `HorizontTheme.of(context).criticalButton`.
+  `HorizontRail`, `HorizontMark` und `HorizontLockup`, seit 0.9.0
+  `HorizontFact`, `HorizontTitle`, `HorizontSelectable`,
+  `HorizontPrimaryAction`, `HorizontSheetActions`, dazu
+  `horizontDialogAction`, `showHorizontMessage`, `horizontSheetPadding`,
+  `horizontSelectionDecoration`, `horizontBackSymbol`, `resolveMotion` und
+  `HorizontTheme.of(context).criticalButton` (Muster unten unter
+  „Bausteine“).
 - `registerHorizontLicenses()` für die Lizenzseite.
 - Für Tests `package:horizont/testing.dart` mit `loadHorizontFonts()`: in
   `setUpAll` aufrufen, dann zeigen Goldens die echten Schriften und Symbole.
@@ -288,6 +293,43 @@ Nicht das Paket `material_symbols_icons`, es bündelt alle Symbole.
   höchstens vier Ziele, sonst ab 600 die Rail. Labels nie kürzen,
   abschneiden oder verkleinern.
 
+## Bausteine
+
+Was mehrere Apps selbst gebaut hatten, liegt seit 0.9.0 im Paket. In einer
+App nie nachbauen:
+
+- **Kopf:** `HorizontTitle(kennung:, title:, count:, below:)`, die Kennung
+  über dem Titel in `titleLarge`, als `AppBar(title: …)`, oben auf einer
+  scrollenden Seite oder im Sheet.
+- **Fakten:** `HorizontFact(term:, value:, measured:, selectable:, onTap:,
+  external:)` oder mit `child:` (Badge, Statuszeile). Begriffsspalte
+  `HzSize.factTerm` (128, wächst mit der Schrift), Begriff und Wert auf einer
+  Grundlinie, Gemessenes in `data`, Benanntes in `callout`. Ist der Platz
+  schmaler als 256, rückt der Wert unter den Begriff. Ein Wert mit `onTap`
+  zeigt Pfeil bzw. `open_in_new`.
+- **Auswahl:** `HorizontSelectable(selected:, onTap:, edge:, child:)` für
+  Zeilen und Kacheln (Tönung, 2 px am Anfang oder unten); für eigene
+  Container `horizontSelectionDecoration(colors, selected:, edge:)`.
+- **Hauptaktion:** `HorizontPrimaryAction(icon:, label:, onPressed:)`, dann
+  `floatingActionButton: action.fab(context)` und `AppBar(actions:
+  [...action.toolbar(context)])`. Auf Touch FAB (unter 600 nur Symbol), mit
+  Zeiger ein `FilledButton` in der Werkzeugleiste.
+- **Formular-Sheet:** `horizontSheetPadding(context)` (Rand 16 und die
+  Tastatur), oben `HorizontTitle`, unten `HorizontSheetActions(onSave:,
+  saving:)` mit „Abbrechen“ und „Sichern“ aus den Plattformwörtern.
+- **Meldung:** `showHorizontMessage(context, text, status:)`, eine Snackbar
+  mit dem Zeichen des Zustands.
+- **Leer und Fehler:** `HorizontEmptyHint(text:, icon:)` für leere Listen,
+  `HorizontEmptyHint(text:, status: HorizontStatus.critical, action: (label:
+  l10n.retry, onPressed: …))` für Fehler und fehlende Verbindung.
+- **Abschnitt:** `HorizontSectionHeader(title, count:, trailing:)`;
+  einklappbar mit `collapsed:` und `onToggle:`.
+- **Zurück:** `BackButton()` bzw. `horizontBackSymbol(platform)`, nie
+  `Icons.adaptive.arrow_back`: Das Theme setzt Zurück, Schließen und Menü
+  aus den Horizont-Symbolen (auf iOS und macOS der Winkel).
+- **Fotos und Medien:** Grund `HzScrim.bg`, Text `HzScrim.text` und
+  `HzScrim.textMuted`, Leisten in `HzScrim.bg` mit `HzScrim.barAlpha`.
+
 ## Dichte und Formfaktoren
 
 - Gebaut wird nach Breite: `LayoutBuilder` bzw.
@@ -306,85 +348,23 @@ Nicht das Paket `material_symbols_icons`, es bündelt alle Symbole.
   `VisualDensity.compact`, Steuerelemente 28, Werkzeugleiste 52, Zeilen 28,
   Hover-Zustände, Tastenkürzel. Auf Touch bleibt jedes Ziel mindestens 44.
 - tvOS und Android TV: Fokus statt Zeiger. Die fokussierte Kachel skaliert
-  auf 1.06 und trägt einen Akzentring (3 px, Abstand 4). Schrift × 1,5,
-  sicherer Rand 60/80.
+  auf `HzTv.focusScale` (1,06) und trägt einen Akzentring (`HzTv.focus` 3,
+  Abstand 4). Schrift × `HzTv.typeScale` (1,5), sicherer Rand
+  `HzTv.safeVertical`/`HzTv.safeHorizontal` (60/80).
 - watchOS und Wear OS: ein Wert groß in `data`, eine Aktion, schwarze
   Fläche.
 
 ## Umstellung je App
 
-Reihenfolge: KNX Monitor (hat schon Tokens), dann Jagdaufseher, dann
-Panzergefecht. Jede App in einer eigenen Sitzung und einem eigenen Branch,
-mit Goldens vorher und nachher.
+Alle Apps sind umgestellt und nutzen das Paket. Welchen Tag eine App nutzt,
+steht in ihrer `pubspec.yaml`.
 
-### KNX Monitor (`~/dev/knx-monitor/KNX-Monitor-Source`, Repo `regetskcob/KNX-Monitor-Source`, privat)
-
-Umgestellt auf v0.6.0 (Branch `horizont`, regetskcob/KNX-Monitor#23); was
-v0.6.1 aus KNX ins Paket geholt hat, steht im [CHANGELOG](../CHANGELOG.md). Was
-dabei entstanden ist, steht unten unter „Referenz: KNX Monitor“. Die Punkte
-hier waren der Plan:
-
-- Theme in `lib/theme/`: `brand.dart`, `app_theme.dart` (heute
-  `fromSeed(lime)` mit vielen Überschreibungen), `palette.dart` (auch für
-  den PDF-Export), `tokens.dart`. Struktur behalten, Werte auf Horizont
-  setzen, `fromSeed` durch das von Hand gesetzte Schema ersetzen.
-- Radien 18/12/8 werden 10/6/2, Dialoge 20 werden 16, Popups 14 werden 10.
-- Telegrammtypen: W (schreiben) = accent, R (lesen) = warning, A (Antwort) =
-  info, immer mit Buchstabe. Die Serienfarben der Diagramme bleiben
-  Datenfarben.
-- Werte (Gruppenadressen, Zeiten, Messwerte) in Monaspace statt nur mit
-  Tabellenziffern.
-- Übernehmen, was gut ist: Aktivitätsleiste (Ø Tel./min mit Balken der
-  letzten 60 s), Raumkarten mit ↙ Status und ↗ Befehl, große Werte mit
-  Verlauf und Mittelwert. Abschnittsköpfe werden zu Kennungen mit Zähler.
-- Icon: `LogoPainter` zeichnet heute das Telegramm. Neu ist die Busklemme
-  auf dem Buskabel (siehe `web/partials/app-icon.html`, Produkt `knx`).
-- Das Home-Assistant-Add-on übernimmt die Neutralen von HA, Akzent und
-  Schrift bleiben: `buildHorizontTheme(HorizontProduct.knx, b, host:
-  HorizontHost.homeAssistant)`, nur wenn die App in Ingress läuft.
-
-### Jagdaufseher (`~/dev/jagdaufseher`, Repo `regetskcob/jagdaufseher`)
-
-- Theme in `lib/app/theme.dart` (`appTheme(Brightness)` mit `fromSeed`
-  #2F5D3A). Ersetzen durch ein `lib/theme/` nach diesem Leitfaden.
-- Harte Farben ersetzen: Aufgabenpriorität in
-  `lib/features/tasks/model/task.dart` (`Colors.blueGrey/blue/deepOrange`)
-  und Zustand der Einrichtungen in
-  `lib/features/facilities/model/facility.dart` (`green/orange/red/grey`)
-  werden Status-Tokens mit Zeichen und Wort (gut = positive, prüfen =
-  warning, defekt = critical, unbekannt = neutral). Der Ortspunkt der Karte
-  (`#1A73E8`) wird info.
-- Radien 16/20/10/6/4 auf die Skala bringen.
-- Fünf Ziele: Übersicht, Einrichtungen, Aufgaben, Wild, Karte. Auf dem iPad
-  Seitenleiste mit den vier Kennzahlen (offene Aufgaben, überfällig, prüfen,
-  Strecke) am Fuß.
-- Karte: Grundkarte gedämpft, Reviergrenze im Akzent, Einrichtungen als
-  eckige Marker mit Zustandsrand und Kennung (`K-07`).
-- Laut App-CLAUDE.md: Texte über die ARB-Dateien, Zustand mit flutter_bloc,
-  jeder FAB mit eigenem `heroTag`.
-- Icon: die Kanzel am Waldrand ersetzt die Leiter auf dem Verlauf.
-
-### Panzergefecht (`~/dev/wargame`, Repo `regetskcob/wargame`)
-
-- Theme in `lib/src/ui/theme.dart` (`GameColors`, `buildGameTheme`), Formen
-  in `lib/src/ui/widgets/panel.dart` (`GameShapes`, `Plate`). Heute gibt es
-  nur dunkel.
-- Dunkel mit Gelände-Neutralen (`neutralDark`), Akzent Signalgelb #FFB300
-  auf `on-accent` #1A1405. Hell (Store, Hilfe) mit den normalen Neutralen
-  und #8F6400.
-- Die Fasen an Panels entfallen, es gelten Radius 6/10 und Haarlinien. Die
-  Überschriften bleiben in Versalien, schwer und gesperrt, als Spielcharakter
-  (Mona Sans Display Expanded).
-- Die Spielwelt bleibt unberührt: Gelände der Karten
-  (`lib/src/game/map_theme.dart`), Team- und Tarnfarben
-  (`lib/src/game/game_config.dart`), Flame-Komponenten.
-- HUD nur in den Ecken: Panzerung oben links, Lage oben rechts, runde Karte
-  unten rechts. Werte in Monaspace.
-- Warteraum: Code groß in Mono, QR, „Besatzungen im Raum“, Fahrzeuge als
-  Regal mit Wertebalken (Panzerung, Tempo, Wendigkeit, Feuerkraft).
-- Watch: Start mit Name und einer Hauptaktion, im Gefecht nur „n übrig“ und
-  die Panzerung.
-- Icon: der Panzer in Seitenansicht auf dem Horizont.
+| App | Repository | Theme | Besonderes |
+| --- | --- | --- | --- |
+| KNX Monitor | `regetskcob/KNX-Monitor-Source` (`~/dev/knx-monitor/KNX-Monitor-Source`) | `lib/theme/` | Referenz (unten); Gastgeber Home Assistant im Add-on; Serienfarben der Diagramme in `theme/palette.dart` |
+| Jagdaufseher | `regetskcob/jagdaufseher` (`~/dev/jagdaufseher`) | `lib/theme/` | Karte mit gedämpfter Grundkarte, Reviergrenze im Akzent |
+| Panzergefecht | `regetskcob/wargame` (`~/dev/wargame`) | `lib/src/ui/theme.dart` | Gelände-Neutrale im Dunkeln, Mona Sans Display Expanded, TV (`lib/src/tv/`) und Watch; Spielwelt-Farben gehören dem Spiel |
+| Kalkar Kompakt | `Kalkar-IT-Solutions/kalkar-kompakt` | `lib/theme/` | Produkt `kalkarKompakt` (Backstein), iOS, Android und Web |
 
 ## Referenz: KNX Monitor
 

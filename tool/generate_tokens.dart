@@ -57,6 +57,21 @@ void main() {
   }
   out.writeln('}\n');
 
+  final scrim = color['scrim'] as Map<String, dynamic>;
+  out
+    ..writeln('/// The dark ground under photos and media (lightbox, photo viewer,')
+    ..writeln('/// webcams), the same in light and dark.')
+    ..writeln('abstract final class HzScrim {');
+  for (final k in ['bg', 'text', 'text-muted']) {
+    out
+      ..writeln('  /// `$k`')
+      ..writeln('  static const Color ${_camel(k)} = Color(0xFF${(scrim[k] as String).substring(1).toUpperCase()});');
+  }
+  out
+    ..writeln('  /// Opacity of the bars over the picture (black at ${scrim['bar-alpha']}).')
+    ..writeln('  static const double barAlpha = ${_num(scrim['bar-alpha'])};')
+    ..writeln('}\n');
+
   out
     ..writeln('/// The products of Horizont with their accents.')
     ..writeln('enum HorizontProduct {');
@@ -96,7 +111,7 @@ void main() {
   /// The product's name as written in the UI.
   final String displayName;
 
-  /// The name of the accent colour (Tinte, Tanne, Bus, Signalgelb).
+  /// The name of the accent colour (Tinte, Tanne, Bus, Signalgelb, Backstein).
   final String accentName;
 
   /// The accent in light mode.
@@ -151,6 +166,7 @@ void main() {
   _numbers(out, 'HzSize', 'Sizes of targets, rows, columns and bars.', '', tokens['size'] as Map<String, dynamic>);
   _numbers(out, 'HzIconSize', 'Icon sizes: in a badge, inline in text, in rows and rails, in bars and buttons, in the tab bar.', '', tokens['icon-size'] as Map<String, dynamic>);
   _numbers(out, 'HzBreakpoint', 'Window size classes by available width.', '', tokens['breakpoint'] as Map<String, dynamic>);
+  _numbers(out, 'HzTv', 'The television: safe margins, type scale, focus ring and focus growth.', '', tokens['tv'] as Map<String, dynamic>);
 
   final motion = tokens['motion'] as Map<String, dynamic>;
   out

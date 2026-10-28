@@ -8,7 +8,7 @@ title = 'Horizont'
 disableKinds = ['taxonomy', 'term', 'section', 'page', 'rss', 'sitemap', 'robotsTXT', '404']
 
 [params]
-description = 'Horizont, das Designsystem von regetskcob und seinen Projekten Jagdaufseher, KNX Monitor und Panzergefecht.'
+description = 'Horizont, das Designsystem von regetskcob und seinen Projekten Jagdaufseher, KNX Monitor, Panzergefecht und Kalkar Kompakt.'
 
 # The repository is laid out by what it is, not by what Hugo expects:
 #   tokens/  the single source of all values

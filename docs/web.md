@@ -95,7 +95,10 @@ viel), Schriften `--font-serif --font-sans --font-mono`, Abstände
 `--s-<n>`, Radien `--r-<n>`, Linien `--line-hairline --line-selection
 --line-focus`, Bewegung `--motion-fast|base|slow|calm --ease-standard|exit|settle`, Größen
 `--size-<name>` (auch `form`, `search`, `sidebar`, `inspector`,
-`grid-card`), Symbolgrößen `--icon-badge|inline|row|bar|tab`, Hardware
+`grid-card`, `fact-term`), Symbolgrößen `--icon-badge|inline|row|bar|tab`,
+Grund unter Fotos `--scrim-bg --scrim-text --scrim-text-muted
+--scrim-bar-alpha` (Lightbox), Fernseher `--tv-safe-horizontal
+--tv-safe-vertical --tv-type-scale --tv-focus --tv-focus-scale`, Hardware
 `--device-<name>`. Typo-Klassen `.t-display` bis `.t-kennung`.
 
 `--line-strong` ist der eine Umriss: Feld, Knopf, Segment, Schalter, Karte,
@@ -149,7 +152,7 @@ den Tokens. Eigene Werte in einem Layout sind ein Fehler.
 | `horizont/nav/horizon.html` | die Navigation: Horizontlinie mit Zeichen, Kapitelstrichen und Flurkarte (siehe „Navigation“) |
 | `horizont/nav/karte.html` | die Flurkarte allein (`home`, `here`, `field`, `counts`, `map`, `projects`) |
 | `horizont/nav/script.html` | das Skript dazu, einmal am Ende der Seite |
-| `horizont/feld/head.html`, `hero.html`, `section.html`, `foot.html` | die Feldseite (siehe unten); `feld/head.html` ist ab 0.7.0 durch den Horizont ersetzt und bleibt bis 0.8.0 |
+| `horizont/feld/hero.html`, `section.html`, `foot.html` | die Feldseite (siehe unten); den Kopf bildet der Horizont, `feld/head.html` gibt es seit 0.9.0 nicht mehr |
 | `horizont/lightbox.html` | Bildansicht: Links mit `data-lightbox` öffnen ihr Bild groß, mit Untertitel (`data-caption`), Blättern innerhalb von `data-lightbox-group` und Zoom per Klick (`lang`) |
 | `horizont/icons.html` | Platzhalter-Ikonen der Doku als SVG-Sprite |
 
@@ -228,15 +231,16 @@ Die Linie folgt dem Seitenrahmen über `--horizon-width` (etwa
 
 ## Landingpage („Feldseite“)
 
-Aufbau, wie in der Doku unter „Entwürfe“, zusammengesetzt aus den fünf
-Partials unter `horizont/feld/` in einem `<div class="hz-feld">`:
+Aufbau, wie in der Doku unter „Entwürfe“, zusammengesetzt aus dem
+Horizont und den Partials unter `horizont/feld/` in einem
+`<div class="hz-feld">`. Ein Menü gibt es nicht (entschieden für 0.9.0):
+Kapitel, der Weg zurück und die Sprache liegen auf der Linie.
 
 1. Kopf: der Horizont (siehe „Navigation“) mit dem Zeichen des Produkts und
    den nummerierten Abschnitten als Striche, direkt in `<body>` vor
    `<div class="hz-feld">` (dessen Container hielte die Linie auf Touch am
    Seitenende fest). `"marks" "auto"` liest die Abschnitte samt Kennung aus
-   der Seite, so muss der Rahmen sie nicht kennen. Bis 0.7.0 war es das
-   Lockup mit Navigation rechts (`feld/head.html`).
+   der Seite, so muss der Rahmen sie nicht kennen.
 2. Hero, links ausgerichtet: Kennung (`01 — IN ENTWICKLUNG · IPHONE ·
    ANDROID`), Überschrift in `.t-display` (Literata 300), ein Absatz in
    `text-muted`, eine Hauptaktion (`--primary`) und eine zweite

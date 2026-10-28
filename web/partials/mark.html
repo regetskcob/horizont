@@ -31,7 +31,7 @@
 {{- /* Three marks are glyphs only, no product with colours and app icon:
        the blog (an open book), Horizont itself (the sun on the line) and
        Kalkar IT Solutions (a prompt above the line). */ -}}
-{{- $glyphs := dict "blog" "Blog" "horizont" "Horizont" "kalkar-it" "Kalkar IT Solutions" "kalkar-kompakt" "Kalkar Kompakt" -}}
+{{- $glyphs := dict "blog" "Blog" "horizont" "Horizont" "kalkar-it" "Kalkar IT Solutions" -}}
 {{- $colors := dict -}}
 {{- $label := index $glyphs $p -}}
 {{- with index site.Data.horizont.color.product $p }}{{ $colors = .icon }}{{ $label = .name }}{{ end -}}

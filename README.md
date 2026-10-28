@@ -1,15 +1,16 @@
 # Horizont
 
-Das Designsystem von regetskcob und seinen Projekten Jagdaufseher, KNX Monitor
-und Panzergefecht. Leitbild: minimalistisch wie die niederrheinische Feldflur.
+Das Designsystem von regetskcob und seinen Projekten Jagdaufseher, KNX Monitor,
+Panzergefecht und Kalkar Kompakt. Leitbild: minimalistisch wie die
+niederrheinische Feldflur.
 
 Dokumentation und Entwürfe: https://www.regetskcob.de/horizont/
 
-Stand: v0.8.9, das Favicon jedes Produkts ist sein App-Icon. KNX Monitor ist als erste App umgestellt (App auf v0.6.1,
-Landingpage auf v0.7.9), Jagdaufseher als zweite (App inklusive Web auf v0.7.7,
-Landingpage offline seit 22.10.2026), Panzergefecht als dritte (Spiel und Landingpage auf
-v0.7.8, regetskcob/wargame#31);
-der Blog hängt an v0.7.7. Was sich je Version geändert hat, steht in
+Stand: v0.9.0, die Durchsicht vor v1.0. Was die Apps selbst gebaut hatten
+(Faktenzeile, Titel mit Kennung, Auswahl, Hauptaktion, Sheet-Fuß, Meldungen),
+steckt jetzt im Paket; Kalkar Kompakt ist ein Produkt mit dem Akzent
+Backstein. Welchen Tag ein Projekt nutzt, steht in dessen `pubspec.yaml` bzw.
+`go.mod`. Was sich je Version geändert hat, steht in
 [CHANGELOG.md](CHANGELOG.md).
 
 Wer Oberflächen umsetzt, ob Mensch oder Claude-Sitzung, beginnt mit
@@ -23,8 +24,8 @@ bzw. [docs/web.md](docs/web.md) für Hugo-Seiten.
 | --- | --- |
 | `tokens/horizont.json` | Die einzige Quelle aller Werte: Farben hell und dunkel, Produkt-Akzente, Status, Datenrampe, Gastgeber, Schrift, Abstand, Radien, Linien, Größen, Symbolgrößen, Bewegung, Icon-Paletten |
 | `web/css/` | Die Web-Schicht: `tokens.css` (Hugo-Template, erzeugt die CSS-Variablen aus den Tokens) und `components.css` (Knöpfe, Felder, Listen, Status, Tabellen) |
-| `web/partials/` | Hugo-Partials: Marke, App-Icon, Lockup, Geräterahmen, Kennung, Badge, Symbol, Fakten, Feldseite (`feld/`) |
-| `web/shortcodes/` | Hugo-Shortcodes für Inhalte: `hz-device`, `hz-kennung`, `hz-badge`, `hz-symbol`, `hz-facts` |
+| `web/partials/` | Hugo-Partials: Marke, App-Icon, Lockup, Geräterahmen, Kennung, Badge, Symbol, Fakten, Feldseite (`feld/`), Navigation und Flurkarte (`nav/`), Lightbox |
+| `web/shortcodes/` | Hugo-Shortcodes für Inhalte: `hz-device`, `hz-kennung`, `hz-badge`, `hz-symbol`, `hz-facts`, `hz-karte` |
 | `web/fonts/` | Literata, Mona Sans, Monaspace Argon (SIL OFL, `OFL.txt`) und Material Symbols Sharp als Subset (Apache 2.0), als WOFF2 |
 | `flutter/` | Flutter-Paket `horizont`: Theme, Widgets, Schriften (`flutter/fonts/`), Showcase-App und Goldens (`flutter/example/`) |
 | `icons/` | Material-Symbols-Liste und Codepoints, eigene Symbole (`icons/symbols/`), die SVG-Quellen der App-Icons (`icons/svg/`) und die fertigen Sätze je Plattform (`icons/export/`) |
