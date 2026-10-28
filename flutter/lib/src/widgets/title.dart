@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../horizont_theme.dart';
+import '../tokens.g.dart';
 import 'kennung.dart';
 
 /// The head of a page or sheet: a [Kennung] that says what kind of thing
@@ -31,6 +33,17 @@ class HorizontTitle extends StatelessWidget {
 
   /// A quiet control or line under the title (a place, a filter).
   final Widget? below;
+
+  /// The `AppBar.toolbarHeight` that holds a [HorizontTitle] (without
+  /// [below]): Kennung and title at the current text size with 8 above and
+  /// below, at least the bar's usual height. Without it, large text is cut.
+  static double toolbarHeight(BuildContext context) {
+    final scaler = MediaQuery.textScalerOf(context);
+    final pointer = HorizontTheme.of(context).density == HorizontDensity.pointer;
+    final content = scaler.scale(HzType.kennung.line) + scaler.scale(HzType.title1.line) + 2 * HzSpace.s8;
+    final usual = pointer ? HzSize.toolbarDesktop : 56.0;
+    return content > usual ? content : usual;
+  }
 
   @override
   Widget build(BuildContext context) {

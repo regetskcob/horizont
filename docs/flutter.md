@@ -85,8 +85,10 @@ Für die App selbst gilt:
 
 - **Adaptive Bausteine nutzen:** `Switch.adaptive`, `Slider.adaptive`,
   `Checkbox.adaptive`, `CircularProgressIndicator.adaptive`,
-  `AlertDialog.adaptive` bzw. `showAdaptiveDialog`, `Icons.adaptive.*` für
-  Zurück, Teilen und Mehr. Auf iOS Datum und Uhrzeit mit
+  `AlertDialog.adaptive` bzw. `showAdaptiveDialog`. Zurück, Teilen und Mehr
+  aus den Horizont-Symbolen, je Plattform: `BackButton` bzw.
+  `horizontBackSymbol`, `horizontShareSymbol`, `horizontMoreSymbol` (nie
+  `Icons.adaptive`, das zieht Materials Schrift nach). Auf iOS Datum und Uhrzeit mit
   `CupertinoDatePicker`, Auswahl aus wenigen Aktionen als
   `CupertinoActionSheet`.
 - **System nie nachbauen:** Teilen über das System-Sheet, Berechtigungen,
@@ -299,8 +301,9 @@ Was mehrere Apps selbst gebaut hatten, liegt seit 0.9.0 im Paket. In einer
 App nie nachbauen:
 
 - **Kopf:** `HorizontTitle(kennung:, title:, count:, below:)`, die Kennung
-  über dem Titel in `titleLarge`, als `AppBar(title: …)`, oben auf einer
-  scrollenden Seite oder im Sheet.
+  über dem Titel in `titleLarge`, als `AppBar(title: …)` (dann mit
+  `toolbarHeight: HorizontTitle.toolbarHeight(context)`, sonst schneidet
+  große Schrift ab), oben auf einer scrollenden Seite oder im Sheet.
 - **Fakten:** `HorizontFact(term:, value:, measured:, selectable:, onTap:,
   external:)` oder mit `child:` (Badge, Statuszeile). Begriffsspalte
   `HzSize.factTerm` (128, wächst mit der Schrift), Begriff und Wert auf einer
@@ -309,14 +312,17 @@ App nie nachbauen:
   zeigt Pfeil bzw. `open_in_new`.
 - **Auswahl:** `HorizontSelectable(selected:, onTap:, edge:, child:)` für
   Zeilen und Kacheln (Tönung, 2 px am Anfang oder unten); für eigene
-  Container `horizontSelectionDecoration(colors, selected:, edge:)`.
+  Container `horizontSelectionDecoration(colors, selected:, edge:)`. Ein
+  `ListTile(selected: true)` bekommt aus dem Theme nur die Tönung; für die
+  Linie die Kachel in `HorizontSelectable(selected:, padding:
+  EdgeInsets.zero, minHeight: 0, child: ListTile(onTap: …))` legen.
 - **Hauptaktion:** `HorizontPrimaryAction(icon:, label:, onPressed:)`, dann
   `floatingActionButton: action.fab(context)` und `AppBar(actions:
   [...action.toolbar(context)])`. Auf Touch FAB (unter 600 nur Symbol), mit
   Zeiger ein `FilledButton` in der Werkzeugleiste.
 - **Formular-Sheet:** `horizontSheetPadding(context)` (Rand 16 und die
   Tastatur), oben `HorizontTitle`, unten `HorizontSheetActions(onSave:,
-  saving:)` mit „Abbrechen“ und „Sichern“ aus den Plattformwörtern.
+  saving:)` mit „Abbrechen“ und „Speichern“ aus den Plattformwörtern.
 - **Meldung:** `showHorizontMessage(context, text, status:)`, eine Snackbar
   mit dem Zeichen des Zustands.
 - **Leer und Fehler:** `HorizontEmptyHint(text:, icon:)` für leere Listen,
@@ -324,8 +330,8 @@ App nie nachbauen:
   l10n.retry, onPressed: …))` für Fehler und fehlende Verbindung.
 - **Abschnitt:** `HorizontSectionHeader(title, count:, trailing:)`;
   einklappbar mit `collapsed:` und `onToggle:`.
-- **Zurück:** `BackButton()` bzw. `horizontBackSymbol(platform)`, nie
-  `Icons.adaptive.arrow_back`: Das Theme setzt Zurück, Schließen und Menü
+- **Zurück, Mehr, Teilen:** `BackButton()` bzw. `horizontBackSymbol`,
+  `horizontMoreSymbol`, `horizontShareSymbol`, nie `Icons.adaptive.*`: Das Theme setzt Zurück, Schließen und Menü
   aus den Horizont-Symbolen (auf iOS und macOS der Winkel).
 - **Fotos und Medien:** Grund `HzScrim.bg`, Text `HzScrim.text` und
   `HzScrim.textMuted`, Leisten in `HzScrim.bg` mit `HzScrim.barAlpha`.

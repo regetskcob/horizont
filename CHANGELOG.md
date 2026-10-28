@@ -23,7 +23,8 @@ dasselbe. Entschieden in CLAUDE.md unter „Entscheidungen für 0.9.0“.
   Benanntes in `callout`, schmal rückt der Wert unter den Begriff, ein Link
   zeigt Pfeil bzw. `open_in_new`. Im Web nimmt `.hz-facts` dieselbe Breite.
 - **`HorizontTitle`**: Kennung über dem kleinen Titel, für AppBar, Seite und
-  Sheet.
+  Sheet; `HorizontTitle.toolbarHeight(context)` gibt der AppBar die Höhe, die
+  beide Zeilen bei großer Schrift brauchen.
 - **`HorizontSelectable`** und **`horizontSelectionDecoration`**: die gewählte
   Zeile mit Tönung und 2-px-Linie am Anfang (oder unten), statt sie in jeder
   App von Hand zu zeichnen.
@@ -31,8 +32,8 @@ dasselbe. Entschieden in CLAUDE.md unter „Entscheidungen für 0.9.0“.
   600 nur Symbol, ab 600 mit Wort), mit Zeiger als Knopf in der
   Werkzeugleiste.
 - **`HorizontSheetActions`**, **`horizontSheetPadding`**: der Fuß eines
-  Formular-Sheets, „Abbrechen“ und „Sichern“ aus den Plattformwörtern, mit
-  Spinner beim Sichern.
+  Formular-Sheets, „Abbrechen“ und „Speichern“ aus den Plattformwörtern, mit
+  Spinner beim Speichern.
 - **`showHorizontMessage`**: Snackbar mit dem Zeichen des Zustands.
 - **`HorizontEmptyHint(status:)`**: derselbe Hinweis für Fehler und fehlende
   Verbindung, das Zeichen in der Statusfarbe; `icon` ist dann optional.
@@ -40,8 +41,8 @@ dasselbe. Entschieden in CLAUDE.md unter „Entscheidungen für 0.9.0“.
   mit Winkel und `expanded` für Screenreader.
 - **Zurück, Schließen, Menü aus Horizont-Symbolen**: Das Theme setzt
   `actionIconTheme`, `BackButton` zeigt auf iOS und macOS den Winkel, sonst
-  den Pfeil (`horizontBackSymbol`). `Icons.adaptive` wird nicht mehr
-  gebraucht.
+  den Pfeil (`horizontBackSymbol`); dazu `horizontMoreSymbol` und
+  `horizontShareSymbol`. `Icons.adaptive` wird nicht mehr gebraucht.
 - **`color.scrim`** (`HzScrim`, `--scrim-*`): der dunkle Grund unter Fotos
   und Medien, für Lightbox, Bildbetrachter und Webcams.
 - **`.hz-scrim-bar`**: ein Balken auf einem Foto (Titel auf einem Cover), in
@@ -64,7 +65,8 @@ dasselbe. Entschieden in CLAUDE.md unter „Entscheidungen für 0.9.0“.
 - **Tab-Bar:** Die Polster um Icon und Wort sind schmaler (8 statt 12 innen,
   2 statt 4 außen). Mit fünf Zielen am Telefon brach „Übersicht“ sonst
   mitten im Wort um.
-- **Keine Sonderwerte mehr im Paket:** Der Rand der Checkbox ist die
+- **Keine Sonderwerte mehr im Paket:** `HorizontEmptyHint` ist höchstens
+  `HzSize.form` (400) breit statt 360. Der Rand der Checkbox ist die
   Haarlinie (1 statt 1,5), Schriftgrößen in Badge, Listen und Rail kommen
   aus der Typo-Skala. `.hz-button--dense` ist `--size-control-desktop` hoch
   (28 statt 32), der Absatz der Feldseite hat die Grundgröße statt 15 px.

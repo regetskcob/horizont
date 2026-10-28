@@ -60,7 +60,12 @@ void main() {
 
     testWidgets('in a narrow column the value goes under the term', (tester) async {
       await tester.pumpWidget(
-        _app(const SizedBox(width: 200, child: HorizontFact(term: 'Adresse', value: 'Markt 20'))),
+        _app(
+          const SizedBox(
+            width: 200,
+            child: HorizontFact(term: 'Adresse', value: 'Markt 20'),
+          ),
+        ),
       );
       expect(
         tester.getTopLeft(find.text('Markt 20')).dy,
@@ -217,6 +222,45 @@ void main() {
       expect(find.byIcon(symbol), findsOneWidget);
     });
   }
+
+  testWidgets('the title bar grows with the text size', (tester) async {
+    late double normal;
+    late double large;
+    await tester.pumpWidget(
+      _app(
+        Builder(
+          builder: (context) {
+            normal = HorizontTitle.toolbarHeight(context);
+            return const SizedBox();
+          },
+        ),
+        density: HorizontDensity.touch,
+      ),
+    );
+    await tester.pumpWidget(
+      MediaQuery(
+        data: const MediaQueryData(textScaler: TextScaler.linear(2)),
+        child: _app(
+          Builder(
+            builder: (context) {
+              large = HorizontTitle.toolbarHeight(context);
+              return const SizedBox();
+            },
+          ),
+          density: HorizontDensity.touch,
+        ),
+      ),
+    );
+    expect(normal, greaterThanOrEqualTo(56));
+    expect(large, greaterThan(normal));
+  });
+
+  test('more and share follow the platform', () {
+    expect(horizontMoreSymbol(TargetPlatform.iOS), HorizontSymbols.moreHoriz);
+    expect(horizontMoreSymbol(TargetPlatform.android), HorizontSymbols.moreVert);
+    expect(horizontShareSymbol(TargetPlatform.macOS), HorizontSymbols.iosShare);
+    expect(horizontShareSymbol(TargetPlatform.windows), HorizontSymbols.share);
+  });
 
   test('Kalkar Kompakt is a product with the accent Backstein', () {
     expect(HorizontProduct.kalkarKompakt.accentName, 'Backstein');

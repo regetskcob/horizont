@@ -112,7 +112,7 @@ class HorizontLetterBadge extends StatelessWidget {
 
 /// What an empty view says: a faint glyph, one sentence, an optional
 /// explanation in muted text and the obvious next action. Centred, at most
-/// 360 wide.
+/// as wide as a form ([HzSize.form]).
 ///
 /// With [status] it says what went wrong or is missing (no connection, no
 /// data from the source): the glyph in the state's colour, by default the
@@ -152,7 +152,7 @@ class HorizontEmptyHint extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(HzSpace.s24),
         child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 360),
+          constraints: const BoxConstraints(maxWidth: HzSize.form),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [

@@ -72,7 +72,7 @@ class HorizontPrimaryAction {
 }
 
 /// The foot of a form sheet: a quiet „Abbrechen“ and the one accent,
-/// „Sichern“, at the end where the thumb is. While [saving] both are
+/// „Speichern“, at the end where the thumb is. While [saving] both are
 /// disabled and the save button shows the platform's spinner. The words
 /// default to the platform's (`MaterialLocalizations`).
 class HorizontSheetActions extends StatelessWidget {
@@ -95,7 +95,7 @@ class HorizontSheetActions extends StatelessWidget {
   /// Whether a save is running.
   final bool saving;
 
-  /// Overrides „Sichern“, e.g. „Melden“.
+  /// Overrides „Speichern“, e.g. „Melden“.
   final String? saveLabel;
 
   /// Overrides „Abbrechen“.

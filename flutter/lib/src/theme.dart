@@ -492,3 +492,17 @@ IconData horizontBackSymbol(TargetPlatform platform) => switch (platform) {
       TargetPlatform.iOS || TargetPlatform.macOS => HorizontSymbols.chevronLeft,
       _ => HorizontSymbols.arrowBack,
     };
+
+/// The "more" symbol of [platform]: three dots in a row on iOS and macOS,
+/// in a column elsewhere. Instead of `Icons.adaptive.more`.
+IconData horizontMoreSymbol(TargetPlatform platform) => switch (platform) {
+      TargetPlatform.iOS || TargetPlatform.macOS => HorizontSymbols.moreHoriz,
+      _ => HorizontSymbols.moreVert,
+    };
+
+/// The share symbol of [platform]: the box with the arrow on iOS and macOS,
+/// the three linked dots elsewhere. Instead of `Icons.adaptive.share`.
+IconData horizontShareSymbol(TargetPlatform platform) => switch (platform) {
+      TargetPlatform.iOS || TargetPlatform.macOS => HorizontSymbols.iosShare,
+      _ => HorizontSymbols.share,
+    };
