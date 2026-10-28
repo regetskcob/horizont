@@ -206,7 +206,9 @@ Beide sind Monaspace mit `FontFeature.tabularFigures()`. Zeilenhöhe als
 Die Schriften liegen in `flutter/fonts/`: Literata (Light, Light Italic,
 SemiBold), Monaspace Argon (Regular, SemiBold), Mona Sans (Regular, Medium,
 SemiBold) und für Panzergefecht Mona Sans Display Expanded (Bold, Black).
-Lizenzen: `OFL.txt`, `MaterialSymbols-LICENSE.txt`. Familien im
+Lizenzen: `OFL.txt`, `MaterialSymbols-LICENSE.txt` (über
+`registerHorizontLicenses()`); das Paket selbst steht unter MIT
+(`flutter/LICENSE`), das nimmt Flutter von selbst auf. Familien im
 `pubspec.yaml`: `Literata`, `MonaspaceArgon`, `MonaSans`,
 `MonaSansDisplayExpanded`, `MaterialSymbolsSharp`.
 
