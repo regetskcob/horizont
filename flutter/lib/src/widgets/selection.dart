@@ -101,12 +101,16 @@ class HorizontSelectable extends StatelessWidget {
         child: InkWell(
           onTap: onTap,
           onLongPress: onLongPress,
-          child: Container(
-            constraints: BoxConstraints(minHeight: height),
-            alignment: AlignmentDirectional.centerStart,
-            padding: padding,
+          // Ink, not a plain decoration: the tint lies on the Material, so the
+          // ripple (also that of a ListTile inside) shows above it.
+          child: Ink(
             decoration: horizontSelectionDecoration(theme.colors, selected: selected, edge: edge),
-            child: child,
+            child: Container(
+              constraints: BoxConstraints(minHeight: height),
+              alignment: AlignmentDirectional.centerStart,
+              padding: padding,
+              child: child,
+            ),
           ),
         ),
       ),

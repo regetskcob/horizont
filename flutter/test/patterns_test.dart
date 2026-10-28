@@ -99,10 +99,8 @@ void main() {
     testWidgets('a chosen row has the tint and the line at the start', (tester) async {
       final handle = tester.ensureSemantics();
       await tester.pumpWidget(_app(const HorizontSelectable(selected: true, child: Text('Linie 1'))));
-      final box = tester.widget<Container>(
-        find.ancestor(of: find.text('Linie 1'), matching: find.byType(Container)).first,
-      );
-      final decoration = box.decoration! as BoxDecoration;
+      final ink = tester.widget<Ink>(find.ancestor(of: find.text('Linie 1'), matching: find.byType(Ink)));
+      final decoration = ink.decoration! as BoxDecoration;
       final colors = HorizontTheme.of(tester.element(find.text('Linie 1'))).colors;
       expect(decoration.color, colors.accentTint);
       final border = decoration.border! as BorderDirectional;
