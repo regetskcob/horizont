@@ -4,6 +4,26 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.9.1
+
+Seiten scrollten auf dem Telefon seitlich.
+
+### Behoben
+
+- **Fuß der Feldseite** (`.hz-feld-links`): Die Links standen in einer Zeile
+  ohne Umbruch. Bei vier und mehr Links (knx-monitor.de) wurde die Seite bei
+  375 px breiter als das Fenster, und die feste Horizontlinie unten wuchs
+  mit. Schmal stehen die Links jetzt in einer eigenen Zeile und brechen um.
+- **Laptop-Rahmen** (`.hz-device--laptop`): Das Unterteil ist je Seite 3,5 %
+  breiter als der Deckel und ragte bei voller Breite über die Spalte hinaus.
+  Der Rahmen ist jetzt höchstens so breit, dass das Unterteil in die Spalte
+  passt (rund 4 % schmaler, wo er die ganze Spalte füllte).
+
+### Heben
+
+- Seiten: `hugo mod get github.com/regetskcob/horizont@v0.9.1`.
+- Apps: `ref: v0.9.1`, nichts weiter zu tun (nur Web).
+
 ## 0.9.0
 
 Die Durchsicht vor v1.0: Was mehrere Apps selbst gebaut hatten, steckt jetzt
