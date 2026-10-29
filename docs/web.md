@@ -137,7 +137,7 @@ Höhe). `--w` ist die Außenbreite, alles andere folgt daraus:
 Die Browserleiste nimmt den Seitengrund, je Modus (entschieden für 0.9.0):
 `{{ partial "horizont/theme-color.html" (dict "product" "knx") }}` im
 `<head>` schreibt beide `theme-color`-Zeilen aus `color.neutral.*.bg`;
-Panzergefecht bekommt im Dunkeln sein Gelände. Flutter-Web-Apps setzen in
+Panzergefecht bekommt im Dunkeln sein Gelände; eine Seite, die nur dunkel ist, setzt `"scheme" "dark"` und hat dann eine Farbe. Flutter-Web-Apps setzen in
 `web/index.html` dieselben Werte (#FAFAF7, #121311) mit `media`.
 
 Fotos und Medien: `horizont/lightbox.html` zeigt Bilder groß auf dem Scrim.
