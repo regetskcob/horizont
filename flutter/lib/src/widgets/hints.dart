@@ -112,22 +112,31 @@ class HorizontLetterBadge extends StatelessWidget {
 
 /// What an empty view says: a faint glyph, one sentence, an optional
 /// explanation in muted text and the obvious next action. Centred, at most
-/// 360 wide.
+/// as wide as a form ([HzSize.form]).
+///
+/// With [status] it says what went wrong or is missing (no connection, no
+/// data from the source): the glyph in the state's colour, by default the
+/// state's own glyph, and the action is the way out, typically „Erneut
+/// versuchen“.
 class HorizontEmptyHint extends StatelessWidget {
   /// Creates a hint with [text].
   const HorizontEmptyHint({
     required this.text,
-    required this.icon,
+    this.icon,
+    this.status,
     this.detail,
     this.action,
     super.key,
-  });
+  }) : assert(icon != null || status != null, 'Pass an icon or a status.');
 
   /// What is (not) there, one sentence.
   final String text;
 
-  /// The glyph, decorative.
-  final IconData icon;
+  /// The glyph, decorative; defaults to the glyph of [status].
+  final IconData? icon;
+
+  /// The state, for failures and gaps; null for a plain empty view.
+  final HorizontStatus? status;
 
   /// What one can do about it.
   final String? detail;
@@ -143,11 +152,17 @@ class HorizontEmptyHint extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(HzSpace.s24),
         child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 360),
+          constraints: const BoxConstraints(maxWidth: HzSize.form),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ExcludeSemantics(child: Icon(icon, size: 32, color: c.textFaint)),
+              ExcludeSemantics(
+                child: Icon(
+                  icon ?? status!.icon,
+                  size: HzSpace.s32,
+                  color: status?.color(c) ?? c.textFaint,
+                ),
+              ),
               const SizedBox(height: HzSpace.s8),
               Text(
                 text,
@@ -224,4 +239,92 @@ Widget horizontDialogAction(
     ),
     _ => TextButton(onPressed: onPressed, child: Text(label)),
   };
+}
+
+/// A note before an action or about the situation: the state's tint as
+/// ground, its glyph in the state's colour, the words in ink, radius 6 like
+/// the buttons beside it (e.g. the warning before an irreversible action).
+/// Not a badge: it says a sentence, not a state.
+///
+/// With [onTap] the whole note leads somewhere (a warning that opens its
+/// details) and shows a chevron; [action] puts a quiet button at the end
+/// (e.g. `TextButton` „Erneut versuchen“).
+class HorizontNotice extends StatelessWidget {
+  /// Creates a note in [status] with [child], usually a `Text`.
+  const HorizontNotice(
+    this.status, {
+    required this.child,
+    this.icon,
+    this.onTap,
+    this.action,
+    super.key,
+  });
+
+  /// The state whose tint and glyph it takes.
+  final HorizontStatus status;
+
+  /// The words.
+  final Widget child;
+
+  /// A glyph of the app's own instead of the state's.
+  final IconData? icon;
+
+  /// Opens what the note is about.
+  final VoidCallback? onTap;
+
+  /// A quiet button at the end.
+  final Widget? action;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = HorizontTheme.of(context).colors;
+    const radius = BorderRadius.all(Radius.circular(HzRadius.r6));
+    final row = Padding(
+      padding: const EdgeInsets.all(HzSpace.s12),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ExcludeSemantics(
+            child: Icon(
+              icon ?? status.icon,
+              size: HzIconSize.row,
+              color: status.color(c),
+            ),
+          ),
+          const SizedBox(width: HzSpace.s12),
+          Expanded(
+            child: DefaultTextStyle.merge(
+              style: horizontTextStyle(HzType.callout, c.text),
+              child: child,
+            ),
+          ),
+          if (action != null) ...[
+            const SizedBox(width: HzSpace.s8),
+            action!,
+          ],
+          if (onTap != null)
+            ExcludeSemantics(
+              child: Icon(
+                HorizontSymbols.chevronRight,
+                size: HzIconSize.row,
+                color: c.textMuted,
+              ),
+            ),
+        ],
+      ),
+    );
+    // The tint as ink, so the ripple of a tappable note shows above it.
+    return Material(
+      type: MaterialType.transparency,
+      child: Ink(
+        decoration: BoxDecoration(color: status.tint(c), borderRadius: radius),
+        child: onTap == null
+            ? row
+            : Semantics(
+                button: true,
+                child: InkWell(onTap: onTap, borderRadius: radius, child: row),
+              ),
+      ),
+    );
+  }
 }

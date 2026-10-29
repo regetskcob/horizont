@@ -105,8 +105,10 @@ class _Tab extends StatelessWidget {
             minHeight: HzSize.touch + HzSpace.s12,
           ),
           child: Padding(
+            // Narrow at the sides: with five tabs on a phone a word like
+            // „Übersicht“ needs the whole slot to stay in one piece.
             padding: const EdgeInsets.symmetric(
-              horizontal: HzSpace.s4,
+              horizontal: HzSpace.s2,
               vertical: HzSpace.s4,
             ),
             // The selection is a light tint behind icon and word, radius 6
@@ -125,7 +127,7 @@ class _Tab extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: HzSpace.s12,
+                    horizontal: HzSpace.s8,
                     vertical: HzSpace.s4,
                   ),
                   child: Column(
@@ -290,7 +292,7 @@ class _RailItem extends StatelessWidget {
                   Text(
                     destination.badge!,
                     style: theme.data.copyWith(
-                      fontSize: 11,
+                      fontSize: HzType.kennung.size,
                       color: c.textMuted,
                     ),
                   ),

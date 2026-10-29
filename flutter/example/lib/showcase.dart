@@ -28,6 +28,8 @@ class _ShowcaseState extends State<Showcase> {
     HorizontDestination(icon: HorizontSymbols.map, label: 'Karte'),
   ];
 
+  static final _report = HorizontPrimaryAction(icon: HorizontSymbols.add, label: 'Meldung erfassen', onPressed: () {});
+
   @override
   Widget build(BuildContext context) {
     final theme = HorizontTheme.of(context);
@@ -56,20 +58,12 @@ class _ShowcaseState extends State<Showcase> {
             Expanded(child: content),
           ],
         ),
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {},
-          icon: const Icon(HorizontSymbols.add),
-          label: const Text('Meldung erfassen'),
-        ),
+        floatingActionButton: _report.fab(context),
       );
     }
     return Scaffold(
       body: content,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Meldung erfassen',
-        child: const Icon(HorizontSymbols.add),
-      ),
+      floatingActionButton: _report.fab(context),
       bottomNavigationBar: HorizontTabBar(
         destinations: _destinations,
         selectedIndex: _tab,
@@ -80,7 +74,6 @@ class _ShowcaseState extends State<Showcase> {
 
   Widget _content(BuildContext context, HorizontTheme theme) {
     final c = theme.colors;
-    final text = Theme.of(context).textTheme;
     return SafeArea(
       bottom: false,
       child: ListView(
@@ -89,26 +82,33 @@ class _ShowcaseState extends State<Showcase> {
           Container(
             padding: const EdgeInsets.fromLTRB(HzSpace.s16, HzSpace.s12, HzSpace.s16, HzSpace.s12),
             decoration: BoxDecoration(border: Border(bottom: BorderSide(color: c.line))),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Row(
-                  children: [
-                    const Expanded(child: Kennung('Hegering Nord · 412 ha')),
-                    IconButton(onPressed: () {}, icon: const Icon(HorizontSymbols.search), tooltip: 'Suchen'),
-                    IconButton(onPressed: () {}, icon: const Icon(HorizontSymbols.add), tooltip: 'Neu'),
-                  ],
-                ),
-                Text('Übersicht', style: text.titleLarge),
+                const Expanded(child: HorizontTitle(kennung: 'Hegering Nord · 412 ha', title: 'Übersicht')),
+                IconButton(onPressed: () {}, icon: const Icon(HorizontSymbols.search), tooltip: 'Suchen'),
               ],
             ),
           ),
           _Figures(theme: theme),
-          const _SectionHead('Einrichtungen · 14', action: 'Alle'),
+          HorizontSectionHeader('Einrichtungen', count: 14, trailing: TextButton(onPressed: () {}, child: const Text('Alle'))),
           const _Row(icon: HorizontSymbols.cottage, title: 'Kanzel am Bruch', meta: 'K-07 · geprüft 12.10.', status: HorizontStatus.positive, word: 'Gut'),
           const _Row(icon: HorizontSymbols.cottage, title: 'Leiter Schlagkante', meta: 'L-03 · geprüft 28.09.', status: HorizontStatus.warning, word: 'Prüfen'),
           const _Row(icon: HorizontSymbols.cottage, title: 'Kanzel Heckenweg', meta: 'K-11 · geprüft 02.08.', status: HorizontStatus.critical, word: 'Defekt'),
-          const _SectionHead('Bausteine'),
+          const HorizontSectionHeader('Kanzel am Bruch'),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: HzSpace.s16),
+            child: Column(
+              children: [
+                HorizontFact(term: 'Kennung', value: 'K-07', measured: true),
+                HorizontFact(term: 'Geprüft', value: '12.10.2026', measured: true),
+                HorizontFact(term: 'Zustand', child: HorizontBadge(HorizontStatus.positive, label: 'Gut')),
+              ],
+            ),
+          ),
+          for (final (i, line) in ['Linie 1', 'Linie 2'].indexed)
+            HorizontSelectable(selected: i == 0, onTap: () {}, child: Text(line)),
+          HorizontSectionHeader('Bausteine', collapsed: false, onToggle: () {}),
           Padding(
             padding: const EdgeInsets.all(HzSpace.s16),
             child: Column(
@@ -271,30 +271,6 @@ class _Figures extends StatelessWidget {
             cell('2', 'Strecke'),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _SectionHead extends StatelessWidget {
-  const _SectionHead(this.label, {this.action});
-
-  final String label;
-  final String? action;
-
-  @override
-  Widget build(BuildContext context) {
-    final c = HorizontTheme.of(context).colors;
-    return Container(
-      padding: const EdgeInsets.fromLTRB(HzSpace.s16, HzSpace.s24, HzSpace.s16, HzSpace.s8),
-      decoration: BoxDecoration(border: Border(bottom: BorderSide(color: c.line))),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.baseline,
-        textBaseline: TextBaseline.alphabetic,
-        children: [
-          Expanded(child: Kennung(label)),
-          if (action != null) Text(action!, style: Theme.of(context).textTheme.labelLarge?.copyWith(color: c.accentText)),
-        ],
       ),
     );
   }

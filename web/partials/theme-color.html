@@ -1,0 +1,20 @@
+{{- /*
+  The colour of the browser bar: the page ground (bg) per mode, so the bar
+  runs into the page (decided for 0.9.0). In <head>, once:
+
+    partial "horizont/theme-color.html" (dict "product" "panzergefecht" "scheme" "dark")
+
+  product  optional; a product with neutrals of its own in the dark
+           (Panzergefecht's Gelände) takes its dark bg.
+  scheme   optional "dark" for a page that is dark only: one colour, the
+           dark bg, in both modes.
+*/ -}}
+{{- $n := site.Data.horizont.color.neutral -}}
+{{- $dark := $n.dark.bg -}}
+{{- with .product }}{{ with index site.Data.horizont.color.product . }}{{ with .neutralDark }}{{ $dark = .bg }}{{ end }}{{ end }}{{ end -}}
+{{- if eq .scheme "dark" }}
+<meta name="theme-color" content="{{ $dark }}">
+{{- else }}
+<meta name="theme-color" content="{{ $n.light.bg }}" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="{{ $dark }}" media="(prefers-color-scheme: dark)">
+{{- end }}

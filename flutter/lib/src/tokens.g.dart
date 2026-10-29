@@ -8,7 +8,7 @@
 import 'package:flutter/widgets.dart';
 
 /// Version of the tokens this file was generated from.
-const String horizontTokensVersion = '0.8.15';
+const String horizontTokensVersion = '0.9.0';
 
 /// The neutral colours of one brightness.
 @immutable
@@ -184,6 +184,19 @@ abstract final class HzColors {
   ];
 }
 
+/// The dark ground under photos and media (lightbox, photo viewer,
+/// webcams), the same in light and dark.
+abstract final class HzScrim {
+  /// `bg`
+  static const Color bg = Color(0xFF000000);
+  /// `text`
+  static const Color text = Color(0xFFFFFFFF);
+  /// `text-muted`
+  static const Color textMuted = Color(0xFFB3B3B3);
+  /// Opacity of the bars over the picture (black at 0.65).
+  static const double barAlpha = 0.65;
+}
+
 /// The products of Horizont with their accents.
 enum HorizontProduct {
   /// regetskcob: Dachmarke, Blog.
@@ -263,6 +276,23 @@ enum HorizontProduct {
       textMuted: Color(0xFFB4BA9E),
       textFaint: Color(0xFF7D8466),
     ),
+  ),
+  /// Kalkar Kompakt: Buerger-App fuer Kalkar von Kalkar IT, iOS, Android und Web.
+  kalkarKompakt(
+    displayName: 'Kalkar Kompakt',
+    accentName: 'Backstein',
+    light: HzAccent(
+      accent: Color(0xFFA2452C),
+      onAccent: Color(0xFFFFFFFF),
+      accentTint: Color(0xFFF6E7E1),
+      accentText: Color(0xFF9A4129),
+    ),
+    dark: HzAccent(
+      accent: Color(0xFFE8906F),
+      onAccent: Color(0xFF24120C),
+      accentTint: Color(0xFF2E1D17),
+      accentText: Color(0xFFEE9F81),
+    ),
   );
 
   const HorizontProduct({
@@ -276,7 +306,7 @@ enum HorizontProduct {
   /// The product's name as written in the UI.
   final String displayName;
 
-  /// The name of the accent colour (Tinte, Tanne, Bus, Signalgelb).
+  /// The name of the accent colour (Tinte, Tanne, Bus, Signalgelb, Backstein).
   final String accentName;
 
   /// The accent in light mode.
@@ -403,6 +433,8 @@ abstract final class HzSize {
   static const double gridCard = 240.0;
   /// 400
   static const double form = 400.0;
+  /// 128
+  static const double factTerm = 128.0;
   /// 320
   static const double search = 320.0;
   /// 28
@@ -435,6 +467,22 @@ abstract final class HzBreakpoint {
   static const double expanded = 840.0;
   /// 1200
   static const double large = 1200.0;
+}
+
+/// The television: safe margins, type scale, focus ring and focus growth.
+abstract final class HzTv {
+  /// 80
+  static const double safeHorizontal = 80.0;
+  /// 60
+  static const double safeVertical = 60.0;
+  /// 1.5
+  static const double typeScale = 1.5;
+  /// 3
+  static const double focus = 3.0;
+  /// 4
+  static const double focusGap = 4.0;
+  /// 1.06
+  static const double focusScale = 1.06;
 }
 
 /// Durations and curves. Collapse to zero under reduced motion.

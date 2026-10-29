@@ -207,6 +207,14 @@ ThemeData buildHorizontTheme(
       scaffoldBackgroundColor: c.bg,
     ),
     iconTheme: IconThemeData(color: c.text, size: HzIconSize.bar, weight: 300),
+    // Back, close and the drawer in Horizont's symbols, not Material's font:
+    // BackButton and CloseButton stay adaptive (a chevron on Apple platforms).
+    actionIconTheme: ActionIconThemeData(
+      backButtonIconBuilder: (context) => Icon(horizontBackSymbol(Theme.of(context).platform)),
+      closeButtonIconBuilder: (context) => const Icon(HorizontSymbols.close),
+      drawerButtonIconBuilder: (context) => const Icon(HorizontSymbols.menu),
+      endDrawerButtonIconBuilder: (context) => const Icon(HorizontSymbols.menu),
+    ),
     extensions: [
       HorizontTheme(
         product: product,
@@ -231,8 +239,10 @@ ThemeData buildHorizontTheme(
       centerTitle: false,
       toolbarHeight: pointer ? HzSize.toolbarDesktop : 56,
       titleTextStyle: t(HzType.title1),
+      // Actions in ink, not in the accent: the accent marks only the primary
+      // action and the selection (decided for 0.9.0).
       actionsIconTheme: IconThemeData(
-        color: c.accentText,
+        color: c.text,
         size: HzIconSize.bar,
       ),
       shape: Border(bottom: hairline),
@@ -260,7 +270,7 @@ ThemeData buildHorizontTheme(
       subtitleTextStyle: t(
         HzType.data,
         c.textMuted,
-      ).copyWith(fontSize: 12, height: 16 / 12),
+      ).copyWith(fontSize: HzType.caption.size, height: HzType.caption.line / HzType.caption.size),
       selectedColor: c.text,
       selectedTileColor: c.accentTint,
     ),
@@ -317,7 +327,14 @@ ThemeData buildHorizontTheme(
     ),
     iconButtonTheme: IconButtonThemeData(
       style: ButtonStyle(
-        foregroundColor: WidgetStatePropertyAll(c.accentText),
+        // Ink; the accent only when the button is a chosen toggle.
+        foregroundColor: WidgetStateProperty.resolveWith(
+          (s) => s.contains(WidgetState.disabled)
+              ? c.textFaint
+              : s.contains(WidgetState.selected)
+              ? c.accentText
+              : c.text,
+        ),
         minimumSize: WidgetStatePropertyAll(
           Size.square(pointer ? HzSize.controlDesktop : HzSize.touch),
         ),
@@ -396,7 +413,7 @@ ThemeData buildHorizontTheme(
         (s) => s.contains(WidgetState.selected) ? c.accent : Colors.transparent,
       ),
       checkColor: WidgetStatePropertyAll(c.onAccent),
-      side: BorderSide(color: c.lineStrong, width: 1.5),
+      side: BorderSide(color: c.lineStrong, width: HzLine.hairline),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(HzRadius.r2)),
       ),
@@ -476,3 +493,25 @@ class _CupertinoSwitch extends Adaptation<SwitchThemeData> {
         _ => defaultValue,
       };
 }
+
+/// The back symbol of [platform]: a chevron on iOS and macOS, an arrow
+/// elsewhere, both from Horizont's symbols. `BackButton` uses it through the
+/// theme; take it for your own back buttons instead of `Icons.adaptive`.
+IconData horizontBackSymbol(TargetPlatform platform) => switch (platform) {
+      TargetPlatform.iOS || TargetPlatform.macOS => HorizontSymbols.chevronLeft,
+      _ => HorizontSymbols.arrowBack,
+    };
+
+/// The "more" symbol of [platform]: three dots in a row on iOS and macOS,
+/// in a column elsewhere. Instead of `Icons.adaptive.more`.
+IconData horizontMoreSymbol(TargetPlatform platform) => switch (platform) {
+      TargetPlatform.iOS || TargetPlatform.macOS => HorizontSymbols.moreHoriz,
+      _ => HorizontSymbols.moreVert,
+    };
+
+/// The share symbol of [platform]: the box with the arrow on iOS and macOS,
+/// the three linked dots elsewhere. Instead of `Icons.adaptive.share`.
+IconData horizontShareSymbol(TargetPlatform platform) => switch (platform) {
+      TargetPlatform.iOS || TargetPlatform.macOS => HorizontSymbols.iosShare,
+      _ => HorizontSymbols.share,
+    };

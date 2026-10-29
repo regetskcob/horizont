@@ -4,6 +4,123 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.9.0
+
+Die Durchsicht vor v1.0: Was mehrere Apps selbst gebaut hatten, steckt jetzt
+im Paket, Kalkar Kompakt wird ein Produkt, und Regeln und Code sagen wieder
+dasselbe. Entschieden in CLAUDE.md unter „Entscheidungen für 0.9.0“.
+
+### Neu
+
+- **Kalkar Kompakt ist ein Produkt** (`color.product.kalkar-kompakt`,
+  `HorizontProduct.kalkarKompakt`): Akzent Backstein, hell #A2452C, dunkel
+  #E8906F, mit allen Kontrasttests. Die Icon-Farben ziehen von
+  `color.mark.kalkar-kompakt` nach `color.product.kalkar-kompakt.icon`, die
+  Glyphe (Rathaus) gibt es jetzt auch in Flutter (`HorizontMark`).
+- **`HorizontFact`** und **`size.fact-term`** (128): die Faktenzeile mit
+  fester Begriffsspalte, die KNX Monitor, Jagdaufseher und Kalkar Kompakt je
+  selbst gebaut hatten, mit 112, 128 und 140 breit. Gemessenes in Mono,
+  Benanntes in `callout`, schmal rückt der Wert unter den Begriff, ein Link
+  zeigt Pfeil bzw. `open_in_new`. Im Web nimmt `.hz-facts` dieselbe Breite.
+- **`HorizontTitle`**: Kennung über dem kleinen Titel, für AppBar, Seite und
+  Sheet; `HorizontTitle.toolbarHeight(context)` gibt der AppBar die Höhe, die
+  beide Zeilen bei großer Schrift brauchen.
+- **`HorizontSelectable`** und **`horizontSelectionDecoration`**: die gewählte
+  Zeile mit Tönung und 2-px-Linie am Anfang (oder unten), statt sie in jeder
+  App von Hand zu zeichnen. Die Tönung liegt als `Ink` unter dem Tipp-Effekt,
+  `alignment: null` schrumpft auf den Inhalt (Chips), `divider` behält die
+  Trennlinie einer Zeile.
+- **`HorizontSelectableCard`**: die gewählte Karte (2 px Akzent als Umriss,
+  `accent-tint`, Häkchen oben), wie in KNX Monitor entschieden und in
+  Panzergefecht von Hand gebaut.
+- **`HorizontNotice`**: der Hinweis vor einer Aktion, Statustönung mit
+  Zeichen und Satz, Radius 6 (KNX Monitor und Panzergefecht hatten ihn je
+  selbst).
+- **`HorizontPrimaryAction`**: die eine Hauptaktion, auf Touch als FAB (unter
+  600 nur Symbol, ab 600 mit Wort), mit Zeiger als Knopf in der
+  Werkzeugleiste.
+- **`HorizontSheetActions`**, **`horizontSheetPadding`**: der Fuß eines
+  Formular-Sheets, „Abbrechen“ und „Speichern“ aus den Plattformwörtern, mit
+  Spinner beim Speichern.
+- **`showHorizontMessage`**: Snackbar mit dem Zeichen des Zustands;
+  `horizontMessageSnackBar` baut dieselbe für einen `ScaffoldMessenger`, der
+  vor einem `await` oder `pop` gemerkt wurde.
+- **`HorizontEmptyHint(status:)`**: derselbe Hinweis für Fehler und fehlende
+  Verbindung, das Zeichen in der Statusfarbe; `icon` ist dann optional.
+- **`HorizontSectionHeader(collapsed:, onToggle:)`**: der Abschnitt klappt,
+  mit Winkel und `expanded` für Screenreader.
+- **Zurück, Schließen, Menü aus Horizont-Symbolen**: Das Theme setzt
+  `actionIconTheme`, `BackButton` zeigt auf iOS und macOS den Winkel, sonst
+  den Pfeil (`horizontBackSymbol`); dazu `horizontMoreSymbol` und
+  `horizontShareSymbol`. `Icons.adaptive` wird nicht mehr gebraucht.
+- **`color.scrim`** (`HzScrim`, `--scrim-*`): der dunkle Grund unter Fotos
+  und Medien, für Lightbox, Bildbetrachter und Webcams.
+- **`.hz-scrim-bar`**: ein Balken auf einem Foto (Titel auf einem Cover), in
+  Weiß auf dem Scrim, der zum Bild hin mit dem Verlauf der Lightbox ausläuft.
+  Der Blog hatte dafür die Variablen der Lightbox mitbenutzt. Die Variablen
+  heißen jetzt `--hz-scrim-alpha`, `--hz-scrim-fade` und
+  `--hz-scrim-fadeout` statt `--hz-lightbox-*`.
+- **`tv`** (`HzTv`, `--tv-*`): sicherer Rand 80/60, Schrift × 1,5, Fokusring
+  3 mit Abstand 4, Kachel +6 %, bisher nur als Text in CLAUDE.md.
+- **`HzColors` exportiert**: die rohen Werte als Konstanten, für `const`
+  in Malern und Spielen; Widgets lesen weiter `HorizontTheme.of(context)`.
+- **`HorizontTitle(style:)`** für den kleineren Titel im Sheet,
+  **`showHorizontMessage(action:, duration:)`**, und ein einklappbarer
+  `HorizontSectionHeader` ist mindestens 44 hoch.
+
+### Geändert
+
+- **Feldseite ohne Menü:** `web/partials/feld/head.html` und die Stile
+  `.hz-feld-head` sind entfallen. Den Kopf bildet seit 0.7.0 der Horizont;
+  keine Seite nutzte den alten Kopf mehr.
+- **Lightbox nach den Regeln:** eckige Knöpfe (Radius 6, 44 hoch) statt
+  Kreise, Zähler und EXIF-Knopf ohne Pille, Schrift aus der Skala
+  (EXIF-Begriffe als Kennung, Werte in Mono), Farben aus `--scrim-*` statt
+  `#fff` und `rgb(0 0 0)`.
+- **Symbolknöpfe in Textfarbe** (entschieden): `IconButton` und die
+  Aktionen der AppBar stehen in `text` statt `accent-text`, gewählte
+  Umschalter (`isSelected`) im Akzent, gesperrte in `text-faint`. Der Akzent
+  bleibt Hauptaktion, Auswahl und Links.
+- **`HorizontSelectable`** gibt Screenreadern das Tippen zurück, wenn
+  `semanticsLabel` die Semantik des Inhalts ersetzt. **`HorizontNotice`**
+  kann `onTap` (mit Winkel) und eine `action` am Ende.
+- **Tab-Bar:** Die Polster um Icon und Wort sind schmaler (8 statt 12 innen,
+  2 statt 4 außen). Mit fünf Zielen am Telefon brach „Übersicht“ sonst
+  mitten im Wort um.
+- **`HorizontLockup`** und **`HorizontBadge`** brechen ihr Wort um, statt bei großer Schrift über
+  den Rand zu laufen.
+- **Keine Sonderwerte mehr im Paket:** `HorizontEmptyHint` ist höchstens
+  `HzSize.form` (400) breit statt 360. Der Rand der Checkbox ist die
+  Haarlinie (1 statt 1,5), Schriftgrößen in Badge, Listen und Rail kommen
+  aus der Typo-Skala. `.hz-button--dense` ist `--size-control-desktop` hoch
+  (28 statt 32), der Absatz der Feldseite hat die Grundgröße statt 15 px.
+- **Doku:** CLAUDE.md nennt keine Versionsstände der Projekte mehr (die
+  stehen in deren `pubspec.yaml` und `go.mod`), dafür alle Nutzer
+  einschließlich Kalkar Kompakt und der Seite von Kalkar IT. Neu erklärt:
+  Fokus im Feld, `motion.exit`, `line.rule`, die Begriffsspalte. Die
+  Showcase-App nutzt die neuen Bausteine, die Goldens zeigen Kalkar Kompakt.
+
+### Heben
+
+- Apps: `ref: v0.9.0`. Nichts bricht. Danach die eigenen Nachbauten ersetzen:
+  Faktenzeilen durch `HorizontFact`, Kennung-über-Titel durch
+  `HorizontTitle`, gewählte Zeilen durch `HorizontSelectable`, FAB-Logik
+  durch `HorizontPrimaryAction`, Sheet-Fuß durch `HorizontSheetActions`,
+  Snackbars mit Status durch `showHorizontMessage`,
+  `Icons.adaptive.arrow_back` durch `BackButton` bzw. `horizontBackSymbol`,
+  schwarze Bildgründe durch `HzScrim`.
+- Kalkar Kompakt: `appProduct = HorizontProduct.kalkarKompakt` statt
+  `regetskcob`.
+- Web-Apps und Seiten: `theme-color` auf `bg` je Modus; Hugo-Seiten mit
+  `partial "horizont/theme-color.html"` (neu), Flutter-Web in `web/index.html`.
+- Panzergefecht: auf dem Fernseher × `HzTv.typeScale` (1,5) statt 1,4 und
+  der sichere Rand `HzTv.safeVertical`/`safeHorizontal`.
+- Seiten: `hugo mod get github.com/regetskcob/horizont@v0.9.0`. Wer noch
+  `horizont/feld/head.html` aufruft, ersetzt ihn durch den Horizont
+  (`horizont/nav/horizon.html`). Eigene Lightbox-Kopien (Blog) durch
+  `horizont/lightbox.html` ersetzen, Gruppen mit `data-lightbox-group`
+  markieren.
+
 ## 0.8.15
 
 Die zugeschnittenen Schriften tragen nicht mehr die reservierten Namen von

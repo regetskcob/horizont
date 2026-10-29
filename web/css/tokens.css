@@ -21,6 +21,15 @@
 {{- range $i, $v := $c.data.light }}
   --data-{{ add $i 1 }}: light-dark({{ $v }}, {{ index $c.data.dark $i }});
 {{- end }}
+{{- with $c.scrim }}
+  --scrim-bg: {{ .bg }};
+  --scrim-text: {{ .text }};
+  --scrim-text-muted: {{ index . "text-muted" }};
+  --scrim-bar-alpha: {{ index . "bar-alpha" }};
+{{- end }}
+{{- range $k, $v := .tv }}
+  --tv-{{ $k }}: {{ $v }};
+{{- end }}
 {{- range $k, $v := .font }}
   --font-{{ $k }}: {{ $v | safeCSS }};
 {{- end }}

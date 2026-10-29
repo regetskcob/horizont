@@ -1,7 +1,7 @@
 # Horizont – Hinweise für Claude
 
 Horizont ist das Designsystem von regetskcob (Blog) und den Projekten
-**Jagdaufseher**, **KNX Monitor** und **Panzergefecht**. Dieses Repository ist
+**Jagdaufseher**, **KNX Monitor**, **Panzergefecht** und **Kalkar Kompakt**. Dieses Repository ist
 die einzige Quelle: Tokens, Web-Schicht, Marken, Icons und die Dokumentation
 unter https://www.regetskcob.de/horizont/.
 
@@ -44,6 +44,8 @@ wird daher für alle Formfaktoren mitgedacht, nicht nur für das Telefon.
    Ausnahme: App-Icons, die sind Bilder.
 3. **Eine Farbe pro Produkt.** Alles andere ist Papier und Tinte. Der Akzent
    markiert nur die Hauptaktion und die Auswahl, Status hat eigene Farben.
+   Symbolknöpfe und Aktionen der Leiste stehen in Textfarbe, Links in
+   `accent-text`.
 4. **Drei Stimmen.** Literata für das, was man liest (Überschriften der
    Landingpages, Fließtext, Onboarding). Mona Sans für das, was man bedient
    (Überschriften von Panzergefecht: Mona Sans Display Expanded).
@@ -76,7 +78,9 @@ wird daher für alle Formfaktoren mitgedacht, nicht nur für das Telefon.
   liegt das gewählte Ziel auf `accent-tint` (Radius 6, die Tönung umschließt
   Icon und Wort), das Icon 24 in `accent-text`, das Wort halbfett in `text`,
   ohne Linie (entschieden, siehe unten).
-- **Fokus:** 2 px Akzent mit 2 px Abstand, auf dem Fernseher 3 px.
+- **Fokus:** 2 px Akzent mit 2 px Abstand, auf dem Fernseher 3 px
+  (`tv.focus`). Felder zeigen den Fokus im eigenen Rahmen (2 px Akzent statt
+  der Haarlinie), ohne zweiten Ring.
 - **Felder:** Die Beschriftung steht über dem Feld (`label`, 13/16, 500, in
   `text`), nie schwebend im Rahmen; darunter höchstens eine Hilfezeile
   (Flutter `HorizontField`, Web `.hz-field`). Ein Feld ist genau so hoch wie
@@ -87,8 +91,10 @@ wird daher für alle Formfaktoren mitgedacht, nicht nur für das Telefon.
   auf der Grundlinie des Textes (web: `.hz-lockup`). Marke und Text nie
   mittig zueinander ausrichten.
 - **Wert und Begriff:** In Faktenlisten stehen Begriff (Kennung) und Wert
-  auf einer Grundlinie. Die Begriffsspalte hat eine feste Breite, damit
-  Listen untereinander bündig stehen.
+  auf einer Grundlinie. Die Begriffsspalte hat überall dieselbe Breite, 128
+  (`size.fact-term`, wächst mit der Schrift), damit Listen untereinander und
+  über Apps hinweg bündig stehen (Flutter `HorizontFact`, Web `.hz-facts`).
+  Gemessenes in Mono, Benanntes in `callout`, beide 14.
 - **Status-Badge:** Fläche `*-tint`, Text und Zeichen in der Statusfarbe,
   Radius 2.
 - **Navigation im Web ist der Horizont** (ab v0.7.0, `horizont/nav/
@@ -122,7 +128,7 @@ oder Seite schreiben.
   verankert. Sie ist weder Akzent noch Status; der Wert steht immer auch in
   Legende oder Beschriftung. Serienfarben von Diagrammen gehören der App.
 - **Produkte** (`color.product.<id>`, ids `regetskcob`, `jagdaufseher`,
-  `knx`, `panzergefecht`): `accent` (Fläche der Hauptaktion), `on-accent`,
+  `knx`, `panzergefecht`, `kalkar-kompakt`): `accent` (Fläche der Hauptaktion), `on-accent`,
   `accent-tint` (Auswahl-Hintergrund), `accent-text` (Text, Links, Linien,
   mindestens 4,5:1).
 
@@ -132,6 +138,7 @@ oder Seite schreiben.
   | Jagdaufseher | Tanne | #2F5D3A | #6CCB8A |
   | KNX Monitor | Bus | #437F18 | #9BD45E |
   | Panzergefecht | Signalgelb | #8F6400 | #FFB300 |
+  | Kalkar Kompakt | Backstein | #A2452C | #E8906F |
 
 - **Gastgeber** (`color.host.<id>`, bisher `home-assistant`): Läuft ein
   Produkt eingebettet, etwa das KNX-Monitor-Add-on in Home Assistants
@@ -140,6 +147,10 @@ oder Seite schreiben.
   Status, Schrift und Linien bleiben Horizont. Gastgeber gibt es nur in
   Flutter: Eingebettet läuft die App, keine Hugo-Seite, deshalb kennt
   `web/css/tokens.css` kein `[data-host]`.
+- **Scrim** (`color.scrim`): der dunkle Grund unter Fotos und Medien
+  (Lightbox, Bildbetrachter, Webcams), hell wie dunkel gleich: `bg` Schwarz,
+  `text` Weiß, `text-muted`, Leisten in Schwarz mit `bar-alpha` 0,65.
+  Flutter `HzScrim`, Web `--scrim-*`.
 - **Gelände:** Panzergefecht hat im Dunkeln eigene, olivgetönte Neutrale
   (`neutralDark`). Das ist die einzige Ausnahme, und sie gilt nur für die
   Neutralen. Spielwelt-Farben (Teams, Tarnanstriche, Kartengelände) gehören
@@ -158,7 +169,8 @@ oder Seite schreiben.
   stehende Karten (Raster, Übersicht) und Sheets. Rund ist nur, was
   rund sein muss (Schalter, Ortspunkt, Avatar). Keine Pillen-Knöpfe, keine
   Pillen-Chips.
-- **Linien:** 1 px Haarlinie, 2 px Auswahl und Fokus. Ein Umriss, eine
+- **Linien:** 1 px Haarlinie (`line.hairline`; `line.rule` ist dieselbe
+  Linie als Trenner zwischen Abschnitten), 2 px Auswahl und Fokus. Ein Umriss, eine
   Farbe: Alles mit Rahmen (Karte, Feld, Knopf, Segment, Chip,
   Kontrollkästchen, Dialog, Sheet, Menü) trägt die Haarlinie in
   `line-strong`, ebenso die Spur des ausgeschalteten Schalters.
@@ -171,7 +183,8 @@ oder Seite schreiben.
   (`cubic-bezier(0.16, 1, 0.3, 1)`, läuft weich aus, schwingt nicht über),
   nur für Bewegung, die niemand ausgelöst hat oder die etwas bestätigt:
   ein Wert, der sich ändert, ein Diagramm, das sich aufbaut, ein Haken nach
-  dem Speichern. Nie für Navigation, Blätter oder Tippen. Bei reduzierter
+  dem Speichern. Nie für Navigation, Blätter oder Tippen. Was verschwindet,
+  nimmt die Kurve `exit` (`cubic-bezier(0.3, 0, 1, 1)`). Bei reduzierter
   Bewegung alles 0.
 - **Größen:** Tippziel 44, Zeile 44, dichte Zeile 28. Mit Zeiger (Mac,
   Web-App am Rechner) sind Steuerelemente 24 bis 28 hoch
@@ -179,12 +192,16 @@ oder Seite schreiben.
   Lesespalte 720 (`text-column`), Seite 1120 (`page`), Formular 400
   (`form`), Suche in der Titelzeile 320 (`search`), Seitenleiste 240
   (`sidebar`; mit Zeiger darf sie bis 200 schmal werden, `rail`), Inspektor
-  300 (`inspector`), Karte im Raster mindestens 240 (`grid-card`).
+  300 (`inspector`), Karte im Raster mindestens 240 (`grid-card`),
+  Begriffsspalte der Fakten 128 (`fact-term`).
 - **Symbolgrößen** (`icon-size`): 14 im Status-Badge, 16 in einer
   Textzeile, 18 in Zeilen und Seitenleisten, 22 in Leisten und Knöpfen, 24
   in der Tab-Bar.
 - **Fenstergrößen:** kompakt < 600, mittel < 840, erweitert < 1200, groß ab
   1200. Gebaut wird nach verfügbarer Breite, nie nach Gerät.
+- **Fernseher** (`tv`): sicherer Rand 80 seitlich und 60 oben und unten,
+  Schrift × 1,5, Fokusring 3, die fokussierte Kachel wächst um 6 %
+  (Flutter `HzTv`, Web `--tv-*`).
 - **Geräterahmen:** Hardwarefarben unter `device`.
 
 ## Formfaktoren
@@ -194,9 +211,9 @@ oder Seite schreiben.
 | iPhone (kompakt) | Kopf mit Kennung und kleinem Titel, höchstens eine Kennzahlenleiste, Abschnitte mit Kennzeile, Tab-Bar mit 3 bis 5 Zielen. Die eine Hauptaktion als FAB (alle Touch-Plattformen), am Telefon nur mit Symbol, ab 600 mit Wort. |
 | iPad (mittel/erweitert) | Hauptaktion als FAB, ab 600 mit Wort. Seitenleiste statt Tab-Bar, Kennzahlen am Fuß der Seitenleiste, Inhalt in der Mitte, Inspektor rechts (quer). Ebenen und Werkzeuge sitzen auf einer Fläche mit Haarlinie. Ausnahme: wenige gleichrangige Ansichten eines Inhalts (KNX Monitor: Übersicht, Objekte, Live) bleiben unten als Tab-Bar, das Menü wird zur einklappbaren Seitenleiste (entschieden, siehe unten). |
 | Mac (groß) | Werkzeugleiste 52 mit Umschalter, Suche und der Hauptaktion (kein FAB mit Zeiger), Seitenleiste 200 bis 240 mit Kennungen, Inhalt als Raster aus Karten (mindestens 240), Inspektor 300. Dichte Zeilen, Tastatur zuerst. |
-| Apple TV | Sicherer Rand 60/80, Schrift × 1,5. Titel mit Kennung, ein Regal aus großen Kacheln, unten Details und eine Aktion. Fokus: Kachel +6 % und Akzentring. HUD im Spiel nur in den Ecken, die Mitte bleibt frei. |
+| Apple TV | Sicherer Rand 60/80, Schrift × 1,5 (`tv`). Titel mit Kennung, ein Regal aus großen Kacheln, unten Details und eine Aktion. Fokus: Kachel +6 % und Akzentring. HUD im Spiel nur in den Ecken, die Mitte bleibt frei. |
 | Apple Watch | Uhrzeit oben rechts, ein Wert groß in Mono, eine Aktion. Die Krone blättert. Fläche schwarz oder Gelände. |
-| Landingpage | „Feldseite“: Kopf mit Lockup, Hero links mit Kennung und Literata-Überschrift, rechts das Produkt im Geräterahmen, darunter die Horizontlinie (2 px Akzent), nummerierte Abschnitte mit Kennung links und Fakten in Mono, Fuß „ein Projekt von regetskcob“. Kein zentrierter Hero, kein Kachelraster, keine Badge-Pille. |
+| Landingpage | „Feldseite“: oben der Horizont mit dem Zeichen des Produkts (kein Menü, entschieden für 0.9.0), Hero links mit Kennung und Literata-Überschrift, rechts das Produkt im Geräterahmen, darunter die Horizontlinie (2 px Akzent), nummerierte Abschnitte mit Kennung links und Fakten in Mono, Fuß „ein Projekt von regetskcob“. Kein zentrierter Hero, kein Kachelraster, keine Badge-Pille. |
 
 Karten (Jagdaufseher): Die Grundkarte bleibt ruhig wie die Feldflur. Farbe
 tragen nur Reviergrenze (Akzent, 2,5 px), Auswahl und Zustand der
@@ -206,7 +223,8 @@ Einrichtungen.
 
 - **Marke:** eine Linie auf dem unteren Drittel, darauf ein Gegenstand:
   Buche (regetskcob), Kanzel (Jagdaufseher), Busklemme rot/grau auf dem
-  grünen Buskabel (KNX Monitor), Panzer in Seitenansicht (Panzergefecht).
+  grünen Buskabel (KNX Monitor), Panzer in Seitenansicht (Panzergefecht),
+  das Rathaus Kalkar (Kalkar Kompakt).
   Dazu drei Glyphen ohne App-Icon: das offene Buch für den Blog, die
   Sonne auf der Linie für Horizont und der Prompt `>` leicht über der
   Linie schwebend für Kalkar IT Solutions, die Linie ist sein Cursor; als
@@ -215,10 +233,9 @@ Einrichtungen.
   (`app-icon.html`, `product` "kalkar-it") (`mark.html`, `product` "blog",
   "horizont" bzw. "kalkar-it"). Kalkar IT ist kein Produkt der Familie und
   hat keine eigenen Farben; die Seite nimmt den Akzent Tinte.
-  Kalkar Kompakt (Bürger-App von Kalkar IT) ist ebenso kein Produkt und hat
-  keine Akzentfarbe, aber ein App-Icon: das Rathaus Kalkar auf der Linie,
-  Farben unter `color.mark.kalkar-kompakt`; die Glyphe zeichnet das Rathaus
-  im Strich.
+  Kalkar Kompakt, die Bürger-App von Kalkar IT, ist seit 0.9.0 ein Produkt
+  mit dem Akzent Backstein (entschieden, siehe unten): App-Icon das Rathaus
+  Kalkar auf der Linie, die Glyphe zeichnet es im Strich.
 - **App-Icon:** illustriert (`web/partials/app-icon.html`). Die Bühne ist
   Himmel oben und Boden unten mit einer hellen Horizontlinie bei zwei
   Dritteln. Davor steht ein Gegenstand in drei Tönen mit dunkler Kontur (1,6
@@ -337,6 +354,38 @@ stehen in [docs/flutter.md](docs/flutter.md), „Referenz: KNX Monitor“.
   Schwarz, vorgeflacht als PNG. Der Flutter-Splash danach nimmt dieselben
   Werte, sonst springt die Farbe beim Übergang.
 
+## Entscheidungen für 0.9.0
+
+Vom Nutzer entschieden bei der Durchsicht vor v1.0 (28.10.2026):
+
+- **Feldseite ohne Menü.** Den Kopf einer Landingpage bildet der Horizont;
+  `feld/head.html` mit Menü rechts ist entfallen.
+- **Kalkar Kompakt ist ein Produkt** mit eigenem Akzent Backstein (aus dem
+  Rathaus Kalkar). Kalkar IT selbst bleibt ohne Akzent (Tinte).
+- **Teaser- und Social-Bilder sind Bilder** wie App-Icons: Schatten und
+  Verläufe sind dort erlaubt. Farben, Schrift und Radien kommen trotzdem aus
+  den Tokens.
+- **Erst 0.9, dann 1.0.** 0.9.0 holt, was die Apps selbst gebaut hatten, ins
+  System. v1.0.0 kommt, wenn alle Projekte am selben Tag hängen und es eine
+  Weile läuft; ab 1.0 brechen Änderungen nur mit einem Major-Sprung.
+- **Symbolknöpfe in Textfarbe.** Zurück, Suchen, Aktualisieren und die
+  Aktionen der Leiste nehmen `text`, nicht den Akzent; ein Symbolknopf ist
+  akzentfarben nur als gewählter Umschalter. Mit Tinte fiel der Unterschied
+  nicht auf, mit Backstein und Signalgelb schon.
+- **Browserleiste im Seitengrund.** `theme-color` von Web-Apps und Seiten ist
+  `bg` (hell #FAFAF7, dunkel #121311, je per `media`), nicht der Akzent und
+  nicht Systemweiß; die Leiste geht in die Seite über.
+- **Fernseher nach Horizont.** Auch Panzergefecht vergrößert auf dem
+  Fernseher um 1,5 (`tv.type-scale`) und hält den sicheren Rand 60/80.
+- **Bausteine statt Nachbau.** Bauen zwei Apps dasselbe Muster selbst, kommt
+  es ins Paket (0.9.0: `HorizontFact`, `HorizontTitle`,
+  `HorizontSelectable`, `HorizontSelectableCard`, `HorizontNotice`,
+  `HorizontPrimaryAction`, `HorizontSheetActions`,
+  `showHorizontMessage`, der einklappbare `HorizontSectionHeader`,
+  `HorizontEmptyHint` mit Status). Was nur eine App braucht (der
+  TV-Fokusrahmen von Panzergefecht, der Board-Kopf von KNX Monitor), bleibt
+  dort, bis eine zweite es braucht.
+
 Neue offene Fragen kommen als Issue mit dem Label `question` und werden vom
 Nutzer entschieden, nicht von der Sitzung.
 
@@ -347,8 +396,10 @@ Nutzer entschieden, nicht von der Sitzung.
 - Aufbau: `tokens/` (Quelle), `web/` (wiederverwendbare Web-Schicht: CSS,
   Partials, Schriften), `flutter/` (das Paket `horizont` mit Schriften,
   Showcase-App unter `flutter/example/` und Tests), `icons/` (Liste und
-  Codepoints der Symbole), `tool/` (`generate_tokens.dart`,
-  `build_symbols.py`, `subset_fonts.py`), `site/` (nur die Dokumentationsseite).
+  Codepoints der Symbole, eigene Symbole, App-Icons), `tool/`
+  (`generate_tokens.dart`, `build_symbols.py`, `draw_symbols.py`,
+  `subset_fonts.py`, `export_icons.py`), `site/` (nur die
+  Dokumentationsseite).
 - Nach jeder Änderung an `tokens/` oder `icons/`:
   `dart run tool/generate_tokens.dart`, dann `cd flutter && flutter test`.
   Die Kontrasttests sind die AA-Prüfung des ganzen Systems. Schlägt einer
@@ -358,7 +409,7 @@ Nutzer entschieden, nicht von der Sitzung.
 - Jede Änderung, die Apps oder Seiten betrifft, kommt in
   [CHANGELOG.md](CHANGELOG.md) unter die nächste Version.
 - Versionen: Tokens (`version` im JSON), Paket (`flutter/pubspec.yaml`) und
-  Git-Tag (`v0.8.9`) laufen gemeinsam. Die Apps hängen an einem Tag, nie an
+  Git-Tag (`v0.9.0`) laufen gemeinsam. Die Apps hängen an einem Tag, nie an
   `main`. Hugo hängt die
   Ordner per `module.mounts` ein (`hugo.toml`).
 - Lokal ansehen:
@@ -373,18 +424,20 @@ Nutzer entschieden, nicht von der Sitzung.
   Wohnorte oder andere persönlichen Angaben in Texten.
 - **Hugo:** Landingpages und Blog setzen sich aus den Partials unter
   `web/partials/` (Lockup, Geräterahmen, Kennung, Badge, Symbol, Fakten,
-  Feldseite) und den Shortcodes unter `web/shortcodes/` (`hz-device`,
-  `hz-kennung`, `hz-badge`, `hz-symbol`, `hz-facts`) zusammen, nie aus
+  Feldseite, Horizont und Flurkarte, Lightbox) und den Shortcodes unter `web/shortcodes/` (`hz-device`,
+  `hz-kennung`, `hz-badge`, `hz-symbol`, `hz-facts`, `hz-karte`) zusammen, nie aus
   nachgebautem HTML. Die Mounts stehen in `docs/web.md`. Fehlt ein Baustein,
   kommt er hierher, nicht in die Seite.
-- **Wer Horizont nutzt:** der Blog (Hugo-Modul, in `go.mod` auf einen Tag
-  gepinnt, derzeit v0.8.2; heben mit `hugo mod get
-  github.com/regetskcob/horizont@v0.8.2`) und die Vorschau unter
-  `/preview/` (Repository `regetskcob/preview`). KNX Monitor ist die
-  Referenz für die anderen Apps (App auf v0.6.1, Landingpage auf v0.7.9);
-  Jagdaufseher läuft auch im Browser (App auf v0.7.7; die Landingpage ist
-  seit 22.10.2026 offline und das Projekt nicht auf der Flurkarte); Panzergefecht hat Spiel und Landingpage auf v0.7.8
-  (regetskcob/wargame#31), siehe [docs/flutter.md](docs/flutter.md). Für
-  Apps ändern v0.6.3, v0.7.9 (`calm` und `settle`) und v0.8.0 (Feldhöhen,
-  `HorizontFieldIconButton`, `HorizontFieldDropdown`) das Paket, die
-  übrigen 0.7er-Tags nur das Web und die Exporte.
+- **Wer Horizont nutzt:** die Apps KNX Monitor (`regetskcob/KNX-Monitor-Source`,
+  App, Landingpage `site/` und Teaser `teaser/`), Jagdaufseher
+  (`regetskcob/jagdaufseher`, App und Web; die Landingpage ist seit
+  22.10.2026 offline und das Projekt nicht auf der Flurkarte), Panzergefecht
+  (`regetskcob/wargame`, Spiel mit TV und Watch, Landingpage `site/`) und
+  Kalkar Kompakt (`Kalkar-IT-Solutions/kalkar-kompakt`), dazu der Blog
+  (`regetskcob/regetskcob.github.io`), die Seite von Kalkar IT
+  (`Kalkar-IT-Solutions/landing-page`) und die Vorschau unter `/preview/`
+  (`regetskcob/preview`). KNX Monitor ist die Referenz für die anderen Apps.
+  Welchen Tag ein Projekt nutzt, steht nur dort (`ref:` in `pubspec.yaml`,
+  `go.mod`), nicht hier: Versionsangaben in dieser Datei veralten. Ziel ist,
+  dass alle Projekte am selben Tag hängen; ein neuer Tag wird in allen
+  gehoben (`hugo mod get github.com/regetskcob/horizont@<tag>` bzw. `ref:`).
