@@ -111,7 +111,8 @@ dasselbe. Entschieden in CLAUDE.md unter „Entscheidungen für 0.9.0“.
   schwarze Bildgründe durch `HzScrim`.
 - Kalkar Kompakt: `appProduct = HorizontProduct.kalkarKompakt` statt
   `regetskcob`.
-- Web-Apps und Seiten: `theme-color` auf `bg` je Modus (docs/web.md).
+- Web-Apps und Seiten: `theme-color` auf `bg` je Modus; Hugo-Seiten mit
+  `partial "horizont/theme-color.html"` (neu), Flutter-Web in `web/index.html`.
 - Panzergefecht: auf dem Fernseher × `HzTv.typeScale` (1,5) statt 1,4 und
   der sichere Rand `HzTv.safeVertical`/`safeHorizontal`.
 - Seiten: `hugo mod get github.com/regetskcob/horizont@v0.9.0`. Wer noch

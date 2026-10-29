@@ -135,15 +135,10 @@ Höhe). `--w` ist die Außenbreite, alles andere folgt daraus:
 ```
 
 Die Browserleiste nimmt den Seitengrund, je Modus (entschieden für 0.9.0):
-
-```html
-<meta name="theme-color" content="#FAFAF7" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#121311" media="(prefers-color-scheme: dark)">
-```
-
-Die Werte sind `color.neutral.light.bg` und `color.neutral.dark.bg`; in Hugo
-aus `site.Data.horizont.color.neutral` lesen statt sie abzuschreiben.
-Panzergefecht nimmt im Dunkeln sein Gelände (`neutralDark.bg`).
+`{{ partial "horizont/theme-color.html" (dict "product" "knx") }}` im
+`<head>` schreibt beide `theme-color`-Zeilen aus `color.neutral.*.bg`;
+Panzergefecht bekommt im Dunkeln sein Gelände. Flutter-Web-Apps setzen in
+`web/index.html` dieselben Werte (#FAFAF7, #121311) mit `media`.
 
 Fotos und Medien: `horizont/lightbox.html` zeigt Bilder groß auf dem Scrim.
 Für einen Balken auf einem Foto, etwa den Titel auf einem Cover, gibt es
@@ -169,6 +164,7 @@ den Tokens. Eigene Werte in einem Layout sind ein Fehler.
 | `horizont/nav/horizon.html` | die Navigation: Horizontlinie mit Zeichen, Kapitelstrichen und Flurkarte (siehe „Navigation“) |
 | `horizont/nav/karte.html` | die Flurkarte allein (`home`, `here`, `field`, `counts`, `map`, `projects`) |
 | `horizont/nav/script.html` | das Skript dazu, einmal am Ende der Seite |
+| `horizont/theme-color.html` | die Farbe der Browserleiste (`product` optional) |
 | `horizont/feld/hero.html`, `section.html`, `foot.html` | die Feldseite (siehe unten); den Kopf bildet der Horizont, `feld/head.html` gibt es seit 0.9.0 nicht mehr |
 | `horizont/lightbox.html` | Bildansicht: Links mit `data-lightbox` öffnen ihr Bild groß, mit Untertitel (`data-caption`), Blättern innerhalb von `data-lightbox-group` und Zoom per Klick (`lang`) |
 | `horizont/icons.html` | Platzhalter-Ikonen der Doku als SVG-Sprite |
