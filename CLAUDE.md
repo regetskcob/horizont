@@ -44,6 +44,8 @@ wird daher für alle Formfaktoren mitgedacht, nicht nur für das Telefon.
    Ausnahme: App-Icons, die sind Bilder.
 3. **Eine Farbe pro Produkt.** Alles andere ist Papier und Tinte. Der Akzent
    markiert nur die Hauptaktion und die Auswahl, Status hat eigene Farben.
+   Symbolknöpfe und Aktionen der Leiste stehen in Textfarbe, Links in
+   `accent-text`.
 4. **Drei Stimmen.** Literata für das, was man liest (Überschriften der
    Landingpages, Fließtext, Onboarding). Mona Sans für das, was man bedient
    (Überschriften von Panzergefecht: Mona Sans Display Expanded).
@@ -366,6 +368,15 @@ Vom Nutzer entschieden bei der Durchsicht vor v1.0 (28.10.2026):
 - **Erst 0.9, dann 1.0.** 0.9.0 holt, was die Apps selbst gebaut hatten, ins
   System. v1.0.0 kommt, wenn alle Projekte am selben Tag hängen und es eine
   Weile läuft; ab 1.0 brechen Änderungen nur mit einem Major-Sprung.
+- **Symbolknöpfe in Textfarbe.** Zurück, Suchen, Aktualisieren und die
+  Aktionen der Leiste nehmen `text`, nicht den Akzent; ein Symbolknopf ist
+  akzentfarben nur als gewählter Umschalter. Mit Tinte fiel der Unterschied
+  nicht auf, mit Backstein und Signalgelb schon.
+- **Browserleiste im Seitengrund.** `theme-color` von Web-Apps und Seiten ist
+  `bg` (hell #FAFAF7, dunkel #121311, je per `media`), nicht der Akzent und
+  nicht Systemweiß; die Leiste geht in die Seite über.
+- **Fernseher nach Horizont.** Auch Panzergefecht vergrößert auf dem
+  Fernseher um 1,5 (`tv.type-scale`) und hält den sicheren Rand 60/80.
 - **Bausteine statt Nachbau.** Bauen zwei Apps dasselbe Muster selbst, kommt
   es ins Paket (0.9.0: `HorizontFact`, `HorizontTitle`,
   `HorizontSelectable`, `HorizontSelectableCard`, `HorizontNotice`,

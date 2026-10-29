@@ -104,6 +104,9 @@ class HorizontSelectable extends StatelessWidget {
       selected: selected,
       label: semanticsLabel,
       excludeSemantics: semanticsLabel != null,
+      // With the child's semantics left out, the tap must be given back.
+      onTap: semanticsLabel == null ? null : onTap,
+      onLongPress: semanticsLabel == null ? null : onLongPress,
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
@@ -165,6 +168,7 @@ class HorizontSelectableCard extends StatelessWidget {
       selected: selected,
       label: semanticsLabel,
       excludeSemantics: semanticsLabel != null,
+      onTap: semanticsLabel == null ? null : onTap,
       child: Material(
         color: selected ? c.accentTint : c.surface,
         shape: RoundedRectangleBorder(

@@ -229,8 +229,9 @@ Nicht das Paket `material_symbols_icons`, es bündelt alle Symbole.
 - **AppBar:** `elevation: 0`, `scrolledUnderElevation: 0`, Hintergrund
   `surface` (= n.bg), unten eine Haarlinie (`shape: Border(bottom:
   BorderSide(color: outlineVariant))`). Über dem Titel eine Kennung statt
-  eines Large Title. Titel in `titleLarge`, Aktionen als Icon-Buttons im
-  Akzent.
+  eines Large Title. Titel in `titleLarge`, Aktionen als Icon-Buttons in
+  Textfarbe; den Akzent trägt ein Icon-Button nur als gewählter Umschalter
+  (`isSelected`).
 - **Card:** `elevation: 0`, Farbe n.surface, Radius 10, Rand
   `outline` (line-strong, wie Felder und Knöpfe). Sparsam einsetzen, Listen brauchen keine Karten. Steht ein Kasten zwischen Feldern und Knöpfen (Formular), bekommt er Radius 6 wie sie.
 - **Listen:** `ListTile` mit Trennlinie, die am Text beginnt (Einzug wie das

@@ -245,12 +245,18 @@ Widget horizontDialogAction(
 /// ground, its glyph in the state's colour, the words in ink, radius 6 like
 /// the buttons beside it (e.g. the warning before an irreversible action).
 /// Not a badge: it says a sentence, not a state.
+///
+/// With [onTap] the whole note leads somewhere (a warning that opens its
+/// details) and shows a chevron; [action] puts a quiet button at the end
+/// (e.g. `TextButton` „Erneut versuchen“).
 class HorizontNotice extends StatelessWidget {
   /// Creates a note in [status] with [child], usually a `Text`.
   const HorizontNotice(
     this.status, {
     required this.child,
     this.icon,
+    this.onTap,
+    this.action,
     super.key,
   });
 
@@ -263,35 +269,61 @@ class HorizontNotice extends StatelessWidget {
   /// A glyph of the app's own instead of the state's.
   final IconData? icon;
 
+  /// Opens what the note is about.
+  final VoidCallback? onTap;
+
+  /// A quiet button at the end.
+  final Widget? action;
+
   @override
   Widget build(BuildContext context) {
     final c = HorizontTheme.of(context).colors;
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: status.tint(c),
-        borderRadius: const BorderRadius.all(Radius.circular(HzRadius.r6)),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(HzSpace.s12),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+    const radius = BorderRadius.all(Radius.circular(HzRadius.r6));
+    final row = Padding(
+      padding: const EdgeInsets.all(HzSpace.s12),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ExcludeSemantics(
+            child: Icon(
+              icon ?? status.icon,
+              size: HzIconSize.row,
+              color: status.color(c),
+            ),
+          ),
+          const SizedBox(width: HzSpace.s12),
+          Expanded(
+            child: DefaultTextStyle.merge(
+              style: horizontTextStyle(HzType.callout, c.text),
+              child: child,
+            ),
+          ),
+          if (action != null) ...[
+            const SizedBox(width: HzSpace.s8),
+            action!,
+          ],
+          if (onTap != null)
             ExcludeSemantics(
               child: Icon(
-                icon ?? status.icon,
+                HorizontSymbols.chevronRight,
                 size: HzIconSize.row,
-                color: status.color(c),
+                color: c.textMuted,
               ),
             ),
-            const SizedBox(width: HzSpace.s12),
-            Expanded(
-              child: DefaultTextStyle.merge(
-                style: horizontTextStyle(HzType.callout, c.text),
-                child: child,
+        ],
+      ),
+    );
+    // The tint as ink, so the ripple of a tappable note shows above it.
+    return Material(
+      type: MaterialType.transparency,
+      child: Ink(
+        decoration: BoxDecoration(color: status.tint(c), borderRadius: radius),
+        child: onTap == null
+            ? row
+            : Semantics(
+                button: true,
+                child: InkWell(onTap: onTap, borderRadius: radius, child: row),
               ),
-            ),
-          ],
-        ),
       ),
     );
   }

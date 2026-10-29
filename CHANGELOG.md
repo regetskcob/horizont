@@ -77,6 +77,13 @@ dasselbe. Entschieden in CLAUDE.md unter „Entscheidungen für 0.9.0“.
   Kreise, Zähler und EXIF-Knopf ohne Pille, Schrift aus der Skala
   (EXIF-Begriffe als Kennung, Werte in Mono), Farben aus `--scrim-*` statt
   `#fff` und `rgb(0 0 0)`.
+- **Symbolknöpfe in Textfarbe** (entschieden): `IconButton` und die
+  Aktionen der AppBar stehen in `text` statt `accent-text`, gewählte
+  Umschalter (`isSelected`) im Akzent, gesperrte in `text-faint`. Der Akzent
+  bleibt Hauptaktion, Auswahl und Links.
+- **`HorizontSelectable`** gibt Screenreadern das Tippen zurück, wenn
+  `semanticsLabel` die Semantik des Inhalts ersetzt. **`HorizontNotice`**
+  kann `onTap` (mit Winkel) und eine `action` am Ende.
 - **Tab-Bar:** Die Polster um Icon und Wort sind schmaler (8 statt 12 innen,
   2 statt 4 außen). Mit fünf Zielen am Telefon brach „Übersicht“ sonst
   mitten im Wort um.
@@ -104,6 +111,9 @@ dasselbe. Entschieden in CLAUDE.md unter „Entscheidungen für 0.9.0“.
   schwarze Bildgründe durch `HzScrim`.
 - Kalkar Kompakt: `appProduct = HorizontProduct.kalkarKompakt` statt
   `regetskcob`.
+- Web-Apps und Seiten: `theme-color` auf `bg` je Modus (docs/web.md).
+- Panzergefecht: auf dem Fernseher × `HzTv.typeScale` (1,5) statt 1,4 und
+  der sichere Rand `HzTv.safeVertical`/`safeHorizontal`.
 - Seiten: `hugo mod get github.com/regetskcob/horizont@v0.9.0`. Wer noch
   `horizont/feld/head.html` aufruft, ersetzt ihn durch den Horizont
   (`horizont/nav/horizon.html`). Eigene Lightbox-Kopien (Blog) durch

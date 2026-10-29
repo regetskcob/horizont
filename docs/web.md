@@ -134,6 +134,17 @@ Höhe). `--w` ist die Außenbreite, alles andere folgt daraus:
 </figure>
 ```
 
+Die Browserleiste nimmt den Seitengrund, je Modus (entschieden für 0.9.0):
+
+```html
+<meta name="theme-color" content="#FAFAF7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121311" media="(prefers-color-scheme: dark)">
+```
+
+Die Werte sind `color.neutral.light.bg` und `color.neutral.dark.bg`; in Hugo
+aus `site.Data.horizont.color.neutral` lesen statt sie abzuschreiben.
+Panzergefecht nimmt im Dunkeln sein Gelände (`neutralDark.bg`).
+
 Fotos und Medien: `horizont/lightbox.html` zeigt Bilder groß auf dem Scrim.
 Für einen Balken auf einem Foto, etwa den Titel auf einem Cover, gibt es
 `.hz-scrim-bar`: Schrift in `--scrim-text`, der Grund läuft zum Bild hin

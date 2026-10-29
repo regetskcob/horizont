@@ -239,8 +239,10 @@ ThemeData buildHorizontTheme(
       centerTitle: false,
       toolbarHeight: pointer ? HzSize.toolbarDesktop : 56,
       titleTextStyle: t(HzType.title1),
+      // Actions in ink, not in the accent: the accent marks only the primary
+      // action and the selection (decided for 0.9.0).
       actionsIconTheme: IconThemeData(
-        color: c.accentText,
+        color: c.text,
         size: HzIconSize.bar,
       ),
       shape: Border(bottom: hairline),
@@ -325,7 +327,14 @@ ThemeData buildHorizontTheme(
     ),
     iconButtonTheme: IconButtonThemeData(
       style: ButtonStyle(
-        foregroundColor: WidgetStatePropertyAll(c.accentText),
+        // Ink; the accent only when the button is a chosen toggle.
+        foregroundColor: WidgetStateProperty.resolveWith(
+          (s) => s.contains(WidgetState.disabled)
+              ? c.textFaint
+              : s.contains(WidgetState.selected)
+              ? c.accentText
+              : c.text,
+        ),
         minimumSize: WidgetStatePropertyAll(
           Size.square(pointer ? HzSize.controlDesktop : HzSize.touch),
         ),

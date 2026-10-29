@@ -293,8 +293,8 @@ void main() {
   testWidgets('a notice has the tint, the glyph and the words', (tester) async {
     await tester.pumpWidget(_app(const HorizontNotice(HorizontStatus.warning, child: Text('Nicht umkehrbar'))));
     final colors = HorizontTheme.of(tester.element(find.text('Nicht umkehrbar'))).colors;
-    final box = tester.widget<DecoratedBox>(find.byType(DecoratedBox).first);
-    expect((box.decoration as BoxDecoration).color, colors.warningTint);
+    final ink = tester.widget<Ink>(find.byType(Ink));
+    expect((ink.decoration! as BoxDecoration).color, colors.warningTint);
     expect(find.byIcon(HorizontStatus.warning.icon), findsOneWidget);
   });
 
@@ -304,6 +304,32 @@ void main() {
     expect(find.byIcon(HorizontSymbols.check), findsOneWidget);
     expect(tester.getSemantics(find.byType(HorizontSelectableCard)), isSemantics(isSelected: true));
     handle.dispose();
+  });
+
+  testWidgets('a labelled selectable keeps its tap for screen readers', (tester) async {
+    final handle = tester.ensureSemantics();
+    await tester.pumpWidget(
+      _app(HorizontSelectable(selected: false, onTap: () {}, semanticsLabel: 'Linie 1', child: const Text('1'))),
+    );
+    expect(tester.getSemantics(find.byType(HorizontSelectable)), isSemantics(label: 'Linie 1', hasTapAction: true));
+    handle.dispose();
+  });
+
+  testWidgets('icon buttons are ink, the accent only when chosen', (tester) async {
+    await tester.pumpWidget(
+      _app(
+        Row(
+          children: [
+            IconButton(onPressed: () {}, icon: const Icon(HorizontSymbols.search)),
+            IconButton(onPressed: () {}, isSelected: true, icon: const Icon(HorizontSymbols.pushPinFill)),
+          ],
+        ),
+      ),
+    );
+    final colors = HorizontTheme.of(tester.element(find.byType(Row))).colors;
+    Color? color(IconData d) => IconTheme.of(tester.element(find.byIcon(d))).color;
+    expect(color(HorizontSymbols.search), colors.text);
+    expect(color(HorizontSymbols.pushPinFill), colors.accentText);
   });
 
   test('Kalkar Kompakt is a product with the accent Backstein', () {
