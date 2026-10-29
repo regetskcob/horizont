@@ -21,7 +21,7 @@ dependencies:
     git:
       url: https://github.com/regetskcob/horizont.git
       path: flutter
-      ref: v0.9.0
+      ref: v0.9.1
 ```
 
 Alle Projekte heben jeden Tag, auch wenn er nur das Web oder die Exporte

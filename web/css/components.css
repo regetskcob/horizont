@@ -348,6 +348,9 @@ body.hz { margin: 0; }
 
 /* MacBook: thin black bezel, aluminium base with the opening notch. */
 .hz-device--laptop {
+  /* The base is 3.5 % wider than the lid on each side: at full width it
+     reached past the column and made the page scroll sideways. */
+  max-width: calc(100% / 1.07);
   padding: calc(var(--w, 700px) * 0.014) calc(var(--w, 700px) * 0.014) calc(var(--w, 700px) * 0.02);
   margin-bottom: calc(var(--w, 700px) * 0.022);
   background: var(--device-body);
@@ -492,13 +495,17 @@ body.hz { margin: 0; }
 .hz-feld-section p { margin: 0; color: var(--text-muted); }
 .hz-feld-section .hz-facts { --facts-term: 5.5rem; font-size: 0.875rem; }
 .hz-feld-foot { display: flex; align-items: baseline; gap: var(--s-8); padding: var(--s-24) var(--s-32); color: var(--text-muted); font-size: 0.8125rem; }
-.hz-feld-foot .hz-feld-links { margin-left: auto; display: flex; gap: var(--s-16); }
+.hz-feld-foot .hz-feld-links { margin-left: auto; display: flex; flex-wrap: wrap; gap: var(--s-8) var(--s-16); min-width: 0; }
 .hz-feld-foot a { color: inherit; }
 @container (max-width: 720px) {
   .hz-feld-hero { grid-template-columns: 1fr; padding: var(--s-48) var(--s-16) 0; }
   .hz-feld-aside { display: none; }
   .hz-feld-section { grid-template-columns: 1fr; gap: var(--s-12); padding: var(--s-32) var(--s-16); }
   .hz-feld-foot { padding: var(--s-24) var(--s-16); flex-wrap: wrap; }
+  /* Narrow, the links take a line of their own and wrap there: in one
+     row they made the page wider than the window, and the fixed horizon
+     at the bottom grew with it. */
+  .hz-feld-foot .hz-feld-links { margin-left: 0; flex-basis: 100%; }
 }
 
 /* --- Horizon: the navigation (partials/nav/horizon.html) ---
