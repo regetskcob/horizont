@@ -290,3 +290,14 @@ dentistry
 child_care
 local_library
 local_atm
+
+# Home plan: rooms, doors, furniture and devices on a floor plan
+door_front
+chair
+outlet
+doorbell
+garage
+detector_smoke
+straighten
+# Telegram type: the answer to a read request
+reply

@@ -4,6 +4,20 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.9.2
+
+Acht Symbole für Grundrisse und Telegramme.
+
+### Neu
+
+- **Symbole:** `door_front`, `chair`, `outlet`, `doorbell`, `garage`,
+  `detector_smoke`, `straighten`, `reply`.
+
+### Heben
+
+- Apps: `ref: v0.9.2`, nichts weiter zu tun.
+- Seiten: `hugo mod get github.com/regetskcob/horizont@v0.9.2`.
+
 ## 0.9.1
 
 Seiten scrollten auf dem Telefon seitlich.

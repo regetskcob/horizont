@@ -259,5 +259,13 @@
   "dentistry": "0xe0a6",
   "child_care": "0xeb41",
   "local_library": "0xe54b",
-  "local_atm": "0xe53e"
+  "local_atm": "0xe53e",
+  "door_front": "0xeffd",
+  "chair": "0xefed",
+  "outlet": "0xf1d4",
+  "doorbell": "0xefff",
+  "garage": "0xf011",
+  "detector_smoke": "0xe285",
+  "straighten": "0xe41c",
+  "reply": "0xe15e"
 }
