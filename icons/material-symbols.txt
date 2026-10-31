@@ -67,6 +67,7 @@ nature
 grass
 water_drop
 flag
+flag:fill
 # The four kinds of stand, told apart by shape: a roofed platform on posts,
 # a closed hut, a ladder against a tree, a seat on the ground.
 deck
@@ -301,3 +302,21 @@ detector_smoke
 straighten
 # Telegram type: the answer to a read request
 reply
+
+# One meaning per symbol: redo next to undo, saving, signing, reporting, hunting
+redo
+save
+signature
+feedback
+bug_report
+repeat
+valve
+electric_bolt
+motion_sensor_active
+wb_twilight
+roofing
+sensor_window
+keyboard_arrow_left
+keyboard_arrow_right
+# Drawn by Horizont: the European socket
+socket_schuko

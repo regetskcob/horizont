@@ -4,6 +4,29 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.9.3
+
+Die Durchsicht über App, PDF und Web: eine Bedeutung je Symbol, und PDFs bekommen die Datenschrift.
+
+### Neu
+
+- **Symbole:** `redo`, `save`, `signature`, `feedback`, `bug_report`, `repeat`, `valve`,
+  `electric_bolt`, `motion_sensor_active`, `wb_twilight`, `roofing`, `sensor_window`,
+  `keyboard_arrow_left`, `keyboard_arrow_right`, gefüllt `flag_fill`.
+- **`socket_schuko`:** von Horizont gezeichnet, die europäische Steckdose.
+- **Linien:** `line.data` (1,5, Messkurven und Diagramme), `line.wall` (3, Wände im Grundriss).
+- **Monaspace als TrueType** (`fonts/MonaspaceArgon-*.ttf`, `tool/otf_to_ttf.py`): Das pdf-Paket
+  kann kein CFF einbetten, Werte und Zeiten in PDFs stehen jetzt in der Datenschrift.
+
+### Geändert
+
+- **`basket_woven`:** weniger Geflecht, verklumpt nicht mehr bei 18 und 24 px.
+
+### Heben
+
+- Apps: `ref: v0.9.3`, nichts weiter zu tun.
+- Seiten: `hugo mod get github.com/regetskcob/horizont@v0.9.3`.
+
 ## 0.9.2
 
 Acht Symbole für Grundrisse und Telegramme.
