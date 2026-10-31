@@ -8,7 +8,7 @@
 import 'package:flutter/widgets.dart';
 
 /// Version of the tokens this file was generated from.
-const String horizontTokensVersion = '0.9.2';
+const String horizontTokensVersion = '0.9.3';
 
 /// The neutral colours of one brightness.
 @immutable
@@ -409,6 +409,10 @@ abstract final class HzLine {
   static const double selection = 2.0;
   /// 2
   static const double focus = 2.0;
+  /// 1.5
+  static const double data = 1.5;
+  /// 3
+  static const double wall = 3.0;
 }
 
 /// Sizes of targets, rows, columns and bars.
@@ -774,6 +778,8 @@ abstract final class HorizontSymbols {
   static const IconData waterDrop = IconData(0xe798, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
   /// `flag`
   static const IconData flag = IconData(0xf0c6, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `flag_fill`
+  static const IconData flagFill = IconData(0xff0c6, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
   /// `deck`
   static const IconData deck = IconData(0xea42, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
   /// `cabin`
@@ -1192,4 +1198,34 @@ abstract final class HorizontSymbols {
   static const IconData straighten = IconData(0xe41c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
   /// `reply`
   static const IconData reply = IconData(0xe15e, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `redo`
+  static const IconData redo = IconData(0xe15a, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `save`
+  static const IconData save = IconData(0xe161, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `signature`
+  static const IconData signature = IconData(0xf74c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `feedback`
+  static const IconData feedback = IconData(0xe87f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `bug_report`
+  static const IconData bugReport = IconData(0xe868, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `repeat`
+  static const IconData repeat = IconData(0xe040, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `valve`
+  static const IconData valve = IconData(0xe224, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `electric_bolt`
+  static const IconData electricBolt = IconData(0xec1c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `motion_sensor_active`
+  static const IconData motionSensorActive = IconData(0xe792, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `wb_twilight`
+  static const IconData wbTwilight = IconData(0xe1c6, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `roofing`
+  static const IconData roofing = IconData(0xf201, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `sensor_window`
+  static const IconData sensorWindow = IconData(0xf1b4, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `keyboard_arrow_left`
+  static const IconData keyboardArrowLeft = IconData(0xe314, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `keyboard_arrow_right`
+  static const IconData keyboardArrowRight = IconData(0xe315, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `socket_schuko`
+  static const IconData socketSchuko = IconData(0x100004, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
 }

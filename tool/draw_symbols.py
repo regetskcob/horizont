@@ -58,13 +58,13 @@ def basket_woven():
         for a in range(0, 181, 2)
     ]).intersection(box(0, 150, 960, 960))
     weave = unary_union(
-        [line((x, 120), (x + 400, 520)) for x in range(-200, 900, 150)]
-        + [line((x, 120), (x - 400, 520)) for x in range(100, 1300, 150)]
+        [line((x, 120), (x + 400, 520)) for x in range(-200, 900, 220)]
+        + [line((x, 120), (x - 400, 520)) for x in range(100, 1300, 220)]
     )
     return unary_union([
         ring(belly),
         weave.intersection(belly.buffer(-STROKE, join_style="mitre")),
-        box(90, 500, 870, 580),  # the lip, wider than the belly
+        box(90, 500, 870, 560),  # the lip, wider than the belly
         arc(480, 580, 240, 280, 0, 180),
     ])
 
@@ -122,11 +122,22 @@ def svg(shape) -> str:
     )
 
 
+def socket_schuko():
+    """A European wall socket: square plate, round recess, two pin holes."""
+    return unary_union([
+        ring(box(90, 90, 870, 870)),
+        ring(ellipse(480, 480, 280, 280)),
+        ellipse(385, 480, 50, 50),
+        ellipse(575, 480, 50, 50),
+    ])
+
+
 SYMBOLS = {
     "basket_woven": basket_woven,
     "steak": steak,
     "pretzel": pretzel,
     "horseshoe": horseshoe,
+    "socket_schuko": socket_schuko,
 }
 
 if __name__ == "__main__":

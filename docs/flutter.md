@@ -547,3 +547,9 @@ Variante nennen, `Semantics(onLongPressHint:)` setzen,
   Kombinationen nicht.
 - Auf einem echten Gerät ansehen. Store-Screenshots kommen in den
   Geräterahmen der Doku.
+
+## PDFs
+
+PDFs folgen denselben Regeln: Status mit Wort, Zeichen und Farbe, Werte in der Datenschrift
+(`fonts/MonaspaceArgon-*.ttf`). Eine Ausnahme: Kästen auf Papier tragen `line` statt `line-strong`,
+der kräftige Umriss wirkt gedruckt zu schwer.
