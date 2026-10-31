@@ -8,7 +8,7 @@
 import 'package:flutter/widgets.dart';
 
 /// Version of the tokens this file was generated from.
-const String horizontTokensVersion = '0.9.1';
+const String horizontTokensVersion = '0.9.2';
 
 /// The neutral colours of one brightness.
 @immutable
@@ -1176,4 +1176,20 @@ abstract final class HorizontSymbols {
   static const IconData localLibrary = IconData(0xe54b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
   /// `local_atm`
   static const IconData localAtm = IconData(0xe53e, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `door_front`
+  static const IconData doorFront = IconData(0xeffd, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `chair`
+  static const IconData chair = IconData(0xefed, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `outlet`
+  static const IconData outlet = IconData(0xf1d4, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `doorbell`
+  static const IconData doorbell = IconData(0xefff, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `garage`
+  static const IconData garage = IconData(0xf011, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `detector_smoke`
+  static const IconData detectorSmoke = IconData(0xe285, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `straighten`
+  static const IconData straighten = IconData(0xe41c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `reply`
+  static const IconData reply = IconData(0xe15e, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
 }
