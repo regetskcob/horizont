@@ -2,6 +2,17 @@ import 'package:flutter/widgets.dart';
 
 import 'tokens.g.dart';
 
+/// The form of a product's surfaces. Every product uses [standard] unless it
+/// decided otherwise; the rules are in CLAUDE.md, „Weiche Stufe“.
+enum HorizontStyle {
+  /// Radii 6 and 10, one outline in `line-strong`, Kennung in Mono.
+  standard,
+
+  /// Rounder corners, quiet outlines and, where the product has them, its own
+  /// tinted paper. Hierarchy comes from the tinted paper, not from lines.
+  soft,
+}
+
 /// The semantic colour slots of one product in one brightness: tier 2.
 ///
 /// Widgets read these through `HorizontTheme.of(context).colors`, never the
@@ -37,8 +48,14 @@ class HorizontColors {
 
   /// The slots of [product] in [brightness], from the tokens. Embedded in a
   /// [host] (Home Assistant's Ingress), the neutrals are the host's; accent
-  /// and status stay the product's.
-  factory HorizontColors.resolve(HorizontProduct product, Brightness brightness, {HorizontHost? host}) {
+  /// and status stay the product's. In the soft [style] the product's own
+  /// soft colours apply, except in a host: there its neutrals keep the say.
+  factory HorizontColors.resolve(
+    HorizontProduct product,
+    Brightness brightness, {
+    HorizontHost? host,
+    HorizontStyle style = HorizontStyle.standard,
+  }) {
     final dark = brightness == Brightness.dark;
     final n = host != null
         ? (dark ? host.dark : host.light)
@@ -47,19 +64,20 @@ class HorizontColors {
             : HzColors.neutralLight;
     final s = dark ? HzColors.statusDark : HzColors.statusLight;
     final a = dark ? product.dark : product.light;
+    final t = style == HorizontStyle.soft && host == null ? (dark ? product.softDark : product.softLight) : null;
     return HorizontColors(
-      bg: n.bg,
-      surface: n.surface,
+      bg: t?.bg ?? n.bg,
+      surface: t?.surface ?? n.surface,
       sunken: n.sunken,
-      line: n.line,
-      lineStrong: n.lineStrong,
+      line: t?.line ?? n.line,
+      lineStrong: t?.lineStrong ?? n.lineStrong,
       text: n.text,
       textMuted: n.textMuted,
       textFaint: n.textFaint,
       accent: a.accent,
       onAccent: a.onAccent,
-      accentTint: a.accentTint,
-      accentText: a.accentText,
+      accentTint: t?.accentTint ?? a.accentTint,
+      accentText: t?.accentText ?? a.accentText,
       positive: s.positive,
       positiveTint: s.positiveTint,
       warning: s.warning,

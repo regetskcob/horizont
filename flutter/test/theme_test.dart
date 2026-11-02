@@ -22,6 +22,41 @@ void main() {
     },
   );
 
+  group('soft style', () {
+    test('rounds the corners, keeps the standard untouched', () {
+      RoundedRectangleBorder card(HorizontStyle style) =>
+          buildHorizontTheme(HorizontProduct.knx, Brightness.light, style: style).cardTheme.shape!
+              as RoundedRectangleBorder;
+      expect(card(HorizontStyle.standard).borderRadius, BorderRadius.circular(HzRadius.r10));
+      expect(card(HorizontStyle.soft).borderRadius, BorderRadius.circular(HzSoft.card));
+    });
+
+    test('the product brings its paper, the extension carries it', () {
+      final theme = buildHorizontTheme(HorizontProduct.knx, Brightness.dark, style: HorizontStyle.soft);
+      final colors = theme.extension<HorizontTheme>()!.colors;
+      expect(colors.bg, HorizontProduct.knx.softDark!.bg);
+      expect(colors.surface, HorizontProduct.knx.softDark!.surface);
+      expect(theme.scaffoldBackgroundColor, colors.bg);
+    });
+
+    test('a host keeps its neutrals', () {
+      final colors = buildHorizontTheme(
+        HorizontProduct.knx,
+        Brightness.light,
+        host: HorizontHost.homeAssistant,
+        style: HorizontStyle.soft,
+      ).extension<HorizontTheme>()!.colors;
+      expect(colors.bg, HorizontHost.homeAssistant.light.bg);
+    });
+
+    test('a product without soft colours keeps its own', () {
+      expect(
+        HorizontColors.resolve(HorizontProduct.jagdaufseher, Brightness.light, style: HorizontStyle.soft).bg,
+        HorizontColors.resolve(HorizontProduct.jagdaufseher, Brightness.light).bg,
+      );
+    });
+  });
+
   test('Panzergefecht uses Gelände in the dark only', () {
     final dark = HorizontColors.resolve(
       HorizontProduct.panzergefecht,
