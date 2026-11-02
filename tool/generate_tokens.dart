@@ -39,6 +39,34 @@ void main() {
   _class(out, 'HzAccent', 'The accent of one product in one brightness.',
       ((products.values.first as Map<String, dynamic>)['light'] as Map<String, dynamic>).keys);
 
+  out.writeln('''
+/// What a product changes in the soft style (`HorizontStyle.soft`), in one
+/// brightness. Slots left null keep the product's normal colour.
+@immutable
+class HzSoftColors {
+  /// Creates the set.
+  const HzSoftColors({this.bg, this.surface, this.line, this.lineStrong, this.accentTint, this.accentText});
+
+  /// `bg`
+  final Color? bg;
+
+  /// `surface`
+  final Color? surface;
+
+  /// `line`
+  final Color? line;
+
+  /// `line-strong`
+  final Color? lineStrong;
+
+  /// `accent-tint`
+  final Color? accentTint;
+
+  /// `accent-text`
+  final Color? accentText;
+}
+''');
+
   out
     ..writeln('/// Raw colour values per brightness.')
     ..writeln('abstract final class HzColors {');
@@ -79,6 +107,7 @@ void main() {
   for (var i = 0; i < ids.length; i++) {
     final p = products[ids[i]] as Map<String, dynamic>;
     final neutralDark = p['neutralDark'] as Map<String, dynamic>?;
+    final soft = p['soft'] as Map<String, dynamic>?;
     out
       ..writeln('  /// ${p['name']}: ${p['role']}.')
       ..writeln('  ${_camel(ids[i])}(')
@@ -96,6 +125,15 @@ void main() {
         ..write(_ctor('HzNeutrals', neutralDark, 4))
         ..writeln(',');
     }
+    if (soft != null) {
+      out
+        ..write('    softLight: ')
+        ..write(_ctor('HzSoftColors', soft['light'] as Map<String, dynamic>, 4))
+        ..writeln(',')
+        ..write('    softDark: ')
+        ..write(_ctor('HzSoftColors', soft['dark'] as Map<String, dynamic>, 4))
+        ..writeln(',');
+    }
     out.writeln('  )${i == ids.length - 1 ? ';' : ','}');
   }
   out.writeln('''
@@ -106,6 +144,8 @@ void main() {
     required this.light,
     required this.dark,
     this.neutralDark,
+    this.softLight,
+    this.softDark,
   });
 
   /// The product's name as written in the UI.
@@ -122,6 +162,12 @@ void main() {
 
   /// Own neutrals in dark mode (only Panzergefecht's Gelände), else null.
   final HzNeutrals? neutralDark;
+
+  /// Own colours of the soft style in light mode, else null.
+  final HzSoftColors? softLight;
+
+  /// Own colours of the soft style in dark mode, else null.
+  final HzSoftColors? softDark;
 }
 ''');
 
@@ -162,6 +208,7 @@ void main() {
 
   _numbers(out, 'HzSpace', 'Spacing on the 4 grid.', 's', tokens['space'] as Map<String, dynamic>);
   _numbers(out, 'HzRadius', 'Corner radii.', 'r', tokens['radius'] as Map<String, dynamic>);
+  _numbers(out, 'HzSoft', 'The soft style (`HorizontStyle.soft`): radii of the box, cards, controls and sheets, and the size of the bar title.', '', tokens['soft'] as Map<String, dynamic>);
   _numbers(out, 'HzLine', 'Line widths.', '', tokens['line'] as Map<String, dynamic>);
   _numbers(out, 'HzSize', 'Sizes of targets, rows, columns and bars.', '', tokens['size'] as Map<String, dynamic>);
   _numbers(out, 'HzIconSize', 'Icon sizes: in a badge, inline in text, in rows and rails, in bars and buttons, in the tab bar.', '', tokens['icon-size'] as Map<String, dynamic>);

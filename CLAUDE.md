@@ -354,6 +354,20 @@ stehen in [docs/flutter.md](docs/flutter.md), „Referenz: KNX Monitor“.
   Schwarz, vorgeflacht als PNG. Der Flutter-Splash danach nimmt dieselben
   Werte, sonst springt die Farbe beim Übergang.
 
+## Weiche Stufe (0.10.0)
+
+Vom Nutzer entschieden beim Re-Design von KNX Monitor (2.11.2026). Der Standard bleibt für alle
+Produkte gültig; ein Produkt wählt die Stufe ausdrücklich mit `style: HorizontStyle.soft`. Bisher
+nur KNX Monitor, und nur in Flutter.
+
+- **Radien aus `soft`:** Box 16, Karte 14, Bedienelement 12, Sheet 22. Sie ersetzen 6, 10 und 16.
+- **Pillen-Chips** statt Radius 2, Auswahl als Tönung.
+- **Umrisse in `line`** statt `line-strong`, die Ordnung kommt vom getönten Grund. Der Fokus bleibt
+  2 px im Akzent. Diese Abweichung nimmt in Kauf, dass Felder und Knöpfe die 3:1 aus WCAG 1.4.11
+  nicht über den Umriss erreichen.
+- **Kennung in Mona Sans,** Seitentitel 22 fett, keine Linie unter dem Kopf.
+- **Eigene Farben** nur als Token (`color.product.<id>.soft`). Ein Gastgeber behält seine Neutralen.
+
 ## Entscheidungen für 0.9.0
 
 Vom Nutzer entschieden bei der Durchsicht vor v1.0 (28.10.2026):

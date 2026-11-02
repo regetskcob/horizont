@@ -24,6 +24,9 @@ import 'tokens.g.dart';
 /// neutrals are the host's so the product sits calmly in its frame; accent,
 /// status, type and lines stay Horizont.
 ///
+/// The soft [style] rounds the corners and quiets the outlines, see
+/// [HorizontStyle]; [standard](HorizontStyle.standard) is the default.
+///
 /// Build it once per brightness at the composition root:
 ///
 /// ```dart
@@ -39,6 +42,7 @@ ThemeData buildHorizontTheme(
   HorizontDensity? density,
   TargetPlatform? platform,
   HorizontHost? host,
+  HorizontStyle style = HorizontStyle.standard,
 }) {
   final target = platform ?? defaultTargetPlatform;
   final resolvedDensity = density ?? HorizontDensity.forPlatform(target);
@@ -171,7 +175,7 @@ ThemeData buildHorizontTheme(
     ),
   );
 
-  return ThemeData(
+  final theme = ThemeData(
     useMaterial3: true,
     brightness: brightness,
     colorScheme: scheme,
@@ -470,6 +474,127 @@ ThemeData buildHorizontTheme(
     scrollbarTheme: ScrollbarThemeData(
       thumbColor: WidgetStatePropertyAll(c.lineStrong),
       radius: const Radius.circular(HzRadius.r2),
+    ),
+  );
+  return switch (style) {
+    HorizontStyle.standard => theme,
+    HorizontStyle.soft => _soften(
+      theme,
+      HorizontColors.resolve(product, brightness, host: host, style: style),
+    ),
+  };
+}
+
+/// [base] in the soft style: rounder corners, quiet outlines, [c] on the
+/// page, the fields and the controls.
+ThemeData _soften(ThemeData base, HorizontColors c) {
+  const controlRadius = BorderRadius.all(Radius.circular(HzSoft.control));
+  const control = RoundedRectangleBorder(borderRadius: controlRadius);
+  final horizont = base.extension<HorizontTheme>()!;
+  ButtonStyle? rounded(ButtonStyle? style) =>
+      style?.copyWith(shape: const WidgetStatePropertyAll(control));
+  // Fields like cards: paper and a quiet line; the focus stays strong.
+  InputBorder? field(InputBorder? border, {bool quiet = false}) =>
+      border is OutlineInputBorder
+      ? border.copyWith(
+          borderRadius: controlRadius,
+          borderSide: quiet ? BorderSide(color: c.line) : border.borderSide,
+        )
+      : border;
+  final input = base.inputDecorationTheme;
+  final sheet = base.bottomSheetTheme.shape! as RoundedRectangleBorder;
+  final card = base.cardTheme.shape! as RoundedRectangleBorder;
+  return base.copyWith(
+    scaffoldBackgroundColor: c.bg,
+    canvasColor: c.bg,
+    colorScheme: base.colorScheme.copyWith(surface: c.bg),
+    extensions: [
+      horizont.copyWith(
+        colors: c,
+        // Small headings in the text face; Mono stays with the addresses.
+        kennung: base.textTheme.labelSmall?.copyWith(
+          color: c.textMuted,
+          fontWeight: FontWeight.w600,
+          letterSpacing: 0.5,
+        ),
+      ),
+    ],
+    // Selection is the tint, without outline or check mark.
+    chipTheme: base.chipTheme.copyWith(
+      backgroundColor: c.surface,
+      selectedColor: c.accentTint,
+      disabledColor: c.surface,
+      checkmarkColor: c.accentText,
+      showCheckmark: false,
+      side: WidgetStateBorderSide.resolveWith(
+        (states) => BorderSide(
+          color: states.contains(WidgetState.selected) ? c.accentTint : c.line,
+        ),
+      ),
+      shape: const StadiumBorder(),
+      labelStyle: base.chipTheme.labelStyle?.copyWith(
+        fontWeight: FontWeight.w500,
+      ),
+      padding: const EdgeInsets.symmetric(
+        horizontal: HzSpace.s8,
+        vertical: HzSpace.s4,
+      ),
+    ),
+    filledButtonTheme: FilledButtonThemeData(
+      style: rounded(base.filledButtonTheme.style),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: rounded(base.outlinedButtonTheme.style)?.copyWith(
+        backgroundColor: WidgetStatePropertyAll(c.surface),
+        foregroundColor: WidgetStatePropertyAll(c.text),
+        side: WidgetStatePropertyAll(BorderSide(color: c.line)),
+      ),
+    ),
+    segmentedButtonTheme: SegmentedButtonThemeData(
+      style: base.segmentedButtonTheme.style?.copyWith(
+        backgroundColor: WidgetStateProperty.resolveWith(
+          (s) => s.contains(WidgetState.selected) ? c.accentTint : c.surface,
+        ),
+        foregroundColor: WidgetStateProperty.resolveWith(
+          (s) => s.contains(WidgetState.selected) ? c.accentText : c.textMuted,
+        ),
+        side: WidgetStatePropertyAll(BorderSide(color: c.line)),
+        shape: const WidgetStatePropertyAll(control),
+      ),
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: rounded(base.textButtonTheme.style),
+    ),
+    cardTheme: base.cardTheme.copyWith(
+      shape: card.copyWith(
+        borderRadius: const BorderRadius.all(Radius.circular(HzSoft.card)),
+      ),
+    ),
+    inputDecorationTheme: input.copyWith(
+      filled: true,
+      fillColor: c.surface,
+      border: field(input.border, quiet: true),
+      enabledBorder: field(input.enabledBorder, quiet: true),
+      focusedBorder: field(input.focusedBorder),
+      errorBorder: field(input.errorBorder),
+      focusedErrorBorder: field(input.focusedErrorBorder),
+      disabledBorder: field(input.disabledBorder),
+    ),
+    // No set-off bar: title and content lie on the same ground.
+    appBarTheme: base.appBarTheme.copyWith(
+      backgroundColor: c.bg,
+      shape: const Border(),
+      titleTextStyle: base.appBarTheme.titleTextStyle?.copyWith(
+        fontSize: HzSoft.title,
+        fontWeight: FontWeight.w700,
+      ),
+    ),
+    bottomSheetTheme: base.bottomSheetTheme.copyWith(
+      shape: sheet.copyWith(
+        borderRadius: const BorderRadius.vertical(
+          top: Radius.circular(HzSoft.sheet),
+        ),
+      ),
     ),
   );
 }

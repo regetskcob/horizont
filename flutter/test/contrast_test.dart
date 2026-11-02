@@ -12,13 +12,15 @@ double _contrast(Color a, Color b) {
 
 void main() {
   final cases = [
-    for (final product in HorizontProduct.values) (product, null),
-    for (final host in HorizontHost.values) (HorizontProduct.knx, host),
+    for (final product in HorizontProduct.values) (product, null, HorizontStyle.standard),
+    for (final host in HorizontHost.values) (HorizontProduct.knx, host, HorizontStyle.standard),
+    for (final product in HorizontProduct.values)
+      if (product.softLight != null) (product, null, HorizontStyle.soft),
   ];
-  for (final (product, host) in cases) {
+  for (final (product, host, style) in cases) {
     for (final brightness in Brightness.values) {
-      final c = HorizontColors.resolve(product, brightness, host: host);
-      group('${product.name}${host == null ? '' : ' in ${host.name}'} ${brightness.name}', () {
+      final c = HorizontColors.resolve(product, brightness, host: host, style: style);
+      group('${product.name}${host == null ? '' : ' in ${host.name}'} ${style.name} ${brightness.name}', () {
         // Reading text and anything that carries meaning: WCAG AA, 4.5:1.
         final pairs = <String, (Color, Color)>{
           'text on bg': (c.text, c.bg),

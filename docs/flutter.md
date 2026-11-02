@@ -162,6 +162,13 @@ Token-Schlüssel, `p.` steht für `color.product.<id>.<mode>`, `n.` für
 `onError` ist `s.on-critical` (`#FFFFFF` in hell, `#121311` in dunkel). Bei
 Panzergefecht ersetzen im Dunkeln die Werte aus `neutralDark` die `n.*`.
 
+## Weiche Stufe
+
+`buildHorizontTheme(product, brightness, style: HorizontStyle.soft)` wählt die weiche Form, die
+Regeln stehen in `CLAUDE.md`, „Weiche Stufe“. Die Komponenten aus dem Theme folgen von selbst, eigene
+Flächen nehmen `HzSoft.box`, `card` und `control`. `HorizontTheme.of(context).colors` trägt die
+Farben der Stufe. Der Standard bleibt die Vorgabe, die Stufe ist eine Entscheidung je Produkt.
+
 ## ThemeExtension
 
 Was nicht ins `ColorScheme` passt, liegt in der Extension `HorizontTheme`,

@@ -4,6 +4,26 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.10.0
+
+Eine zweite Form neben dem Standard, entschieden beim Re-Design von KNX Monitor. Wer nichts
+ändert, sieht nichts Neues.
+
+### Neu
+
+- **Weiche Stufe:** `buildHorizontTheme(…, style: HorizontStyle.soft)`: Radien aus `HzSoft`
+  (Box 16, Karte 14, Bedienelement 12, Sheet 22), leise Umrisse in `line`, Pillen-Chips, Kennung in
+  Mona Sans, Titel 22 fett ohne Linie im Kopf.
+- **`color.product.<id>.soft`:** eigene Farben eines Produkts für diese Stufe, bisher nur `knx`
+  (getönter Grund, im Dunkeln auch Fläche, Linien und Akzent-Tönung). Ein Gastgeber behält seine
+  Neutralen.
+- **`size.inspector-wide`** (360): Inspektor für breite Inhalte.
+
+### Heben
+
+- Apps: `ref: v0.10.0`, nichts weiter zu tun.
+- Seiten: `hugo mod get github.com/regetskcob/horizont@v0.10.0`.
+
 ## 0.9.3
 
 Die Durchsicht über App, PDF und Web: eine Bedeutung je Symbol, und PDFs bekommen die Datenschrift.

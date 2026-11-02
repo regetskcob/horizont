@@ -27,6 +27,8 @@ export 'src/tokens.g.dart'
         HzRadius,
         HzScrim,
         HzSize,
+        HzSoft,
+        HzSoftColors,
         HzSpace,
         HzTv,
         HzType,

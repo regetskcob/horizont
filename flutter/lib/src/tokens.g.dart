@@ -8,7 +8,7 @@
 import 'package:flutter/widgets.dart';
 
 /// Version of the tokens this file was generated from.
-const String horizontTokensVersion = '0.9.3';
+const String horizontTokensVersion = '0.10.0';
 
 /// The neutral colours of one brightness.
 @immutable
@@ -116,6 +116,32 @@ class HzAccent {
 
   /// `accent-text`
   final Color accentText;
+}
+
+/// What a product changes in the soft style (`HorizontStyle.soft`), in one
+/// brightness. Slots left null keep the product's normal colour.
+@immutable
+class HzSoftColors {
+  /// Creates the set.
+  const HzSoftColors({this.bg, this.surface, this.line, this.lineStrong, this.accentTint, this.accentText});
+
+  /// `bg`
+  final Color? bg;
+
+  /// `surface`
+  final Color? surface;
+
+  /// `line`
+  final Color? line;
+
+  /// `line-strong`
+  final Color? lineStrong;
+
+  /// `accent-tint`
+  final Color? accentTint;
+
+  /// `accent-text`
+  final Color? accentText;
 }
 
 /// Raw colour values per brightness.
@@ -249,6 +275,17 @@ enum HorizontProduct {
       accentTint: Color(0xFF1D2913),
       accentText: Color(0xFFA8DC6E),
     ),
+    softLight: HzSoftColors(
+      bg: Color(0xFFF6F8F2),
+    ),
+    softDark: HzSoftColors(
+      bg: Color(0xFF171A15),
+      surface: Color(0xFF22261F),
+      line: Color(0xFF343A2F),
+      lineStrong: Color(0xFF6C7266),
+      accentTint: Color(0xFF2A3622),
+      accentText: Color(0xFFBCDC9F),
+    ),
   ),
   /// Panzergefecht: Spiel, Web, Apple-Geräte und Android.
   panzergefecht(
@@ -301,6 +338,8 @@ enum HorizontProduct {
     required this.light,
     required this.dark,
     this.neutralDark,
+    this.softLight,
+    this.softDark,
   });
 
   /// The product's name as written in the UI.
@@ -317,6 +356,12 @@ enum HorizontProduct {
 
   /// Own neutrals in dark mode (only Panzergefecht's Gelände), else null.
   final HzNeutrals? neutralDark;
+
+  /// Own colours of the soft style in light mode, else null.
+  final HzSoftColors? softLight;
+
+  /// Own colours of the soft style in dark mode, else null.
+  final HzSoftColors? softDark;
 }
 
 /// Hosts that embed a product and lend it their neutrals, e.g. Home
@@ -399,6 +444,20 @@ abstract final class HzRadius {
   static const double r16 = 16.0;
 }
 
+/// The soft style (`HorizontStyle.soft`): radii of the box, cards, controls and sheets, and the size of the bar title.
+abstract final class HzSoft {
+  /// 16
+  static const double box = 16.0;
+  /// 14
+  static const double card = 14.0;
+  /// 12
+  static const double control = 12.0;
+  /// 22
+  static const double sheet = 22.0;
+  /// 22
+  static const double title = 22.0;
+}
+
 /// Line widths.
 abstract final class HzLine {
   /// 1
@@ -433,6 +492,8 @@ abstract final class HzSize {
   static const double sidebar = 240.0;
   /// 300
   static const double inspector = 300.0;
+  /// 360
+  static const double inspectorWide = 360.0;
   /// 240
   static const double gridCard = 240.0;
   /// 400
