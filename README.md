@@ -96,6 +96,6 @@ mitkommt. Ausgenommen sind:
   nicht für andere Produkte freigegeben.
 - **Das Flutter-Logo** in der Showcase-App, eine Marke von Google.
 
-Das Flutter-Paket trägt dieselbe Lizenz in `flutter/LICENSE`; Flutter nimmt
+Die genauen Ausnahmen stehen in [LICENSING.md](LICENSING.md). Das Flutter-Paket trägt dieselbe Lizenz in `flutter/LICENSE`; Flutter nimmt
 sie von selbst in die Lizenzseite der Apps auf, die Schriften kommen über
 `registerHorizontLicenses()` dazu.
