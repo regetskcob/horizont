@@ -335,4 +335,9 @@ void main() {
   test('Kalkar Kompakt is a product with the accent Backstein', () {
     expect(HorizontProduct.kalkarKompakt.accentName, 'Backstein');
   });
+
+  test('Gemarkung is a product with the accent Heide', () {
+    expect(HorizontProduct.gemarkung.accentName, 'Heide');
+    expect(HorizontProduct.gemarkung.light.accent, const Color(0xFF6A4A8E));
+  });
 }
