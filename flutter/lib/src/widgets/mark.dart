@@ -163,6 +163,11 @@ class _MarkPainter extends CustomPainter {
       case HorizontProduct.kalkarKompakt:
         line(4, 66.7, 96, 66.7);
         poly([22, 66.7, 22, 40, 34, 26, 43, 26, 43, 22, 50, 4, 57, 22, 57, 26, 66, 26, 78, 40, 78, 66.7]);
+      case HorizontProduct.gemarkung:
+        line(4, 66.7, 96, 66.7);
+        line(50, 66.7, 50, 22);
+        poly([50, 28, 70, 28, 75, 33, 70, 38, 50, 38]);
+        poly([50, 44, 30, 44, 25, 49, 30, 54, 50, 54]);
     }
     return p;
   }

@@ -1,6 +1,6 @@
 {
   "_comment": "Horizont, das Designsystem von regetskcob und seinen Projekten. Einzige Quelle der Tokens: die Dokumentation (site/layouts/home.html) und die CSS-Schicht (web/css/tokens.css) lesen sie hier, Generatoren fuer Flutter und Swift sollen es ebenso tun. Farben je light und dark, beide von Hand gesetzt, nie aus einem Seed abgeleitet.",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "color": {
     "neutral": {
       "light": {
@@ -250,6 +250,40 @@
             "clock": "#F1EFE6",
             "shield": "#D9473A",
             "cobble": "#4D4E47"
+          }
+        }
+      },
+      "gemarkung": {
+        "name": "Gemarkung",
+        "role": "Git-Client fuer viele Repositories, macOS, Windows, Linux und VS Code",
+        "accentName": "Heide",
+        "light": {
+          "accent": "#6A4A8E",
+          "on-accent": "#FFFFFF",
+          "accent-tint": "#EEE8F4",
+          "accent-text": "#654689"
+        },
+        "dark": {
+          "accent": "#BFA2E4",
+          "on-accent": "#1A1224",
+          "accent-tint": "#251E2E",
+          "accent-text": "#CAB1EA"
+        },
+        "icon": {
+          "_comment": "App-Icon von Gemarkung: Heide unter hellem Himmel, darauf ein hoelzerner Wegweiser an einer Weggabelung der Feldwege, zwei Arme zeigen auseinander wie Branches.",
+          "field": "#6A4A8E",
+          "glyph": "#F4EFF8",
+          "sky": "#E6E0EC",
+          "sky2": "#BBAECB",
+          "ground": "#5E4580",
+          "ground2": "#432F5E",
+          "horizon": "#F6F1FA",
+          "outline": "#1A1224",
+          "obj": {
+            "light": "#EBD5AE",
+            "mid": "#C79C63",
+            "dark": "#8C6638",
+            "carve": "#4A3F33"
           }
         }
       }

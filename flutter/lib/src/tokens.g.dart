@@ -8,7 +8,7 @@
 import 'package:flutter/widgets.dart';
 
 /// Version of the tokens this file was generated from.
-const String horizontTokensVersion = '0.10.0';
+const String horizontTokensVersion = '0.11.0';
 
 /// The neutral colours of one brightness.
 @immutable
@@ -329,6 +329,23 @@ enum HorizontProduct {
       onAccent: Color(0xFF24120C),
       accentTint: Color(0xFF2E1D17),
       accentText: Color(0xFFEE9F81),
+    ),
+  ),
+  /// Gemarkung: Git-Client fuer viele Repositories, macOS, Windows, Linux und VS Code.
+  gemarkung(
+    displayName: 'Gemarkung',
+    accentName: 'Heide',
+    light: HzAccent(
+      accent: Color(0xFF6A4A8E),
+      onAccent: Color(0xFFFFFFFF),
+      accentTint: Color(0xFFEEE8F4),
+      accentText: Color(0xFF654689),
+    ),
+    dark: HzAccent(
+      accent: Color(0xFFBFA2E4),
+      onAccent: Color(0xFF1A1224),
+      accentTint: Color(0xFF251E2E),
+      accentText: Color(0xFFCAB1EA),
     ),
   );
 

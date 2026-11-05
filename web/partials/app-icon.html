@@ -12,7 +12,8 @@
   Solutions is no product of the family but has an image for avatars (the
   GitHub organisation): its colours sit with its glyph under
   color.mark.kalkar-it.icon. Kalkar Kompakt, the civic app of Kalkar IT, is a
-  product since 0.9.0: the town hall of Kalkar, accent Backstein.
+  product since 0.9.0: the town hall of Kalkar, accent Backstein. Gemarkung,
+  the Git client, since 0.11.0: a signpost at a fork, accent Heide.
 
   For the platform exports (tool/export_icons.sh):
     shape  rounded (default, the web and the doc) | bleed (square, the OS
@@ -164,6 +165,18 @@
           <circle cx="50" cy="29" r="1.8" fill="{{ $o.clock }}"/>
           <path d="M48.3 40.5h3.4v2.8c0 1.3-.8 2.1-1.7 2.6-.9-.5-1.7-1.3-1.7-2.6z" fill="{{ $o.shield }}"/>
         </g>
+      </g>
+    {{- else if eq $p "gemarkung" }}
+      {{- /* A signpost at a fork of the field paths: a wooden post on the
+             horizon, two arms pointing apart like branches, lettering as
+             lines. Light from the upper left. */}}
+      <path d="M46.6 25L50 20.6l3.4 4.4z" fill="{{ $o.dark }}"/>
+      <path d="M47 70.4V25h6v45.4z" fill="{{ $o.mid }}"/>
+      <path d="M53 29.6h18.6l5 5-5 5H53z" fill="{{ $o.light }}"/>
+      <path d="M47 43.4H28.4l-5 5 5 5H47z" fill="{{ $o.mid }}"/>
+      <g stroke="none">
+        <path d="M47.9 25.8h2.2v44h-2.2z" fill="{{ $o.light }}"/>
+        <g stroke="{{ $o.carve }}" stroke-width="1.1" stroke-linecap="round"><path d="M57 33.2h10M57 36h7"/><path d="M43 47h-11M43 49.8h-8"/></g>
       </g>
     {{- else if eq $p "panzergefecht" }}
       {{- if eq $variant "side" }}

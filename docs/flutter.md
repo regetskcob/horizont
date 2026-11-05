@@ -384,6 +384,7 @@ steht in ihrer `pubspec.yaml`.
 | Jagdaufseher | `regetskcob/jagdaufseher` (`~/dev/jagdaufseher`) | `lib/theme/` | Karte mit gedämpfter Grundkarte, Reviergrenze im Akzent |
 | Panzergefecht | `regetskcob/wargame` (`~/dev/wargame`) | `lib/src/ui/theme.dart` | Gelände-Neutrale im Dunkeln, Mona Sans Display Expanded, TV (`lib/src/tv/`) und Watch; Spielwelt-Farben gehören dem Spiel |
 | Kalkar Kompakt | `Kalkar-IT-Solutions/kalkar-kompakt` | `lib/theme/` | Produkt `kalkarKompakt` (Backstein), iOS, Android und Web |
+| Gemarkung | `regetskcob/gemarkung` (`~/dev/gemarkung`) | `lib/theme/` | Produkt `gemarkung` (Heide), macOS, Windows, Linux und VS Code (Web im Webview); Serienfarben des Commit-Graphen in `theme/palette.dart` |
 
 ## Referenz: KNX Monitor
 

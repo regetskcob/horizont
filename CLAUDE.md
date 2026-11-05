@@ -1,7 +1,7 @@
 # Horizont – Hinweise für Claude
 
 Horizont ist das Designsystem von regetskcob (Blog) und den Projekten
-**Jagdaufseher**, **KNX Monitor**, **Panzergefecht** und **Kalkar Kompakt**. Dieses Repository ist
+**Jagdaufseher**, **KNX Monitor**, **Panzergefecht**, **Kalkar Kompakt** und **Gemarkung**. Dieses Repository ist
 die einzige Quelle: Tokens, Web-Schicht, Marken, Icons und die Dokumentation
 unter https://www.regetskcob.de/horizont/.
 
@@ -128,7 +128,7 @@ oder Seite schreiben.
   verankert. Sie ist weder Akzent noch Status; der Wert steht immer auch in
   Legende oder Beschriftung. Serienfarben von Diagrammen gehören der App.
 - **Produkte** (`color.product.<id>`, ids `regetskcob`, `jagdaufseher`,
-  `knx`, `panzergefecht`, `kalkar-kompakt`): `accent` (Fläche der Hauptaktion), `on-accent`,
+  `knx`, `panzergefecht`, `kalkar-kompakt`, `gemarkung`): `accent` (Fläche der Hauptaktion), `on-accent`,
   `accent-tint` (Auswahl-Hintergrund), `accent-text` (Text, Links, Linien,
   mindestens 4,5:1).
 
@@ -139,6 +139,7 @@ oder Seite schreiben.
   | KNX Monitor | Bus | #437F18 | #9BD45E |
   | Panzergefecht | Signalgelb | #8F6400 | #FFB300 |
   | Kalkar Kompakt | Backstein | #A2452C | #E8906F |
+  | Gemarkung | Heide | #6A4A8E | #BFA2E4 |
 
 - **Gastgeber** (`color.host.<id>`, bisher `home-assistant`): Läuft ein
   Produkt eingebettet, etwa das KNX-Monitor-Add-on in Home Assistants
@@ -224,7 +225,8 @@ Einrichtungen.
 - **Marke:** eine Linie auf dem unteren Drittel, darauf ein Gegenstand:
   Buche (regetskcob), Kanzel (Jagdaufseher), Busklemme rot/grau auf dem
   grünen Buskabel (KNX Monitor), Panzer in Seitenansicht (Panzergefecht),
-  das Rathaus Kalkar (Kalkar Kompakt).
+  das Rathaus Kalkar (Kalkar Kompakt), ein Wegweiser mit zwei Armen an
+  der Weggabelung (Gemarkung).
   Dazu drei Glyphen ohne App-Icon: das offene Buch für den Blog, die
   Sonne auf der Linie für Horizont und der Prompt `>` leicht über der
   Linie schwebend für Kalkar IT Solutions, die Linie ist sein Cursor; als
@@ -235,7 +237,9 @@ Einrichtungen.
   hat keine eigenen Farben; die Seite nimmt den Akzent Tinte.
   Kalkar Kompakt, die Bürger-App von Kalkar IT, ist seit 0.9.0 ein Produkt
   mit dem Akzent Backstein (entschieden, siehe unten): App-Icon das Rathaus
-  Kalkar auf der Linie, die Glyphe zeichnet es im Strich.
+  Kalkar auf der Linie, die Glyphe zeichnet es im Strich. Gemarkung, der
+  Git-Client für viele Repositories, ist seit 0.11.0 ein Produkt mit dem
+  Akzent Heide (entschieden, siehe unten).
 - **App-Icon:** illustriert (`web/partials/app-icon.html`). Die Bühne ist
   Himmel oben und Boden unten mit einer hellen Horizontlinie bei zwei
   Dritteln. Davor steht ein Gegenstand in drei Tönen mit dunkler Kontur (1,6
@@ -376,6 +380,11 @@ Vom Nutzer entschieden bei der Durchsicht vor v1.0 (28.10.2026):
   `feld/head.html` mit Menü rechts ist entfallen.
 - **Kalkar Kompakt ist ein Produkt** mit eigenem Akzent Backstein (aus dem
   Rathaus Kalkar). Kalkar IT selbst bleibt ohne Akzent (Tinte).
+- **Gemarkung ist ein Produkt** mit dem Akzent Heide (Heidekraut am
+  Niederrhein). Blau wäre naheliegend, ist aber die Datenrampe (Graben),
+  die Gemarkung in Heatmaps nutzt. App-Icon: ein Wegweiser an der
+  Weggabelung der Feldwege, die Arme zeigen auseinander wie Branches
+  (ein Grenzstein war im Entwurf zu nah am Grabstein).
 - **Teaser- und Social-Bilder sind Bilder** wie App-Icons: Schatten und
   Verläufe sind dort erlaubt. Farben, Schrift und Radien kommen trotzdem aus
   den Tokens.
@@ -447,7 +456,8 @@ Nutzer entschieden, nicht von der Sitzung.
   (`regetskcob/jagdaufseher`, App und Web; die Landingpage ist seit
   22.10.2026 offline und das Projekt nicht auf der Flurkarte), Panzergefecht
   (`regetskcob/wargame`, Spiel mit TV und Watch, Landingpage `site/`) und
-  Kalkar Kompakt (`Kalkar-IT-Solutions/kalkar-kompakt`), dazu der Blog
+  Kalkar Kompakt (`Kalkar-IT-Solutions/kalkar-kompakt`), Gemarkung
+  (`regetskcob/gemarkung`, Desktop und VS Code), dazu der Blog
   (`regetskcob/regetskcob.github.io`), die Seite von Kalkar IT
   (`Kalkar-IT-Solutions/landing-page`) und die Vorschau unter `/preview/`
   (`regetskcob/preview`). KNX Monitor ist die Referenz für die anderen Apps.

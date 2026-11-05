@@ -4,6 +4,22 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.11.0
+
+Ein neues Produkt, sonst nichts.
+
+### Neu
+
+- **Gemarkung** (`HorizontProduct.gemarkung`, `color.product.gemarkung`): der Git-Client für viele
+  Repositories, Akzent **Heide** (hell #6A4A8E, dunkel #BFA2E4). App-Icon und Glyphe: ein Wegweiser
+  an der Weggabelung, die Arme zeigen auseinander wie Branches. Plattform-Sätze unter
+  `icons/export/gemarkung/`.
+
+### Heben
+
+- Apps: `ref: v0.11.0`, nichts weiter zu tun.
+- Seiten: `hugo mod get github.com/regetskcob/horizont@v0.11.0`.
+
 ## 0.10.0
 
 Eine zweite Form neben dem Standard, entschieden beim Re-Design von KNX Monitor. Wer nichts
