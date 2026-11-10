@@ -8,7 +8,7 @@
 import 'package:flutter/widgets.dart';
 
 /// Version of the tokens this file was generated from.
-const String horizontTokensVersion = '0.11.0';
+const String horizontTokensVersion = '0.11.1';
 
 /// The neutral colours of one brightness.
 @immutable
@@ -259,9 +259,9 @@ enum HorizontProduct {
       accentText: Color(0xFF7ED399),
     ),
   ),
-  /// KNX Monitor: Busdiagnose, alle Plattformen und Home Assistant.
+  /// Busclear: Busdiagnose, alle Plattformen und Home Assistant.
   knx(
-    displayName: 'KNX Monitor',
+    displayName: 'Busclear',
     accentName: 'Bus',
     light: HzAccent(
       accent: Color(0xFF437F18),

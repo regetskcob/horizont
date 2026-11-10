@@ -90,16 +90,16 @@ gemarkungen:
     text: "Das gemeinsame Designsystem von Blog und Apps: Farben, Schrift, Zeichen und Bausteine für Web und Flutter."
 
   - id: knx
-    name: KNX Monitor
+    name: Busclear
     product: knx
-    site: https://knx-monitor.de
+    site: https://busclear.de
     path: /
     status: Vorschau
     note: Busmonitor & Diagnose
     text: "Zeigt jedes Telegramm auf dem KNX-Bus, ordnet es dem ETS-Projekt zu und prüft die Anlage."
     fields:
       - id: start
-        name: KNX Monitor
+        name: Busclear
         path: /
         note: Busmonitor & Diagnose
         note_en: Bus monitor & diagnostics
@@ -112,8 +112,7 @@ gemarkungen:
         span: [3, 2]
         angle: 0
       - id: box
-        name: KNX-Box
-        name_en: KNX box
+        name: Busclear Box
         path: /box/
         note: Raspberry Pi · Vorschau
         note_en: Raspberry Pi · preview

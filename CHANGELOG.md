@@ -4,6 +4,22 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.11.1
+
+KNX Monitor heißt jetzt Busclear.
+
+### Geändert
+
+- **Flurkarte:** Die Gemarkung `knx` heißt Busclear und liegt auf https://busclear.de, das Feld
+  `box` heißt Busclear Box. Die ID `knx` bleibt, Seiten und Apps müssen nichts umbenennen.
+- **Tokens:** `color.product.knx.name` ist „Busclear“.
+
+### Heben
+
+- Seiten: `hugo mod get github.com/regetskcob/horizont@v0.11.1`, damit die Flurkarte den neuen
+  Namen zeigt.
+- Apps: `ref: v0.11.1`, nichts weiter zu tun.
+
 ## 0.11.0
 
 Ein neues Produkt, sonst nichts.
