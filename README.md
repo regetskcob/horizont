@@ -1,7 +1,7 @@
 # Horizont
 
 Das Designsystem von regetskcob und seinen Projekten Jagdaufseher, KNX Monitor,
-Panzergefecht, Kalkar Kompakt und Gemarkung. Leitbild: minimalistisch wie die
+Panzergefecht, Kalkar Kompakt, Gemarkung und Landbote. Leitbild: minimalistisch wie die
 niederrheinische Feldflur.
 
 Dokumentation und Entwürfe: https://www.regetskcob.de/horizont/
