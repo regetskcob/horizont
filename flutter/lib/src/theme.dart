@@ -569,8 +569,10 @@ ThemeData _soften(ThemeData base, HorizontColors c) {
       style: rounded(base.textButtonTheme.style),
     ),
     cardTheme: base.cardTheme.copyWith(
+      // Quiet outline like fields and buttons; the tinted paper orders.
       shape: card.copyWith(
         borderRadius: const BorderRadius.all(Radius.circular(HzSoft.card)),
+        side: card.side.copyWith(color: c.line),
       ),
     ),
     inputDecorationTheme: input.copyWith(
