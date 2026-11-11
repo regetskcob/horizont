@@ -7,7 +7,7 @@
 {{- $hz := site.Data.horizont -}}
 {{- $tokens := resources.Get "css/horizont/tokens.css" | resources.ExecuteAsTemplate "css/horizont-tokens.css" $hz -}}
 {{- $css := slice $tokens (resources.Get "css/horizont/components.css") (resources.Get "css/site/page.css") | resources.Concat "css/horizont.css" | minify | fingerprint -}}
-{{- $products := slice "regetskcob" "jagdaufseher" "knx" "panzergefecht" "kalkar-kompakt" "gemarkung" -}}
+{{- $products := slice "regetskcob" "jagdaufseher" "knx" "panzergefecht" "kalkar-kompakt" "gemarkung" "landbote" -}}
 {{- /* Products whose favicon is the glyph on its field instead of the app
        icon: only where a product asks for it. Every other product shows in
        the browser tab the icon it has on the home screen. */ -}}
@@ -76,7 +76,7 @@
 <main class="doc-main" id="top">
 
 <section class="doc-hero">
-  <span class="t-kennung hz-kennung">Designsystem · regetskcob · Jagdaufseher · KNX Monitor · Panzergefecht · Kalkar Kompakt · Gemarkung</span>
+  <span class="t-kennung hz-kennung">Designsystem · regetskcob · Jagdaufseher · KNX Monitor · Panzergefecht · Kalkar Kompakt · Gemarkung · Landbote</span>
   <h1 class="t-display">Minimalistisch wie die niederrheinische Feldflur.</h1>
   <p class="t-reading">Weites Land, ein tiefer Horizont, wenige klare Linien: Feldränder, Gräben, eine Reihe Kopfweiden. Dort steht nichts, was nicht hingehört. Nach diesem Bild arbeitet Horizont, die Designsprache für den Blog und drei Produkte, über iOS, Android, macOS, Web, TV und Uhr.</p>
 </section>

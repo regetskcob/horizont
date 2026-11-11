@@ -56,7 +56,7 @@ CHROME = os.environ.get(
 )
 # Kalkar Kompakt is no product of the family (color.mark) but has an app
 # icon, so its set is made like a product's.
-PRODUCTS = ["regetskcob", "jagdaufseher", "knx", "panzergefecht", "kalkar-kompakt", "gemarkung"]
+PRODUCTS = ["regetskcob", "jagdaufseher", "knx", "panzergefecht", "kalkar-kompakt", "gemarkung", "landbote"]
 ANDROID = {"mdpi": 1, "hdpi": 1.5, "xhdpi": 2, "xxhdpi": 3, "xxxhdpi": 4}
 
 

@@ -8,7 +8,7 @@
 import 'package:flutter/widgets.dart';
 
 /// Version of the tokens this file was generated from.
-const String horizontTokensVersion = '0.11.1';
+const String horizontTokensVersion = '0.12.0';
 
 /// The neutral colours of one brightness.
 @immutable
@@ -346,6 +346,23 @@ enum HorizontProduct {
       onAccent: Color(0xFF1A1224),
       accentTint: Color(0xFF251E2E),
       accentText: Color(0xFFCAB1EA),
+    ),
+  ),
+  /// Landbote: RSS-Reader, iOS, macOS und Android.
+  landbote(
+    displayName: 'Landbote',
+    accentName: 'Altrhein',
+    light: HzAccent(
+      accent: Color(0xFF1E6B66),
+      onAccent: Color(0xFFFFFFFF),
+      accentTint: Color(0xFFE2EFED),
+      accentText: Color(0xFF1B6661),
+    ),
+    dark: HzAccent(
+      accent: Color(0xFF6FC7BC),
+      onAccent: Color(0xFF0C1F1D),
+      accentTint: Color(0xFF172826),
+      accentText: Color(0xFF80CFC5),
     ),
   );
 
@@ -1306,4 +1323,76 @@ abstract final class HorizontSymbols {
   static const IconData keyboardArrowRight = IconData(0xe315, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
   /// `socket_schuko`
   static const IconData socketSchuko = IconData(0x100004, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `rss_feed`
+  static const IconData rssFeed = IconData(0xe0e5, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `bookmark`
+  static const IconData bookmark = IconData(0xe8e7, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `bookmark_fill`
+  static const IconData bookmarkFill = IconData(0xfe8e7, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `done_all`
+  static const IconData doneAll = IconData(0xe877, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `mark_email_unread`
+  static const IconData markEmailUnread = IconData(0xf18a, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `article`
+  static const IconData article = IconData(0xef42, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `today`
+  static const IconData today = IconData(0xe8df, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `inbox`
+  static const IconData inbox = IconData(0xe156, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `archive`
+  static const IconData archive = IconData(0xe149, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `filter_alt`
+  static const IconData filterAlt = IconData(0xef4f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `cloud_sync`
+  static const IconData cloudSync = IconData(0xeb5a, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `open_in_browser`
+  static const IconData openInBrowser = IconData(0xe89d, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `text_fields`
+  static const IconData textFields = IconData(0xe262, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `format_size`
+  static const IconData formatSize = IconData(0xe245, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `palette`
+  static const IconData palette = IconData(0xe40a, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `volunteer_activism`
+  static const IconData volunteerActivism = IconData(0xea70, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `view_agenda`
+  static const IconData viewAgenda = IconData(0xe8e9, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `hide_image`
+  static const IconData hideImage = IconData(0xf022, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `rule`
+  static const IconData rule = IconData(0xf1c2, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `folder`
+  static const IconData folder = IconData(0xe2c7, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `add_link`
+  static const IconData addLink = IconData(0xe178, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `travel_explore`
+  static const IconData travelExplore = IconData(0xe2db, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `unfold_less`
+  static const IconData unfoldLess = IconData(0xe5d6, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `vibration`
+  static const IconData vibration = IconData(0xf2cb, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `refresh`
+  static const IconData refresh = IconData(0xe5d5, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `block`
+  static const IconData block = IconData(0xf08c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `auto_awesome`
+  static const IconData autoAwesome = IconData(0xe65f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `contrast`
+  static const IconData contrast = IconData(0xeb37, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `dark_mode`
+  static const IconData darkMode = IconData(0xe51c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `format_line_spacing`
+  static const IconData formatLineSpacing = IconData(0xe240, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `format_align_left`
+  static const IconData formatAlignLeft = IconData(0xe236, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `widgets`
+  static const IconData widgets = IconData(0xe1bd, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `offline_pin`
+  static const IconData offlinePin = IconData(0xe90a, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `wifi_off`
+  static const IconData wifiOff = IconData(0xe648, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `link`
+  static const IconData link = IconData(0xe250, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `timer`
+  static const IconData timer = IconData(0xe425, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
 }

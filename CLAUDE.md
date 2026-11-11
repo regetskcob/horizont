@@ -1,7 +1,7 @@
 # Horizont – Hinweise für Claude
 
 Horizont ist das Designsystem von regetskcob (Blog) und den Projekten
-**Jagdaufseher**, **KNX Monitor**, **Panzergefecht**, **Kalkar Kompakt** und **Gemarkung**. Dieses Repository ist
+**Jagdaufseher**, **KNX Monitor**, **Panzergefecht**, **Kalkar Kompakt**, **Gemarkung** und **Landbote**. Dieses Repository ist
 die einzige Quelle: Tokens, Web-Schicht, Marken, Icons und die Dokumentation
 unter https://www.regetskcob.de/horizont/.
 
@@ -128,7 +128,7 @@ oder Seite schreiben.
   verankert. Sie ist weder Akzent noch Status; der Wert steht immer auch in
   Legende oder Beschriftung. Serienfarben von Diagrammen gehören der App.
 - **Produkte** (`color.product.<id>`, ids `regetskcob`, `jagdaufseher`,
-  `knx`, `panzergefecht`, `kalkar-kompakt`, `gemarkung`): `accent` (Fläche der Hauptaktion), `on-accent`,
+  `knx`, `panzergefecht`, `kalkar-kompakt`, `gemarkung`, `landbote`): `accent` (Fläche der Hauptaktion), `on-accent`,
   `accent-tint` (Auswahl-Hintergrund), `accent-text` (Text, Links, Linien,
   mindestens 4,5:1).
 
@@ -140,6 +140,7 @@ oder Seite schreiben.
   | Panzergefecht | Signalgelb | #8F6400 | #FFB300 |
   | Kalkar Kompakt | Backstein | #A2452C | #E8906F |
   | Gemarkung | Heide | #6A4A8E | #BFA2E4 |
+  | Landbote | Altrhein | #1E6B66 | #6FC7BC |
 
 - **Gastgeber** (`color.host.<id>`, bisher `home-assistant`): Läuft ein
   Produkt eingebettet, etwa das KNX-Monitor-Add-on in Home Assistants
@@ -226,7 +227,8 @@ Einrichtungen.
   Buche (regetskcob), Kanzel (Jagdaufseher), Busklemme rot/grau auf dem
   grünen Buskabel (KNX Monitor), Panzer in Seitenansicht (Panzergefecht),
   das Rathaus Kalkar (Kalkar Kompakt), ein Wegweiser mit zwei Armen an
-  der Weggabelung (Gemarkung).
+  der Weggabelung (Gemarkung), ein Briefkasten auf seinem Pfosten am
+  Feldrand mit gehobener Fahne (Landbote).
   Dazu drei Glyphen ohne App-Icon: das offene Buch für den Blog, die
   Sonne auf der Linie für Horizont und der Prompt `>` leicht über der
   Linie schwebend für Kalkar IT Solutions, die Linie ist sein Cursor; als
@@ -239,7 +241,9 @@ Einrichtungen.
   mit dem Akzent Backstein (entschieden, siehe unten): App-Icon das Rathaus
   Kalkar auf der Linie, die Glyphe zeichnet es im Strich. Gemarkung, der
   Git-Client für viele Repositories, ist seit 0.11.0 ein Produkt mit dem
-  Akzent Heide (entschieden, siehe unten).
+  Akzent Heide (entschieden, siehe unten). Landbote, der RSS-Reader, ist
+  seit 0.12.0 ein Produkt mit dem Akzent Altrhein (entschieden, siehe
+  unten).
 - **App-Icon:** illustriert (`web/partials/app-icon.html`). Die Bühne ist
   Himmel oben und Boden unten mit einer hellen Horizontlinie bei zwei
   Dritteln. Davor steht ein Gegenstand in drei Tönen mit dunkler Kontur (1,6
@@ -385,6 +389,12 @@ Vom Nutzer entschieden bei der Durchsicht vor v1.0 (28.10.2026):
   die Gemarkung in Heatmaps nutzt. App-Icon: ein Wegweiser an der
   Weggabelung der Feldwege, die Arme zeigen auseinander wie Branches
   (ein Grenzstein war im Entwurf zu nah am Grabstein).
+- **Landbote ist ein Produkt** mit dem Akzent Altrhein (entschieden am
+  11.11.2026 für 0.12.0), ein Petrol nach dem stillen Wasser der
+  Altrheinarme. Es bleibt grüner als die blaue Datenrampe (Graben) und
+  blauer als Tanne. App-Icon und Glyphe: ein Briefkasten auf seinem Pfosten
+  am Feldrand, die Fahne gehoben, also neue Post. Ohne Landingpage steht
+  Landbote noch nicht auf der Flurkarte.
 - **Teaser- und Social-Bilder sind Bilder** wie App-Icons: Schatten und
   Verläufe sind dort erlaubt. Farben, Schrift und Radien kommen trotzdem aus
   den Tokens.
@@ -457,7 +467,8 @@ Nutzer entschieden, nicht von der Sitzung.
   22.10.2026 offline und das Projekt nicht auf der Flurkarte), Panzergefecht
   (`regetskcob/wargame`, Spiel mit TV und Watch, Landingpage `site/`) und
   Kalkar Kompakt (`Kalkar-IT-Solutions/kalkar-kompakt`), Gemarkung
-  (`regetskcob/gemarkung`, Desktop und VS Code), dazu der Blog
+  (`regetskcob/gemarkung`, Desktop und VS Code), Landbote
+  (RSS-Reader, iOS, macOS und Android), dazu der Blog
   (`regetskcob/regetskcob.github.io`), die Seite von Kalkar IT
   (`Kalkar-IT-Solutions/landing-page`) und die Vorschau unter `/preview/`
   (`regetskcob/preview`). KNX Monitor ist die Referenz für die anderen Apps.

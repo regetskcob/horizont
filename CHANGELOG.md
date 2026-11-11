@@ -4,6 +4,29 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.12.0
+
+Ein neues Produkt und die Symbole, die es braucht.
+
+### Neu
+
+- **Landbote** (`HorizontProduct.landbote`, `color.product.landbote`): der RSS-Reader für iOS,
+  macOS und Android, Akzent **Altrhein** (hell #1E6B66, dunkel #6FC7BC), ein Petrol nach dem
+  stillen Wasser der Altrheinarme, grüner als die Datenrampe und blauer als Tanne. App-Icon und
+  Glyphe: ein Briefkasten auf seinem Pfosten am Feldrand, die Fahne gehoben (neue Post).
+  Plattform-Sätze unter `icons/export/landbote/`. Ohne Landingpage noch nicht auf der Flurkarte.
+- **Symbole:** `rss_feed`, `bookmark`, gefüllt `bookmark_fill`, `done_all`, `mark_email_unread`,
+  `article`, `today`, `inbox`, `archive`, `filter_alt`, `cloud_sync`, `open_in_browser`,
+  `text_fields`, `format_size`, `palette`, `volunteer_activism`, `view_agenda`, `hide_image`,
+  `rule`, `folder`, `add_link`, `travel_explore`, `unfold_less`, `vibration`, `refresh`, `block`,
+  `auto_awesome`, `contrast`, `dark_mode`, `format_line_spacing`, `format_align_left`, `widgets`,
+  `offline_pin`, `wifi_off`, `link`, `timer`.
+
+### Heben
+
+- Apps: `ref: v0.12.0`, nichts weiter zu tun.
+- Seiten: `hugo mod get github.com/regetskcob/horizont@v0.12.0`.
+
 ## 0.11.1
 
 KNX Monitor heißt jetzt Busclear.
