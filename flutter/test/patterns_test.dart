@@ -8,8 +8,9 @@ Widget _app(
   HorizontDensity? density,
   TargetPlatform? platform,
   HorizontProduct product = HorizontProduct.kalkarKompakt,
+  HorizontStyle style = HorizontStyle.soft,
 }) => MaterialApp(
-  theme: buildHorizontTheme(product, Brightness.light, density: density, platform: platform),
+  theme: buildHorizontTheme(product, Brightness.light, density: density, platform: platform, style: style),
   home: Scaffold(body: child),
 );
 
@@ -96,9 +97,23 @@ void main() {
   });
 
   group('selection', () {
-    testWidgets('a chosen row has the tint and the line at the start', (tester) async {
+    testWidgets('soft: a chosen row has the tint alone', (tester) async {
       final handle = tester.ensureSemantics();
       await tester.pumpWidget(_app(const HorizontSelectable(selected: true, child: Text('Linie 1'))));
+      final ink = tester.widget<Ink>(find.ancestor(of: find.text('Linie 1'), matching: find.byType(Ink)));
+      final decoration = ink.decoration! as BoxDecoration;
+      final colors = HorizontTheme.of(tester.element(find.text('Linie 1'))).colors;
+      expect(decoration.color, colors.accentTint);
+      expect((decoration.border! as BorderDirectional).start, BorderSide.none);
+      expect(tester.getSemantics(find.byType(HorizontSelectable)), isSemantics(isSelected: true));
+      handle.dispose();
+    });
+
+    testWidgets('standard: a chosen row has the tint and the line at the start', (tester) async {
+      final handle = tester.ensureSemantics();
+      await tester.pumpWidget(
+        _app(const HorizontSelectable(selected: true, child: Text('Linie 1')), style: HorizontStyle.standard),
+      );
       final ink = tester.widget<Ink>(find.ancestor(of: find.text('Linie 1'), matching: find.byType(Ink)));
       final decoration = ink.decoration! as BoxDecoration;
       final colors = HorizontTheme.of(tester.element(find.text('Linie 1'))).colors;
@@ -260,30 +275,116 @@ void main() {
     expect(horizontShareSymbol(TargetPlatform.windows), HorizontSymbols.share);
   });
 
-  testWidgets('a bottom selection line keeps the row at its height', (tester) async {
-    await tester.pumpWidget(
-      _app(
-        const Align(
-          alignment: Alignment.topLeft,
-          child: HorizontSelectable(
-            selected: true,
-            edge: HorizontSelectionEdge.bottom,
-            alignment: null,
-            child: Text('Karte'),
+  testWidgets('a bottom selection keeps the row at its height in both styles', (tester) async {
+    for (final style in HorizontStyle.values) {
+      await tester.pumpWidget(
+        _app(
+          const Align(
+            alignment: Alignment.topLeft,
+            child: HorizontSelectable(
+              selected: true,
+              edge: HorizontSelectionEdge.bottom,
+              alignment: null,
+              child: Text('Karte'),
+            ),
+          ),
+          density: HorizontDensity.touch,
+          style: style,
+        ),
+      );
+      final size = tester.getSize(find.byType(HorizontSelectable));
+      expect(size.height, HzSize.touch, reason: style.name);
+      expect(size.width, lessThan(200), reason: 'without alignment it shrink-wraps');
+    }
+  });
+
+  group('sidebar', () {
+    Widget sidebar() => Row(
+      children: [
+        HorizontSidebar(
+          footer: HorizontSidebarItem(icon: HorizontSymbols.settings, label: 'Einstellungen', onTap: () {}),
+          children: [
+            HorizontSidebarItem(icon: HorizontSymbols.today, label: 'Heute', count: '4', selected: true, onTap: () {}),
+            const HorizontSidebarLabel('Quellen', count: 2),
+            HorizontSidebarItem(icon: HorizontSymbols.rssFeed, label: 'regetskcob', indent: 1, onTap: () {}),
+            const HorizontSidebarItem(icon: HorizontSymbols.block, label: 'Gesperrt'),
+          ],
+        ),
+        const Expanded(child: SizedBox()),
+      ],
+    );
+
+    testWidgets('soft: inset rows, the chosen one tinted and rounded, no line', (tester) async {
+      final handle = tester.ensureSemantics();
+      await tester.pumpWidget(_app(sidebar(), density: HorizontDensity.touch));
+      final hz = HorizontTheme.of(tester.element(find.text('Heute')));
+      final chosen = tester.widget<Material>(
+        find.ancestor(of: find.text('Heute'), matching: find.byType(Material)).first,
+      );
+      expect(chosen.color, hz.colors.accentTint);
+      expect(chosen.borderRadius, const BorderRadius.all(Radius.circular(HzSoft.row)));
+      expect(tester.getTopLeft(find.byType(InkWell).first).dx, HzSpace.s8, reason: 'rows are inset');
+      expect(tester.getSize(find.byType(InkWell).first).height, greaterThanOrEqualTo(HzSize.touch));
+      expect(tester.widget<Text>(find.text('Heute')).style!.color, hz.colors.accentText);
+      expect(tester.widget<Text>(find.text('regetskcob')).style!.color, hz.colors.textMuted);
+      expect(tester.widget<Text>(find.text('4')).style!.fontFamily, contains(HzFont.sans));
+      expect(
+        tester.getTopLeft(find.text('regetskcob')).dx,
+        greaterThan(tester.getTopLeft(find.text('Heute')).dx),
+        reason: 'indented one step',
+      );
+      expect(find.text('QUELLEN'), findsOneWidget);
+      expect(find.text(' · 2'), findsOneWidget);
+      expect(tester.getSemantics(find.text('Heute')), isSemantics(isSelected: true, isButton: true));
+      handle.dispose();
+    });
+
+    testWidgets('standard: sunken ground, 2 px at the start of the chosen row', (tester) async {
+      await tester.pumpWidget(_app(sidebar(), style: HorizontStyle.standard));
+      final hz = HorizontTheme.of(tester.element(find.text('Heute')));
+      final ground = tester.widget<Container>(
+        find.descendant(of: find.byType(HorizontSidebar), matching: find.byType(Container)).first,
+      );
+      expect((ground.decoration! as BoxDecoration).color, hz.colors.sunken);
+      final row = tester.widget<Container>(
+        find.ancestor(of: find.text('Heute'), matching: find.byType(Container)).first,
+      );
+      final border = (row.decoration! as BoxDecoration).border! as BorderDirectional;
+      expect(border.start.width, HzLine.selection);
+      expect(border.start.color, hz.colors.accent);
+      expect(tester.widget<Text>(find.text('4')).style!.fontFamily, contains(HzFont.mono));
+    });
+
+    testWidgets('the rail builds on the sidebar', (tester) async {
+      await tester.pumpWidget(
+        _app(
+          Row(
+            children: [
+              HorizontRail(
+                destinations: const [
+                  HorizontDestination(icon: HorizontSymbols.today, label: 'Heute', badge: '4'),
+                  HorizontDestination(icon: HorizontSymbols.archive, label: 'Archiv'),
+                ],
+                selectedIndex: 0,
+                onSelected: (_) {},
+              ),
+            ],
           ),
         ),
-        density: HorizontDensity.touch,
-      ),
-    );
-    final size = tester.getSize(find.byType(HorizontSelectable));
-    expect(size.height, HzSize.touch);
-    expect(size.width, lessThan(200), reason: 'without alignment it shrink-wraps');
+      );
+      expect(find.byType(HorizontSidebar), findsOneWidget);
+      expect(find.byType(HorizontSidebarItem), findsNWidgets(2));
+      expect(find.text('4'), findsOneWidget);
+    });
   });
 
   testWidgets('a folding head is at least the touch target high', (tester) async {
     await tester.pumpWidget(
       _app(
-        Align(alignment: Alignment.topLeft, child: HorizontSectionHeader('Abfall', onToggle: () {})),
+        Align(
+          alignment: Alignment.topLeft,
+          child: HorizontSectionHeader('Abfall', onToggle: () {}),
+        ),
         density: HorizontDensity.touch,
       ),
     );

@@ -208,7 +208,7 @@ class HzSoftColors {
 
   _numbers(out, 'HzSpace', 'Spacing on the 4 grid.', 's', tokens['space'] as Map<String, dynamic>);
   _numbers(out, 'HzRadius', 'Corner radii.', 'r', tokens['radius'] as Map<String, dynamic>);
-  _numbers(out, 'HzSoft', 'The soft style (`HorizontStyle.soft`): radii of the box, cards, controls and sheets, and the size of the bar title.', '', tokens['soft'] as Map<String, dynamic>);
+  _numbers(out, 'HzSoft', 'The soft style (`HorizontStyle.soft`): radii of the box, cards, controls, sidebar rows and sheets, and the size of the bar title.', '', tokens['soft'] as Map<String, dynamic>);
   _numbers(out, 'HzLine', 'Line widths.', '', tokens['line'] as Map<String, dynamic>);
   _numbers(out, 'HzSize', 'Sizes of targets, rows, columns and bars.', '', tokens['size'] as Map<String, dynamic>);
   _numbers(out, 'HzIconSize', 'Icon sizes: in a badge, inline in text, in rows and rails, in bars and buttons, in the tab bar.', '', tokens['icon-size'] as Map<String, dynamic>);

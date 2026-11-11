@@ -17,7 +17,8 @@ enum HorizontSelectionEdge {
 
 /// The selection as Horizont draws it: `accent-tint` behind, 2 px of the
 /// accent at the start (or bottom), never a pill. Unselected the line is
-/// there too, transparent, so rows do not shift when chosen.
+/// there too, transparent, so rows do not shift when chosen. In the soft
+/// [style] the tint alone marks the choice, without the line.
 ///
 /// [selected] goes to screen readers too; the tint is not the only signal.
 ///
@@ -28,7 +29,14 @@ BoxDecoration horizontSelectionDecoration(
   required bool selected,
   HorizontSelectionEdge edge = HorizontSelectionEdge.start,
   BorderSide divider = BorderSide.none,
+  HorizontStyle style = HorizontStyle.standard,
 }) {
+  if (style == HorizontStyle.soft) {
+    return BoxDecoration(
+      color: selected ? colors.accentTint : null,
+      border: BorderDirectional(bottom: divider),
+    );
+  }
   final line = BorderSide(color: selected ? colors.accent : Colors.transparent, width: HzLine.selection);
   return BoxDecoration(
     color: selected ? colors.accentTint : null,
@@ -98,7 +106,9 @@ class HorizontSelectable extends StatelessWidget {
     final full = minHeight ?? (theme.density == HorizontDensity.pointer ? HzSize.rowDense : HzSize.touch);
     // Ink lays the line outside its child: a line at the bottom adds to the
     // height, so the child is that much lower.
-    final height = edge == HorizontSelectionEdge.bottom ? (full - HzLine.selection).clamp(0.0, full) : full;
+    final height = edge == HorizontSelectionEdge.bottom && !theme.soft
+        ? (full - HzLine.selection).clamp(0.0, full)
+        : full;
     return Semantics(
       button: onTap != null,
       selected: selected,
@@ -115,7 +125,7 @@ class HorizontSelectable extends StatelessWidget {
           // Ink, not a plain decoration: the tint lies on the Material, so the
           // ripple (also that of a ListTile inside) shows above it.
           child: Ink(
-            decoration: horizontSelectionDecoration(theme.colors, selected: selected, edge: edge),
+            decoration: horizontSelectionDecoration(theme.colors, selected: selected, edge: edge, style: theme.style),
             child: Container(
               constraints: BoxConstraints(minHeight: height),
               alignment: alignment,

@@ -46,7 +46,8 @@ Es bringt mit:
   `HorizontMetricRow`, `HorizontEmptyHint`, `HorizontTabBar`,
   `HorizontRail`, `HorizontMark` und `HorizontLockup`, seit 0.9.0
   `HorizontFact`, `HorizontTitle`, `HorizontSelectable`,
-  `HorizontPrimaryAction`, `HorizontSheetActions`, dazu
+  `HorizontPrimaryAction`, `HorizontSheetActions`, seit 0.13.0
+  `HorizontSidebar`, `HorizontSidebarLabel` und `HorizontSidebarItem`, dazu
   `horizontDialogAction`, `showHorizontMessage`, `horizontSheetPadding`,
   `horizontSelectionDecoration`, `horizontBackSymbol`, `resolveMotion` und
   `HorizontTheme.of(context).criticalButton` (Muster unten unter
@@ -164,10 +165,19 @@ Panzergefecht ersetzen im Dunkeln die Werte aus `neutralDark` die `n.*`.
 
 ## Weiche Stufe
 
-`buildHorizontTheme(product, brightness, style: HorizontStyle.soft)` wählt die weiche Form, die
-Regeln stehen in `CLAUDE.md`, „Weiche Stufe“. Die Komponenten aus dem Theme folgen von selbst, eigene
-Flächen nehmen `HzSoft.box`, `card` und `control`. `HorizontTheme.of(context).colors` trägt die
-Farben der Stufe. Der Standard bleibt die Vorgabe, die Stufe ist eine Entscheidung je Produkt.
+Seit 0.13.0 ist die weiche Form die Vorgabe in Apps: `buildHorizontTheme(product, brightness)`
+baut sie, `style: HorizontStyle.standard` die schärfere. Die Regeln stehen in `CLAUDE.md`,
+„Weiche Stufe“. Die Komponenten aus dem Theme folgen von selbst, eigene Flächen nehmen
+`HzSoft.box`, `card`, `control` und `row`. `HorizontTheme.of(context)` trägt die Stufe (`style`,
+`soft`) und ihre Farben; was Material nicht themt (Seitenleiste, Auswahl), zeichnet sich danach.
+
+- **Auswahl:** nur die Tönung, ohne die 2-px-Linie. Die Zeile meldet `selected` an den
+  Screenreader; in Leisten kommen Akzenttext und Halbfett dazu.
+- **Zähler:** `HorizontTheme.of(context).count`, Mona Sans mit Tabellenziffern in `text-muted`.
+  Monaspace bleibt für Gemessenes: Werte, Adressen, Zeiten, Hashes.
+- **Seitenleiste:** `HorizontSidebar` auf `surface` mit Haarlinie am Ende, Zeilen 8 eingerückt
+  mit Radius 8 (`HzSoft.row`), Zeilentext in `text-muted`, Gruppentitel in Mona-Sans-Versalien
+  in `text`, kein Lockup im Kopf, der Fuß ohne Linie.
 
 ## ThemeExtension
 
@@ -319,8 +329,9 @@ App nie nachbauen:
   schmaler als 256, rückt der Wert unter den Begriff. Ein Wert mit `onTap`
   zeigt Pfeil bzw. `open_in_new`.
 - **Auswahl:** `HorizontSelectable(selected:, onTap:, edge:, child:)` für
-  Zeilen und Kacheln (Tönung, 2 px am Anfang oder unten); für eigene
-  Container `horizontSelectionDecoration(colors, selected:, edge:)`. Ein
+  Zeilen und Kacheln (Tönung, in der Standardstufe dazu 2 px am Anfang oder
+  unten); für eigene Container `horizontSelectionDecoration(colors,
+  selected:, edge:, style: theme.style)`. Ein
   `ListTile(selected: true)` bekommt aus dem Theme nur die Tönung; für die
   Linie die Kachel in `HorizontSelectable(selected:, padding:
   EdgeInsets.zero, minHeight: 0, child: ListTile(onTap: …))` legen.
@@ -343,6 +354,14 @@ App nie nachbauen:
   l10n.retry, onPressed: …))` für Fehler und fehlende Verbindung.
 - **Abschnitt:** `HorizontSectionHeader(title, count:, trailing:)`;
   einklappbar mit `collapsed:` und `onToggle:`.
+- **Seitenleiste:** `HorizontSidebar(children: […], footer:, header:)` mit
+  `HorizontSidebarLabel(title, count:, trailing:)` als Gruppentitel und
+  `HorizontSidebarItem(icon:, label:, selected:, onTap:, count:, trailing:,
+  indent:, tone:, tooltip:)` als Zeile: 44 hoch auf Touch, 32 mit Zeiger,
+  `onTap: null` sperrt sie, `tone` macht sie leise (`muted`, „4 weitere
+  Werkzeuge“) oder rot (`critical`, Trennen). Der Fuß bleibt stehen, der
+  Rest scrollt. Für eine feste Liste von Zielen genügt `HorizontRail`, das
+  darauf aufbaut. Apps bauen keine eigene Leiste mehr.
 - **Zurück, Mehr, Teilen:** `BackButton()` bzw. `horizontBackSymbol`,
   `horizontMoreSymbol`, `horizontShareSymbol`, nie `Icons.adaptive.*`: Das Theme setzt Zurück, Schließen und Menü
   aus den Horizont-Symbolen (auf iOS und macOS der Winkel).
@@ -355,7 +374,8 @@ App nie nachbauen:
   `MediaQuery.sizeOf(context).width` gegen 600 / 840 / 1200, nie
   `Platform.isIOS` für das Layout.
 - Unter 600: Tab-Bar, eine Spalte, Rand 16. Ab 600: Rand 24, und die Ziele
-  wandern in die Seitenleiste (`HorizontRail`, `HzSize.sidebar` 240).
+  wandern in die Seitenleiste (`HorizontSidebar` bzw. `HorizontRail`,
+  `HzSize.sidebar` 240).
   Ausnahme: Hat ein Bildschirm wenige gleichrangige Ansichten desselben
   Inhalts, bleiben sie unten als Tab-Bar, und das Menü wird zur
   einklappbaren Seitenleiste links (CLAUDE.md, „Ansichten unten, Menü

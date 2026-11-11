@@ -23,16 +23,65 @@ void main() {
   );
 
   group('soft style', () {
+    test('is the default in apps, the extension knows it', () {
+      final soft = buildHorizontTheme(
+        HorizontProduct.landbote,
+        Brightness.light,
+      );
+      expect(soft.extension<HorizontTheme>()!.style, HorizontStyle.soft);
+      expect(soft.extension<HorizontTheme>()!.soft, isTrue);
+      final standard = buildHorizontTheme(
+        HorizontProduct.landbote,
+        Brightness.light,
+        style: HorizontStyle.standard,
+      );
+      expect(
+        standard.extension<HorizontTheme>()!.style,
+        HorizontStyle.standard,
+      );
+    });
+
+    test('counts are Mona Sans with tabular figures, standard keeps Mono', () {
+      HorizontTheme ext(HorizontStyle style) => buildHorizontTheme(
+        HorizontProduct.gemarkung,
+        Brightness.light,
+        style: style,
+      ).extension<HorizontTheme>()!;
+      expect(ext(HorizontStyle.soft).count.fontFamily, contains(HzFont.sans));
+      expect(
+        ext(HorizontStyle.soft).count.fontFeatures,
+        contains(const FontFeature.tabularFigures()),
+      );
+      expect(
+        ext(HorizontStyle.standard).count.fontFamily,
+        contains(HzFont.mono),
+      );
+    });
+
     test('rounds the corners, keeps the standard untouched', () {
       RoundedRectangleBorder card(HorizontStyle style) =>
-          buildHorizontTheme(HorizontProduct.knx, Brightness.light, style: style).cardTheme.shape!
+          buildHorizontTheme(
+                HorizontProduct.knx,
+                Brightness.light,
+                style: style,
+              ).cardTheme.shape!
               as RoundedRectangleBorder;
-      expect(card(HorizontStyle.standard).borderRadius, BorderRadius.circular(HzRadius.r10));
-      expect(card(HorizontStyle.soft).borderRadius, BorderRadius.circular(HzSoft.card));
+      expect(
+        card(HorizontStyle.standard).borderRadius,
+        BorderRadius.circular(HzRadius.r10),
+      );
+      expect(
+        card(HorizontStyle.soft).borderRadius,
+        BorderRadius.circular(HzSoft.card),
+      );
     });
 
     test('the product brings its paper, the extension carries it', () {
-      final theme = buildHorizontTheme(HorizontProduct.knx, Brightness.dark, style: HorizontStyle.soft);
+      final theme = buildHorizontTheme(
+        HorizontProduct.knx,
+        Brightness.dark,
+        style: HorizontStyle.soft,
+      );
       final colors = theme.extension<HorizontTheme>()!.colors;
       expect(colors.bg, HorizontProduct.knx.softDark!.bg);
       expect(colors.surface, HorizontProduct.knx.softDark!.surface);
@@ -51,8 +100,15 @@ void main() {
 
     test('a product without soft colours keeps its own', () {
       expect(
-        HorizontColors.resolve(HorizontProduct.jagdaufseher, Brightness.light, style: HorizontStyle.soft).bg,
-        HorizontColors.resolve(HorizontProduct.jagdaufseher, Brightness.light).bg,
+        HorizontColors.resolve(
+          HorizontProduct.jagdaufseher,
+          Brightness.light,
+          style: HorizontStyle.soft,
+        ).bg,
+        HorizontColors.resolve(
+          HorizontProduct.jagdaufseher,
+          Brightness.light,
+        ).bg,
       );
     });
   });

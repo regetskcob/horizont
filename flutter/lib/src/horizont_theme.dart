@@ -36,6 +36,7 @@ class HorizontTheme extends ThemeExtension<HorizontTheme> {
     required this.reading,
     required this.display,
     required this.field,
+    this.style = HorizontStyle.standard,
   });
 
   /// The theme of [context]. Asserts when the app's ThemeData was not built
@@ -78,6 +79,21 @@ class HorizontTheme extends ThemeExtension<HorizontTheme> {
   /// and `DropdownMenu` (themed) need nothing.
   final TextStyle field;
 
+  /// The form of the surfaces; components that Material does not theme
+  /// (sidebar, selection) draw themselves after it.
+  final HorizontStyle style;
+
+  /// Whether [style] is [HorizontStyle.soft].
+  bool get soft => style == HorizontStyle.soft;
+
+  /// A count next to a label (sidebar row, section head): in the soft
+  /// style Mona Sans with tabular figures, so a number in a menu does not
+  /// read as a measurement; otherwise [data]. Both in `text-muted`.
+  TextStyle get count => soft
+      ? horizontTextStyle(HzType.callout, colors.textMuted)
+          .copyWith(fontFeatures: const [FontFeature.tabularFigures()])
+      : data.copyWith(color: colors.textMuted);
+
   /// Minimum height of a control for [density]: 44 on touch, 28 with a pointer.
   double get controlHeight => density == HorizontDensity.touch ? HzSize.touch : HzSize.controlDesktop;
 
@@ -119,6 +135,7 @@ class HorizontTheme extends ThemeExtension<HorizontTheme> {
     TextStyle? reading,
     TextStyle? display,
     TextStyle? field,
+    HorizontStyle? style,
   }) =>
       HorizontTheme(
         product: product ?? this.product,
@@ -130,10 +147,11 @@ class HorizontTheme extends ThemeExtension<HorizontTheme> {
         reading: reading ?? this.reading,
         display: display ?? this.display,
         field: field ?? this.field,
+        style: style ?? this.style,
       );
 
-  /// Colours and text styles interpolate; product, brightness and density
-  /// are not interpolable and snap at the midpoint.
+  /// Colours and text styles interpolate; product, brightness, density and
+  /// style are not interpolable and snap at the midpoint.
   @override
   HorizontTheme lerp(covariant HorizontTheme? other, double t) {
     if (other == null) return this;
@@ -148,6 +166,7 @@ class HorizontTheme extends ThemeExtension<HorizontTheme> {
       reading: TextStyle.lerp(reading, other.reading, t)!,
       display: TextStyle.lerp(display, other.display, t)!,
       field: TextStyle.lerp(field, other.field, t)!,
+      style: snap.style,
     );
   }
 }

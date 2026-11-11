@@ -24,8 +24,10 @@ import 'tokens.g.dart';
 /// neutrals are the host's so the product sits calmly in its frame; accent,
 /// status, type and lines stay Horizont.
 ///
-/// The soft [style] rounds the corners and quiets the outlines, see
-/// [HorizontStyle]; [standard](HorizontStyle.standard) is the default.
+/// The [style] is [soft](HorizontStyle.soft) by default since 0.13.0:
+/// rounder corners, quiet outlines, Kennung in Mona Sans. Pass
+/// [standard](HorizontStyle.standard) for the sharper form, see
+/// [HorizontStyle].
 ///
 /// Build it once per brightness at the composition root:
 ///
@@ -42,7 +44,7 @@ ThemeData buildHorizontTheme(
   HorizontDensity? density,
   TargetPlatform? platform,
   HorizontHost? host,
-  HorizontStyle style = HorizontStyle.standard,
+  HorizontStyle style = HorizontStyle.soft,
 }) {
   final target = platform ?? defaultTargetPlatform;
   final resolvedDensity = density ?? HorizontDensity.forPlatform(target);
@@ -230,6 +232,7 @@ ThemeData buildHorizontTheme(
         reading: t(HzType.reading),
         display: t(HzType.display),
         field: fieldText,
+        style: style,
       ),
     ],
     appBarTheme: AppBarTheme(

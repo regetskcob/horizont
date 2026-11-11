@@ -4,6 +4,47 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.13.0
+
+Die weiche Stufe wird die Vorgabe in Apps, und die Seitenleiste kommt ins Paket. Vorbild ist
+Busclear (früher KNX Monitor), das damit ruhiger und weniger technisch wirkt.
+
+### Neu
+
+- **`HorizontSidebar`** mit `HorizontSidebarLabel` (Gruppentitel mit Zähler und Aktionen) und
+  `HorizontSidebarItem` (Symbol, Wort, Zähler, Schalter oder Badge, Einzug, leise oder kritisch,
+  Tooltip; 44 hoch auf Touch, 32 mit Zeiger). Fester Fuß, der Rest scrollt. Sie ersetzt die
+  Leisten, die Busclear, Landbote und Gemarkung je selbst gebaut haben.
+- **`HorizontTheme.style`** und `soft`: Komponenten, die Material nicht themt, zeichnen sich nach
+  der Stufe.
+- **`HorizontTheme.count`:** der Stil für Zähler neben einem Wort, weich in Mona Sans mit
+  Tabellenziffern, sonst `data`.
+- **Token `soft.row`** (8, `HzSoft.row`): Radius einer Zeile in der Seitenleiste.
+
+### Geändert
+
+- **`buildHorizontTheme` baut die weiche Stufe ohne Angabe** (`style: HorizontStyle.soft`).
+  Radien 16/14/12/22, Umrisse in `line`, Kennung in Mona Sans, Seitentitel 22 fett, keine Linie
+  unter dem Kopf. Webseiten bleiben in der Standardstufe.
+- **Auswahl in der weichen Stufe nur als Tönung:** `HorizontSelectable` und
+  `horizontSelectionDecoration(…, style:)` lassen dort die 2-px-Linie weg.
+- **`HorizontRail` baut auf `HorizontSidebar`:** weich mit eingerückten, gerundeten Zeilen auf
+  `surface`, in der Standardstufe wie bisher auf `sunken` mit der Linie am Anfang. Die Ziele
+  scrollen jetzt, wenn sie nicht passen.
+
+### Heben
+
+- Apps: `ref: v0.13.0`. Wer die bisherige Form behalten will, gibt
+  `style: HorizontStyle.standard` an; das gilt dann für Theme, Auswahl und Seitenleiste.
+- Eigene Seitenleisten durch `HorizontSidebar` ersetzen: Busclear (`more_menu.dart`, `_SideRow`
+  und `_SideLabel`), Landbote (`shell.dart`, `Sidebar`), Gemarkung (`sidebar.dart`). Busclear
+  wählt die weiche Stufe heute ausdrücklich und kann die Angabe streichen.
+- Zähler mit `HorizontTheme.of(context).count` statt `data` setzen.
+- Eigene Auswahl-Container geben `style: theme.style` an `horizontSelectionDecoration`.
+- Goldens neu erzeugen: Radien, Umrisse und Kennungen ändern sich überall, wo die App bisher die
+  Standardstufe hatte.
+- Seiten: nichts zu tun.
+
 ## 0.12.1
 
 Horizont baut mit aktuellem Hugo.

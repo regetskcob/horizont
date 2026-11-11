@@ -2,14 +2,17 @@ import 'package:flutter/widgets.dart';
 
 import 'tokens.g.dart';
 
-/// The form of a product's surfaces. Every product uses [standard] unless it
-/// decided otherwise; the rules are in CLAUDE.md, „Weiche Stufe“.
+/// The form of a product's surfaces in an app. Since 0.13.0 apps use [soft]
+/// unless they pass [standard]; web pages stay standard. The rules are in
+/// CLAUDE.md, „Weiche Stufe“.
 enum HorizontStyle {
-  /// Radii 6 and 10, one outline in `line-strong`, Kennung in Mono.
+  /// Radii 6 and 10, one outline in `line-strong`, Kennung in Mono, the
+  /// selection as a 2 px line.
   standard,
 
-  /// Rounder corners, quiet outlines and, where the product has them, its own
-  /// tinted paper. Hierarchy comes from the tinted paper, not from lines.
+  /// The default in apps: rounder corners, quiet outlines and, where the
+  /// product has them, its own tinted paper; the selection is the tint
+  /// alone. Hierarchy comes from the paper, not from lines.
   soft,
 }
 
