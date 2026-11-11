@@ -82,19 +82,24 @@ void main() {
     });
   }
 
-  // From 600 the rail replaces the tab bar and the FAB carries its word.
-  const name = 'knx_light_tablet';
-  testWidgets(name, (tester) async {
-    tester.view.physicalSize = const Size(820, 1180);
-    tester.view.devicePixelRatio = 1;
-    addTearDown(tester.view.reset);
-    await tester.pumpWidget(
-      MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: buildHorizontTheme(HorizontProduct.knx, Brightness.light),
-        home: const Showcase(),
-      ),
-    );
-    await expectLater(find.byType(Showcase), matchesGoldenFile('goldens/$name.png'));
-  });
+  // From 600 the rail replaces the tab bar and the FAB carries its word; in
+  // the soft style (the default) and once in the standard one.
+  for (final (style, name) in [
+    (HorizontStyle.soft, 'knx_light_tablet'),
+    (HorizontStyle.standard, 'knx_light_tablet_standard'),
+  ]) {
+    testWidgets(name, (tester) async {
+      tester.view.physicalSize = const Size(820, 1180);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.reset);
+      await tester.pumpWidget(
+        MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: buildHorizontTheme(HorizontProduct.knx, Brightness.light, style: style),
+          home: const Showcase(),
+        ),
+      );
+      await expectLater(find.byType(Showcase), matchesGoldenFile('goldens/$name.png'));
+    });
+  }
 }

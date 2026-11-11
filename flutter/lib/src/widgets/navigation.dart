@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../horizont_theme.dart';
 import '../tokens.g.dart';
+import 'kennung.dart';
 
 /// One destination of a [HorizontTabBar] or [HorizontRail].
 @immutable
@@ -160,10 +161,11 @@ class _Tab extends StatelessWidget {
   }
 }
 
-/// The side navigation of Horizont from 600 wide: optional [header] (e.g. a
-/// Kennung and the district's name), destinations with the selected one
-/// marked by a 2 px line at the start and the accent tint, and an optional
-/// [footer] (e.g. the key figures).
+/// The side navigation of Horizont from 600 wide for a fixed list of
+/// [destinations]: optional [header] (e.g. a Kennung and the district's
+/// name), the destinations as [HorizontSidebarItem]s and an optional [footer]
+/// (e.g. the key figures). For groups, counts or switches build a
+/// [HorizontSidebar] directly.
 class HorizontRail extends StatelessWidget {
   /// Creates a side navigation.
   const HorizontRail({
@@ -195,43 +197,198 @@ class HorizontRail extends StatelessWidget {
   final double width;
 
   @override
+  Widget build(BuildContext context) => HorizontSidebar(
+    header: header,
+    footer: footer,
+    width: width,
+    children: [
+      for (var i = 0; i < destinations.length; i++)
+        HorizontSidebarItem(
+          icon: destinations[i].icon,
+          label: destinations[i].label,
+          count: destinations[i].badge,
+          selected: i == selectedIndex,
+          onTap: () => onSelected(i),
+        ),
+    ],
+  );
+}
+
+/// The sidebar of an app from 600 wide: an optional [header], the
+/// [children] (usually [HorizontSidebarItem]s, grouped under
+/// [HorizontSidebarLabel]s) scrolling, and a [footer] fixed at the foot
+/// (a switch like the expert mode, actions like „Add source“).
+///
+/// It draws itself after the theme's style. Soft (the default): on the
+/// paper of the page's surface with a hairline at the end, rows inset with
+/// rounded corners, the chosen one on `accent-tint` without a line, quiet
+/// rows in `text-muted`. Standard: on `sunken`, rows across the full width,
+/// the chosen one with 2 px of the accent at the start.
+///
+/// ```dart
+/// HorizontSidebar(
+///   children: [
+///     HorizontSidebarItem(icon: HorizontSymbols.today, label: 'Heute', count: '4', selected: true, onTap: …),
+///     const HorizontSidebarLabel('Quellen', count: 2),
+///     HorizontSidebarItem(icon: HorizontSymbols.rssFeed, label: 'regetskcob', onTap: …),
+///   ],
+///   footer: HorizontSidebarItem(icon: HorizontSymbols.settings, label: 'Einstellungen', onTap: …),
+/// )
+/// ```
+class HorizontSidebar extends StatelessWidget {
+  /// Creates a sidebar.
+  const HorizontSidebar({
+    required this.children,
+    this.header,
+    this.footer,
+    this.width = HzSize.sidebar,
+    super.key,
+  });
+
+  /// Rows and group labels, top to bottom; they scroll.
+  final List<Widget> children;
+
+  /// Shown above the rows, e.g. a `HorizontLockup`; most apps need none.
+  final Widget? header;
+
+  /// Fixed at the foot, outside the scrolling rows.
+  final Widget? footer;
+
+  /// Width: [HzSize.sidebar] 240, with a pointer down to [HzSize.rail].
+  final double width;
+
+  @override
   Widget build(BuildContext context) {
     final theme = HorizontTheme.of(context);
     final c = theme.colors;
+    final soft = theme.soft;
+    // Soft rows are inset from both edges; standard rows span the width.
+    final inset = soft ? HzSpace.s8 : 0.0;
     return Container(
       width: width,
       decoration: BoxDecoration(
-        color: c.sunken,
+        color: soft ? c.surface : c.sunken,
         border: BorderDirectional(
           end: BorderSide(color: c.line, width: HzLine.hairline),
         ),
       ),
-      child: SafeArea(
-        right: false,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            if (header != null)
-              Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  HzSpace.s16,
-                  HzSpace.s16,
-                  HzSpace.s16,
-                  HzSpace.s12,
+      // Own Material: the sidebar often sits next to a Scaffold, not in one,
+      // and its texts and ink need a Material ancestor.
+      child: Material(
+        type: MaterialType.transparency,
+        child: SafeArea(
+          right: false,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              if (header != null)
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    HzSpace.s16,
+                    HzSpace.s16,
+                    HzSpace.s16,
+                    HzSpace.s8,
+                  ),
+                  child: header,
                 ),
-                child: header,
+              Expanded(
+                child: ListView(
+                  padding: EdgeInsets.fromLTRB(
+                    inset,
+                    HzSpace.s8,
+                    inset,
+                    HzSpace.s16,
+                  ),
+                  children: children,
+                ),
               ),
-            for (var i = 0; i < destinations.length; i++)
-              _RailItem(
-                destination: destinations[i],
-                selected: i == selectedIndex,
-                height: theme.density == HorizontDensity.touch
-                    ? HzSize.touch
-                    : 32,
-                onTap: () => onSelected(i),
+              if (footer != null)
+                DecoratedBox(
+                  // Standard sets the foot off with a hairline; soft leaves
+                  // it on the same paper, white space separates.
+                  decoration: BoxDecoration(
+                    border: soft
+                        ? null
+                        : Border(
+                            top: BorderSide(
+                              color: c.line,
+                              width: HzLine.hairline,
+                            ),
+                          ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(
+                      inset,
+                      soft ? 0 : HzSpace.s4,
+                      inset,
+                      HzSpace.s8,
+                    ),
+                    child: footer,
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The heading of a group in a [HorizontSidebar], with an optional [count]
+/// (`QUELLEN · 2`) and [trailing] quiet actions (a `TextButton` „Alle“).
+/// Soft: capitals in Mona Sans in `text`, standard: a [Kennung].
+class HorizontSidebarLabel extends StatelessWidget {
+  /// Creates a group heading.
+  const HorizontSidebarLabel(
+    this.title, {
+    this.count,
+    this.trailing,
+    super.key,
+  });
+
+  /// The title, in normal case.
+  final String title;
+
+  /// An optional count after the title.
+  final int? count;
+
+  /// Quiet actions at the end.
+  final Widget? trailing;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = HorizontTheme.of(context);
+    final soft = theme.soft;
+    return Padding(
+      padding: soft
+          ? const EdgeInsets.fromLTRB(
+              HzSpace.s8,
+              HzSpace.s24,
+              HzSpace.s8,
+              HzSpace.s4,
+            )
+          : const EdgeInsets.fromLTRB(
+              HzSpace.s16,
+              HzSpace.s24,
+              HzSpace.s16,
+              HzSpace.s8,
+            ),
+      child: Semantics(
+        header: true,
+        child: Row(
+          children: [
+            Expanded(
+              child: Align(
+                alignment: AlignmentDirectional.centerStart,
+                child: Kennung(
+                  title,
+                  count: count,
+                  oneLine: true,
+                  color: soft ? theme.colors.text : null,
+                ),
               ),
-            const Spacer(),
-            if (footer != null) footer!,
+            ),
+            ?trailing,
           ],
         ),
       ),
@@ -239,38 +396,98 @@ class HorizontRail extends StatelessWidget {
   }
 }
 
-class _RailItem extends StatelessWidget {
-  const _RailItem({
-    required this.destination,
-    required this.selected,
-    required this.height,
-    required this.onTap,
+/// How loud a [HorizontSidebarItem] is.
+enum HorizontSidebarTone {
+  /// A destination or tool.
+  normal,
+
+  /// A hint that there is more („4 more tools in expert mode“).
+  muted,
+
+  /// An action that removes or disconnects, in `critical`.
+  critical,
+}
+
+/// One row of a [HorizontSidebar]: icon 18, the label, an optional [count]
+/// and [trailing] widget (a switch, a tier badge). [selected] marks the open
+/// place: soft as `accent-tint` behind the row with icon and label in
+/// `accent-text`, semibold; standard with the 2 px line at the start. Rows
+/// are 44 high on touch and 32 with a pointer.
+class HorizontSidebarItem extends StatelessWidget {
+  /// Creates a sidebar row.
+  const HorizontSidebarItem({
+    required this.icon,
+    required this.label,
+    this.onTap,
+    this.selected = false,
+    this.count,
+    this.trailing,
+    this.indent = 0,
+    this.tone = HorizontSidebarTone.normal,
+    this.tooltip,
+    super.key,
   });
 
-  final HorizontDestination destination;
+  /// The icon, usually one of `HorizontSymbols`.
+  final IconData icon;
+
+  /// The label, always shown.
+  final String label;
+
+  /// Opens the place or runs the action; null disables the row.
+  final VoidCallback? onTap;
+
+  /// Whether this is the open place.
   final bool selected;
-  final double height;
-  final VoidCallback onTap;
+
+  /// A count or short value after the label (unread articles, changes).
+  final String? count;
+
+  /// A widget at the end, e.g. `Switch.adaptive` or a badge.
+  final Widget? trailing;
+
+  /// Nesting depth: each step moves the row in by 16 (a feed in a folder).
+  final int indent;
+
+  /// How loud the row is.
+  final HorizontSidebarTone tone;
+
+  /// A longer explanation on hover and long press.
+  final String? tooltip;
 
   @override
   Widget build(BuildContext context) {
     final theme = HorizontTheme.of(context);
     final c = theme.colors;
-    final fg = selected ? c.text : c.textMuted;
-    return Semantics(
-      selected: selected,
-      button: true,
-      child: Material(
-        color: selected ? c.accentTint : Colors.transparent,
-        child: InkWell(
-          onTap: onTap,
-          child: Container(
-            height: height,
-            padding: const EdgeInsetsDirectional.only(
-              start: HzSpace.s16,
-              end: HzSpace.s12,
-            ),
-            decoration: BoxDecoration(
+    final soft = theme.soft;
+    final enabled = onTap != null;
+    final Color fg;
+    if (!enabled || tone == HorizontSidebarTone.muted) {
+      fg = c.textFaint;
+    } else if (tone == HorizontSidebarTone.critical) {
+      fg = c.critical;
+    } else if (selected) {
+      fg = soft ? c.accentText : c.text;
+    } else {
+      fg = c.textMuted;
+    }
+    final height = theme.density == HorizontDensity.touch
+        ? HzSize.touch
+        : HzSpace.s32;
+    final start = (soft ? HzSpace.s8 : HzSpace.s16) + indent * HzSpace.s16;
+    final labelStyle = horizontTextStyle(
+      HzType.callout,
+      fg,
+    ).copyWith(fontWeight: soft && selected ? FontWeight.w600 : null);
+    final content = Container(
+      constraints: BoxConstraints(minHeight: height),
+      padding: EdgeInsetsDirectional.only(
+        start: start,
+        end: soft ? HzSpace.s8 : HzSpace.s12,
+      ),
+      decoration: soft
+          ? null
+          : BoxDecoration(
               border: BorderDirectional(
                 start: BorderSide(
                   color: selected ? c.accent : Colors.transparent,
@@ -278,29 +495,34 @@ class _RailItem extends StatelessWidget {
                 ),
               ),
             ),
-            child: Row(
-              children: [
-                Icon(destination.icon, size: HzIconSize.row, color: fg),
-                const SizedBox(width: HzSpace.s8),
-                Expanded(
-                  child: Text(
-                    destination.label,
-                    style: horizontTextStyle(HzType.callout, fg),
-                  ),
-                ),
-                if (destination.badge != null)
-                  Text(
-                    destination.badge!,
-                    style: theme.data.copyWith(
-                      fontSize: HzType.kennung.size,
-                      color: c.textMuted,
-                    ),
-                  ),
-              ],
-            ),
-          ),
-        ),
+      child: Row(
+        children: [
+          Icon(icon, size: HzIconSize.row, color: fg),
+          const SizedBox(width: HzSpace.s8),
+          Expanded(child: Text(label, style: labelStyle)),
+          if (count != null) ...[
+            const SizedBox(width: HzSpace.s8),
+            Text(count!, style: theme.count),
+          ],
+          if (trailing != null) ...[
+            const SizedBox(width: HzSpace.s8),
+            trailing!,
+          ],
+        ],
       ),
     );
+    final row = Semantics(
+      selected: selected,
+      button: enabled,
+      child: Material(
+        color: selected ? c.accentTint : Colors.transparent,
+        borderRadius: soft
+            ? const BorderRadius.all(Radius.circular(HzSoft.row))
+            : null,
+        clipBehavior: soft ? Clip.antiAlias : Clip.none,
+        child: InkWell(onTap: onTap, child: content),
+      ),
+    );
+    return tooltip == null ? row : Tooltip(message: tooltip, child: row);
   }
 }

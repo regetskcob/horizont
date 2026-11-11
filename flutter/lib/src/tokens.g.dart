@@ -8,7 +8,7 @@
 import 'package:flutter/widgets.dart';
 
 /// Version of the tokens this file was generated from.
-const String horizontTokensVersion = '0.12.1';
+const String horizontTokensVersion = '0.13.0';
 
 /// The neutral colours of one brightness.
 @immutable
@@ -478,7 +478,7 @@ abstract final class HzRadius {
   static const double r16 = 16.0;
 }
 
-/// The soft style (`HorizontStyle.soft`): radii of the box, cards, controls and sheets, and the size of the bar title.
+/// The soft style (`HorizontStyle.soft`): radii of the box, cards, controls, sidebar rows and sheets, and the size of the bar title.
 abstract final class HzSoft {
   /// 16
   static const double box = 16.0;
@@ -486,6 +486,8 @@ abstract final class HzSoft {
   static const double card = 14.0;
   /// 12
   static const double control = 12.0;
+  /// 8
+  static const double row = 8.0;
   /// 22
   static const double sheet = 22.0;
   /// 22

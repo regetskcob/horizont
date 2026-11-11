@@ -74,7 +74,8 @@ wird daher für alle Formfaktoren mitgedacht, nicht nur für das Telefon.
   Title (entschieden, siehe unten).
 - **Auswahl ist eine Linie:** 2 px im Akzent, unter dem aktiven Tab, links
   an der gewählten Zeile, unten im Segment. Nie eine Pille als Indikator.
-  Ein Tint (`accent-tint`) darf dazukommen. Ausnahme Tab-Bar unten: dort
+  Ein Tint (`accent-tint`) darf dazukommen. In Apps (weiche Stufe, seit
+  0.13.0) ist die Auswahl nur die Tönung, siehe „Weiche Stufe“. Ausnahme Tab-Bar unten: dort
   liegt das gewählte Ziel auf `accent-tint` (Radius 6, die Tönung umschließt
   Icon und Wort), das Icon 24 in `accent-text`, das Wort halbfett in `text`,
   ohne Linie (entschieden, siehe unten).
@@ -339,7 +340,8 @@ stehen in [docs/flutter.md](docs/flutter.md), „Referenz: KNX Monitor“.
   AppBar statt als eigene Zeile darunter.
 - **Das Menü heißt „Menü“**, nicht „…“ oder „Mehr“.
 - **Expertenmodus statt Einstellungsseite für Fachfunktionen.** Ein Schalter,
-  fest am Fuß des Menüs (eigene Fläche `sunken` mit Haarlinie oben) und auf
+  fest am Fuß des Menüs (in der Standardstufe auf eigener Fläche `sunken`
+  mit Haarlinie oben, in der weichen ohne) und auf
   dem Startbildschirm. Ohne ihn sieht man nur die Alltagswerkzeuge in einer
   Gruppe „Werkzeuge“. Was Expertenmodus ist, legt die App fest und schreibt
   es in ihr README.
@@ -352,7 +354,8 @@ stehen in [docs/flutter.md](docs/flutter.md), „Referenz: KNX Monitor“.
   `destructive` (`horizontDialogAction(…, destructive: true)`).
 - **Auswahl auf Karten:** Eine gewählte Karte trägt 2 px Akzent als Umriss
   und `accent-tint` als Fläche, dazu ein Häkchen oben rechts. Das ist die
-  „Auswahl ist eine Linie“ für Karten, keine Ausnahme.
+  „Auswahl ist eine Linie“ für Karten, keine Ausnahme. In der weichen Stufe
+  tragen Tönung und Häkchen die Auswahl, ohne den Rahmen.
 - **Datenlisten nutzen die Seitenbreite.** `HzSize.textColumn` (720) gilt für
   Text, den man liest. Listen von Daten (Aufnahmen, Prüfergebnisse) gehen auf
   dem Tablet bis `HzSize.page` (1120), sonst bleibt rechts und links zu viel
@@ -362,18 +365,30 @@ stehen in [docs/flutter.md](docs/flutter.md), „Referenz: KNX Monitor“.
   Schwarz, vorgeflacht als PNG. Der Flutter-Splash danach nimmt dieselben
   Werte, sonst springt die Farbe beim Übergang.
 
-## Weiche Stufe (0.10.0)
+## Weiche Stufe (0.10.0, Vorgabe in Apps seit 0.13.0)
 
-Vom Nutzer entschieden beim Re-Design von KNX Monitor (2.11.2026). Der Standard bleibt für alle
-Produkte gültig; ein Produkt wählt die Stufe ausdrücklich mit `style: HorizontStyle.soft`. Bisher
-nur KNX Monitor, und nur in Flutter.
+Vom Nutzer entschieden beim Re-Design von KNX Monitor (2.11.2026), damals als Wahl je Produkt.
+Am 11.11.2026 hat der Nutzer sie zur Vorgabe aller Apps gemacht: Busclear (früher KNX Monitor)
+wirkte damit ruhiger und weniger technisch als Landbote und Gemarkung. `buildHorizontTheme` baut
+sie ohne Angabe, `style: HorizontStyle.standard` die schärfere Form. Webseiten, Landingpages und
+die Doku bleiben in der Standardstufe; die weiche Stufe gibt es nur in Flutter.
 
-- **Radien aus `soft`:** Box 16, Karte 14, Bedienelement 12, Sheet 22. Sie ersetzen 6, 10 und 16.
+- **Radien aus `soft`:** Box 16, Karte 14, Bedienelement 12, Zeile der Seitenleiste 8, Sheet 22.
+  Sie ersetzen 6, 10 und 16.
 - **Pillen-Chips** statt Radius 2, Auswahl als Tönung.
 - **Umrisse in `line`** statt `line-strong`, die Ordnung kommt vom getönten Grund. Der Fokus bleibt
   2 px im Akzent. Diese Abweichung nimmt in Kauf, dass Felder und Knöpfe die 3:1 aus WCAG 1.4.11
   nicht über den Umriss erreichen.
 - **Kennung in Mona Sans,** Seitentitel 22 fett, keine Linie unter dem Kopf.
+- **Auswahl als Tönung** ohne die 2-px-Linie, in Listen wie in der Seitenleiste. Der Zustand geht
+  als `selected` an den Screenreader; in der Seitenleiste stehen Symbol und Wort dazu in
+  `accent-text` und halbfett.
+- **Zähler in Mona Sans** mit Tabellenziffern (`HorizontTheme.count`). Monaspace bleibt für das,
+  was gemessen wird: Werte, Adressen, Zeiten, Hashes.
+- **Seitenleiste nach Busclear** (`HorizontSidebar`): auf `surface` mit Haarlinie, Zeilen
+  eingerückt mit Radius 8, ruhige Zeilen in `text-muted`, Gruppentitel in Mona-Sans-Versalien,
+  ohne Lockup im Kopf, der Fuß (etwa der Expertenmodus) ohne eigene Fläche. Zeilen bleiben 44 hoch
+  auf Touch (Busclear hatte 38), 32 mit Zeiger.
 - **Eigene Farben** nur als Token (`color.product.<id>.soft`). Ein Gastgeber behält seine Neutralen.
 
 ## Entscheidungen für 0.9.0
