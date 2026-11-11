@@ -22,7 +22,7 @@ description = 'Horizont, das Designsystem von regetskcob und seinen Projekten Ja
   [[module.mounts]]
     source = 'icons'
     target = 'data/horizont_icons'
-    includeFiles = ['*.json']
+    files = ['*.json']
   [[module.mounts]]
     source = 'web/shortcodes'
     target = 'layouts/_shortcodes'
