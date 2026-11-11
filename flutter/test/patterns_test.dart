@@ -340,4 +340,9 @@ void main() {
     expect(HorizontProduct.gemarkung.accentName, 'Heide');
     expect(HorizontProduct.gemarkung.light.accent, const Color(0xFF6A4A8E));
   });
+
+  test('Landbote is a product with the accent Altrhein', () {
+    expect(HorizontProduct.landbote.accentName, 'Altrhein');
+    expect(HorizontProduct.landbote.light.accent, const Color(0xFF1E6B66));
+  });
 }

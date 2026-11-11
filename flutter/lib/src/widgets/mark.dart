@@ -5,7 +5,8 @@ import '../horizont_theme.dart';
 import '../tokens.g.dart';
 
 /// The glyph of a product: the horizon on the lower third with its one
-/// object (beech, raised hide, bus terminal, tank). Stroke 7 of 100, square
+/// object (beech, raised hide, bus terminal, tank, town hall, signpost,
+/// mailbox). Stroke 7 of 100, square
 /// caps. Its baseline is the horizon, so in a `Row` with
 /// `CrossAxisAlignment.baseline` it sits on the text's baseline.
 class HorizontMark extends StatelessWidget {
@@ -108,13 +109,16 @@ class _MarkPainter extends CustomPainter {
   }
 
   /// Lines drawn at half the stroke: the tower of the town hall, set off
-  /// from the walls down to the ground.
+  /// from the walls down to the ground, and the door seam of the mailbox.
   static Path? _thin(HorizontProduct product) => switch (product) {
     HorizontProduct.kalkarKompakt => Path()
       ..moveTo(43, 26)
       ..lineTo(43, 66.7)
       ..moveTo(57, 26)
       ..lineTo(57, 66.7),
+    HorizontProduct.landbote => Path()
+      ..moveTo(32, 31)
+      ..lineTo(32, 43),
     _ => null,
   };
 
@@ -168,6 +172,20 @@ class _MarkPainter extends CustomPainter {
         line(50, 66.7, 50, 22);
         poly([50, 28, 70, 28, 75, 33, 70, 38, 50, 38]);
         poly([50, 44, 30, 44, 25, 49, 30, 54, 50, 54]);
+      case HorizontProduct.landbote:
+        // The mailbox on its post, the flag raised as one bar.
+        line(4, 66.7, 96, 66.7);
+        line(50, 66.7, 50, 46);
+        p
+          ..moveTo(22, 46)
+          ..lineTo(22, 37)
+          ..arcToPoint(const Offset(31, 28), radius: const Radius.circular(9))
+          ..lineTo(65, 28)
+          ..arcToPoint(const Offset(74, 37), radius: const Radius.circular(9))
+          ..lineTo(74, 46)
+          ..close();
+        line(66, 28, 66, 13.5);
+        line(66, 13.5, 76, 13.5);
     }
     return p;
   }

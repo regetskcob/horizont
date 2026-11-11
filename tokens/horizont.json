@@ -1,6 +1,6 @@
 {
   "_comment": "Horizont, das Designsystem von regetskcob und seinen Projekten. Einzige Quelle der Tokens: die Dokumentation (site/layouts/home.html) und die CSS-Schicht (web/css/tokens.css) lesen sie hier, Generatoren fuer Flutter und Swift sollen es ebenso tun. Farben je light und dark, beide von Hand gesetzt, nie aus einem Seed abgeleitet.",
-  "version": "0.11.1",
+  "version": "0.12.0",
   "color": {
     "neutral": {
       "light": {
@@ -284,6 +284,45 @@
             "mid": "#C79C63",
             "dark": "#8C6638",
             "carve": "#4A3F33"
+          }
+        }
+      },
+      "landbote": {
+        "name": "Landbote",
+        "role": "RSS-Reader, iOS, macOS und Android",
+        "accentName": "Altrhein",
+        "light": {
+          "accent": "#1E6B66",
+          "on-accent": "#FFFFFF",
+          "accent-tint": "#E2EFED",
+          "accent-text": "#1B6661"
+        },
+        "dark": {
+          "accent": "#6FC7BC",
+          "on-accent": "#0C1F1D",
+          "accent-tint": "#172826",
+          "accent-text": "#80CFC5"
+        },
+        "icon": {
+          "_comment": "App-Icon von Landbote: Wiese am Altrhein unter hellem Himmel, am Feldrand ein Briefkasten auf einem hoelzernen Pfosten, die rote Fahne steht (neue Post).",
+          "field": "#1E6B66",
+          "glyph": "#EFF7F5",
+          "sky": "#E1ECEA",
+          "sky2": "#AFC7C3",
+          "ground": "#2D6A63",
+          "ground2": "#1D4A45",
+          "horizon": "#F1F8F6",
+          "outline": "#0E1F1D",
+          "obj": {
+            "light": "#F3EEE2",
+            "mid": "#D6CCB6",
+            "dark": "#A89C83",
+            "wood": "#C79C63",
+            "woodLight": "#E3C08B",
+            "woodDark": "#8C6638",
+            "flag": "#D9473A",
+            "flagDark": "#A9342A",
+            "knob": "#3B3A35"
           }
         }
       }

@@ -8,7 +8,7 @@
 import 'package:flutter/widgets.dart';
 
 /// Version of the tokens this file was generated from.
-const String horizontTokensVersion = '0.11.1';
+const String horizontTokensVersion = '0.12.0';
 
 /// The neutral colours of one brightness.
 @immutable
@@ -346,6 +346,23 @@ enum HorizontProduct {
       onAccent: Color(0xFF1A1224),
       accentTint: Color(0xFF251E2E),
       accentText: Color(0xFFCAB1EA),
+    ),
+  ),
+  /// Landbote: RSS-Reader, iOS, macOS und Android.
+  landbote(
+    displayName: 'Landbote',
+    accentName: 'Altrhein',
+    light: HzAccent(
+      accent: Color(0xFF1E6B66),
+      onAccent: Color(0xFFFFFFFF),
+      accentTint: Color(0xFFE2EFED),
+      accentText: Color(0xFF1B6661),
+    ),
+    dark: HzAccent(
+      accent: Color(0xFF6FC7BC),
+      onAccent: Color(0xFF0C1F1D),
+      accentTint: Color(0xFF172826),
+      accentText: Color(0xFF80CFC5),
     ),
   );
 
