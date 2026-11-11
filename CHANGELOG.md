@@ -4,6 +4,22 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.12.1
+
+Horizont baut mit aktuellem Hugo.
+
+### Geändert
+
+- **Hugo-Modul:** Der Mount der Icon-Daten (`icons` → `data/horizont_icons`) nutzt `files` statt
+  `includeFiles`. Hugo hat `includeFiles` entfernt, Seiten mit aktuellem Hugo brachen beim Bauen
+  ab. `files` gibt es seit Hugo 0.153.
+
+### Heben
+
+- Seiten: `hugo mod get github.com/regetskcob/horizont@v0.12.1`, nötig, sobald die Seite
+  mit einem Hugo baut, das `includeFiles` nicht mehr kennt.
+- Apps: `ref: v0.12.1`, nichts weiter zu tun.
+
 ## 0.12.0
 
 Ein neues Produkt und die Symbole, die es braucht.
