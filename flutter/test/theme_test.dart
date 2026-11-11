@@ -74,6 +74,17 @@ void main() {
         card(HorizontStyle.soft).borderRadius,
         BorderRadius.circular(HzSoft.card),
       );
+      final colors = HorizontColors.resolve(
+        HorizontProduct.knx,
+        Brightness.light,
+        style: HorizontStyle.soft,
+      );
+      expect(
+        card(HorizontStyle.soft).side.color,
+        colors.line,
+        reason: 'soft cards take the quiet outline like fields',
+      );
+      expect(card(HorizontStyle.standard).side.color, isNot(colors.line));
     });
 
     test('the product brings its paper, the extension carries it', () {
