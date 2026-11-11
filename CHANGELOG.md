@@ -26,6 +26,12 @@ Busclear (früher KNX Monitor), das damit ruhiger und weniger technisch wirkt.
 - **`buildHorizontTheme` baut die weiche Stufe ohne Angabe** (`style: HorizontStyle.soft`).
   Radien 16/14/12/22, Umrisse in `line`, Kennung in Mona Sans, Seitentitel 22 fett, keine Linie
   unter dem Kopf. Webseiten bleiben in der Standardstufe.
+- **Karten, Hinweise und Auswahlkarten in der weichen Stufe:** Karten tragen den leisen Umriss
+  in `line` (bisher blieb `line-strong`), `HorizontNotice` und `HorizontSelectableCard` runden
+  wie Karten (14 statt 6 bzw. 10), die Auswahlkarte mit Umriss in `line`.
+- **Web-Leitfaden:** Das Beispiel für den Mount der Icon-Daten nutzt `files` statt
+  `includeFiles` wie seit 0.12.1 Horizont selbst; Seiten mit der alten Zeile bauen mit aktuellem
+  Hugo nicht.
 - **Auswahl in der weichen Stufe nur als Tönung:** `HorizontSelectable` und
   `horizontSelectionDecoration(…, style:)` lassen dort die 2-px-Linie weg.
 - **`HorizontRail` baut auf `HorizontSidebar`:** weich mit eingerückten, gerundeten Zeilen auf
@@ -43,7 +49,8 @@ Busclear (früher KNX Monitor), das damit ruhiger und weniger technisch wirkt.
 - Eigene Auswahl-Container geben `style: theme.style` an `horizontSelectionDecoration`.
 - Goldens neu erzeugen: Radien, Umrisse und Kennungen ändern sich überall, wo die App bisher die
   Standardstufe hatte.
-- Seiten: nichts zu tun.
+- Seiten: `hugo mod get github.com/regetskcob/horizont@v0.13.0`. Steht im eigenen `hugo.toml`
+  beim Mount `icons` noch `includeFiles`, durch `files` ersetzen.
 
 ## 0.12.1
 
