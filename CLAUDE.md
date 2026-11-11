@@ -354,7 +354,8 @@ stehen in [docs/flutter.md](docs/flutter.md), „Referenz: KNX Monitor“.
   `destructive` (`horizontDialogAction(…, destructive: true)`).
 - **Auswahl auf Karten:** Eine gewählte Karte trägt 2 px Akzent als Umriss
   und `accent-tint` als Fläche, dazu ein Häkchen oben rechts. Das ist die
-  „Auswahl ist eine Linie“ für Karten, keine Ausnahme.
+  „Auswahl ist eine Linie“ für Karten, keine Ausnahme. In der weichen Stufe
+  tragen Tönung und Häkchen die Auswahl, ohne den Rahmen.
 - **Datenlisten nutzen die Seitenbreite.** `HzSize.textColumn` (720) gilt für
   Text, den man liest. Listen von Daten (Aufnahmen, Prüfergebnisse) gehen auf
   dem Tablet bis `HzSize.page` (1120), sonst bleibt rechts und links zu viel

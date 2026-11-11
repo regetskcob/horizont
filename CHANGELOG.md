@@ -28,7 +28,8 @@ Busclear (früher KNX Monitor), das damit ruhiger und weniger technisch wirkt.
   unter dem Kopf. Webseiten bleiben in der Standardstufe.
 - **Karten, Hinweise und Auswahlkarten in der weichen Stufe:** Karten tragen den leisen Umriss
   in `line` (bisher blieb `line-strong`), `HorizontNotice` und `HorizontSelectableCard` runden
-  wie Karten (14 statt 6 bzw. 10), die Auswahlkarte mit Umriss in `line`.
+  wie Karten (14 statt 6 bzw. 10), die Auswahlkarte mit Umriss in `line` und gewählt ohne den
+  2-px-Rahmen: Tönung und Häkchen tragen die Auswahl.
 - **Web-Leitfaden:** Das Beispiel für den Mount der Icon-Daten nutzt `files` statt
   `includeFiles` wie seit 0.12.1 Horizont selbst; Seiten mit der alten Zeile bauen mit aktuellem
   Hugo nicht.

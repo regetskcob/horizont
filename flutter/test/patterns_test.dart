@@ -421,6 +421,25 @@ void main() {
     handle.dispose();
   });
 
+  testWidgets('a chosen card has the 2 px frame only in the standard style', (tester) async {
+    for (final style in HorizontStyle.values) {
+      await tester.pumpWidget(
+        _app(
+          HorizontSelectableCard(selected: true, onTap: () {}, child: const Text('Pro')),
+          style: style,
+        ),
+      );
+      await tester.pumpAndSettle();
+      final frame = tester
+          .widgetList<Container>(
+            find.descendant(of: find.byType(HorizontSelectableCard), matching: find.byType(Container)),
+          )
+          .first
+          .foregroundDecoration;
+      expect(frame != null, style == HorizontStyle.standard, reason: style.name);
+    }
+  });
+
   testWidgets('a labelled selectable keeps its tap for screen readers', (tester) async {
     final handle = tester.ensureSemantics();
     await tester.pumpWidget(

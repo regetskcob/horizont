@@ -191,7 +191,8 @@ class HorizontSelectableCard extends StatelessWidget {
           onTap: onTap,
           child: Container(
             padding: padding,
-            foregroundDecoration: selected
+            // Soft: the tint and the tick mark the choice, no frame.
+            foregroundDecoration: selected && !theme.soft
                 ? BoxDecoration(
                     borderRadius: radius,
                     border: Border.all(color: c.accent, width: HzLine.selection),
