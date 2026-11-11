@@ -19,7 +19,7 @@ Monitor und Panzergefecht, Jagdaufseher liegt im Blog unter
     [[module.imports.mounts]]
       source = 'icons'
       target = 'data/horizont_icons'
-      includeFiles = ['*.json']
+      files = ['*.json']
     [[module.imports.mounts]]
       source = 'web/css'
       target = 'assets/css/horizont'
