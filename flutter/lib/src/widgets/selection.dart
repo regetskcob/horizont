@@ -171,8 +171,9 @@ class HorizontSelectableCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = HorizontTheme.of(context).colors;
-    const radius = BorderRadius.all(Radius.circular(HzRadius.r10));
+    final theme = HorizontTheme.of(context);
+    final c = theme.colors;
+    final radius = BorderRadius.all(Radius.circular(theme.soft ? HzSoft.card : HzRadius.r10));
     return Semantics(
       button: onTap != null,
       selected: selected,
@@ -183,7 +184,7 @@ class HorizontSelectableCard extends StatelessWidget {
         color: selected ? c.accentTint : c.surface,
         shape: RoundedRectangleBorder(
           borderRadius: radius,
-          side: BorderSide(color: c.lineStrong),
+          side: BorderSide(color: theme.soft ? c.line : c.lineStrong),
         ),
         clipBehavior: Clip.antiAlias,
         child: InkWell(

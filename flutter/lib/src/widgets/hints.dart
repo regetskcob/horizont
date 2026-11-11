@@ -277,8 +277,10 @@ class HorizontNotice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = HorizontTheme.of(context).colors;
-    const radius = BorderRadius.all(Radius.circular(HzRadius.r6));
+    final theme = HorizontTheme.of(context);
+    final c = theme.colors;
+    // Soft: as round as the cards it stands among; standard: like a field.
+    final radius = BorderRadius.all(Radius.circular(theme.soft ? HzSoft.card : HzRadius.r6));
     final row = Padding(
       padding: const EdgeInsets.all(HzSpace.s12),
       child: Row(

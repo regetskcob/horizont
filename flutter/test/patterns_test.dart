@@ -399,6 +399,20 @@ void main() {
     expect(find.byIcon(HorizontStatus.warning.icon), findsOneWidget);
   });
 
+  testWidgets('a notice is as round as a card in the soft style, like a field in the standard one', (tester) async {
+    for (final (style, radius) in [(HorizontStyle.soft, HzSoft.card), (HorizontStyle.standard, HzRadius.r6)]) {
+      await tester.pumpWidget(_app(const HorizontNotice(HorizontStatus.warning, child: Text('Hinweis')), style: style));
+      // The theme animates from one style to the other.
+      await tester.pumpAndSettle();
+      final ink = tester.widget<Ink>(find.byType(Ink));
+      expect(
+        (ink.decoration! as BoxDecoration).borderRadius,
+        BorderRadius.all(Radius.circular(radius)),
+        reason: style.name,
+      );
+    }
+  });
+
   testWidgets('a chosen card carries the tick and says it is chosen', (tester) async {
     final handle = tester.ensureSemantics();
     await tester.pumpWidget(_app(HorizontSelectableCard(selected: true, onTap: () {}, child: const Text('Pro'))));
