@@ -14,6 +14,8 @@
   color.mark.kalkar-it.icon. Kalkar Kompakt, the civic app of Kalkar IT, is a
   product since 0.9.0: the town hall of Kalkar, accent Backstein. Gemarkung,
   the Git client, since 0.11.0: a signpost at a fork, accent Heide.
+  Landbote, the RSS reader, since 0.12.0: a mailbox on its post at the
+  field edge with the flag raised, accent Altrhein.
 
   For the platform exports (tool/export_icons.sh):
     shape  rounded (default, the web and the doc) | bleed (square, the OS
@@ -178,6 +180,25 @@
         <path d="M47.9 25.8h2.2v44h-2.2z" fill="{{ $o.light }}"/>
         <g stroke="{{ $o.carve }}" stroke-width="1.1" stroke-linecap="round"><path d="M57 33.2h10M57 36h7"/><path d="M43 47h-11M43 49.8h-8"/></g>
       </g>
+    {{- else if eq $p "landbote" }}
+      {{- /* A mailbox on a wooden post at the field edge, seen from the
+             side: an enamelled box with a rounded top, the door at the
+             front end, the red flag raised for new mail. Light from the
+             upper left. */}}
+      <path d="M47 70.4V45h6v25.4z" fill="{{ $o.wood }}"/>
+      <path d="M40 46.4v-3h20v3z" fill="{{ $o.woodDark }}"/>
+      <path d="M64.6 40V12.6h2.8V40z" fill="{{ $o.flagDark }}"/>
+      <path d="M67.4 12.6h11v8h-11z" fill="{{ $o.flag }}"/>
+      <path d="M22 44V36a9 9 0 0 1 9-9h34a9 9 0 0 1 9 9v8z" fill="{{ $o.mid }}"/>
+      <path d="M22 44V36a9 9 0 0 1 9-9h0v17z" fill="{{ $o.light }}"/>
+      <g stroke="none">
+        <path d="M47.9 47.2h2.2v22.6h-2.2z" fill="{{ $o.woodLight }}"/>
+        <path d="M33 29.4h31a7 7 0 0 1 6.4 4.2H33z" fill="{{ $o.light }}" opacity=".7"/>
+        <path d="M31.8 40.2h41.4V43.2H31.8z" fill="{{ $o.dark }}"/>
+        <path d="M67.4 17.4h10.2v2.2H67.4z" fill="{{ $o.flagDark }}" opacity=".6"/>
+        <circle cx="26.6" cy="36.4" r="1.5" fill="{{ $o.knob }}"/>
+      </g>
+      <circle cx="66" cy="37.6" r="1.9" fill="{{ $o.knob }}"/>
     {{- else if eq $p "panzergefecht" }}
       {{- if eq $variant "side" }}
       <rect x="21" y="56" width="58" height="10.7" rx="5.3" fill="{{ $o.track }}"/>

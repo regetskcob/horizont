@@ -1,7 +1,8 @@
 {{- /*
   The marks of Horizont: one horizon on the lower third of the square, the
   rule of thirds of a landscape photo, with the one object of the app icon on
-  it: beech, raised hide, bus terminal, tank, town hall, signpost. Same stroke, square caps.
+  it: beech, raised hide, bus terminal, tank, town hall, signpost, mailbox.
+  Same stroke, square caps.
   Three more are glyphs only (no app icon): "blog", an open book,
   "horizont", the sun on the line, and "kalkar-it", a prompt > floating
   above the line, which is its cursor, for Kalkar IT Solutions.
@@ -110,6 +111,13 @@
   {{- /* The signpost: the post on the line, two arms pointing apart. */}}
   <path d="M{{ cond $icon 0 4 }} 66.7H{{ cond $icon 100 96 }}M50 66.7V22"/>
   <path d="M50 28h20l5 5-5 5H50M50 44H30l-5 5 5 5h20"/>
+  {{- else if eq $p "landbote" }}
+  {{- /* The mailbox at the field edge: the box on its post, the door seam
+         at the front end, the flag raised for new mail, one bar. */}}
+  <path d="M{{ cond $icon 0 4 }} 66.7H{{ cond $icon 100 96 }}M50 66.7V46"/>
+  <path d="M22 46V37a9 9 0 0 1 9-9h34a9 9 0 0 1 9 9v9z"/>
+  <path d="M66 28V13.5M66 13.5h10"/>
+  <path d="M32 31v12" stroke-width="{{ cond $icon 2.5 3.5 }}"/>
   {{- else if eq $p "panzergefecht" }}
   <path d="M{{ cond $icon 0 4 }} 66.7H{{ cond $icon 100 96 }}"/>
   <path d="M24 66.7l4-12h44l4 12M40 54.7V44h18v10.7M58 49h24"/>
