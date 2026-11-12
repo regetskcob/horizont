@@ -168,7 +168,8 @@ Panzergefecht ersetzen im Dunkeln die Werte aus `neutralDark` die `n.*`.
 Seit 0.13.0 ist die weiche Form die Vorgabe in Apps: `buildHorizontTheme(product, brightness)`
 baut sie, `style: HorizontStyle.standard` die schärfere. Die Regeln stehen in `CLAUDE.md`,
 „Weiche Stufe“. Die Komponenten aus dem Theme folgen von selbst, eigene Flächen nehmen
-`HzSoft.box`, `card`, `control` und `row`. `HorizontTheme.of(context)` trägt die Stufe (`style`,
+`HzSoft.box`, `card`, `tile` und `row`; was neben Feldern und Knöpfen steht, nimmt
+`HorizontTheme.of(context).controlRadius` (weich 8, sonst 6). `HorizontTheme.of(context)` trägt die Stufe (`style`,
 `soft`) und ihre Farben; was Material nicht themt (Seitenleiste, Auswahl), zeichnet sich danach.
 
 - **Auswahl:** nur die Tönung, ohne die 2-px-Linie. Die Zeile meldet `selected` an den

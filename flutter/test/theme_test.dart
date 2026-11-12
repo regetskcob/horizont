@@ -87,6 +87,41 @@ void main() {
       expect(card(HorizontStyle.standard).side.color, isNot(colors.line));
     });
 
+    test('controls take 8 on touch and with a pointer, never a pill', () {
+      for (final density in HorizontDensity.values) {
+        final theme = buildHorizontTheme(
+          HorizontProduct.gemarkung,
+          Brightness.light,
+          density: density,
+        );
+        final ext = theme.extension<HorizontTheme>()!;
+        final radius = BorderRadius.circular(HzSoft.control);
+        expect(ext.controlRadius, radius);
+        // A pill starts at half the height; stay well below it.
+        expect(HzSoft.control, lessThan(ext.controlHeight / 2 * 0.6));
+        final field =
+            theme.inputDecorationTheme.enabledBorder! as OutlineInputBorder;
+        expect(field.borderRadius, radius);
+        for (final style in [
+          theme.filledButtonTheme.style,
+          theme.outlinedButtonTheme.style,
+          theme.textButtonTheme.style,
+          theme.segmentedButtonTheme.style,
+        ]) {
+          final shape = style!.shape!.resolve({})! as RoundedRectangleBorder;
+          expect(shape.borderRadius, radius);
+        }
+      }
+      expect(
+        buildHorizontTheme(
+          HorizontProduct.gemarkung,
+          Brightness.light,
+          style: HorizontStyle.standard,
+        ).extension<HorizontTheme>()!.controlRadius,
+        BorderRadius.circular(HzRadius.r6),
+      );
+    });
+
     test('the product brings its paper, the extension carries it', () {
       final theme = buildHorizontTheme(
         HorizontProduct.knx,
