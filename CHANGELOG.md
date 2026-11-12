@@ -4,6 +4,17 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.13.1
+
+### Geändert
+
+- **Flurkarte:** Die Busclear Box steht nicht mehr als „Vorschau“ auf der Karte (`tokens/flur.yaml`),
+  nur noch als „Raspberry Pi“. Image, Anleitung und App-Einrichtung sind da.
+
+### Heben
+
+Nur den Tag heben; an Tokens, Paket und Partials ändert sich sonst nichts.
+
 ## 0.13.0
 
 Die weiche Stufe wird die Vorgabe in Apps, und die Seitenleiste kommt ins Paket. Vorbild ist

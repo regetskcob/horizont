@@ -114,8 +114,8 @@ gemarkungen:
       - id: box
         name: Busclear Box
         path: /box/
-        note: Raspberry Pi · Vorschau
-        note_en: Raspberry Pi · preview
+        note: Raspberry Pi
+        note_en: Raspberry Pi
         span: [2, 1]
         angle: 90
       - id: feedback
