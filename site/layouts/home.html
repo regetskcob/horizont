@@ -7,7 +7,7 @@
 {{- $hz := site.Data.horizont -}}
 {{- $tokens := resources.Get "css/horizont/tokens.css" | resources.ExecuteAsTemplate "css/horizont-tokens.css" $hz -}}
 {{- $css := slice $tokens (resources.Get "css/horizont/components.css") (resources.Get "css/site/page.css") | resources.Concat "css/horizont.css" | minify | fingerprint -}}
-{{- $products := slice "regetskcob" "jagdaufseher" "knx" "panzergefecht" "kalkar-kompakt" "gemarkung" "landbote" -}}
+{{- $products := slice "regetskcob" "jagdaufseher" "knx" "panzergefecht" "kalkar-kompakt" "gemarkung" "landbote" "streuwerk" -}}
 {{- /* Products whose favicon is the glyph on its field instead of the app
        icon: only where a product asks for it. Every other product shows in
        the browser tab the icon it has on the home screen. */ -}}

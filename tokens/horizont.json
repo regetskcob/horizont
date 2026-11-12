@@ -1,6 +1,6 @@
 {
   "_comment": "Horizont, das Designsystem von regetskcob und seinen Projekten. Einzige Quelle der Tokens: die Dokumentation (site/layouts/home.html) und die CSS-Schicht (web/css/tokens.css) lesen sie hier, Generatoren fuer Flutter und Swift sollen es ebenso tun. Farben je light und dark, beide von Hand gesetzt, nie aus einem Seed abgeleitet.",
-  "version": "0.13.2",
+  "version": "0.14.0",
   "color": {
     "neutral": {
       "light": {
@@ -323,6 +323,41 @@
             "flag": "#D9473A",
             "flagDark": "#A9342A",
             "knob": "#3B3A35"
+          }
+        }
+      },
+      "streuwerk": {
+        "name": "Streuwerk",
+        "role": "Social-Media-Werkzeug, macOS",
+        "accentName": "Pflaume",
+        "light": {
+          "accent": "#8A2E61",
+          "on-accent": "#FFFFFF",
+          "accent-tint": "#F4E5EC",
+          "accent-text": "#84295B"
+        },
+        "dark": {
+          "accent": "#E39BBF",
+          "on-accent": "#2B0F1E",
+          "accent-tint": "#2E1A24",
+          "accent-text": "#EBAECB"
+        },
+        "icon": {
+          "_comment": "App-Icon von Streuwerk: Streuobstwiese unter hellem Himmel, auf der Linie ein Saatsack aus Jute, aus dem Koerner in Pflaume im Bogen nach rechts fliegen (ein Beitrag, gestreut auf viele Kanaele).",
+          "field": "#8A2E61",
+          "glyph": "#F8EEF3",
+          "sky": "#F2E7EC",
+          "sky2": "#D9C0CD",
+          "ground": "#5E7A3A",
+          "ground2": "#41562A",
+          "horizon": "#F7EEF2",
+          "outline": "#2A1420",
+          "obj": {
+            "light": "#EAD8B4",
+            "mid": "#CDB283",
+            "dark": "#9C8257",
+            "seed": "#8A2E61",
+            "seedLight": "#C46A98"
           }
         }
       }

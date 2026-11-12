@@ -8,7 +8,7 @@
 import 'package:flutter/widgets.dart';
 
 /// Version of the tokens this file was generated from.
-const String horizontTokensVersion = '0.13.2';
+const String horizontTokensVersion = '0.14.0';
 
 /// The neutral colours of one brightness.
 @immutable
@@ -363,6 +363,23 @@ enum HorizontProduct {
       onAccent: Color(0xFF0C1F1D),
       accentTint: Color(0xFF172826),
       accentText: Color(0xFF80CFC5),
+    ),
+  ),
+  /// Streuwerk: Social-Media-Werkzeug, macOS.
+  streuwerk(
+    displayName: 'Streuwerk',
+    accentName: 'Pflaume',
+    light: HzAccent(
+      accent: Color(0xFF8A2E61),
+      onAccent: Color(0xFFFFFFFF),
+      accentTint: Color(0xFFF4E5EC),
+      accentText: Color(0xFF84295B),
+    ),
+    dark: HzAccent(
+      accent: Color(0xFFE39BBF),
+      onAccent: Color(0xFF2B0F1E),
+      accentTint: Color(0xFF2E1A24),
+      accentText: Color(0xFFEBAECB),
     ),
   );
 

@@ -142,6 +142,7 @@ oder Seite schreiben.
   | Kalkar Kompakt | Backstein | #A2452C | #E8906F |
   | Gemarkung | Heide | #6A4A8E | #BFA2E4 |
   | Landbote | Altrhein | #1E6B66 | #6FC7BC |
+  | Streuwerk | Pflaume | #8A2E61 | #E39BBF |
 
 - **Gastgeber** (`color.host.<id>`, bisher `home-assistant`): Läuft ein
   Produkt eingebettet, etwa das KNX-Monitor-Add-on in Home Assistants

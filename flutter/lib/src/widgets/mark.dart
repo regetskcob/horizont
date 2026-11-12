@@ -172,6 +172,19 @@ class _MarkPainter extends CustomPainter {
         line(50, 66.7, 50, 22);
         poly([50, 28, 70, 28, 75, 33, 70, 38, 50, 38]);
         poly([50, 44, 30, 44, 25, 49, 30, 54, 50, 54]);
+      case HorizontProduct.streuwerk:
+        // The seed sack on the line, seeds scattered to every side.
+        line(4, 66.7, 96, 66.7);
+        p
+          ..moveTo(20, 66.7)
+          ..lineTo(23, 43)
+          ..lineTo(29, 35)
+          ..lineTo(38, 35)
+          ..lineTo(44, 43)
+          ..lineTo(47, 66.7);
+        for (final (x, y) in const [(9.0, 46.0), (30.0, 22.0), (48.0, 18.0), (62.0, 30.0), (78.0, 44.0)]) {
+          line(x, y, x + 1, y);
+        }
       case HorizontProduct.landbote:
         // The mailbox on its post, the flag raised as one bar.
         line(4, 66.7, 96, 66.7);

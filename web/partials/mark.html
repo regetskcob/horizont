@@ -111,6 +111,12 @@
   {{- /* The signpost: the post on the line, two arms pointing apart. */}}
   <path d="M{{ cond $icon 0 4 }} 66.7H{{ cond $icon 100 96 }}M50 66.7V22"/>
   <path d="M50 28h20l5 5-5 5H50M50 44H30l-5 5 5 5h20"/>
+  {{- else if eq $p "streuwerk" }}
+  {{- /* A seed sack on the line, seeds scattered to every side: one post
+         scattered over many channels. Seeds are short bars. */}}
+  <path d="M{{ cond $icon 0 4 }} 66.7H{{ cond $icon 100 96 }}"/>
+  <path d="M20 66.7L23 43L29 35H38L44 43L47 66.7"/>
+  <path d="M9 46h1M30 22h1M48 18h1M62 30h1M78 44h1"/>
   {{- else if eq $p "landbote" }}
   {{- /* The mailbox at the field edge: the box on its post, the door seam
          at the front end, the flag raised for new mail, one bar. */}}

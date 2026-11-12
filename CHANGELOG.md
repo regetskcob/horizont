@@ -4,6 +4,23 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.14.0
+
+Streuwerk ist ein Produkt (regetskcob/streuwerk#4).
+
+### Neu
+
+- **Produkt `streuwerk`** mit dem Akzent **Pflaume** (hell `#8A2E61`, dunkel `#E39BBF`), nach den
+  Streuobstwiesen am Niederrhein; klar getrennt von Heide (Gemarkung) und vom Status `critical`.
+- **Marke und App-Icon:** ein Saatsack aus Jute auf der Linie, Körner in Pflaume nach allen
+  Seiten gestreut – ein Beitrag, verteilt auf viele Kanäle. Icons unter `icons/export/streuwerk/`.
+
+### Heben
+
+- **Streuwerk:** `product` in `lib/app.dart` auf `HorizontProduct.streuwerk`, macOS-Icon aus
+  `icons/export/streuwerk/macos/` übernehmen.
+- Alle anderen: nur den Tag heben.
+
 ## 0.13.2
 
 Bedienelemente der weichen Stufe sind keine Pillen mehr (regetskcob/horizont#30).
