@@ -374,8 +374,8 @@ sie ohne Angabe, `style: HorizontStyle.standard` die schärfere Form. Webseiten,
 die Doku bleiben in der Standardstufe; die weiche Stufe gibt es nur in Flutter.
 
 - **Radien aus `soft`:** Box 16, Karte 14, Kachel 12, Bedienelement 8, Zeile der Seitenleiste 8,
-  Sheet 22. Sie ersetzen 6, 10 und 16. Bedienelemente hatten bis 0.13.0 Radius 12; mit Zeiger
-  (Höhe 28) wurden Felder und Knöpfe damit zu Pillen, deshalb gilt seit 0.13.1 auf Touch wie mit
+  Sheet 22. Sie ersetzen 6, 10 und 16. Bedienelemente hatten bis 0.13.1 Radius 12; mit Zeiger
+  (Höhe 28) wurden Felder und Knöpfe damit zu Pillen, deshalb gilt seit 0.13.2 auf Touch wie mit
   Zeiger 8 (entschieden am 12.11.2026, regetskcob/horizont#30). 12 (`soft.tile`) bleibt für
   Kacheln und Hinweis-Boxen einer App, die keine Bedienelemente sind.
 - **Pillen-Chips** statt Radius 2, Auswahl als Tönung.
