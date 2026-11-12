@@ -373,8 +373,11 @@ wirkte damit ruhiger und weniger technisch als Landbote und Gemarkung. `buildHor
 sie ohne Angabe, `style: HorizontStyle.standard` die schärfere Form. Webseiten, Landingpages und
 die Doku bleiben in der Standardstufe; die weiche Stufe gibt es nur in Flutter.
 
-- **Radien aus `soft`:** Box 16, Karte 14, Bedienelement 12, Zeile der Seitenleiste 8, Sheet 22.
-  Sie ersetzen 6, 10 und 16.
+- **Radien aus `soft`:** Box 16, Karte 14, Kachel 12, Bedienelement 8, Zeile der Seitenleiste 8,
+  Sheet 22. Sie ersetzen 6, 10 und 16. Bedienelemente hatten bis 0.13.0 Radius 12; mit Zeiger
+  (Höhe 28) wurden Felder und Knöpfe damit zu Pillen, deshalb gilt seit 0.13.1 auf Touch wie mit
+  Zeiger 8 (entschieden am 12.11.2026, regetskcob/horizont#30). 12 (`soft.tile`) bleibt für
+  Kacheln und Hinweis-Boxen einer App, die keine Bedienelemente sind.
 - **Pillen-Chips** statt Radius 2, Auswahl als Tönung.
 - **Umrisse in `line`** statt `line-strong`, die Ordnung kommt vom getönten Grund. Der Fokus bleibt
   2 px im Akzent. Diese Abweichung nimmt in Kauf, dass Felder und Knöpfe die 3:1 aus WCAG 1.4.11

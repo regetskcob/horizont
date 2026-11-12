@@ -97,6 +97,13 @@ class HorizontTheme extends ThemeExtension<HorizontTheme> {
   /// Minimum height of a control for [density]: 44 on touch, 28 with a pointer.
   double get controlHeight => density == HorizontDensity.touch ? HzSize.touch : HzSize.controlDesktop;
 
+  /// Corner radius of a control (field, button, segment) for [style]: 8 in
+  /// the soft style, 6 in the standard one, on touch and with a pointer
+  /// alike. Use it for anything that stands in a row with fields and
+  /// buttons instead of reading `HzSoft.control` or `HzRadius.r6` directly.
+  BorderRadius get controlRadius =>
+      BorderRadius.all(Radius.circular(soft ? HzSoft.control : HzRadius.r6));
+
   /// Height of a list row for [density].
   double get rowHeight => density == HorizontDensity.touch ? HzSize.row : HzSize.rowDense;
 

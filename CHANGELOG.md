@@ -4,6 +4,33 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.13.1
+
+Bedienelemente der weichen Stufe sind keine Pillen mehr (regetskcob/horizont#30).
+
+### Geändert
+
+- **Token `soft.control` ist 8 statt 12** (`HzSoft.control`), auf Touch wie mit Zeiger. Mit
+  Zeiger sind Felder und Knöpfe 28 hoch; Radius 12 war dort fast die halbe Höhe, und sie wirkten
+  wie Pillen. Betrifft Felder, `HorizontFieldDropdown`, Filled-, Outlined-, Text- und
+  Segment-Knöpfe. Pillen bleiben in der weichen Stufe nur die Chips.
+
+### Neu
+
+- **Token `soft.tile`** (12, `HzSoft.tile`): Radius für Kacheln und Hinweis-Boxen einer App, die
+  keine Bedienelemente sind. Es ist der Wert, den `soft.control` bis 0.13.0 hatte.
+- **`HorizontTheme.controlRadius`:** der Radius eines Bedienelements nach der Stufe (weich 8,
+  sonst 6), für alles, was neben Feldern und Knöpfen steht.
+
+### Heben
+
+- Wer `HzSoft.control` für eigene Flächen liest, entscheidet: Steht die Fläche in einer Reihe mit
+  Feldern und Knöpfen, nimmt sie `HorizontTheme.of(context).controlRadius` und wird damit 8.
+  Soll sie 12 behalten (Kachel, Hinweis-Box), nimmt sie `HzSoft.tile`.
+- **Busclear:** `Radii.md` in `lib/theme/tokens.dart` auf `HzSoft.tile` stellen, sonst schrumpfen
+  die Kacheln und Boxen von 12 auf 8.
+- **Gemarkung, Streuwerk:** `Styles.controlRadius` durch `HorizontTheme.controlRadius` ersetzen.
+
 ## 0.13.0
 
 Die weiche Stufe wird die Vorgabe in Apps, und die Seitenleiste kommt ins Paket. Vorbild ist

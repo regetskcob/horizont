@@ -102,4 +102,27 @@ void main() {
       await expectLater(find.byType(Showcase), matchesGoldenFile('goldens/$name.png'));
     });
   }
+
+  // With a pointer controls are 28 high: fields and buttons keep a corner
+  // and do not turn into pills (regetskcob/horizont#30).
+  for (final brightness in Brightness.values) {
+    final name = 'gemarkung_${brightness.name}_pointer';
+    testWidgets(name, (tester) async {
+      tester.view.physicalSize = const Size(820, 1180);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.reset);
+      await tester.pumpWidget(
+        MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: buildHorizontTheme(
+            HorizontProduct.gemarkung,
+            brightness,
+            density: HorizontDensity.pointer,
+          ),
+          home: const Showcase(),
+        ),
+      );
+      await expectLater(find.byType(Showcase), matchesGoldenFile('goldens/$name.png'));
+    });
+  }
 }
