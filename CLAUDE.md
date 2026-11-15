@@ -439,7 +439,9 @@ Vom Nutzer entschieden bei der Durchsicht vor v1.0 (28.10.2026):
   dort, bis eine zweite es braucht.
 
 Der Plan für 2.0 (Leitplanken hier, Produktentscheidungen in den Produkten) steht als Entwurf in
-[docs/horizont-2.md](docs/horizont-2.md) und ist noch nicht entschieden.
+[docs/horizont-2.md](docs/horizont-2.md) und ist noch nicht entschieden. Darüber steht, ebenfalls als Entwurf, das Manifest
+[docs/manifest.md](docs/manifest.md) („Niederrheinisches Software-Design“): für wen gebaut wird und
+welche Grundsätze daraus folgen, auch für schlechten Empfang.
 
 Neue offene Fragen kommen als Issue mit dem Label `question` und werden vom
 Nutzer entschieden, nicht von der Sitzung.
