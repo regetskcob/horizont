@@ -10,7 +10,7 @@ Gerät schadet, gilt der Mensch, und du sagst, wo du abgewichen bist.
 
 ## Für wen wir bauen
 
-Stell dir nicht „den Nutzer“ vor, sondern diese vier. Jede Oberfläche muss für mindestens einen
+Stell dir nicht „den Nutzer“ vor, sondern diese fünf. Jede Oberfläche muss für mindestens einen
 von ihnen gemacht sein und darf keinen der anderen aussperren.
 
 - **Die Landwirtin auf dem Schlepper.** Ein Daumen frei, Handschuhe oder nasse Hände, Sonne auf
@@ -22,11 +22,20 @@ von ihnen gemacht sein und darf keinen der anderen aussperren.
 - **Der Handwerker auf der Baustelle.** Staub, Lärm, grobe Finger, das Telefon liegt im
   Verteilerschrank oder im Keller ohne Netz. Er braucht einen Wert oder einen Haken, sofort,
   und hat keine Geduld für Einrichtung.
+- **Die Auszubildende mit 22.** Sie ist mit guten Apps groß geworden und merkt in Sekunden,
+  ob etwas sorgfältig gemacht ist. Sie erwartet, dass es sofort reagiert, sich von selbst
+  erklärt, im Dunkeln gut aussieht und sich so anfühlt wie das Beste auf ihrem Telefon. Riesige
+  Knöpfe, Erklärtexte an jeder Ecke und altbackene Optik liest sie als „nicht für mich“, und sie
+  ist diejenige, die den Eltern und dem Chef die App einrichtet oder davon abrät.
 - **Die Fachfrau am Schreibtisch.** Großer Bildschirm, Tastatur, viele Daten. Sie will Dichte und
   Tempo, aber dieselbe Ruhe.
 
-Die ersten drei bestimmen, was auf dem Telefon gilt. Die vierte bestimmt, was mit Zeiger
-zusätzlich erlaubt ist. Im Zweifel gewinnt, wer es schwerer hat.
+Die ersten drei bestimmen, was mindestens gehen muss: Größe, Kontrast, Wörter, Empfang. Die
+Auszubildende bestimmt, wie gut es sein muss: Tempo, Sorgfalt, Eleganz. Die Fachfrau bestimmt,
+was mit Zeiger zusätzlich erlaubt ist. Das ist kein Kompromiss zwischen Alt und Jung. Eine
+Oberfläche, die klar, schnell und ruhig ist, ist für beide die beste, und genau die suchen wir.
+Wo es doch eine Wahl gibt, gewinnt bei der Zugänglichkeit, wer es schwerer hat, und bei der
+Ausführung, wer den höheren Anspruch hat.
 
 ## Das Leitbild
 
@@ -139,6 +148,31 @@ Minimal heißt: nichts Überflüssiges. Es heißt nicht: wenig Hilfe. Ein leerer
 einem Satz, was hierher gehört, und bietet den ersten Schritt an. Schrift, Abstand und Linie sind
 sorgfältig gesetzt, denn Sorgfalt ist die einzige Zier.
 
+### 9. Einfach, nicht altbacken
+
+Die Software ist von heute. Sie reagiert sofort, bewegt sich ruhig und genau, sieht hell wie
+dunkel gut aus und hält den Vergleich mit den besten Apps auf demselben Gerät aus. Zugänglich
+wird sie durch Klarheit, nicht durch eine Seniorenansicht: keine Riesenknöpfe, keine
+Erklärkästen, kein eigener „einfacher Modus“. Dieselbe Oberfläche dient der Auszubildenden und
+ihrem Großvater.
+
+- **Selbsterklärend statt erklärt.** Wenn ein Bildschirm einen Hilfetext braucht, ist er zu
+  kompliziert. Erst vereinfachen, dann beschriften.
+- **Schnelle Wege, die niemanden stören.** Wischen, Suche, Tastenkürzel, langes Drücken und
+  Teilen sind da für alle, die sie kennen. Jeder dieser Wege hat daneben einen sichtbaren mit
+  Wort; keine Funktion gibt es nur als Geste.
+- **Tempo ist Gestaltung.** Eine Antwort unter einer Zehntelsekunde fühlt sich direkt an. Was
+  länger dauert, zeigt sofort den neuen Zustand und holt den Rest nach (siehe Grundsatz 4).
+- **Größe folgt dem System.** Wer große Schrift braucht, stellt sie am Gerät ein, und die App
+  folgt. Die Standardansicht ist nicht vorsorglich vergrößert.
+- **Keine Mode.** Modern heißt sorgfältig und schnell, nicht Glas, Verlauf und Effekt. Was in
+  zwei Jahren alt aussieht, lassen wir heute weg.
+
+Warum: Auch am Niederrhein leben junge Leute, und sie sind mit minimaler, intuitiver Software
+aufgewachsen. Sie entscheiden oft, was im Betrieb und in der Familie benutzt wird. Und was für
+sie gut gemacht ist, ist für die anderen kein Hindernis: Klarheit und Tempo helfen dem
+Vierundsiebzigjährigen genauso.
+
 ## Ton
 
 - Sag, was ist: „Kein Empfang. Deine Eingabe ist gespeichert und wird später gesendet.“
@@ -149,13 +183,14 @@ sorgfältig gesetzt, denn Sorgfalt ist die einzige Zier.
 
 ## Prüffragen vor jedem Entwurf
 
-1. Wer von den vieren benutzt das, und wo steht er gerade?
+1. Wer von den fünfen benutzt das, und wo steht er gerade?
 2. Versteht man in zwei Sekunden, was der nächste Schritt ist?
 3. Hat jede Aktion ein Wort, das meine Großmutter kennt?
 4. Was sieht man hier ohne Empfang? Ist es nützlich?
 5. Was passiert, wenn jemand daneben tippt? Kommt er zurück?
 6. Liest man es in der Sonne, mit größter Schrift, mit einer Hand?
 7. Was kann weg, ohne dass jemand es vermisst?
+8. Würde eine Zweiundzwanzigjährige das gern benutzen, oder nur ertragen?
 
 Wenn du eine Frage mit „weiß ich nicht“ beantwortest, ist der Entwurf nicht fertig.
 
@@ -173,7 +208,7 @@ oder nur teilweise stand; sie sind Vorschläge und brauchen eine Entscheidung:
 | Auswahl nur als Tönung | `accent-tint` ist draußen kaum zu sehen | Tönung plus Zeichen oder halbfettes Wort überall, nicht nur in der Seitenleiste |
 | `text-muted` für Meta, 4,5:1 | Reicht für Beiwerk, nicht für Werte | Wesentliches nie in `text-muted`; 7:1 für Werte und Aktionen als Test |
 | Literata 300 als Lesetext | Leichter Schnitt wird auf einfachen Android-Bildschirmen dünn | Lesetext in 400 prüfen, 300 nur ab 24 |
-| Tippziel 44 für alles | Zu knapp mit Handschuh und in Bewegung | 56 für die Hauptaktion und Feld-Bildschirme (`size.touch-field`) |
+| Tippziel 44 für alles | Zu knapp mit Handschuh und in Bewegung | 56 nur für die Hauptaktion und für Bildschirme, die draußen bedient werden (`size.touch-field`); sonst bleibt 44, damit nichts klobig wird |
 | „Der Bildschirm darf leer sein“ | Stimmt, aber leer darf nicht ratlos heißen | Ergänzen: Jeder leere Zustand sagt, was hierher gehört |
 | Dichte und Symbolleisten vom Mac | Richtig für Fachleute, falsch als Vorgabe für Bürger-Apps | Zwei Lagen benennen: Alltag (Bürger, Feld) und Werkzeug (Fach, Zeiger); ein Produkt sagt, welche es ist |
 
