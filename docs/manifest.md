@@ -71,8 +71,13 @@ Deutsch, kurz und alltäglich: „Speichern“, „Zurück“, „Später senden
 Warum: Ein Symbol muss man gelernt haben, ein Wort kann man lesen. Wer unsicher ist, tippt nichts
 an, dessen Folge er nicht kennt.
 
-Ausnahmen sind die wenigen Zeichen, die jeder kennt (Zurück-Pfeil, Lupe, Schließen-Kreuz), und
-Werkzeugleisten für Fachleute mit Zeiger, dort mit Tooltip. Die Hauptaktion trägt immer ein Wort.
+Ausnahmen sind die wenigen Zeichen, die jeder kennt (Zurück-Pfeil, Lupe, Schließen-Kreuz, Teilen,
+Lesezeichen), und Werkzeugleisten mit Zeiger, dort mit Tooltip. Die Hauptaktion trägt immer ein
+Wort, auch als schwebender Knopf am Telefon.
+
+Dasselbe gilt für Zahlen und Daten: Eine nackte „10“ oder „5. Nov“ neben einem Namen ist so
+rätselhaft wie ein Symbol. Sag, was gezählt wird und was das Datum bedeutet: „10 neu“,
+„zuletzt 5. Nov“.
 
 ### 3. Nichts geht verloren, nichts erschrickt
 
@@ -82,6 +87,10 @@ man jetzt tun kann, ohne Schuld, ohne Code, ohne Ausrufezeichen.
 
 Warum: Wer Angst hat, etwas kaputt zu machen, benutzt die Software nicht. Vertrauen entsteht,
 wenn Fehler folgenlos bleiben.
+
+Wo sich etwas zurücknehmen lässt, ist „Rückgängig“ besser als eine Rückfrage: Die Aktion gilt
+sofort, die Meldung bietet den Weg zurück. Eine Rückfrage bleibt für das, was sich nicht
+zurücknehmen lässt.
 
 Zustand ist nie nur Farbe: immer Wort, Zeichen und Farbe. Was sich von selbst ändert, sagt das
 an derselben Stelle, an der man es zuletzt gesehen hat.
@@ -103,6 +112,9 @@ Das ist eine Gestaltungsaufgabe, keine reine Technikfrage:
   lesbar.
 - **Ehrlich sein.** Drei Lagen, jede mit Wort und Zeichen: aktuell, Stand von …, wartet auf
   Empfang. Kein grüner Haken, bevor es wirklich angekommen ist.
+- **Ein fester Platz.** Die Lage steht als eine Zeile direkt unter dem Kopf der Ansicht, ruhig
+  in Nebentext, solange alles stimmt, und getönt nur, wenn etwas nicht stimmt. Sie ersetzt den
+  Kreisel in der Leiste und die Meldung, die nach vier Sekunden verschwindet.
 
 Warum: Am Feldrand, im Keller und im Stall ist das Netz schlecht, und genau dort wird die
 Software gebraucht. Wer zweimal vor einem Kreisel stand, nimmt wieder den Zettel.
@@ -114,8 +126,9 @@ Wackeln und die größte Systemschrift aus.
 
 - Tippziele mindestens 44, die Hauptaktion und alles, was man draußen bedient, 56. Zwischen
   zwei Zielen liegt Abstand, damit ein grober Finger nicht das falsche trifft.
-- Lesetext mindestens 16, nichts Wesentliches unter 13. Versalien mit Sperrung nur für kurze
-  Marken von ein bis drei Wörtern, nie für Sätze.
+- Auf Touch: Lesetext mindestens 16, nichts Wesentliches unter 13. Mit Zeiger darf Beiwerk
+  (Anriss, Meta) 13 bis 14 sein, der Abstand zum Auge ist fest und das Licht gut. Versalien mit
+  Sperrung nur für kurze Marken von ein bis drei Wörtern, nie für Sätze.
 - Wesentliches (Werte, Aktionen, Status) hat mindestens 7:1 zum Grund, alles Lesbare mindestens
   4,5:1. Bedienelemente erkennt man an ihrem Umriss oder ihrer Fläche mit mindestens 3:1.
 - Die Schrift skaliert mit dem System, nichts wird geklemmt oder abgeschnitten. Bei doppelter
@@ -145,7 +158,10 @@ seines Geräts, muss er nicht neu lernen.
 ### 8. Schlicht, nicht ärmlich
 
 Minimal heißt: nichts Überflüssiges. Es heißt nicht: wenig Hilfe. Ein leerer Bildschirm sagt in
-einem Satz, was hierher gehört, und bietet den ersten Schritt an. Schrift, Abstand und Linie sind
+einem Satz, was hierher gehört, und bietet den ersten Schritt an. „Noch nichts da“ und „nichts
+mehr da“ sind zwei verschiedene Bildschirme: Wer die App zum ersten Mal öffnet, sieht nie
+„alles erledigt“, sondern was sie ist und wie er anfängt, und zwar auf dem ersten Bildschirm,
+nicht hinter einem Tab. Schrift, Abstand und Linie sind
 sorgfältig gesetzt, denn Sorgfalt ist die einzige Zier.
 
 ### 9. Einfach, nicht altbacken
@@ -212,6 +228,15 @@ Bildschirm entschieden; bis dahin gelten die bisherigen Entscheidungen in `CLAUD
 | Tippziel 44 für alles | Zu knapp mit Handschuh und in Bewegung | 56 nur für die Hauptaktion und für Bildschirme, die draußen bedient werden (`size.touch-field`); sonst bleibt 44, damit nichts klobig wird |
 | „Der Bildschirm darf leer sein“ | Stimmt, aber leer darf nicht ratlos heißen | Ergänzen: Jeder leere Zustand sagt, was hierher gehört |
 | Dichte und Symbolleisten vom Mac | Richtig für Fachleute, falsch als Vorgabe für Bürger-Apps | Zwei Lagen benennen: Alltag (Bürger, Feld) und Werkzeug (Fach, Zeiger); ein Produkt sagt, welche es ist |
+
+Aus dem Umbau von Landbote (15.11.2026) kommen dazu:
+
+| Befund | Folge für das System |
+| --- | --- |
+| Spalten, die sich nur im Ton unterscheiden (`bg` neben `surface`, hell 1,04:1), sind draußen eine Fläche | Ton ordnet, aber zwischen Spalten bleibt die Haarlinie; „Töne statt Linien“ gilt für Zeilen, nicht für Spalten |
+| Tabellenziffern von Mona Sans zeichnen die Null mit Schrägstrich | In Fließtext und Meta keine Tabellenziffern; `HorizontTheme.count` ohne `zero` prüfen |
+| `HorizontPrimaryAction.fab` ist unter 600 ein Quadrat ohne Wort | Im Paket ändern: `extended` mit Wort als Vorgabe, Quadrat nur, wenn das Wort nicht passt |
+| Lage-Zeile, Horizont unter dem Kopf, Zeile mit Punkt für Ungelesenes | Landbote hat sie selbst gebaut (`lib/ui/list/lage.dart`); ins Paket, sobald eine zweite App sie braucht |
 
 Unberührt bleiben: ein Akzent, Linien statt Schatten, drei Stimmen, Zustand mit Wort und Zeichen,
 Plattform vor Mode, gebündelte Schriften, Skalierung mit der Systemschrift, Unumkehrbares nur
