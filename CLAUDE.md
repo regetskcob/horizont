@@ -439,7 +439,7 @@ Vom Nutzer entschieden bei der Durchsicht vor v1.0 (28.10.2026):
   dort, bis eine zweite es braucht.
 
 Der Plan für 2.0 (Leitplanken hier, Produktentscheidungen in den Produkten) steht als Entwurf in
-[docs/horizont-2.md](docs/horizont-2.md) und ist noch nicht entschieden. Darüber steht, ebenfalls als Entwurf, das Manifest
+[docs/horizont-2.md](docs/horizont-2.md) und ist noch nicht entschieden. Darüber steht das Manifest, am 15.11.2026 als Grundlage für 2.0 angenommen:
 [docs/manifest.md](docs/manifest.md) („Niederrheinisches Software-Design“): für wen gebaut wird und
 welche Grundsätze daraus folgen, auch für schlechten Empfang.
 

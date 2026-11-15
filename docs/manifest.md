@@ -1,7 +1,7 @@
 # Niederrheinisches Software-Design
 
 Ein Manifest für alle, die Software für den Niederrhein entwerfen oder bauen, Menschen wie
-Claude. Stand 15.11.2026: **Entwurf, vom Nutzer noch nicht entschieden.** Es steht über Horizont:
+Claude. Am 15.11.2026 vom Nutzer als Grundlage für Horizont 2.0 angenommen. Es steht über Horizont:
 Horizont ist die Umsetzung (Tokens, Bausteine), dieses Manifest sagt, wofür und für wen.
 
 Lies es ganz, bevor du eine Oberfläche entwirfst. Die Regeln sind begründet, damit du in Fällen
@@ -197,7 +197,8 @@ Wenn du eine Frage mit „weiß ich nicht“ beantwortest, ist der Entwurf nicht
 ## Was das am heutigen Horizont in Frage stellt
 
 Das Leitbild und die sechs Regeln von Horizont halten. Diese Punkte halten dem Manifest nicht
-oder nur teilweise stand; sie sind Vorschläge und brauchen eine Entscheidung:
+oder nur teilweise stand. Die Vorschläge gehen in den Entwurf für 2.0 ein und werden dort am
+Bildschirm entschieden; bis dahin gelten die bisherigen Entscheidungen in `CLAUDE.md`:
 
 | Heute in Horizont | Problem | Vorschlag |
 | --- | --- | --- |

@@ -1,7 +1,7 @@
 # Horizont 2.0 – Plan
 
-Stand 15.11.2026: **Entwurf, vom Nutzer noch nicht entschieden.** Nichts hiervon gilt, bevor es
-in `CLAUDE.md` unter „Entscheidungen“ steht. Das Manifest bleibt (Feldflur, sechs Regeln, drei
+Stand 15.11.2026: Das Manifest ist als Grundlage angenommen, dieser Plan ist noch **Entwurf**.
+Nichts hiervon gilt, bevor es in `CLAUDE.md` unter „Entscheidungen“ steht. Das Manifest bleibt (Feldflur, sechs Regeln, drei
 Stimmen, ein Akzent). 2.0 ändert, wer was festlegt, und hebt die Gestaltung der Apps.
 
 Die Entwürfe am Bildschirm (Landbote, Gemarkung) liegen im Design-System-Artifact „Horizont“
@@ -68,6 +68,17 @@ Reihenfolge: erst Gemarkung und Landbote (beide jung, wenig Bezug), dann Streuwe
 KNX Monitor als Referenz und die übrigen.
 
 ## 2. Die nächste Ebene der Gestaltung
+
+Grundlage ist das Manifest ([manifest.md](manifest.md)), vom Nutzer am 15.11.2026 angenommen.
+Jede Änderung unten muss seinen Prüffragen standhalten. Aus dem Manifest kommen dazu:
+
+- **Lage statt Kreisel.** Neuer Baustein `HorizontLage` mit drei Zuständen, je Wort und Zeichen:
+  aktuell, Stand von …, wartet auf Empfang. Dazu der Status `pending` in `HorizontStatus`.
+- **Wort an der Hauptaktion.** `HorizontPrimaryAction` zeigt am Telefon das Wort, wenn es passt.
+- **Zwei Lagen je Produkt:** `alltag` (Bürger, Feld; Tippziel 56 für die Hauptaktion) und
+  `werkzeug` (Fachleute, Zeiger). Gemarkung ist Werkzeug, Landbote Alltag.
+- **Mindestgrößen:** Kennung 12, Meta 13, Lesetext 16. Kontrasttest 7:1 für Werte und Aktionen.
+- **Umriss wieder 3:1** auch in der weichen Stufe; Auswahl als Tönung plus halbfettes Wort.
 
 Sechs Änderungen, alle aus dem Leitbild abgeleitet:
 
