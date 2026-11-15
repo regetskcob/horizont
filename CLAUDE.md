@@ -438,6 +438,9 @@ Vom Nutzer entschieden bei der Durchsicht vor v1.0 (28.10.2026):
   TV-Fokusrahmen von Panzergefecht, der Board-Kopf von KNX Monitor), bleibt
   dort, bis eine zweite es braucht.
 
+Der Plan für 2.0 (Leitplanken hier, Produktentscheidungen in den Produkten) steht als Entwurf in
+[docs/horizont-2.md](docs/horizont-2.md) und ist noch nicht entschieden.
+
 Neue offene Fragen kommen als Issue mit dem Label `question` und werden vom
 Nutzer entschieden, nicht von der Sitzung.
 

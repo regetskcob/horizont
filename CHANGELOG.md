@@ -15,6 +15,10 @@ Streuwerk ist ein Produkt (regetskcob/streuwerk#4).
 - **Marke und App-Icon:** ein Saatsack aus Jute auf der Linie, Körner in Pflaume nach allen
   Seiten gestreut – ein Beitrag, verteilt auf viele Kanäle. Icons unter `icons/export/streuwerk/`.
 
+- **`tool/export_product.py`** packt, was Horizont über ein Produkt weiß (Akzent, Marke, Icons), in
+  einen Ordner für dessen Repo und prüft die Kontraste des Akzents (`--check`). Vorbereitung für
+  2.0, siehe `docs/horizont-2.md`; an Tokens und Paket ändert sich nichts.
+
 ### Heben
 
 - **Streuwerk:** `product` in `lib/app.dart` auf `HorizontProduct.streuwerk`, macOS-Icon aus
