@@ -37,6 +37,17 @@
   <div class="hz-gem" data-product="{{ $m.product }}">
     <p class="t-kennung hz-kennung"><a href="{{ cond (eq $m.id $home) (relLangURL (strings.TrimPrefix "/" $m.path)) (printf "%s%s" ($m.site | default $flur.site) $m.path) }}">{{ if not $en }}Gemarkung {{ end }}{{ $m.name }}</a></p>
     <ul class="hz-parzellen">
+    {{- /* The start page as the first parcel: the gemarkung's own link above
+           does not read as a link, and a map without a way home is a trap. */}}
+    {{- $start := cond (eq $m.id $home) (relLangURL (strings.TrimPrefix "/" $m.path)) (printf "%s%s" ($m.site | default $flur.site) $m.path) -}}
+    {{- $onStart := and (eq $m.id $here) (eq $field "") }}
+      <li class="hz-parzelle-start" style="--cols:1;--rows:1;--ang:0deg">
+        <a class="hz-parzelle" href="{{ $start }}"{{ if $onStart }} aria-current="page"{{ end }}>
+          {{- if $onStart }}{{ partial "horizont/mark.html" (dict "product" $m.product "size" 24) }}{{ end }}
+          <span class="hz-parzelle-count">{{ cond $en "Home" "Hof" }}</span>
+          <span class="hz-parzelle-name">{{ cond $en "Start page" "Startseite" }}</span>
+        </a>
+      </li>
     {{- range $f := $m.fields }}
       {{- $fh := cond (eq $m.id $home) (relLangURL (strings.TrimPrefix "/" $f.path)) (printf "%s%s" ($m.site | default $flur.site) $f.path) -}}
       {{- $n := index $counts $f.id | default $f.count -}}

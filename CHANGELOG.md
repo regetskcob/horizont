@@ -12,6 +12,12 @@ an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
   über der Seite zu stehen, und der Kopf bricht um: der Ort in einer Zeile, „Zurück“ und
   „Schließen“ darunter. Vorher schob ein langer Ortsname „Schließen“ über den rechten Rand.
 
+### Neu
+
+- **Flurkarte: Kachel „Startseite“** als erste Parzelle der Gemarkung. Der Link in der
+  Überschrift war nicht als Link zu erkennen, und von der Karte führte kein sichtbarer Weg
+  nach Hause.
+
 ### Heben
 
 - Nur Web: `hugo mod get github.com/regetskcob/horizont@v0.17.1`. Apps müssen nicht heben.
