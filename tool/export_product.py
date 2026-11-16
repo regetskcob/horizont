@@ -9,8 +9,9 @@ and app icon. This writes that share for one product to a folder:
   <out>/mark/                   glyph and icon sources (icons/svg/<id>/)
   <out>/icons/                  the platform sets (icons/export/<id>/)
 
-Usage: python3 tool/export_product.py <id> <out> [--check]
-With --check nothing is written; the exit code says whether the product's
+Usage: python3 tool/export_product.py <id> <out> [--check] [--no-icons]
+With --no-icons the platform sets stay out: an app already carries them in
+its platform folders. With --check nothing is written; the exit code says whether the product's
 colours hold the contrast rules. Nothing in this repository changes.
 """
 
@@ -76,7 +77,10 @@ def main() -> int:
     out.mkdir(parents=True, exist_ok=True)
     doc = {"id": pid, "horizont": tokens["version"], **product}
     (out / "horizont.product.json").write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n")
-    for src, dst in ((ROOT / "icons/svg" / pid, out / "mark"), (ROOT / "icons/export" / pid, out / "icons")):
+    sources = [(ROOT / "icons/svg" / pid, out / "mark")]
+    if "--no-icons" not in sys.argv:
+        sources.append((ROOT / "icons/export" / pid, out / "icons"))
+    for src, dst in sources:
         if src.is_dir():
             shutil.copytree(src, dst, dirs_exist_ok=True)
     print(f"{pid}: written to {out}")

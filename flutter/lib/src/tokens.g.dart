@@ -7,8 +7,10 @@
 
 import 'package:flutter/widgets.dart';
 
+import 'glyph.dart';
+
 /// Version of the tokens this file was generated from.
-const String horizontTokensVersion = '0.15.0';
+const String horizontTokensVersion = '0.16.0';
 
 /// The neutral colours of one brightness.
 @immutable
@@ -223,10 +225,43 @@ abstract final class HzScrim {
   static const double barAlpha = 0.65;
 }
 
-/// The products of Horizont with their accents.
-enum HorizontProduct {
+/// A product on Horizont: its name, its accent in both brightnesses and,
+/// where it has them, its own neutrals, soft colours and glyph.
+///
+/// Since 0.16.0 a product defines itself, in its own repository:
+///
+/// ```dart
+/// const landbote = HorizontProduct(
+///   id: 'landbote',
+///   displayName: 'Landbote',
+///   accentName: 'Altrhein',
+///   light: HzAccent(…),
+///   dark: HzAccent(…),
+///   mark: HorizontGlyph(drawMailbox),
+/// );
+/// ```
+///
+/// `expectProductHoldsContrast` from `package:horizont/testing.dart` checks
+/// the colours against the guard rails. The products listed here are the
+/// state before the move; all but [regetskcob] leave with 2.0.
+@immutable
+class HorizontProduct {
+  /// Creates a product.
+  const HorizontProduct({
+    required this.id,
+    required this.displayName,
+    required this.accentName,
+    required this.light,
+    required this.dark,
+    this.neutralDark,
+    this.softLight,
+    this.softDark,
+    this.mark,
+  });
+
   /// regetskcob: Dachmarke, Blog.
-  regetskcob(
+  static const HorizontProduct regetskcob = HorizontProduct(
+    id: 'regetskcob',
     displayName: 'regetskcob',
     accentName: 'Tinte',
     light: HzAccent(
@@ -241,9 +276,12 @@ enum HorizontProduct {
       accentTint: Color(0xFF262823),
       accentText: Color(0xFFE7E7E0),
     ),
-  ),
+    mark: HorizontGlyphs.regetskcob,
+  );
+
   /// Jagdaufseher: Revierverwaltung, iOS und Android.
-  jagdaufseher(
+  static const HorizontProduct jagdaufseher = HorizontProduct(
+    id: 'jagdaufseher',
     displayName: 'Jagdaufseher',
     accentName: 'Tanne',
     light: HzAccent(
@@ -258,9 +296,12 @@ enum HorizontProduct {
       accentTint: Color(0xFF1C2A1F),
       accentText: Color(0xFF7ED399),
     ),
-  ),
+    mark: HorizontGlyphs.jagdaufseher,
+  );
+
   /// Busclear: Busdiagnose, alle Plattformen und Home Assistant.
-  knx(
+  static const HorizontProduct knx = HorizontProduct(
+    id: 'knx',
     displayName: 'Busclear',
     accentName: 'Bus',
     light: HzAccent(
@@ -286,9 +327,12 @@ enum HorizontProduct {
       accentTint: Color(0xFF2A3622),
       accentText: Color(0xFFBCDC9F),
     ),
-  ),
+    mark: HorizontGlyphs.knx,
+  );
+
   /// Panzergefecht: Spiel, Web, Apple-Geräte und Android.
-  panzergefecht(
+  static const HorizontProduct panzergefecht = HorizontProduct(
+    id: 'panzergefecht',
     displayName: 'Panzergefecht',
     accentName: 'Signalgelb',
     light: HzAccent(
@@ -313,9 +357,12 @@ enum HorizontProduct {
       textMuted: Color(0xFFB4BA9E),
       textFaint: Color(0xFF7D8466),
     ),
-  ),
+    mark: HorizontGlyphs.panzergefecht,
+  );
+
   /// Kalkar Kompakt: Buerger-App fuer Kalkar von Kalkar IT, iOS, Android und Web.
-  kalkarKompakt(
+  static const HorizontProduct kalkarKompakt = HorizontProduct(
+    id: 'kalkarKompakt',
     displayName: 'Kalkar Kompakt',
     accentName: 'Backstein',
     light: HzAccent(
@@ -330,9 +377,12 @@ enum HorizontProduct {
       accentTint: Color(0xFF2E1D17),
       accentText: Color(0xFFEE9F81),
     ),
-  ),
+    mark: HorizontGlyphs.kalkarKompakt,
+  );
+
   /// Gemarkung: Git-Client fuer viele Repositories, macOS, Windows, Linux und VS Code.
-  gemarkung(
+  static const HorizontProduct gemarkung = HorizontProduct(
+    id: 'gemarkung',
     displayName: 'Gemarkung',
     accentName: 'Heide',
     light: HzAccent(
@@ -347,9 +397,12 @@ enum HorizontProduct {
       accentTint: Color(0xFF251E2E),
       accentText: Color(0xFFCAB1EA),
     ),
-  ),
+    mark: HorizontGlyphs.gemarkung,
+  );
+
   /// Landbote: RSS-Reader, iOS, macOS und Android.
-  landbote(
+  static const HorizontProduct landbote = HorizontProduct(
+    id: 'landbote',
     displayName: 'Landbote',
     accentName: 'Altrhein',
     light: HzAccent(
@@ -364,9 +417,12 @@ enum HorizontProduct {
       accentTint: Color(0xFF172826),
       accentText: Color(0xFF80CFC5),
     ),
-  ),
+    mark: HorizontGlyphs.landbote,
+  );
+
   /// Streuwerk: Social-Media-Werkzeug, macOS.
-  streuwerk(
+  static const HorizontProduct streuwerk = HorizontProduct(
+    id: 'streuwerk',
     displayName: 'Streuwerk',
     accentName: 'Pflaume',
     light: HzAccent(
@@ -381,17 +437,17 @@ enum HorizontProduct {
       accentTint: Color(0xFF2E1A24),
       accentText: Color(0xFFEBAECB),
     ),
+    mark: HorizontGlyphs.streuwerk,
   );
 
-  const HorizontProduct({
-    required this.displayName,
-    required this.accentName,
-    required this.light,
-    required this.dark,
-    this.neutralDark,
-    this.softLight,
-    this.softDark,
-  });
+  /// The products Horizont still lists itself, in the order of the tokens.
+  static const List<HorizontProduct> values = [regetskcob, jagdaufseher, knx, panzergefecht, kalkarKompakt, gemarkung, landbote, streuwerk];
+
+  /// A stable identifier in camel case, e.g. `kalkarKompakt`.
+  final String id;
+
+  /// The same as [id]; kept from the time this was an enum.
+  String get name => id;
 
   /// The product's name as written in the UI.
   final String displayName;
@@ -413,6 +469,12 @@ enum HorizontProduct {
 
   /// Own colours of the soft style in dark mode, else null.
   final HzSoftColors? softDark;
+
+  /// The glyph `HorizontMark` draws; without one it draws the bare horizon.
+  final HorizontGlyph? mark;
+
+  @override
+  String toString() => 'HorizontProduct.$id';
 }
 
 /// Hosts that embed a product and lend it their neutrals, e.g. Home

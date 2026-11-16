@@ -4,6 +4,33 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.16.0
+
+Der erste Schritt von 2.0 (`docs/horizont-2.md`, vom Nutzer am 16.11.2026 freigegeben): Produkte
+legen sich selbst an. Nichts bricht; was Horizont über die Produkte weiß, bleibt bis 2.0 stehen.
+
+### Neu
+
+- **`HorizontProduct` ist eine Klasse** mit öffentlichem `const`-Konstruktor statt eines erzeugten
+  Enums. Ein Produkt legt sich in seinem Repository an (`id`, `displayName`, `accentName`, `light`,
+  `dark`, dazu wahlweise `neutralDark`, `softLight`, `softDark` und `mark`). Die bisherigen
+  `HorizontProduct.<name>` und `HorizontProduct.values` gibt es weiter, sie entfallen mit 2.0 bis
+  auf `regetskcob` (Dachmarke).
+- **`HorizontGlyph`**: die Glyphe eines Produkts als Pfad im Raster 100 × 100. `HorizontMark` und
+  `HorizontLockup` zeichnen sie aus `product.mark`; ohne Glyphe steht nur die Linie.
+- **`expectProductHoldsContrast(product)`** und `productContrastProblems(product)` in
+  `package:horizont/testing.dart`: die Leitplanken für Akzent und eigene Neutrale, als Test im
+  Repository des Produkts.
+- `HzAccent` und `HzNeutrals` sind exportiert. `tool/export_product.py` kennt `--no-icons`.
+
+### Heben
+
+- **Landbote, Gemarkung, Panzergefecht, Busclear:** Produkt im eigenen Repository anlegen
+  (`tool/horizont/horizont.product.json` und `mark/` aus `tool/export_product.py <id>
+  tool/horizont --no-icons`, daneben `lib/theme/product.dart`), `HorizontProduct.<name>` durch die
+  eigene Konstante ersetzen, ein Test mit `expectProductHoldsContrast`.
+- **Alle anderen:** nur den Tag heben; sie ziehen vor 2.0 nach.
+
 ## 0.15.0
 
 Erste Bausteine aus dem Manifest „Niederrheinisches Software-Design“ (`docs/manifest.md`), zuerst in
