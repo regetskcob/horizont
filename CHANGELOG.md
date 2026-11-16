@@ -4,7 +4,7 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
-## Unveröffentlicht
+## 0.17.0
 
 ### Neu
 
@@ -13,6 +13,11 @@ an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
   `horizont/landschaft.html` (ein Streifen Land mit mehreren Formen auf der Horizontlinie).
   Farben aus den Tokens, im Dunkelschema die Abendsilhouette. Entstanden mit dem Redesign des
   Blogs; Kalkar IT kann Buche und Rathaus damit gegen die gemeinsamen Formen tauschen.
+
+### Heben
+
+- **Blog, Kalkar IT und Landingpages:** `hugo mod get github.com/regetskcob/horizont@v0.17.0`; nichts muss sich ändern.
+- **Apps:** nur den Tag heben, das Flutter-Paket ist unverändert.
 
 ## 0.16.0
 
