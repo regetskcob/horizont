@@ -448,7 +448,8 @@ umgesetzt, wie er dort steht. Horizont hält die Leitplanken, die Produkte ihre 
 - **Ein Produkt legt sich selbst an.** Akzent, eigene Neutrale, Glyphe und App-Icon stehen im
   Repository des Produkts: `tool/horizont/horizont.product.json` (Aufbau wie ein Eintrag unter
   `color.product`), `tool/horizont/mark/` (SVG-Quellen) und `lib/theme/product.dart` (die
-  `HorizontProduct`-Konstante mit ihrer `HorizontGlyph`). Die Plattform-Sätze der Icons liegen wie
+  `HorizontProduct`-Konstante mit ihrer `HorizontGlyph`; bei Panzergefecht `lib/src/ui/product.dart`
+  neben dem Theme). Die Plattform-Sätze der Icons liegen wie
   bisher in den Plattformordnern der App.
 - **Horizont prüft, es bestimmt nicht:** `expectProductHoldsContrast(product)` aus
   `package:horizont/testing.dart` läuft als Test im Produkt; `tool/export_product.py <id> --check`
