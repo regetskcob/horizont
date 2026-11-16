@@ -39,6 +39,7 @@ export 'src/widgets/facts.dart';
 export 'src/widgets/field.dart';
 export 'src/widgets/hints.dart';
 export 'src/widgets/kennung.dart';
+export 'src/widgets/lage.dart';
 export 'src/widgets/mark.dart';
 export 'src/widgets/metric.dart';
 export 'src/widgets/navigation.dart';

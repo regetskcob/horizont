@@ -8,3 +8,4 @@
 
 # Python environment for tool/export_icons.py and tool/build_symbols.py
 /.venv/
+**/test/failures/

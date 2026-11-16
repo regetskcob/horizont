@@ -212,8 +212,8 @@ oder Seite schreiben.
 
 | Gerät | Aufteilung |
 | --- | --- |
-| iPhone (kompakt) | Kopf mit Kennung und kleinem Titel, höchstens eine Kennzahlenleiste, Abschnitte mit Kennzeile, Tab-Bar mit 3 bis 5 Zielen. Die eine Hauptaktion als FAB (alle Touch-Plattformen), am Telefon nur mit Symbol, ab 600 mit Wort. |
-| iPad (mittel/erweitert) | Hauptaktion als FAB, ab 600 mit Wort. Seitenleiste statt Tab-Bar, Kennzahlen am Fuß der Seitenleiste, Inhalt in der Mitte, Inspektor rechts (quer). Ebenen und Werkzeuge sitzen auf einer Fläche mit Haarlinie. Ausnahme: wenige gleichrangige Ansichten eines Inhalts (KNX Monitor: Übersicht, Objekte, Live) bleiben unten als Tab-Bar, das Menü wird zur einklappbaren Seitenleiste (entschieden, siehe unten). |
+| iPhone (kompakt) | Kopf mit Kennung und kleinem Titel, höchstens eine Kennzahlenleiste, Abschnitte mit Kennzeile, Tab-Bar mit 3 bis 5 Zielen. Die eine Hauptaktion als FAB mit Wort (alle Touch-Plattformen). |
+| iPad (mittel/erweitert) | Hauptaktion als FAB mit Wort. Seitenleiste statt Tab-Bar, Kennzahlen am Fuß der Seitenleiste, Inhalt in der Mitte, Inspektor rechts (quer). Ebenen und Werkzeuge sitzen auf einer Fläche mit Haarlinie. Ausnahme: wenige gleichrangige Ansichten eines Inhalts (KNX Monitor: Übersicht, Objekte, Live) bleiben unten als Tab-Bar, das Menü wird zur einklappbaren Seitenleiste (entschieden, siehe unten). |
 | Mac (groß) | Werkzeugleiste 52 mit Umschalter, Suche und der Hauptaktion (kein FAB mit Zeiger), Seitenleiste 200 bis 240 mit Kennungen, Inhalt als Raster aus Karten (mindestens 240), Inspektor 300. Dichte Zeilen, Tastatur zuerst. |
 | Apple TV | Sicherer Rand 60/80, Schrift × 1,5 (`tv`). Titel mit Kennung, ein Regal aus großen Kacheln, unten Details und eine Aktion. Fokus: Kachel +6 % und Akzentring. HUD im Spiel nur in den Ecken, die Mitte bleibt frei. |
 | Apple Watch | Uhrzeit oben rechts, ein Wert groß in Mono, eine Aktion. Die Krone blättert. Fläche schwarz oder Gelände. |
@@ -312,8 +312,9 @@ ohne zu fragen:
   Monitor, regetskcob/KNX-Monitor#23): Auf Telefon und Tablet steht die eine
   Hauptaktion als schwebender Knopf, auf iOS wie auf Android. Oben in der
   Leiste neben Kennung, Titel und Symbolen war sie am iPhone kaum lesbar.
-  Unter 600 ist der FAB quadratisch (56) mit Symbol und Tooltip, ab 600
-  `extended` mit Wort. Mit Zeiger (Mac, Windows, Linux) sitzt sie in der
+  Der FAB trägt sein Wort, auch am Telefon (entschieden am 16.11.2026 nach
+  dem Umbau von Landbote, seit 0.15.0; vorher unter 600 nur das Symbol). Das
+  Quadrat (56) mit Symbol und Tooltip bleibt, wo das Wort keinen Platz hat. Mit Zeiger (Mac, Windows, Linux) sitzt sie in der
   Werkzeugleiste, kein FAB.
 - **Ein Umriss mit 3:1** (entschieden für v0.6.1): `line-strong` wurde
   dunkler, statt einen eigenen Rand für Bedienelemente einzuführen. Karten,
@@ -326,10 +327,11 @@ KNX Monitor ist die erste App auf Horizont. Was der Nutzer dort am Gerät
 entschieden hat, gilt für alle folgenden Apps. Die Muster dazu mit Code
 stehen in [docs/flutter.md](docs/flutter.md), „Referenz: KNX Monitor“.
 
-- **FAB am Telefon nur mit Symbol** (die Regel steht oben unter
-  „Hauptaktion als FAB auf Touch“). Ein Umschalter, der neben der
-  Hauptaktion im FAB-Platz steht (Pause), trägt nie ein Wort. Beide stehen
-  in einer Flucht und gleich hoch. Während eine Suche den Fokus hat,
+- **FAB neben einem Umschalter nur mit Symbol** (die Regel für den FAB steht
+  oben unter „Hauptaktion als FAB auf Touch“; seit 0.15.0 trägt er sonst sein
+  Wort). Ein Umschalter, der neben der Hauptaktion im FAB-Platz steht (Pause),
+  trägt nie ein Wort, und die Hauptaktion daneben ist dann das Quadrat
+  (`compact: true`). Beide stehen in einer Flucht und gleich hoch. Während eine Suche den Fokus hat,
   verschwinden sie.
 - **Ansichten unten, Menü links.** Hat ein Bildschirm wenige gleichrangige
   Ansichten desselben Inhalts, bleiben sie auch auf dem Tablet unten als
@@ -437,6 +439,11 @@ Vom Nutzer entschieden bei der Durchsicht vor v1.0 (28.10.2026):
   `HorizontEmptyHint` mit Status). Was nur eine App braucht (der
   TV-Fokusrahmen von Panzergefecht, der Board-Kopf von KNX Monitor), bleibt
   dort, bis eine zweite es braucht.
+
+Der Plan für 2.0 (Leitplanken hier, Produktentscheidungen in den Produkten) steht als Entwurf in
+[docs/horizont-2.md](docs/horizont-2.md) und ist noch nicht entschieden. Darüber steht das Manifest, am 15.11.2026 als Grundlage für 2.0 angenommen:
+[docs/manifest.md](docs/manifest.md) („Niederrheinisches Software-Design“): für wen gebaut wird und
+welche Grundsätze daraus folgen, auch für schlechten Empfang.
 
 Neue offene Fragen kommen als Issue mit dem Label `question` und werden vom
 Nutzer entschieden, nicht von der Sitzung.

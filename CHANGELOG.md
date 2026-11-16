@@ -4,6 +4,37 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.15.0
+
+Erste Bausteine aus dem Manifest „Niederrheinisches Software-Design“ (`docs/manifest.md`), zuerst in
+Landbote gebaut (regetskcob/landbote#3).
+
+### Neu
+
+- **`HorizontHorizon(value:)`**: der Horizont unter dem Kopf einer Ansicht, 2 px, der linke Teil im
+  Akzent für einen Anteil (Gelesenes, Lesefortschritt, Zeitbudget). Als `AppBar.bottom` statt der
+  Haarlinie.
+- **`HorizontLage(text, status:, icon:, trailing:)`**: die Zeile direkt unter dem Kopf, die sagt, wie
+  aktuell die Ansicht ist („Aktuell · abgeglichen 08:12“, „Kein Empfang. Stand 08:12“). Ruhig in
+  Nebentext, auf der Tönung nur bei warning und critical. Sie ersetzt den Kreisel in der Leiste.
+- **`HorizontDot`**: der Punkt für Neues und Ungelesenes im Akzent, nie als einziges Zeichen.
+- **`docs/manifest.md`** (für wen gebaut wird, neun Grundsätze) und **`docs/horizont-2.md`** (Plan für
+  2.0, Entwurf). **`tool/export_product.py`** packt, was Horizont über ein Produkt weiß, für dessen
+  Repo und prüft die Kontraste des Akzents (`--check`).
+
+### Geändert
+
+- **Die Hauptaktion trägt ihr Wort, auch am Telefon** (entschieden am 16.11.2026 nach dem Umbau von
+  Landbote). `HorizontPrimaryAction.fab(context)` ist jetzt immer `extended`; das Quadrat mit Symbol
+  und Tooltip gibt es mit `fab(context, compact: true)`.
+
+### Heben
+
+- **Landbote, Gemarkung:** eigene Lage-Zeile, Horizont und Punkt durch die Bausteine ersetzen.
+- **KNX Monitor:** Neben der Hauptaktion steht dort der Umschalter (Pause); beide bleiben Quadrate,
+  also `fab(context, compact: true)`.
+- **Alle anderen:** prüfen, ob das Wort neben dem FAB Platz hat, sonst `compact: true`.
+
 ## 0.14.0
 
 Streuwerk ist ein Produkt (regetskcob/streuwerk#4).
