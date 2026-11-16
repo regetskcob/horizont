@@ -4,6 +4,18 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.17.1
+
+### Behoben
+
+- **Flurkarte am Handy:** Bis 640 px füllt die Karte den ganzen Bildschirm statt als Kasten
+  über der Seite zu stehen, und der Kopf bricht um: der Ort in einer Zeile, „Zurück“ und
+  „Schließen“ darunter. Vorher schob ein langer Ortsname „Schließen“ über den rechten Rand.
+
+### Heben
+
+- Nur Web: `hugo mod get github.com/regetskcob/horizont@v0.17.1`. Apps müssen nicht heben.
+
 ## 0.17.0
 
 ### Neu
