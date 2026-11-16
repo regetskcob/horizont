@@ -1,0 +1,31 @@
+{{- /*
+  A strip of land: silhouettes standing on the horizon line across the full
+  width. The land below is the page's to draw (a footer on --sunken). For the
+  end of a page (above the footer) or under a hero. Decorative; the line itself is drawn here, so do
+  not add a hairline of your own above it.
+
+    partial "horizont/landschaft.html" (dict
+      "items" (slice
+        (dict "name" "kopfweide" "x" "6%"  "height" 90)
+        (dict "name" "kopfweide" "x" "12%" "height" 66)
+        (dict "name" "muehle"    "x" "84%" "height" 120 "far" true))
+      "height" 130)            px above the line; default the tallest item
+
+  x is the left edge, in % so the picture holds from phone to wide screen;
+  far true sets the shape in the sunken tone, behind the near ones. On a
+  phone, keep two items at most.
+*/ -}}
+{{- $items := .items | default slice -}}
+{{- $max := 0 -}}
+{{- range $items }}{{ $max = math.Max $max (.height | default 90) }}{{ end -}}
+{{- $h := .height | default $max | int -}}
+<div class="hz-landschaft" aria-hidden="true">
+<svg width="100%" height="{{ add $h 2 }}" focusable="false" style="display:block;overflow:visible">
+  {{- range (slice true false) }}{{ $far := . }}
+  {{- range $items }}{{ if eq (.far | default false) $far }}
+  {{- $ih := .height | default 90 -}}
+  <svg x="{{ .x }}" y="{{ sub $h $ih }}" width="{{ div (mul $ih 120) 130 }}" height="{{ $ih }}" overflow="visible">{{ partial "horizont/silhouette.html" (dict "name" .name "height" $ih "color" (cond $far "var(--sunken)" "var(--line)")) }}</svg>
+  {{- end }}{{ end }}{{ end }}
+  <rect x="0" y="{{ $h }}" width="100%" height="2" style="fill:var(--text)"/>
+</svg>
+</div>
