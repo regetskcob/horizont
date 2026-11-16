@@ -60,6 +60,12 @@ void main() {
     for (final product in HorizontProduct.values) {
       expect(productContrastProblems(product), isEmpty, reason: product.displayName);
     }
+    // Busclear runs embedded in Home Assistant, the pale accent would not.
+    expect(productContrastProblems(HorizontProduct.knx, hosts: HorizontHost.values), isEmpty);
+    expect(
+      productContrastProblems(_pale, hosts: HorizontHost.values).where((p) => p.startsWith('in Home Assistant light')),
+      isNotEmpty,
+    );
   });
 
   test('a pale accent is named pair by pair', () {

@@ -16,24 +16,10 @@ import 'horizont.dart';
 
 /// The bundled fonts by family, as declared in the package's pubspec.
 const Map<String, List<String>> _fonts = {
-  'Literata': [
-    'Literata-Light.ttf',
-    'Literata-LightItalic.ttf',
-    'Literata-SemiBold.ttf',
-  ],
-  'MonaSans': [
-    'MonaSans-Regular.ttf',
-    'MonaSans-Medium.ttf',
-    'MonaSans-SemiBold.ttf',
-  ],
-  'MonaSansDisplayExpanded': [
-    'MonaSansDisplayExpanded-Bold.ttf',
-    'MonaSansDisplayExpanded-Black.ttf',
-  ],
-  'MonaspaceArgon': [
-    'MonaspaceArgon-Regular.otf',
-    'MonaspaceArgon-SemiBold.otf',
-  ],
+  'Literata': ['Literata-Light.ttf', 'Literata-LightItalic.ttf', 'Literata-SemiBold.ttf'],
+  'MonaSans': ['MonaSans-Regular.ttf', 'MonaSans-Medium.ttf', 'MonaSans-SemiBold.ttf'],
+  'MonaSansDisplayExpanded': ['MonaSansDisplayExpanded-Bold.ttf', 'MonaSansDisplayExpanded-Black.ttf'],
+  'MonaspaceArgon': ['MonaspaceArgon-Regular.otf', 'MonaspaceArgon-SemiBold.otf'],
   'MaterialSymbolsSharp': ['MaterialSymbolsSharp-300.ttf'],
 };
 
@@ -68,8 +54,27 @@ double _contrast(Color a, Color b) {
 /// - `accent` at least 3:1 on `bg` (the selection line)
 /// - own neutrals: `text` and `text-muted` at least 4.5:1 and `line-strong`
 ///   at least 3:1 on every paper
-List<String> productContrastProblems(HorizontProduct product) {
+///
+/// A product that runs embedded names its [hosts]: there the neutrals are
+/// the host's, and the accent has to hold on them as well.
+List<String> productContrastProblems(HorizontProduct product, {Iterable<HorizontHost> hosts = const []}) {
   final problems = <String>[];
+  for (final host in hosts) {
+    for (final brightness in Brightness.values) {
+      final c = HorizontColors.resolve(product, brightness, host: host);
+      for (final (name, paper) in [('bg', c.bg), ('surface', c.surface), ('accent-tint', c.accentTint)]) {
+        final r = _contrast(c.accentText, paper);
+        if (r < 4.5) {
+          problems.add(
+            'in ${host.displayName} ${brightness.name}: accent-text on $name is ${r.toStringAsFixed(2)}:1, needs 4.5:1',
+          );
+        }
+      }
+      final r = _contrast(c.accent, c.bg);
+      if (r < 3)
+        problems.add('in ${host.displayName} ${brightness.name}: accent on bg is ${r.toStringAsFixed(2)}:1, needs 3:1');
+    }
+  }
   final styles = [
     HorizontStyle.standard,
     if (product.softLight != null || product.softDark != null) HorizontStyle.soft,
@@ -107,8 +112,8 @@ List<String> productContrastProblems(HorizontProduct product) {
 /// ```dart
 /// test('Landbote holds the contrast', () => expectProductHoldsContrast(landbote));
 /// ```
-void expectProductHoldsContrast(HorizontProduct product) {
-  final problems = productContrastProblems(product);
+void expectProductHoldsContrast(HorizontProduct product, {Iterable<HorizontHost> hosts = const []}) {
+  final problems = productContrastProblems(product, hosts: hosts);
   if (problems.isNotEmpty) {
     throw StateError('${product.displayName} breaks the guard rails of Horizont:\n  ${problems.join('\n  ')}');
   }

@@ -48,10 +48,7 @@ abstract final class HorizontGlyphs {
   static const panzergefecht = HorizontGlyph(_panzergefecht);
 
   /// The town hall of Kalkar, its tower in the thin stroke.
-  static const kalkarKompakt = HorizontGlyph(
-    _kalkarKompakt,
-    thin: _kalkarKompaktThin,
-  );
+  static const kalkarKompakt = HorizontGlyph(_kalkarKompakt, thin: _kalkarKompaktThin);
 
   /// The signpost with two arms.
   static const gemarkung = HorizontGlyph(_gemarkung);
@@ -121,30 +118,7 @@ Path _panzergefecht() {
 
 Path _kalkarKompakt() {
   final p = _horizon();
-  _poly(p, [
-    22,
-    66.7,
-    22,
-    40,
-    34,
-    26,
-    43,
-    26,
-    43,
-    22,
-    50,
-    4,
-    57,
-    22,
-    57,
-    26,
-    66,
-    26,
-    78,
-    40,
-    78,
-    66.7,
-  ]);
+  _poly(p, [22, 66.7, 22, 40, 34, 26, 43, 26, 43, 22, 50, 4, 57, 22, 57, 26, 66, 26, 78, 40, 78, 66.7]);
   return p;
 }
 
@@ -166,13 +140,7 @@ Path _gemarkung() {
 Path _streuwerk() {
   final p = _horizon();
   _poly(p, [20, 66.7, 23, 43, 29, 35, 38, 35, 44, 43, 47, 66.7]);
-  for (final (x, y) in const [
-    (9.0, 46.0),
-    (30.0, 22.0),
-    (48.0, 18.0),
-    (62.0, 30.0),
-    (78.0, 44.0),
-  ]) {
+  for (final (x, y) in const [(9.0, 46.0), (30.0, 22.0), (48.0, 18.0), (62.0, 30.0), (78.0, 44.0)]) {
     _line(p, x, y, x + 1, y);
   }
   return p;

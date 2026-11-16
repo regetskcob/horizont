@@ -7,7 +7,9 @@ an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 ## 0.16.0
 
 Der erste Schritt von 2.0 (`docs/horizont-2.md`, vom Nutzer am 16.11.2026 freigegeben): Produkte
-legen sich selbst an. Nichts bricht; was Horizont über die Produkte weiß, bleibt bis 2.0 stehen.
+legen sich selbst an. Was Horizont über die Produkte weiß, bleibt bis 2.0 stehen;
+`HorizontProduct.<name>`, `.values` und `.name` gibt es weiter. Was nur ein Enum kann, entfällt: ein
+`switch` über alle Produkte ohne `default`, `.index` und `values.byName`. Keine der Apps nutzt das.
 
 ### Neu
 
@@ -20,16 +22,18 @@ legen sich selbst an. Nichts bricht; was Horizont über die Produkte weiß, blei
   `HorizontLockup` zeichnen sie aus `product.mark`; ohne Glyphe steht nur die Linie.
 - **`expectProductHoldsContrast(product)`** und `productContrastProblems(product)` in
   `package:horizont/testing.dart`: die Leitplanken für Akzent und eigene Neutrale, als Test im
-  Repository des Produkts.
+  Repository des Produkts; mit `hosts:` auch auf den Neutralen eines Gastgebers.
 - `HzAccent` und `HzNeutrals` sind exportiert. `tool/export_product.py` kennt `--no-icons`.
 
 ### Heben
 
-- **Landbote, Gemarkung, Panzergefecht, Busclear:** Produkt im eigenen Repository anlegen
+- **Landbote, Gemarkung, Panzergefecht, Busclear, Kalkar Kompakt:** Produkt im eigenen Repository anlegen
   (`tool/horizont/horizont.product.json` und `mark/` aus `tool/export_product.py <id>
   tool/horizont --no-icons`, daneben `lib/theme/product.dart`), `HorizontProduct.<name>` durch die
-  eigene Konstante ersetzen, ein Test mit `expectProductHoldsContrast`.
-- **Alle anderen:** nur den Tag heben; sie ziehen vor 2.0 nach.
+  eigene Konstante ersetzen, ein Test mit `expectProductHoldsContrast` (Busclear mit
+  `hosts: HorizontHost.values`, es läuft in Home Assistant).
+- **Streuwerk:** nutzt das Paket nicht; nur `tool/horizont/` übernehmen.
+- **Jagdaufseher:** nur den Tag heben.
 
 ## 0.15.0
 

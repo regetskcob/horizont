@@ -454,8 +454,10 @@ umgesetzt, wie er dort steht. Horizont hält die Leitplanken, die Produkte ihre 
 - **Horizont prüft, es bestimmt nicht:** `expectProductHoldsContrast(product)` aus
   `package:horizont/testing.dart` läuft als Test im Produkt; `tool/export_product.py <id> --check`
   prüft dasselbe an den Tokens.
-- **Stand:** Seit 0.16.0 ist `HorizontProduct` eine Klasse. Landbote, Gemarkung, Panzergefecht und
-  Busclear legen sich selbst an. Streuwerk, Jagdaufseher, Kalkar Kompakt und Kalkar IT folgen.
+- **Stand:** Seit 0.16.0 ist `HorizontProduct` eine Klasse. Landbote, Gemarkung, Panzergefecht,
+  Busclear und Kalkar Kompakt legen sich selbst an; Streuwerk nutzt das Paket nicht und hält nur
+  die Dateien unter `tool/horizont/`. Kalkar IT folgt mit der Web-Schicht. Jagdaufseher bleibt
+  vorerst in Horizont (vom Nutzer am 16.11.2026 zurückgestellt).
   `color.product`, `[data-product]`, die Produktzeichen in `mark.html` und `app-icon.html` und die
   `HorizontProduct.<name>` bleiben in Horizont stehen, bis alle umgezogen sind; erst `v2.0.0`
   nimmt sie heraus. Bis dahin wird eine Produktfarbe an beiden Stellen geändert.
