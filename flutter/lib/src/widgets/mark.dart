@@ -5,9 +5,8 @@ import '../horizont_theme.dart';
 import '../tokens.g.dart';
 
 /// The glyph of a product: the horizon on the lower third with its one
-/// object (beech, raised hide, bus terminal, tank, town hall, signpost,
-/// mailbox). Stroke 7 of 100, square
-/// caps. Its baseline is the horizon, so in a `Row` with
+/// object, taken from the product's `mark` (a `HorizontGlyph`). Stroke 7 of
+/// 100, square caps. Its baseline is the horizon, so in a `Row` with
 /// `CrossAxisAlignment.baseline` it sits on the text's baseline.
 class HorizontMark extends StatelessWidget {
   /// Creates the glyph of [product] at [size].
@@ -103,104 +102,15 @@ class _MarkPainter extends CustomPainter {
       ..strokeWidth = 7
       ..strokeCap = StrokeCap.square
       ..strokeJoin = StrokeJoin.miter;
-    canvas.drawPath(_path(product), paint);
-    final thin = _thin(product);
-    if (thin != null) canvas.drawPath(thin, paint..strokeWidth = 3.5);
-  }
-
-  /// Lines drawn at half the stroke: the tower of the town hall, set off
-  /// from the walls down to the ground, and the door seam of the mailbox.
-  static Path? _thin(HorizontProduct product) => switch (product) {
-    HorizontProduct.kalkarKompakt => Path()
-      ..moveTo(43, 26)
-      ..lineTo(43, 66.7)
-      ..moveTo(57, 26)
-      ..lineTo(57, 66.7),
-    HorizontProduct.landbote => Path()
-      ..moveTo(32, 31)
-      ..lineTo(32, 43),
-    _ => null,
-  };
-
-  static Path _path(HorizontProduct product) {
-    final p = Path();
-    void line(double x1, double y1, double x2, double y2) => p
-      ..moveTo(x1, y1)
-      ..lineTo(x2, y2);
-    void poly(List<double> xy, {bool close = false}) {
-      p.moveTo(xy[0], xy[1]);
-      for (var i = 2; i < xy.length; i += 2) {
-        p.lineTo(xy[i], xy[i + 1]);
-      }
-      if (close) p.close();
+    final glyph = product.mark;
+    if (glyph == null) {
+      // A product without a glyph still stands on the line.
+      canvas.drawLine(const Offset(4, 66.7), const Offset(96, 66.7), paint);
+      return;
     }
-
-    switch (product) {
-      case HorizontProduct.regetskcob:
-        line(4, 66.7, 96, 66.7);
-        line(50, 66.7, 50, 48);
-        p
-          ..moveTo(50, 48)
-          ..cubicTo(38, 48, 31, 42, 31, 33)
-          ..cubicTo(31, 24, 39, 16, 50, 16)
-          ..cubicTo(61, 16, 69, 24, 69, 33)
-          ..cubicTo(69, 42, 62, 48, 50, 48)
-          ..close();
-      case HorizontProduct.jagdaufseher:
-        line(4, 66.7, 96, 66.7);
-        poly([36, 22, 50, 14, 64, 22]);
-        poly([38, 24, 62, 24, 62, 40, 38, 40], close: true);
-        line(41, 40, 33, 66.7);
-        line(59, 40, 67, 66.7);
-        line(37.6, 49, 62.4, 49);
-        line(35, 58, 65, 58);
-      case HorizontProduct.knx:
-        line(4, 66.7, 35, 66.7);
-        line(65, 66.7, 96, 66.7);
-        poly([35, 40, 65, 40, 65, 74, 35, 74], close: true);
-        line(50, 40, 50, 74);
-      case HorizontProduct.panzergefecht:
-        line(4, 66.7, 96, 66.7);
-        poly([24, 66.7, 28, 54.7, 72, 54.7, 76, 66.7]);
-        poly([40, 54.7, 40, 44, 58, 44, 58, 54.7]);
-        line(58, 49, 82, 49);
-      case HorizontProduct.kalkarKompakt:
-        line(4, 66.7, 96, 66.7);
-        poly([22, 66.7, 22, 40, 34, 26, 43, 26, 43, 22, 50, 4, 57, 22, 57, 26, 66, 26, 78, 40, 78, 66.7]);
-      case HorizontProduct.gemarkung:
-        line(4, 66.7, 96, 66.7);
-        line(50, 66.7, 50, 22);
-        poly([50, 28, 70, 28, 75, 33, 70, 38, 50, 38]);
-        poly([50, 44, 30, 44, 25, 49, 30, 54, 50, 54]);
-      case HorizontProduct.streuwerk:
-        // The seed sack on the line, seeds scattered to every side.
-        line(4, 66.7, 96, 66.7);
-        p
-          ..moveTo(20, 66.7)
-          ..lineTo(23, 43)
-          ..lineTo(29, 35)
-          ..lineTo(38, 35)
-          ..lineTo(44, 43)
-          ..lineTo(47, 66.7);
-        for (final (x, y) in const [(9.0, 46.0), (30.0, 22.0), (48.0, 18.0), (62.0, 30.0), (78.0, 44.0)]) {
-          line(x, y, x + 1, y);
-        }
-      case HorizontProduct.landbote:
-        // The mailbox on its post, the flag raised as one bar.
-        line(4, 66.7, 96, 66.7);
-        line(50, 66.7, 50, 46);
-        p
-          ..moveTo(22, 46)
-          ..lineTo(22, 37)
-          ..arcToPoint(const Offset(31, 28), radius: const Radius.circular(9))
-          ..lineTo(65, 28)
-          ..arcToPoint(const Offset(74, 37), radius: const Radius.circular(9))
-          ..lineTo(74, 46)
-          ..close();
-        line(66, 28, 66, 13.5);
-        line(66, 13.5, 76, 13.5);
-    }
-    return p;
+    canvas.drawPath(glyph.path(), paint);
+    final thin = glyph.thin;
+    if (thin != null) canvas.drawPath(thin(), paint..strokeWidth = 3.5);
   }
 
   @override

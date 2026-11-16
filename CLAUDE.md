@@ -440,8 +440,34 @@ Vom Nutzer entschieden bei der Durchsicht vor v1.0 (28.10.2026):
   TV-Fokusrahmen von Panzergefecht, der Board-Kopf von KNX Monitor), bleibt
   dort, bis eine zweite es braucht.
 
-Der Plan für 2.0 (Leitplanken hier, Produktentscheidungen in den Produkten) steht als Entwurf in
-[docs/horizont-2.md](docs/horizont-2.md) und ist noch nicht entschieden. Darüber steht das Manifest, am 15.11.2026 als Grundlage für 2.0 angenommen:
+## Horizont 2.0: Leitplanken statt Produktentscheidungen
+
+Vom Nutzer am 16.11.2026 entschieden: Der Plan in [docs/horizont-2.md](docs/horizont-2.md) wird
+umgesetzt, wie er dort steht. Horizont hält die Leitplanken, die Produkte ihre Entscheidungen.
+
+- **Ein Produkt legt sich selbst an.** Akzent, eigene Neutrale, Glyphe und App-Icon stehen im
+  Repository des Produkts: `tool/horizont/horizont.product.json` (Aufbau wie ein Eintrag unter
+  `color.product`), `tool/horizont/mark/` (SVG-Quellen) und `lib/theme/product.dart` (die
+  `HorizontProduct`-Konstante mit ihrer `HorizontGlyph`; bei Panzergefecht `lib/src/ui/product.dart`
+  neben dem Theme). Die Plattform-Sätze der Icons liegen wie
+  bisher in den Plattformordnern der App.
+- **Horizont prüft, es bestimmt nicht:** `expectProductHoldsContrast(product)` aus
+  `package:horizont/testing.dart` läuft als Test im Produkt; `tool/export_product.py <id> --check`
+  prüft dasselbe an den Tokens.
+- **Stand:** Seit 0.16.0 ist `HorizontProduct` eine Klasse. Landbote, Gemarkung, Panzergefecht,
+  Busclear und Kalkar Kompakt legen sich selbst an; Streuwerk nutzt das Paket nicht und hält nur
+  die Dateien unter `tool/horizont/`. Kalkar IT folgt mit der Web-Schicht. Jagdaufseher bleibt
+  vorerst in Horizont (vom Nutzer am 16.11.2026 zurückgestellt).
+  `color.product`, `[data-product]`, die Produktzeichen in `mark.html` und `app-icon.html` und die
+  `HorizontProduct.<name>` bleiben in Horizont stehen, bis alle umgezogen sind; erst `v2.0.0`
+  nimmt sie heraus. Bis dahin wird eine Produktfarbe an beiden Stellen geändert.
+- **Kein neues Produkt mehr in `color.product`.** Ein neues Produkt legt sich von Anfang an selbst
+  an.
+- Die Gestaltung aus Abschnitt 2 des Plans (Flächen wie Äcker, Kennung einmal je Ebene, Lesen in
+  Literata, Zahlen tragen, Raum statt Linie, Mindestgrößen, Umriss 3:1 in der weichen Stufe) ist
+  mit freigegeben und kommt mit dem Paket 2.0; bis dahin gelten die Regeln oben.
+
+Über dem Plan steht das Manifest, am 15.11.2026 als Grundlage für 2.0 angenommen:
 [docs/manifest.md](docs/manifest.md) („Niederrheinisches Software-Design“): für wen gebaut wird und
 welche Grundsätze daraus folgen, auch für schlechten Empfang.
 

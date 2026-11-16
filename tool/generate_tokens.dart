@@ -23,6 +23,8 @@ void main() {
     ..writeln()
     ..writeln("import 'package:flutter/widgets.dart';")
     ..writeln()
+    ..writeln("import 'glyph.dart';")
+    ..writeln()
     ..writeln('/// Version of the tokens this file was generated from.')
     ..writeln("const String horizontTokensVersion = '${tokens['version']}';")
     ..writeln();
@@ -100,9 +102,41 @@ class HzSoftColors {
     ..writeln('  static const double barAlpha = ${_num(scrim['bar-alpha'])};')
     ..writeln('}\n');
 
-  out
-    ..writeln('/// The products of Horizont with their accents.')
-    ..writeln('enum HorizontProduct {');
+  out.writeln("""
+/// A product on Horizont: its name, its accent in both brightnesses and,
+/// where it has them, its own neutrals, soft colours and glyph.
+///
+/// Since 0.16.0 a product defines itself, in its own repository:
+///
+/// ```dart
+/// const landbote = HorizontProduct(
+///   id: 'landbote',
+///   displayName: 'Landbote',
+///   accentName: 'Altrhein',
+///   light: HzAccent(…),
+///   dark: HzAccent(…),
+///   mark: HorizontGlyph(drawMailbox),
+/// );
+/// ```
+///
+/// `expectProductHoldsContrast` from `package:horizont/testing.dart` checks
+/// the colours against the guard rails. The products listed here are the
+/// state before the move; all but [regetskcob] leave with 2.0.
+@immutable
+class HorizontProduct {
+  /// Creates a product.
+  const HorizontProduct({
+    required this.id,
+    required this.displayName,
+    required this.accentName,
+    required this.light,
+    required this.dark,
+    this.neutralDark,
+    this.softLight,
+    this.softDark,
+    this.mark,
+  });
+""");
   final ids = products.keys.toList();
   for (var i = 0; i < ids.length; i++) {
     final p = products[ids[i]] as Map<String, dynamic>;
@@ -110,7 +144,8 @@ class HzSoftColors {
     final soft = p['soft'] as Map<String, dynamic>?;
     out
       ..writeln('  /// ${p['name']}: ${p['role']}.')
-      ..writeln('  ${_camel(ids[i])}(')
+      ..writeln('  static const HorizontProduct ${_camel(ids[i])} = HorizontProduct(')
+      ..writeln("    id: '${_camel(ids[i])}',")
       ..writeln("    displayName: '${p['name']}',")
       ..writeln("    accentName: '${p['accentName']}',")
       ..write('    light: ')
@@ -134,19 +169,21 @@ class HzSoftColors {
         ..write(_ctor('HzSoftColors', soft['dark'] as Map<String, dynamic>, 4))
         ..writeln(',');
     }
-    out.writeln('  )${i == ids.length - 1 ? ';' : ','}');
+    out
+      ..writeln('    mark: HorizontGlyphs.${_camel(ids[i])},')
+      ..writeln('  );')
+      ..writeln();
   }
-  out.writeln('''
+  out
+    ..writeln('  /// The products Horizont still lists itself, in the order of the tokens.')
+    ..writeln('  static const List<HorizontProduct> values = [${ids.map(_camel).join(', ')}];')
+    ..writeln('''
 
-  const HorizontProduct({
-    required this.displayName,
-    required this.accentName,
-    required this.light,
-    required this.dark,
-    this.neutralDark,
-    this.softLight,
-    this.softDark,
-  });
+  /// A stable identifier in camel case, e.g. `kalkarKompakt`.
+  final String id;
+
+  /// The same as [id]; kept from the time this was an enum.
+  String get name => id;
 
   /// The product's name as written in the UI.
   final String displayName;
@@ -168,6 +205,12 @@ class HzSoftColors {
 
   /// Own colours of the soft style in dark mode, else null.
   final HzSoftColors? softDark;
+
+  /// The glyph `HorizontMark` draws; without one it draws the bare horizon.
+  final HorizontGlyph? mark;
+
+  @override
+  String toString() => 'HorizontProduct.\$id';
 }
 ''');
 

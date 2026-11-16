@@ -10,6 +10,7 @@
 library;
 
 export 'src/colors.dart';
+export 'src/glyph.dart';
 export 'src/horizont_theme.dart';
 export 'src/licenses.dart';
 export 'src/theme.dart';
@@ -18,6 +19,8 @@ export 'src/tokens.g.dart'
         HorizontHost,
         HorizontProduct,
         HorizontSymbols,
+        HzAccent,
+        HzNeutrals,
         HzBreakpoint,
         HzColors,
         HzFont,

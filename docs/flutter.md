@@ -52,9 +52,47 @@ Es bringt mit:
   `horizontSelectionDecoration`, `horizontBackSymbol`, `resolveMotion` und
   `HorizontTheme.of(context).criticalButton` (Muster unten unter
   „Bausteine“).
+- `HorizontProduct` und `HorizontGlyph`: Seit 0.16.0 legt ein Produkt sich selbst an (siehe
+  „Das Produkt anlegen“ unten).
 - `registerHorizontLicenses()` für die Lizenzseite.
 - Für Tests `package:horizont/testing.dart` mit `loadHorizontFonts()`: in
   `setUpAll` aufrufen, dann zeigen Goldens die echten Schriften und Symbole.
+  Dazu `expectProductHoldsContrast(product)` für die Leitplanken des Akzents.
+
+### Das Produkt anlegen
+
+Akzent, eigene Neutrale und Glyphe gehören dem Produkt (Horizont 2.0). Im Repository der App:
+
+```
+tool/horizont/horizont.product.json   Farben, wie ein Eintrag unter color.product
+tool/horizont/mark/                   SVG-Quellen von Glyphe und App-Icon
+lib/theme/product.dart                die Konstante für das Paket
+```
+
+```dart
+import 'package:flutter/widgets.dart';
+import 'package:horizont/horizont.dart';
+
+const landbote = HorizontProduct(
+  id: 'landbote',
+  displayName: 'Landbote',
+  accentName: 'Altrhein',
+  light: HzAccent(accent: Color(0xFF1E6B66), onAccent: …, accentTint: …, accentText: …),
+  dark: HzAccent(…),
+  mark: HorizontGlyph(_mailbox, thin: _seam),
+);
+
+/// Raster 100 × 100, Horizont bei 66,7, Strich 7 (thin: 3,5), eckige Enden.
+Path _mailbox() => Path()
+  ..moveTo(4, 66.7)
+  ..lineTo(96, 66.7)
+  …;
+```
+
+Ein Test hält beides zusammen: Er liest `horizont.product.json`, vergleicht die Farben mit der
+Konstante und ruft `expectProductHoldsContrast(landbote)`. Eine Farbe ändert das Produkt in der
+JSON-Datei und in `product.dart`, kein Horizont-Tag nötig. Die Zeichenregeln für Glyphe und
+App-Icon (`CLAUDE.md`, „Marken und Icons“) gelten weiter.
 
 Tests im Paket: Kontrast (AA) für jedes Produkt und jeden Modus, Theme,
 Widgets inklusive Grundlinie des Lockups. Goldens der Showcase-App liegen in
@@ -415,7 +453,7 @@ steht in ihrer `pubspec.yaml`.
 | Panzergefecht | `regetskcob/wargame` (`~/dev/wargame`) | `lib/src/ui/theme.dart` | Gelände-Neutrale im Dunkeln, Mona Sans Display Expanded, TV (`lib/src/tv/`) und Watch; Spielwelt-Farben gehören dem Spiel |
 | Kalkar Kompakt | `Kalkar-IT-Solutions/kalkar-kompakt` | `lib/theme/` | Produkt `kalkarKompakt` (Backstein), iOS, Android und Web |
 | Gemarkung | `regetskcob/gemarkung` (`~/dev/gemarkung`) | `lib/theme/` | Produkt `gemarkung` (Heide), macOS, Windows, Linux und VS Code (Web im Webview); Serienfarben des Commit-Graphen in `theme/palette.dart` |
-| Landbote | noch kein Repository | `lib/theme/` | Produkt `landbote` (Altrhein), RSS-Reader für iOS, macOS und Android |
+| Landbote | `regetskcob/landbote` (`~/dev/landbote`) | `lib/theme/` | Produkt `landbote` (Altrhein), RSS-Reader für iOS, macOS und Android |
 
 ## Referenz: KNX Monitor
 

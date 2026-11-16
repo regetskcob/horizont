@@ -1,7 +1,11 @@
 # Horizont 2.0 – Plan
 
-Stand 15.11.2026: Das Manifest ist als Grundlage angenommen, dieser Plan ist noch **Entwurf**.
-Nichts hiervon gilt, bevor es in `CLAUDE.md` unter „Entscheidungen“ steht. Das Manifest bleibt (Feldflur, sechs Regeln, drei
+Stand 16.11.2026: Der Nutzer hat den Plan freigegeben, er wird umgesetzt, wie er hier steht
+(`CLAUDE.md`, „Horizont 2.0“). Erledigt ist der erste Schritt: Seit 0.16.0 ist `HorizontProduct`
+eine Klasse, und Landbote, Gemarkung, Panzergefecht, Busclear und Kalkar Kompakt legen sich in
+ihrem Repository selbst an (`tool/horizont/`, `lib/theme/product.dart`); Streuwerk hält dort seine
+Dateien. Offen sind Kalkar IT, die Web-Schicht mit der Flurkarte, die Gestaltung aus Abschnitt 2
+und `v2.0.0`. Jagdaufseher ist zurückgestellt und bleibt vorerst in Horizont. Das Manifest bleibt (Feldflur, sechs Regeln, drei
 Stimmen, ein Akzent). 2.0 ändert, wer was festlegt, und hebt die Gestaltung der Apps.
 
 Die Entwürfe am Bildschirm (Landbote, Gemarkung) liegen im Design-System-Artifact „Horizont“
