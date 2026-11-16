@@ -168,6 +168,8 @@ den Tokens. Eigene Werte in einem Layout sind ein Fehler.
 | `horizont/feld/hero.html`, `section.html`, `foot.html` | die Feldseite (siehe unten); den Kopf bildet der Horizont, `feld/head.html` gibt es seit 0.9.0 nicht mehr |
 | `horizont/lightbox.html` | Bildansicht: Links mit `data-lightbox` öffnen ihr Bild groß, mit Untertitel (`data-caption`), Blättern innerhalb von `data-lightbox-group` und Zoom per Klick (`lang`) |
 | `horizont/icons.html` | Platzhalter-Ikonen der Doku als SVG-Sprite |
+| `horizont/silhouette.html` | eine Silhouette der Landschaft, flach in einem Ton, auf der Linie stehend (`name`: kopfweide, pappeln, deich, muehle, buche, kirchturm; `height`, `color`) |
+| `horizont/landschaft.html` | ein Streifen Land über die ganze Breite: Silhouetten auf der Horizontlinie, für Seitenende und Hero (`items` mit `name`, `x` in %, `height`, `far`) |
 
 ```go-html-template
 {{ partial "horizont/lockup.html" (dict "product" "knx" "href" "/knx/") }}
@@ -269,6 +271,24 @@ Kapitel, der Weg zurück und die Sprache liegen auf der Linie.
 Nicht verwenden: zentrierter Hero, Badge- oder Eyebrow-Pille, Kachelraster
 mit Icon in getönter Fläche, abwechselnde Abschnittsfarben, Schatten unter
 Screenshots, nackte Screenshots ohne Rahmen.
+
+## Landschaft
+
+Flache Silhouetten geben den Seiten den Ort: Kopfweide, Pappelreihe, Deich mit
+Schafen, Turmmühle, Buche, Kirchturm mit Treppengiebel. Sie stehen immer auf der
+Horizontlinie, in einem Ton (`--line`, in der Ferne `--sunken`), nie mehr als
+zwei oder drei auf einmal; der Rest ist Himmel. Jeder Bereich einer Seite darf
+seine eigene haben (im Blog: Kopfweide für Beiträge, Deich für Fotografie,
+Mühle für Projekte, Buche für die Person, wie bei Kalkar IT). Im Dunkelschema
+werden dieselben Formen zur Abendsilhouette. Rein dekorativ: Was sie zeigen,
+sagt die Seite auch in Worten.
+
+```go-html-template
+{{ partial "horizont/landschaft.html" (dict "items" (slice
+  (dict "name" "kopfweide" "x" "6%" "height" 90)
+  (dict "name" "kopfweide" "x" "12%" "height" 66)
+  (dict "name" "muehle" "x" "84%" "height" 120))) }}
+```
 
 ## Prüfen
 
