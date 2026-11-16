@@ -157,11 +157,20 @@ void main() {
       ),
     );
 
-    testWidgets('on a phone a square FAB with the symbol only', (tester) async {
+    testWidgets('on a phone the FAB carries the word', (tester) async {
       await tester.pumpWidget(scaffold(density: HorizontDensity.touch));
       expect(find.byType(FloatingActionButton), findsOneWidget);
-      expect(find.text('Melden'), findsNothing);
+      expect(find.text('Melden'), findsOneWidget);
       expect(find.byType(FilledButton), findsNothing);
+    });
+
+    testWidgets('compact is the square with symbol and tooltip', (tester) async {
+      await tester.pumpWidget(MaterialApp(
+        theme: buildHorizontTheme(HorizontProduct.kalkarKompakt, Brightness.light, density: HorizontDensity.touch),
+        home: Builder(builder: (context) => Scaffold(floatingActionButton: action.fab(context, compact: true))),
+      ));
+      expect(find.text('Melden'), findsNothing);
+      expect(find.byTooltip('Melden'), findsOneWidget);
     });
 
     testWidgets('from 600 the FAB carries the word', (tester) async {

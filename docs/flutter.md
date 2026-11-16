@@ -338,8 +338,17 @@ App nie nachbauen:
   EdgeInsets.zero, minHeight: 0, child: ListTile(onTap: …))` legen.
 - **Hauptaktion:** `HorizontPrimaryAction(icon:, label:, onPressed:)`, dann
   `floatingActionButton: action.fab(context)` und `AppBar(actions:
-  [...action.toolbar(context)])`. Auf Touch FAB (unter 600 nur Symbol), mit
-  Zeiger ein `FilledButton` in der Werkzeugleiste.
+  [...action.toolbar(context)])`. Auf Touch ein FAB mit Wort, auch am
+  Telefon (seit 0.15.0); nur wo das Wort keinen Platz hat, `fab(context,
+  compact: true)` für das Quadrat mit Symbol. Mit Zeiger ein `FilledButton`
+  in der Werkzeugleiste.
+- **Lage und Horizont:** `AppBar(bottom: HorizontHorizon(value: gelesen /
+  alle))` statt der Haarlinie unter dem Kopf, darunter als erste Zeile des
+  Inhalts `HorizontLage(text, status:, icon:, trailing:)`: aktuell (positive),
+  wird abgeglichen (neutral, `HorizontSymbols.sync`), Stand von … oder kein
+  Empfang (warning, `HorizontSymbols.cloudOff`). Kein Kreisel in der Leiste,
+  keine gesperrte Ansicht wegen des Netzes. Neues und Ungelesenes trägt
+  `HorizontDot` und dazu volles Gewicht.
 - **Formular-Sheet:** `horizontSheetPadding(context)` (Rand 16 und die
   Tastatur), oben `HorizontTitle`, unten `HorizontSheetActions(onSave:,
   saving:)` mit „Abbrechen“ und „Speichern“ aus den Plattformwörtern.

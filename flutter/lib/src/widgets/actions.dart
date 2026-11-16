@@ -6,9 +6,9 @@ import '../tokens.g.dart';
 import 'status.dart';
 
 /// The one primary action of a screen, placed the Horizont way: on touch a
-/// floating action button (below 600 square with the symbol and a tooltip,
-/// from 600 extended with the word), with a pointer a `FilledButton` in the
-/// toolbar and no FAB.
+/// floating action button that carries its word (square with the symbol
+/// only when asked for with `compact`), with a pointer a `FilledButton` in
+/// the toolbar and no FAB.
 ///
 /// ```dart
 /// final add = HorizontPrimaryAction(icon: HorizontSymbols.add, label: l10n.add, onPressed: _add);
@@ -29,7 +29,7 @@ class HorizontPrimaryAction {
   /// The symbol.
   final IconData icon;
 
-  /// The word; the tooltip of the square FAB.
+  /// The word; the tooltip of the compact FAB.
   final String label;
 
   /// What it does; null disables it.
@@ -42,10 +42,14 @@ class HorizontPrimaryAction {
   /// The FAB for `Scaffold.floatingActionButton`, null with a pointer. Give
   /// each FAB of a page a [heroTag] of its own when there are several routes
   /// with one.
-  Widget? fab(BuildContext context, {Object? heroTag}) {
+  ///
+  /// The FAB carries its word, on the phone too: a main action without a
+  /// word is a riddle to anyone who has not learnt the symbol. Only where
+  /// the word does not fit (a second control beside it, a map that needs
+  /// the room) pass [compact] for the square with symbol and tooltip.
+  Widget? fab(BuildContext context, {Object? heroTag, bool compact = false}) {
     if (inToolbar(context)) return null;
-    final wide = MediaQuery.sizeOf(context).width >= HzBreakpoint.medium;
-    if (wide) {
+    if (!compact) {
       return FloatingActionButton.extended(
         heroTag: heroTag,
         onPressed: onPressed,
