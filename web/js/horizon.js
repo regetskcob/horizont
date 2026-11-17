@@ -21,9 +21,11 @@
   var dialog = document.querySelector("[data-hz-karte]");
   var back = nav.querySelector(".hz-horizon-back");
 
-  // marks "auto": the chapters come from the page, by default the numbered
-  // sections of a Feldseite. "02 — Funktionen" becomes the title
-  // "02 Funktionen" and the number "02". Fewer than three: the line alone.
+  // marks "auto": the chapters come from the page, by default the sections
+  // of a Feldseite. An old numbered Kennung ("02 — Funktionen") loses its
+  // number; where there is little room the word is cut ("Funk…") instead
+  // of standing in for a count (since 0.19.1: numbers read as made by
+  // machine). Fewer than three: the line alone.
   if (list && list.dataset.hzAuto) {
     var found = [].slice.call(document.querySelectorAll(list.dataset.hzAuto)).filter(function (s) { return s.id; });
     if (found.length >= 3) {
@@ -34,8 +36,8 @@
         var a = document.createElement("a");
         a.className = "hz-tick";
         a.href = "#" + s.id;
-        a.dataset.full = parts ? parts[1] + " " + parts[2] : text;
-        a.dataset.short = parts ? parts[1] : String(i + 1);
+        a.dataset.full = parts ? parts[2] : text;
+        a.dataset.short = a.dataset.full;
         a.style.setProperty("--h", "10px");
         var span = document.createElement("span");
         span.textContent = a.dataset.full;

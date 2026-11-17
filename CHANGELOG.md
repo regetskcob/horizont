@@ -4,6 +4,19 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.19.1
+
+### Geändert
+
+- Automatische Kapitel (`marks "auto"`) zeigen bei wenig Platz das gekürzte Wort statt ihrer
+  Position als Zahl, und eine alte Kennung „02 — Funktionen“ verliert die Nummer. Seiten, die
+  `short` selbst mitgeben, sollten dort ebenfalls ein Wort setzen, keine Zählung.
+
+### Heben
+
+- **Blog, Kalkar IT, Landingpages:** `hugo mod get github.com/regetskcob/horizont@v0.19.1`.
+- **Apps:** nur den Tag heben.
+
 ## 0.19.0
 
 ### Neu
