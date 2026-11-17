@@ -67,9 +67,18 @@
   {{- if $projects }}
   <span class="hz-weg" aria-hidden="true"></span>
   <div class="hz-gem hz-gem--prod">
-    <p class="t-kennung hz-kennung">{{ cond $en "Projects" "Projekte" }}</p>
+    {{- /* Products without an owner under "Projekte", then each owner's
+           products under its name, which links to its page about them
+           (flur.yaml "owners", since 0.20). */}}
+    {{- $groups := slice (dict "id" "" "name" (cond $en "Projects" "Projekte")) -}}
+    {{- range $flur.owners }}{{ $groups = $groups | append (dict "id" .id "name" .name "url" (printf "%s%s" .site .path)) }}{{ end -}}
+    {{- range $grp := $groups }}
+    {{- $members := slice -}}
+    {{- range $g := $flur.gemarkungen }}{{ if and (ne $g.id $m.id) (eq ($g.owner | default "") $grp.id) }}{{ $members = $members | append $g }}{{ end }}{{ end -}}
+    {{- with $members }}
+    <p class="t-kennung hz-kennung">{{ with $grp.url }}<a href="{{ . }}">{{ $grp.name }}</a>{{ else }}{{ $grp.name }}{{ end }}</p>
     <ul class="hz-parzellen">
-    {{- range $g := $flur.gemarkungen }}{{ if ne $g.id $m.id }}
+    {{- range $g := . }}
       {{- $on := eq $g.id $here }}
       <li data-product="{{ $g.product }}">
         <a class="hz-parzelle hz-parzelle--prod" href="{{ cond (eq $g.id $home) (relLangURL (strings.TrimPrefix "/" $g.path)) (printf "%s%s" ($g.site | default $flur.site) $g.path) }}"{{ if $on }} aria-current="page"{{ end }}>
@@ -77,8 +86,10 @@
           <span class="hz-parzelle-name">{{ partial "horizont/mark.html" (dict "product" ($g.mark | default $g.product) "size" 20) }}{{ $g.name }}</span>
         </a>
       </li>
-    {{- end }}{{ end }}
+    {{- end }}
     </ul>
+    {{- end }}
+    {{- end }}
   </div>
   {{- end }}
 </div>

@@ -10,7 +10,7 @@ import 'package:flutter/widgets.dart';
 import 'glyph.dart';
 
 /// Version of the tokens this file was generated from.
-const String horizontTokensVersion = '0.19.1';
+const String horizontTokensVersion = '0.20.0';
 
 /// The neutral colours of one brightness.
 @immutable
