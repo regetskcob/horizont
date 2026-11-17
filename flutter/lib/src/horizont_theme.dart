@@ -14,9 +14,14 @@ enum HorizontDensity {
 
   /// The density a platform expects: pointer on macOS, Windows and Linux
   /// (also the web on those systems), touch everywhere else.
-  static HorizontDensity forPlatform(TargetPlatform platform) => switch (platform) {
-        TargetPlatform.macOS || TargetPlatform.windows || TargetPlatform.linux => HorizontDensity.pointer,
-        TargetPlatform.android || TargetPlatform.iOS || TargetPlatform.fuchsia => HorizontDensity.touch,
+  static HorizontDensity forPlatform(TargetPlatform platform) =>
+      switch (platform) {
+        TargetPlatform.macOS ||
+        TargetPlatform.windows ||
+        TargetPlatform.linux => HorizontDensity.pointer,
+        TargetPlatform.android ||
+        TargetPlatform.iOS ||
+        TargetPlatform.fuchsia => HorizontDensity.touch,
       };
 }
 
@@ -43,7 +48,10 @@ class HorizontTheme extends ThemeExtension<HorizontTheme> {
   /// by `buildHorizontTheme`; there is deliberately no fallback.
   static HorizontTheme of(BuildContext context) {
     final ext = Theme.of(context).extension<HorizontTheme>();
-    assert(ext != null, 'HorizontTheme missing: build ThemeData with buildHorizontTheme().');
+    assert(
+      ext != null,
+      'HorizontTheme missing: build ThemeData with buildHorizontTheme().',
+    );
     return ext!;
   }
 
@@ -90,12 +98,15 @@ class HorizontTheme extends ThemeExtension<HorizontTheme> {
   /// style Mona Sans with tabular figures, so a number in a menu does not
   /// read as a measurement; otherwise [data]. Both in `text-muted`.
   TextStyle get count => soft
-      ? horizontTextStyle(HzType.callout, colors.textMuted)
-          .copyWith(fontFeatures: const [FontFeature.tabularFigures()])
+      ? horizontTextStyle(
+          HzType.callout,
+          colors.textMuted,
+        ).copyWith(fontFeatures: const [FontFeature.tabularFigures()])
       : data.copyWith(color: colors.textMuted);
 
   /// Minimum height of a control for [density]: 44 on touch, 28 with a pointer.
-  double get controlHeight => density == HorizontDensity.touch ? HzSize.touch : HzSize.controlDesktop;
+  double get controlHeight =>
+      density == HorizontDensity.touch ? HzSize.touch : HzSize.controlDesktop;
 
   /// Corner radius of a control (field, button, segment) for [style]: 8 in
   /// the soft style, 6 in the standard one, on touch and with a pointer
@@ -105,7 +116,8 @@ class HorizontTheme extends ThemeExtension<HorizontTheme> {
       BorderRadius.all(Radius.circular(soft ? HzSoft.control : HzRadius.r6));
 
   /// Height of a list row for [density].
-  double get rowHeight => density == HorizontDensity.touch ? HzSize.row : HzSize.rowDense;
+  double get rowHeight =>
+      density == HorizontDensity.touch ? HzSize.row : HzSize.rowDense;
 
   /// The style of a `FilledButton` for an action that acts outward and
   /// cannot be undone: [HorizontColors.critical] with
@@ -116,20 +128,20 @@ class HorizontTheme extends ThemeExtension<HorizontTheme> {
   /// FilledButton(style: HorizontTheme.of(context).criticalButton, …)
   /// ```
   ButtonStyle get criticalButton => FilledButton.styleFrom(
-        backgroundColor: colors.critical,
-        foregroundColor: colors.onCritical,
-      );
+    backgroundColor: colors.critical,
+    foregroundColor: colors.onCritical,
+  );
 
   /// The style of an `IconButton` inside a field (search, clear, reveal): as
   /// high and wide as the field, without padding, the icon 18. Otherwise the
   /// button (40/48) makes the field taller. `HorizontFieldIconButton` uses it.
   ButtonStyle get fieldIconButton => IconButton.styleFrom(
-        fixedSize: Size.square(controlHeight),
-        minimumSize: Size.zero,
-        padding: EdgeInsets.zero,
-        iconSize: HzIconSize.row,
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      );
+    fixedSize: Size.square(controlHeight),
+    minimumSize: Size.zero,
+    padding: EdgeInsets.zero,
+    iconSize: HzIconSize.row,
+    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+  );
 
   @override
   HorizontTheme copyWith({
@@ -143,19 +155,18 @@ class HorizontTheme extends ThemeExtension<HorizontTheme> {
     TextStyle? display,
     TextStyle? field,
     HorizontStyle? style,
-  }) =>
-      HorizontTheme(
-        product: product ?? this.product,
-        brightness: brightness ?? this.brightness,
-        density: density ?? this.density,
-        colors: colors ?? this.colors,
-        data: data ?? this.data,
-        kennung: kennung ?? this.kennung,
-        reading: reading ?? this.reading,
-        display: display ?? this.display,
-        field: field ?? this.field,
-        style: style ?? this.style,
-      );
+  }) => HorizontTheme(
+    product: product ?? this.product,
+    brightness: brightness ?? this.brightness,
+    density: density ?? this.density,
+    colors: colors ?? this.colors,
+    data: data ?? this.data,
+    kennung: kennung ?? this.kennung,
+    reading: reading ?? this.reading,
+    display: display ?? this.display,
+    field: field ?? this.field,
+    style: style ?? this.style,
+  );
 
   /// Colours and text styles interpolate; product, brightness, density and
   /// style are not interpolable and snap at the midpoint.
@@ -180,16 +191,18 @@ class HorizontTheme extends ThemeExtension<HorizontTheme> {
 
 /// A [TextStyle] for one step of the type scale, in [color].
 TextStyle horizontTextStyle(HzTypeSpec spec, Color color) => TextStyle(
-      fontFamily: spec.family,
-      package: HzFont.package,
-      fontSize: spec.size,
-      height: spec.line / spec.size,
-      fontWeight: spec.weight,
-      letterSpacing: spec.tracking * spec.size,
-      color: color,
-      fontFeatures: spec.family == HzFont.mono ? const [FontFeature.tabularFigures()] : null,
-      leadingDistribution: TextLeadingDistribution.even,
-    );
+  fontFamily: spec.family,
+  package: HzFont.package,
+  fontSize: spec.size,
+  height: spec.line / spec.size,
+  fontWeight: spec.weight,
+  letterSpacing: spec.tracking * spec.size,
+  color: color,
+  fontFeatures: spec.family == HzFont.mono
+      ? const [FontFeature.tabularFigures()]
+      : null,
+  leadingDistribution: TextLeadingDistribution.even,
+);
 
 /// [full], or zero when the platform asks for reduced motion. Not shorter,
 /// not softer: zero.

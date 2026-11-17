@@ -32,7 +32,10 @@ class HorizontFact extends StatelessWidget {
     this.external = false,
     this.padding = const EdgeInsets.symmetric(vertical: HzSpace.s4),
     super.key,
-  }) : assert((value == null) != (child == null), 'Pass either value or child.');
+  }) : assert(
+         (value == null) != (child == null),
+         'Pass either value or child.',
+       );
 
   /// The term, in normal case; the Kennung sets it in capitals.
   final String term;
@@ -63,11 +66,15 @@ class HorizontFact extends StatelessWidget {
     final theme = HorizontTheme.of(context);
     final c = theme.colors;
     final fg = onTap == null ? c.text : c.accentText;
-    final style = (measured ? theme.data : horizontTextStyle(HzType.callout, c.text)).copyWith(color: fg);
+    final style =
+        (measured ? theme.data : horizontTextStyle(HzType.callout, c.text))
+            .copyWith(color: fg);
     Widget valueWidget = child != null
         // A badge or line keeps its own width instead of filling the column.
         ? Align(alignment: AlignmentDirectional.centerStart, child: child)
-        : (selectable && onTap == null ? SelectableText(value!, style: style) : Text(value!, style: style));
+        : (selectable && onTap == null
+              ? SelectableText(value!, style: style)
+              : Text(value!, style: style));
     if (onTap != null) {
       // The arrow at the end of the row, so arrows under each other line up
       // whether the value is short or wraps.
@@ -77,7 +84,9 @@ class HorizontFact extends StatelessWidget {
           const SizedBox(width: HzSpace.s4),
           ExcludeSemantics(
             child: Icon(
-              external ? HorizontSymbols.openInNew : HorizontSymbols.chevronRight,
+              external
+                  ? HorizontSymbols.openInNew
+                  : HorizontSymbols.chevronRight,
               size: HzIconSize.inline,
               color: c.accentText,
             ),
@@ -89,7 +98,8 @@ class HorizontFact extends StatelessWidget {
     final row = Padding(
       padding: padding,
       child: LayoutBuilder(
-        builder: (context, constraints) => constraints.maxWidth < termWidth + HzSpace.s96 + HzSpace.s32
+        builder: (context, constraints) =>
+            constraints.maxWidth < termWidth + HzSpace.s96 + HzSpace.s32
             ? Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

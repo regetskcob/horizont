@@ -41,7 +41,13 @@ class HorizontMark extends StatelessWidget {
 /// drawn under the word.
 class HorizontLockup extends StatelessWidget {
   /// Creates a lockup of [product]'s mark and [label].
-  const HorizontLockup(this.product, {required this.label, this.style, this.markColor, super.key});
+  const HorizontLockup(
+    this.product, {
+    required this.label,
+    this.style,
+    this.markColor,
+    super.key,
+  });
 
   /// Whose mark.
   final HorizontProduct product;
@@ -65,7 +71,11 @@ class HorizontLockup extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.baseline,
       textBaseline: TextBaseline.alphabetic,
       children: [
-        HorizontMark(product, size: size, color: markColor ?? theme.colors.accentText),
+        HorizontMark(
+          product,
+          size: size,
+          color: markColor ?? theme.colors.accentText,
+        ),
         SizedBox(width: size * 0.35),
         // Wraps instead of running over the edge at large text sizes.
         Flexible(child: Text(label, style: s)),
@@ -79,12 +89,14 @@ class _HorizonBaseline extends SingleChildRenderObjectWidget {
   const _HorizonBaseline({required super.child});
 
   @override
-  RenderObject createRenderObject(BuildContext context) => _RenderHorizonBaseline();
+  RenderObject createRenderObject(BuildContext context) =>
+      _RenderHorizonBaseline();
 }
 
 class _RenderHorizonBaseline extends RenderProxyBox {
   @override
-  double? computeDistanceToActualBaseline(TextBaseline baseline) => size.height * 2 / 3;
+  double? computeDistanceToActualBaseline(TextBaseline baseline) =>
+      size.height * 2 / 3;
 }
 
 class _MarkPainter extends CustomPainter {
@@ -114,5 +126,6 @@ class _MarkPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(_MarkPainter old) => old.product != product || old.color != color;
+  bool shouldRepaint(_MarkPainter old) =>
+      old.product != product || old.color != color;
 }

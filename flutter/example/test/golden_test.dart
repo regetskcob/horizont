@@ -14,14 +14,18 @@ void main() {
   for (final product in HorizontProduct.values) {
     for (final brightness in Brightness.values) {
       for (final scale in [1.0, 2.0]) {
-        final name = '${product.name}_${brightness.name}_${scale.toStringAsFixed(0)}x';
+        final name =
+            '${product.name}_${brightness.name}_${scale.toStringAsFixed(0)}x';
         testWidgets(name, (tester) async {
           tester.view.physicalSize = const Size(393, 852) * 2;
           tester.view.devicePixelRatio = 2;
           addTearDown(tester.view.reset);
           await tester.pumpWidget(
             MediaQuery(
-              data: MediaQueryData(size: const Size(393, 852), textScaler: TextScaler.linear(scale)),
+              data: MediaQueryData(
+                size: const Size(393, 852),
+                textScaler: TextScaler.linear(scale),
+              ),
               child: MaterialApp(
                 debugShowCheckedModeBanner: false,
                 theme: buildHorizontTheme(product, brightness),
@@ -29,7 +33,10 @@ void main() {
               ),
             ),
           );
-          await expectLater(find.byType(Showcase), matchesGoldenFile('goldens/$name.png'));
+          await expectLater(
+            find.byType(Showcase),
+            matchesGoldenFile('goldens/$name.png'),
+          );
         });
       }
     }
@@ -56,7 +63,10 @@ void main() {
       );
       await tester.drag(find.byType(ListView), const Offset(0, -300));
       await tester.pumpAndSettle();
-      await expectLater(find.byType(Showcase), matchesGoldenFile('goldens/$name.png'));
+      await expectLater(
+        find.byType(Showcase),
+        matchesGoldenFile('goldens/$name.png'),
+      );
       debugDefaultTargetPlatformOverride = null;
     });
   }
@@ -72,13 +82,20 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: buildHorizontTheme(HorizontProduct.knx, brightness, host: HorizontHost.homeAssistant),
+          theme: buildHorizontTheme(
+            HorizontProduct.knx,
+            brightness,
+            host: HorizontHost.homeAssistant,
+          ),
           home: const Showcase(),
         ),
       );
       await tester.drag(find.byType(ListView), const Offset(0, -300));
       await tester.pumpAndSettle();
-      await expectLater(find.byType(Showcase), matchesGoldenFile('goldens/$name.png'));
+      await expectLater(
+        find.byType(Showcase),
+        matchesGoldenFile('goldens/$name.png'),
+      );
     });
   }
 
@@ -95,11 +112,18 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: buildHorizontTheme(HorizontProduct.knx, Brightness.light, style: style),
+          theme: buildHorizontTheme(
+            HorizontProduct.knx,
+            Brightness.light,
+            style: style,
+          ),
           home: const Showcase(),
         ),
       );
-      await expectLater(find.byType(Showcase), matchesGoldenFile('goldens/$name.png'));
+      await expectLater(
+        find.byType(Showcase),
+        matchesGoldenFile('goldens/$name.png'),
+      );
     });
   }
 
@@ -122,7 +146,10 @@ void main() {
           home: const Showcase(),
         ),
       );
-      await expectLater(find.byType(Showcase), matchesGoldenFile('goldens/$name.png'));
+      await expectLater(
+        find.byType(Showcase),
+        matchesGoldenFile('goldens/$name.png'),
+      );
     });
   }
 }

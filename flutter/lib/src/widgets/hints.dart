@@ -280,7 +280,9 @@ class HorizontNotice extends StatelessWidget {
     final theme = HorizontTheme.of(context);
     final c = theme.colors;
     // Soft: as round as the cards it stands among; standard: like a field.
-    final radius = BorderRadius.all(Radius.circular(theme.soft ? HzSoft.card : HzRadius.r6));
+    final radius = BorderRadius.all(
+      Radius.circular(theme.soft ? HzSoft.card : HzRadius.r6),
+    );
     final row = Padding(
       padding: const EdgeInsets.all(HzSpace.s12),
       child: Row(
@@ -300,10 +302,7 @@ class HorizontNotice extends StatelessWidget {
               child: child,
             ),
           ),
-          if (action != null) ...[
-            const SizedBox(width: HzSpace.s8),
-            action!,
-          ],
+          if (action != null) ...[const SizedBox(width: HzSpace.s8), action!],
           if (onTap != null)
             ExcludeSemantics(
               child: Icon(

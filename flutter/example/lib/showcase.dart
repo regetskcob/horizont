@@ -22,13 +22,25 @@ class _ShowcaseState extends State<Showcase> {
     HorizontDestination(icon: HorizontSymbols.forest, label: 'Übersicht'),
     // A soft hyphen lets a long German label break at a syllable, not
     // after any letter; never shrink or cut a label to make it fit.
-    HorizontDestination(icon: HorizontSymbols.cottage, label: 'Einrich\u00ADtungen', badge: '14'),
-    HorizontDestination(icon: HorizontSymbols.checklist, label: 'Aufgaben', badge: '3'),
+    HorizontDestination(
+      icon: HorizontSymbols.cottage,
+      label: 'Einrich\u00ADtungen',
+      badge: '14',
+    ),
+    HorizontDestination(
+      icon: HorizontSymbols.checklist,
+      label: 'Aufgaben',
+      badge: '3',
+    ),
     HorizontDestination(icon: HorizontSymbols.pets, label: 'Wild'),
     HorizontDestination(icon: HorizontSymbols.map, label: 'Karte'),
   ];
 
-  static final _report = HorizontPrimaryAction(icon: HorizontSymbols.add, label: 'Meldung erfassen', onPressed: () {});
+  static final _report = HorizontPrimaryAction(
+    icon: HorizontSymbols.add,
+    label: 'Meldung erfassen',
+    onPressed: () {},
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +59,23 @@ class _ShowcaseState extends State<Showcase> {
               header: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  HorizontLockup(theme.product, label: theme.product.displayName),
+                  HorizontLockup(
+                    theme.product,
+                    label: theme.product.displayName,
+                  ),
                   const SizedBox(height: HzSpace.s16),
                   const Kennung('Revier'),
-                  Text('Buchenhain', style: Theme.of(context).textTheme.titleMedium),
-                  Text('412,5 ha · Bayern', style: theme.data.copyWith(fontSize: 11, color: c.textMuted)),
+                  Text(
+                    'Buchenhain',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  Text(
+                    '412,5 ha · Bayern',
+                    style: theme.data.copyWith(
+                      fontSize: 11,
+                      color: c.textMuted,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -80,34 +104,83 @@ class _ShowcaseState extends State<Showcase> {
         padding: EdgeInsets.zero,
         children: [
           Container(
-            padding: const EdgeInsets.fromLTRB(HzSpace.s16, HzSpace.s12, HzSpace.s16, HzSpace.s12),
-            decoration: BoxDecoration(border: Border(bottom: BorderSide(color: c.line))),
+            padding: const EdgeInsets.fromLTRB(
+              HzSpace.s16,
+              HzSpace.s12,
+              HzSpace.s16,
+              HzSpace.s12,
+            ),
+            decoration: BoxDecoration(
+              border: Border(bottom: BorderSide(color: c.line)),
+            ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                const Expanded(child: HorizontTitle(kennung: 'Hegering Nord · 412 ha', title: 'Übersicht')),
-                IconButton(onPressed: () {}, icon: const Icon(HorizontSymbols.search), tooltip: 'Suchen'),
+                const Expanded(
+                  child: HorizontTitle(
+                    kennung: 'Hegering Nord · 412 ha',
+                    title: 'Übersicht',
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(HorizontSymbols.search),
+                  tooltip: 'Suchen',
+                ),
               ],
             ),
           ),
           _Figures(theme: theme),
-          HorizontSectionHeader('Einrichtungen', count: 14, trailing: TextButton(onPressed: () {}, child: const Text('Alle'))),
-          const _Row(icon: HorizontSymbols.cottage, title: 'Kanzel am Bruch', meta: 'K-07 · geprüft 12.10.', status: HorizontStatus.positive, word: 'Gut'),
-          const _Row(icon: HorizontSymbols.cottage, title: 'Leiter Schlagkante', meta: 'L-03 · geprüft 28.09.', status: HorizontStatus.warning, word: 'Prüfen'),
-          const _Row(icon: HorizontSymbols.cottage, title: 'Kanzel Heckenweg', meta: 'K-11 · geprüft 02.08.', status: HorizontStatus.critical, word: 'Defekt'),
+          HorizontSectionHeader(
+            'Einrichtungen',
+            count: 14,
+            trailing: TextButton(onPressed: () {}, child: const Text('Alle')),
+          ),
+          const _Row(
+            icon: HorizontSymbols.cottage,
+            title: 'Kanzel am Bruch',
+            meta: 'K-07 · geprüft 12.10.',
+            status: HorizontStatus.positive,
+            word: 'Gut',
+          ),
+          const _Row(
+            icon: HorizontSymbols.cottage,
+            title: 'Leiter Schlagkante',
+            meta: 'L-03 · geprüft 28.09.',
+            status: HorizontStatus.warning,
+            word: 'Prüfen',
+          ),
+          const _Row(
+            icon: HorizontSymbols.cottage,
+            title: 'Kanzel Heckenweg',
+            meta: 'K-11 · geprüft 02.08.',
+            status: HorizontStatus.critical,
+            word: 'Defekt',
+          ),
           const HorizontSectionHeader('Kanzel am Bruch'),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: HzSpace.s16),
             child: Column(
               children: [
                 HorizontFact(term: 'Kennung', value: 'K-07', measured: true),
-                HorizontFact(term: 'Geprüft', value: '12.10.2026', measured: true),
-                HorizontFact(term: 'Zustand', child: HorizontBadge(HorizontStatus.positive, label: 'Gut')),
+                HorizontFact(
+                  term: 'Geprüft',
+                  value: '12.10.2026',
+                  measured: true,
+                ),
+                HorizontFact(
+                  term: 'Zustand',
+                  child: HorizontBadge(HorizontStatus.positive, label: 'Gut'),
+                ),
               ],
             ),
           ),
           for (final (i, line) in ['Linie 1', 'Linie 2'].indexed)
-            HorizontSelectable(selected: i == 0, onTap: () {}, child: Text(line)),
+            HorizontSelectable(
+              selected: i == 0,
+              onTap: () {},
+              child: Text(line),
+            ),
           HorizontSectionHeader('Bausteine', collapsed: false, onToggle: () {}),
           Padding(
             padding: const EdgeInsets.all(HzSpace.s16),
@@ -118,9 +191,18 @@ class _ShowcaseState extends State<Showcase> {
                   spacing: HzSpace.s8,
                   runSpacing: HzSpace.s8,
                   children: [
-                    FilledButton(onPressed: () {}, child: const Text('Speichern')),
-                    OutlinedButton(onPressed: () {}, child: const Text('Abbrechen')),
-                    TextButton(onPressed: () {}, child: const Text('Alle anzeigen')),
+                    FilledButton(
+                      onPressed: () {},
+                      child: const Text('Speichern'),
+                    ),
+                    OutlinedButton(
+                      onPressed: () {},
+                      child: const Text('Abbrechen'),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text('Alle anzeigen'),
+                    ),
                   ],
                 ),
                 const SizedBox(height: HzSpace.s16),
@@ -146,7 +228,11 @@ class _ShowcaseState extends State<Showcase> {
                   label: 'Art',
                   child: HorizontFieldDropdown(
                     value: _kind,
-                    items: const [('kanzel', 'Kanzel'), ('leiter', 'Leiter'), ('kirrung', 'Kirrung')],
+                    items: const [
+                      ('kanzel', 'Kanzel'),
+                      ('leiter', 'Leiter'),
+                      ('kirrung', 'Kirrung'),
+                    ],
                     onChanged: (v) => setState(() => _kind = v),
                   ),
                 ),
@@ -181,12 +267,19 @@ class _ShowcaseState extends State<Showcase> {
                   ],
                 ),
                 const SizedBox(height: HzSpace.s16),
-                const HorizontStatusLine(HorizontStatus.positive, 'Abgeglichen um 06:42'),
+                const HorizontStatusLine(
+                  HorizontStatus.positive,
+                  'Abgeglichen um 06:42',
+                ),
                 const SizedBox(height: HzSpace.s16),
                 const HorizontMetricRow(
                   children: [
                     HorizontMetric(label: 'Ansitze', value: '27'),
-                    HorizontMetric(label: 'Überfällig', value: '2', status: HorizontStatus.warning),
+                    HorizontMetric(
+                      label: 'Überfällig',
+                      value: '2',
+                      status: HorizontStatus.warning,
+                    ),
                   ],
                 ),
                 const SizedBox(height: HzSpace.s16),
@@ -194,17 +287,36 @@ class _ShowcaseState extends State<Showcase> {
                   children: [
                     const HorizontLetterBadge('K', semanticLabel: 'Kanzel'),
                     const SizedBox(width: HzSpace.s4),
-                    const HorizontLetterBadge('L', semanticLabel: 'Leiter', status: HorizontStatus.info),
+                    const HorizontLetterBadge(
+                      'L',
+                      semanticLabel: 'Leiter',
+                      status: HorizontStatus.info,
+                    ),
                     const SizedBox(width: HzSpace.s16),
-                    Icon(HorizontSymbols.starFill, size: HzIconSize.bar, color: c.accentText),
-                    Icon(HorizontSymbols.pushPinFill, size: HzIconSize.bar, color: c.accentText),
+                    Icon(
+                      HorizontSymbols.starFill,
+                      size: HzIconSize.bar,
+                      color: c.accentText,
+                    ),
+                    Icon(
+                      HorizontSymbols.pushPinFill,
+                      size: HzIconSize.bar,
+                      color: c.accentText,
+                    ),
                     const SizedBox(width: HzSpace.s16),
                     for (final step in c.dataRamp)
-                      Container(width: HzSpace.s16, height: HzSpace.s16, color: step),
+                      Container(
+                        width: HzSpace.s16,
+                        height: HzSpace.s16,
+                        color: step,
+                      ),
                   ],
                 ),
                 const SizedBox(height: HzSpace.s24),
-                Text('Das Revier im Blick.', style: theme.display.copyWith(fontSize: 30, height: 36 / 30)),
+                Text(
+                  'Das Revier im Blick.',
+                  style: theme.display.copyWith(fontSize: 30, height: 36 / 30),
+                ),
                 const SizedBox(height: HzSpace.s8),
                 Text(
                   'Hochsitze, Kirrungen, Aufgaben und Strecke an einem Ort.',
@@ -229,37 +341,67 @@ class _Figures extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = theme.colors;
     Widget cell(String value, String label, {Color? color}) => Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: HzSpace.s16, vertical: HzSpace.s12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(value, style: theme.data.copyWith(fontSize: 22, height: 1.1, color: color)),
-                Kennung(label),
-              ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: HzSpace.s16,
+          vertical: HzSpace.s12,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              value,
+              style: theme.data.copyWith(
+                fontSize: 22,
+                height: 1.1,
+                color: color,
+              ),
             ),
-          ),
-        );
+            Kennung(label),
+          ],
+        ),
+      ),
+    );
     final divider = Container(width: HzLine.hairline, color: c.line);
     // With large text the three figures stack instead of breaking their
     // labels mid-word.
     if (MediaQuery.textScalerOf(context).scale(1) > 1.4) {
       Widget row(String value, String label, {Color? color}) => Container(
-            padding: const EdgeInsets.symmetric(horizontal: HzSpace.s16, vertical: HzSpace.s8),
-            decoration: BoxDecoration(border: Border(bottom: BorderSide(color: c.line))),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.baseline,
-              textBaseline: TextBaseline.alphabetic,
-              children: [
-                Expanded(child: Kennung(label)),
-                Text(value, style: theme.data.copyWith(fontSize: 22, height: 1.1, color: color)),
-              ],
+        padding: const EdgeInsets.symmetric(
+          horizontal: HzSpace.s16,
+          vertical: HzSpace.s8,
+        ),
+        decoration: BoxDecoration(
+          border: Border(bottom: BorderSide(color: c.line)),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.baseline,
+          textBaseline: TextBaseline.alphabetic,
+          children: [
+            Expanded(child: Kennung(label)),
+            Text(
+              value,
+              style: theme.data.copyWith(
+                fontSize: 22,
+                height: 1.1,
+                color: color,
+              ),
             ),
-          );
-      return Column(children: [row('3', 'Aufgaben'), row('3', 'Prüfen', color: c.critical), row('2', 'Strecke')]);
+          ],
+        ),
+      );
+      return Column(
+        children: [
+          row('3', 'Aufgaben'),
+          row('3', 'Prüfen', color: c.critical),
+          row('2', 'Strecke'),
+        ],
+      );
     }
     return Container(
-      decoration: BoxDecoration(border: Border(bottom: BorderSide(color: c.line))),
+      decoration: BoxDecoration(
+        border: Border(bottom: BorderSide(color: c.line)),
+      ),
       child: IntrinsicHeight(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -277,7 +419,13 @@ class _Figures extends StatelessWidget {
 }
 
 class _Row extends StatelessWidget {
-  const _Row({required this.icon, required this.title, required this.meta, required this.status, required this.word});
+  const _Row({
+    required this.icon,
+    required this.title,
+    required this.meta,
+    required this.status,
+    required this.word,
+  });
 
   final IconData icon;
   final String title;

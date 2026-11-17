@@ -11,8 +11,14 @@ void registerHorizontLicenses() {
   _registered = true;
   LicenseRegistry.addLicense(() async* {
     final ofl = await rootBundle.loadString('packages/horizont/fonts/OFL.txt');
-    yield LicenseEntryWithLineBreaks(const ['Literata', 'Mona Sans', 'Monaspace'], ofl);
-    final symbols = await rootBundle.loadString('packages/horizont/fonts/MaterialSymbols-LICENSE.txt');
+    yield LicenseEntryWithLineBreaks(const [
+      'Literata',
+      'Mona Sans',
+      'Monaspace',
+    ], ofl);
+    final symbols = await rootBundle.loadString(
+      'packages/horizont/fonts/MaterialSymbols-LICENSE.txt',
+    );
     yield LicenseEntryWithLineBreaks(const ['Material Symbols'], symbols);
   });
 }

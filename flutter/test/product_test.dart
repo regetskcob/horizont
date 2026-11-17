@@ -58,12 +58,22 @@ void main() {
 
   test('the products Horizont still lists hold the guard rails', () {
     for (final product in HorizontProduct.values) {
-      expect(productContrastProblems(product), isEmpty, reason: product.displayName);
+      expect(
+        productContrastProblems(product),
+        isEmpty,
+        reason: product.displayName,
+      );
     }
     // Busclear runs embedded in Home Assistant, the pale accent would not.
-    expect(productContrastProblems(HorizontProduct.knx, hosts: HorizontHost.values), isEmpty);
     expect(
-      productContrastProblems(_pale, hosts: HorizontHost.values).where((p) => p.startsWith('in Home Assistant light')),
+      productContrastProblems(HorizontProduct.knx, hosts: HorizontHost.values),
+      isEmpty,
+    );
+    expect(
+      productContrastProblems(
+        _pale,
+        hosts: HorizontHost.values,
+      ).where((p) => p.startsWith('in Home Assistant light')),
       isNotEmpty,
     );
   });
@@ -76,7 +86,9 @@ void main() {
     expect(() => expectProductHoldsContrast(_own), returnsNormally);
   });
 
-  testWidgets('the mark draws the glyph of the product, or the bare line', (tester) async {
+  testWidgets('the mark draws the glyph of the product, or the bare line', (
+    tester,
+  ) async {
     for (final product in [_own, _pale, ...HorizontProduct.values]) {
       await tester.pumpWidget(
         MaterialApp(

@@ -70,7 +70,11 @@ class HorizontPrimaryAction {
   List<Widget> toolbar(BuildContext context) {
     if (!inToolbar(context)) return const [];
     return [
-      FilledButton.icon(onPressed: onPressed, icon: Icon(icon), label: Text(label)),
+      FilledButton.icon(
+        onPressed: onPressed,
+        icon: Icon(icon),
+        label: Text(label),
+      ),
       const SizedBox(width: HzSpace.s12),
     ];
   }
@@ -113,7 +117,9 @@ class HorizontSheetActions extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         TextButton(
-          onPressed: saving ? null : (onCancel ?? () => Navigator.maybePop(context)),
+          onPressed: saving
+              ? null
+              : (onCancel ?? () => Navigator.maybePop(context)),
           child: Text(cancelLabel ?? l10n.cancelButtonLabel),
         ),
         const SizedBox(width: HzSpace.s8),
@@ -122,7 +128,9 @@ class HorizontSheetActions extends StatelessWidget {
           child: saving
               ? const SizedBox.square(
                   dimension: HzIconSize.row,
-                  child: CircularProgressIndicator.adaptive(strokeWidth: HzLine.selection),
+                  child: CircularProgressIndicator.adaptive(
+                    strokeWidth: HzLine.selection,
+                  ),
                 )
               : Text(saveLabel ?? l10n.saveButtonLabel),
         ),
@@ -134,11 +142,11 @@ class HorizontSheetActions extends StatelessWidget {
 /// The padding of a form sheet: the gutter of a phone, and the keyboard
 /// below.
 EdgeInsets horizontSheetPadding(BuildContext context) => EdgeInsets.only(
-      left: HzSpace.s16,
-      right: HzSpace.s16,
-      top: HzSpace.s16,
-      bottom: MediaQuery.viewInsetsOf(context).bottom + HzSpace.s16,
-    );
+  left: HzSpace.s16,
+  right: HzSpace.s16,
+  top: HzSpace.s16,
+  bottom: MediaQuery.viewInsetsOf(context).bottom + HzSpace.s16,
+);
 
 /// The snack bar of [showHorizontMessage], for when the messenger was taken
 /// before an `await` or a `Navigator.pop` (the context may be gone by then):
@@ -156,20 +164,24 @@ SnackBar horizontMessageSnackBar(
   SnackBarAction? action,
   Duration? duration,
 }) => SnackBar(
-      action: action,
-      duration: duration ?? const Duration(milliseconds: 4000),
-      content: status == null
-          ? Text(message)
-          : Row(
-              children: [
-                ExcludeSemantics(
-                  child: Icon(status.icon, size: HzIconSize.inline, color: status.tint(colors)),
-                ),
-                const SizedBox(width: HzSpace.s8),
-                Expanded(child: Text(message)),
-              ],
+  action: action,
+  duration: duration ?? const Duration(milliseconds: 4000),
+  content: status == null
+      ? Text(message)
+      : Row(
+          children: [
+            ExcludeSemantics(
+              child: Icon(
+                status.icon,
+                size: HzIconSize.inline,
+                color: status.tint(colors),
+              ),
             ),
-    );
+            const SizedBox(width: HzSpace.s8),
+            Expanded(child: Text(message)),
+          ],
+        ),
+);
 
 /// Says what just happened in a line at the foot of the screen. With
 /// [status] the line carries that state's glyph, so the message never speaks

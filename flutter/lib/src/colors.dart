@@ -63,11 +63,13 @@ class HorizontColors {
     final n = host != null
         ? (dark ? host.dark : host.light)
         : dark
-            ? (product.neutralDark ?? HzColors.neutralDark)
-            : HzColors.neutralLight;
+        ? (product.neutralDark ?? HzColors.neutralDark)
+        : HzColors.neutralLight;
     final s = dark ? HzColors.statusDark : HzColors.statusLight;
     final a = dark ? product.dark : product.light;
-    final t = style == HorizontStyle.soft && host == null ? (dark ? product.softDark : product.softLight) : null;
+    final t = style == HorizontStyle.soft && host == null
+        ? (dark ? product.softDark : product.softLight)
+        : null;
     return HorizontColors(
       bg: t?.bg ?? n.bg,
       surface: t?.surface ?? n.surface,
@@ -190,7 +192,10 @@ class HorizontColors {
       onCritical: l(a.onCritical, b.onCritical),
       info: l(a.info, b.info),
       infoTint: l(a.infoTint, b.infoTint),
-      dataRamp: [for (var i = 0; i < a.dataRamp.length; i++) l(a.dataRamp[i], b.dataRamp[i])],
+      dataRamp: [
+        for (var i = 0; i < a.dataRamp.length; i++)
+          l(a.dataRamp[i], b.dataRamp[i]),
+      ],
     );
   }
 }
