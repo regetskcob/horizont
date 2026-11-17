@@ -33,6 +33,18 @@
   lang: the switch at the end of the line, "current" the language of the
   page (marked with the accent line), "name" and "url" the other one.
 
+  search: (dict "url" "/blog/#suche" "label" "Suchen in 164 Beiträgen")
+  a search field at the end of the line, as a link to the page that has
+  the search; on touch only its first word shows.
+
+  marks may carry "new" (a count): a dot in the accent with the number
+  beside the word, for chapters with something not yet read.
+
+  Since 0.18 the place is a button with words above the start of the line
+  ("regetskcob · Blog ▾"): it opens the Flurkarte like the mark does, so
+  nobody has to know that the mark is a door. Chapter words stand in the
+  sans in reading size instead of small capitals.
+
   link: (dict "url" "https://www.regetskcob.de/" "hint" "regetskcob")
   instead of the map, where a page is no field of the family (the Horizont
   docs): the mark is a plain link, there is no Flurkarte.
@@ -60,6 +72,20 @@
 {{- $maxN := 0 -}}
 {{- range $marks }}{{ with .n }}{{ if gt . $maxN }}{{ $maxN = . }}{{ end }}{{ end }}{{ end -}}
 <nav class="hz-horizon" data-hz-horizon data-product="{{ $p }}" aria-label="Horizont">
+  {{- if or .place .search }}
+  <div class="hz-horizon-top">
+    {{- with .place }}
+    {{- if $.link }}
+    <a class="hz-horizon-place" href="{{ $.link.url }}">{{ . }}</a>
+    {{- else }}
+    <a class="hz-horizon-place" href="{{ $k.url | default (relURL "karte/") }}" data-hz-open-karte aria-haspopup="dialog">{{ . }}<span class="hz-horizon-place-more" aria-hidden="true">▾</span><span class="hz-visually-hidden">, {{ $map }} öffnen</span></a>
+    {{- end }}
+    {{- end }}
+    {{- with .search }}
+    <a class="hz-horizon-search" href="{{ .url }}">{{ partial "horizont/symbol.html" "search" }}<span class="hz-horizon-search-label">{{ .label | default (cond $en "Search" "Suchen") }}</span></a>
+    {{- end }}
+  </div>
+  {{- end }}
   <span class="hz-horizon-line" aria-hidden="true"></span>
   <span class="hz-horizon-done" aria-hidden="true"></span>
   <a class="hz-horizon-back" href="#" data-hz-back hidden aria-label="Zurück zur vorigen Seite"><span aria-hidden="true">←</span> Zurück</a>
@@ -70,7 +96,7 @@
     {{- range $m := $marks }}
     {{- $h := 10 -}}
     {{- if and $m.n (gt $maxN 0) }}{{ $h = int (math.Max 3 (math.Round (mul 22.0 (div (float $m.n) $maxN)))) }}{{ end }}
-    <li><a class="hz-tick" href="#{{ $m.id }}" data-full="{{ $m.label }}" data-short="{{ $m.short | default $m.label }}" style="--h:{{ $h }}px"{{ with $m.title }} title="{{ . }}"{{ end }}><span>{{ $m.label }}</span></a></li>
+    <li><a class="hz-tick" href="#{{ $m.id }}" data-full="{{ $m.label }}" data-short="{{ $m.short | default $m.label }}" style="--h:{{ $h }}px"{{ with $m.title }} title="{{ . }}"{{ end }}><span>{{ $m.label }}{{ with $m.new }}<i class="hz-tick-new" aria-label="{{ . }} neu">{{ . }}</i>{{ end }}</span></a></li>
     {{- end }}
   </ol>
   {{- end }}
