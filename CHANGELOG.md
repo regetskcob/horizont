@@ -4,6 +4,20 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.20.0
+
+### Neu
+
+- **Eigentümer auf der Flurkarte:** `tokens/flur.yaml` kennt `owners` (Name, Seite, Pfad) und je
+  Gemarkung `owner`. Die Karte zeigt Produkte mit Eigentümer in einer eigenen Gruppe unter dessen
+  Namen, der zu seiner Seite führt. Busclear und Panzergefecht gehören jetzt zu Kalkar IT Solutions
+  (kalkar-it.de/#arbeiten); Horizont bleibt unter „Projekte“.
+
+### Heben
+
+- **Blog, Kalkar IT, Landingpages:** `hugo mod get github.com/regetskcob/horizont@v0.20.0`.
+- **Apps:** nur den Tag heben.
+
 ## 0.19.1
 
 ### Geändert
