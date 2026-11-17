@@ -4,6 +4,27 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.19.0
+
+### Neu
+
+- **Die Horizontlinie spricht in Worten** (`horizont/nav/horizon.html`): Der Ort steht über dem
+  Anfang der Linie als Knopf („regetskcob / Blog ▾“) und öffnet die Flurkarte wie das Zeichen; mit
+  `link` ist er ein Link nach Hause. Neu ist `search` (`url`, `label`): eine Suche am Ende der Linie,
+  am Telefon nur die Lupe. Marken können `new` tragen, eine Zahl mit Punkt im Akzent.
+- Kapitelwörter unter der Linie stehen in Mona Sans in Lesegröße statt in kleinen Versalien.
+
+### Geändert
+
+- Der Hinweis neben dem Zeichen beim Überfahren entfällt, der Ort-Knopf ersetzt ihn. Mit Ort oder
+  Suche ist die Leiste höher (92 px, am Telefon 84 px).
+
+### Heben
+
+- **Blog, Kalkar IT, Landingpages:** `hugo mod get github.com/regetskcob/horizont@v0.19.0`. Wer eine
+  Suche hat, gibt `search` mit.
+- **Apps:** nur den Tag heben.
+
 ## 0.18.1
 
 ### Behoben

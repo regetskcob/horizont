@@ -161,7 +161,7 @@ den Tokens. Eigene Werte in einem Layout sind ein Fehler.
 | `horizont/symbol.html` | Material Symbol per Name (`name`, optional `label`) |
 | `horizont/facts.html` | Begriff und Wert auf einer Grundlinie (`items`, `term`) |
 | `horizont/device.html` | Screenshot im Geräterahmen (`device`, `width`, `image` oder `src`, `alt`, `cropped`) |
-| `horizont/nav/horizon.html` | die Navigation: Horizontlinie mit Zeichen, Kapitelstrichen und Flurkarte (siehe „Navigation“) |
+| `horizont/nav/horizon.html` | die Navigation: Horizontlinie mit Zeichen, Kapitelstrichen und Flurkarte, darüber der Ort als Knopf und wahlweise eine Suche (`search`) (siehe „Navigation“) |
 | `horizont/nav/karte.html` | die Flurkarte allein (`home`, `here`, `field`, `counts`, `map`, `projects`) |
 | `horizont/nav/script.html` | das Skript dazu, einmal am Ende der Seite |
 | `horizont/theme-color.html` | die Farbe der Browserleiste (`product` optional) |
