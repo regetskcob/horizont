@@ -4,6 +4,20 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.18.1
+
+### Behoben
+
+- **Wizard bei großer Schrift und am schmalen Telefon:** Unter 600 px stehen „Zurück“ und der
+  Hauptknopf in einem Umbruch statt fest nebeneinander, eine Ablehnung steht darüber. Der Kopf
+  (Kennung, Titel, Erklärsatz) scrollt mit dem Inhalt; nur „Schließen“ bleibt stehen. Vorher lief
+  der Fuß bei einem langen Wort oder doppelter Schrift über den Rand, und ein langer Erklärsatz
+  ließ dem Schritt keinen Platz. Gefunden beim Einbau in Busclear (375 px, Textgröße 2).
+
+### Heben
+
+- `ref: v0.18.1`. Nichts zu tun.
+
 ## 0.18.0
 
 ### Neu

@@ -215,51 +215,99 @@ class HorizontWizardState extends State<HorizontWizard> {
     final mayGoBack =
         _index > 0 && widget.steps[_index - 1].canGoBack && step.canGoBack;
     final side = wide ? HzSpace.s32 : HzSpace.s16;
+    final close = IconButton(
+      tooltip: widget.closeLabel ?? l10n.closeButtonTooltip,
+      onPressed: _busy ? null : () => Navigator.of(context).maybePop(),
+      icon: const Icon(HorizontSymbols.close),
+    );
+    final back = mayGoBack
+        ? TextButton.icon(
+            onPressed: _busy ? null : () => _go(_index - 1),
+            icon: Icon(
+              horizontBackSymbol(Theme.of(context).platform),
+              size: HzIconSize.inline,
+            ),
+            label: Text(widget.backLabel ?? l10n.backButtonTooltip),
+          )
+        : null;
+    final main = FilledButton(
+      onPressed: _busy || !step.canContinue ? null : _continue,
+      child: _busy
+          ? const SizedBox.square(
+              dimension: HzIconSize.inline,
+              child: CircularProgressIndicator.adaptive(
+                strokeWidth: HzLine.selection,
+              ),
+            )
+          : Text(
+              step.continueLabel ??
+                  (last
+                      ? widget.finishLabel
+                      : widget.nextLabel ?? l10n.continueButtonLabel),
+            ),
+    );
+    final error = _error == null
+        ? null
+        : HorizontStatusLine(HorizontStatus.critical, _error!);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Padding(
-          padding: EdgeInsets.fromLTRB(side, HzSpace.s24, HzSpace.s8, 0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        Expanded(
+          // The head scrolls with the content: with large type or a long
+          // subtitle it would otherwise leave the step no room. Only
+          // „Schließen“ stays in place.
+          child: Stack(
             children: [
-              Expanded(
+              SingleChildScrollView(
+                key: ValueKey(_index),
+                padding: EdgeInsets.fromLTRB(
+                  side,
+                  HzSpace.s24,
+                  side,
+                  HzSpace.s24,
+                ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    if (!wide) ...[
-                      Kennung('${widget.title} · ${_stepOf(_index + 1)}'),
-                      const SizedBox(height: HzSpace.s4),
-                    ],
-                    Semantics(
-                      header: true,
-                      child: Text(step.title, style: text.titleLarge),
-                    ),
-                    if (step.subtitle != null) ...[
-                      const SizedBox(height: HzSpace.s4),
-                      Text(
-                        step.subtitle!,
-                        style: text.bodyMedium?.copyWith(color: c.textMuted),
+                    Padding(
+                      // Room for „Schließen“ at the end of the first lines.
+                      padding: const EdgeInsetsDirectional.only(
+                        end: HzSize.touch,
                       ),
-                    ],
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (!wide) ...[
+                            Kennung('${widget.title} · ${_stepOf(_index + 1)}'),
+                            const SizedBox(height: HzSpace.s4),
+                          ],
+                          Semantics(
+                            header: true,
+                            child: Text(step.title, style: text.titleLarge),
+                          ),
+                          if (step.subtitle != null) ...[
+                            const SizedBox(height: HzSpace.s4),
+                            Text(
+                              step.subtitle!,
+                              style: text.bodyMedium?.copyWith(
+                                color: c.textMuted,
+                              ),
+                            ),
+                          ],
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: HzSpace.s24),
+                    step.content,
                   ],
                 ),
               ),
-              IconButton(
-                tooltip: widget.closeLabel ?? l10n.closeButtonTooltip,
-                onPressed: _busy
-                    ? null
-                    : () => Navigator.of(context).maybePop(),
-                icon: const Icon(HorizontSymbols.close),
+              PositionedDirectional(
+                top: HzSpace.s16,
+                end: HzSpace.s8,
+                child: close,
               ),
             ],
-          ),
-        ),
-        Expanded(
-          child: SingleChildScrollView(
-            key: ValueKey(_index),
-            padding: EdgeInsets.fromLTRB(side, HzSpace.s24, side, HzSpace.s24),
-            child: step.content,
           ),
         ),
         Divider(
@@ -274,43 +322,34 @@ class HorizontWizardState extends State<HorizontWizard> {
               horizontal: wide ? HzSpace.s24 : HzSpace.s16,
               vertical: HzSpace.s16,
             ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: _error == null
-                      ? const SizedBox.shrink()
-                      : HorizontStatusLine(HorizontStatus.critical, _error!),
-                ),
-                const SizedBox(width: HzSpace.s12),
-                if (mayGoBack)
-                  TextButton.icon(
-                    onPressed: _busy ? null : () => _go(_index - 1),
-                    icon: Icon(
-                      horizontBackSymbol(Theme.of(context).platform),
-                      size: HzIconSize.inline,
-                    ),
-                    label: Text(widget.backLabel ?? l10n.backButtonTooltip),
+            // Wide: the message beside the buttons. Narrow: above them, and
+            // the buttons wrap, so a long word or large type never overflows.
+            child: wide
+                ? Row(
+                    children: [
+                      Expanded(child: error ?? const SizedBox.shrink()),
+                      const SizedBox(width: HzSpace.s12),
+                      ?back,
+                      const SizedBox(width: HzSpace.s8),
+                      main,
+                    ],
+                  )
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      if (error != null) ...[
+                        error,
+                        const SizedBox(height: HzSpace.s12),
+                      ],
+                      Wrap(
+                        alignment: WrapAlignment.end,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        spacing: HzSpace.s8,
+                        runSpacing: HzSpace.s8,
+                        children: [?back, main],
+                      ),
+                    ],
                   ),
-                const SizedBox(width: HzSpace.s8),
-                FilledButton(
-                  onPressed: _busy || !step.canContinue ? null : _continue,
-                  child: _busy
-                      ? const SizedBox.square(
-                          dimension: HzIconSize.inline,
-                          child: CircularProgressIndicator.adaptive(
-                            strokeWidth: HzLine.selection,
-                          ),
-                        )
-                      : Text(
-                          step.continueLabel ??
-                              (last
-                                  ? widget.finishLabel
-                                  : widget.nextLabel ??
-                                        l10n.continueButtonLabel),
-                        ),
-                ),
-              ],
-            ),
           ),
         ),
       ],
