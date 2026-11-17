@@ -4,6 +4,18 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.20.1
+
+### Behoben
+
+- **Der Ort-Knopf und die Suche der Horizontlinie nehmen wieder Klicks an.** Mit Skript lag die
+  Liste der Kapitelmarken über der ganzen Leiste und fing die Klicks ab (seit 0.19.0).
+
+### Heben
+
+- **Blog, Kalkar IT, Busclear, Panzergefecht:** `hugo mod get github.com/regetskcob/horizont@v0.20.1`.
+- **Apps:** nur den Tag heben.
+
 ## 0.20.0
 
 ### Neu
