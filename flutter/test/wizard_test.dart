@@ -142,4 +142,61 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Inhalt 1'), findsOneWidget);
   });
+
+  testWidgets(
+    'phone with doubled type: head scrolls, foot wraps, nothing overflows',
+    (tester) async {
+      const size = Size(375, 667);
+      tester.view.physicalSize = size;
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.reset);
+      await tester.pumpWidget(
+        MediaQuery(
+          data: const MediaQueryData(
+            size: size,
+            textScaler: TextScaler.linear(2),
+          ),
+          child: MaterialApp(
+            theme: buildHorizontTheme(HorizontProduct.knx, Brightness.light),
+            home: Material(
+              child: HorizontWizard(
+                title: 'Übergabepaket',
+                finishLabel: 'Paket erstellen und teilen',
+                stepOf: (i, n) => 'Schritt $i von $n',
+                steps: [
+                  const HorizontWizardStep(
+                    title: 'Inhalt',
+                    content: Text('Inhalt 1'),
+                  ),
+                  HorizontWizardStep(
+                    title: 'Passwort',
+                    subtitle:
+                        'Gib das Passwort getrennt von der Datei weiter, am '
+                        'besten scannt der Kunde den QR-Code vor Ort. Es wird '
+                        'nirgends gespeichert.',
+                    content: const SizedBox(height: 400, child: Placeholder()),
+                    onContinue: () async =>
+                        'Das Paket ließ sich nicht erstellen.',
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+      expect(tester.takeException(), isNull);
+      await tester.tap(find.byType(FilledButton));
+      await tester.pumpAndSettle();
+      // Back and the long word of the finish no longer fit side by side.
+      expect(tester.takeException(), isNull);
+      final back = tester.getTopLeft(find.text('Back'));
+      final finish = tester.getTopLeft(find.text('Paket erstellen und teilen'));
+      expect(finish.dy, greaterThan(back.dy));
+      // The refusal stands above the buttons, in words.
+      await tester.tap(find.byType(FilledButton));
+      await tester.pumpAndSettle();
+      expect(find.text('Das Paket ließ sich nicht erstellen.'), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    },
+  );
 }
