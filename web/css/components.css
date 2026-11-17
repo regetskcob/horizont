@@ -619,7 +619,9 @@ body.hz { margin: 0; }
    is new. With the row on top the bar is taller and the line lower. */
 .hz-horizon:has(.hz-horizon-top) { --at: 56px; min-height: 92px; }
 .hz-horizon-top {
-  position: absolute; left: calc(var(--inset) + 28px); right: var(--inset); top: var(--s-8);
+  /* Above the marks: with the script their list covers the whole bar
+     (is-live), and without this the place and search took no clicks. */
+  position: absolute; z-index: 3; left: calc(var(--inset) + 28px); right: var(--inset); top: var(--s-8);
   display: flex; align-items: center; justify-content: space-between; gap: var(--s-16);
   font-family: var(--font-sans);
 }
