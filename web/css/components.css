@@ -614,6 +614,40 @@ body.hz { margin: 0; }
 .hz-horizon-lang a { color: var(--text-muted); border-left: var(--line-hairline) solid var(--line); }
 .hz-horizon-lang a:hover { color: var(--text); background: var(--sunken); }
 
+/* Since 0.18: the place as a button with words above the start of the
+   line, a search at its end, chapter words in reading size, a dot for what
+   is new. With the row on top the bar is taller and the line lower. */
+.hz-horizon:has(.hz-horizon-top) { --at: 56px; min-height: 92px; }
+.hz-horizon-top {
+  position: absolute; left: calc(var(--inset) + 28px); right: var(--inset); top: var(--s-8);
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s-16);
+  font-family: var(--font-sans);
+}
+.hz-horizon-place {
+  display: inline-flex; align-items: center; gap: var(--s-4); min-height: 32px; padding: 0 var(--s-8);
+  margin-left: calc(-1 * var(--s-8));
+  border-radius: var(--r-6); color: var(--text); text-decoration: none;
+  font: 600 0.9375rem/1 var(--font-sans);
+}
+.hz-horizon-place:hover, .hz-horizon-place:focus-visible { background: var(--sunken); }
+.hz-horizon-place-more { color: var(--text-muted); font-size: 0.75rem; }
+.hz-horizon-search {
+  display: inline-flex; align-items: center; gap: var(--s-8); min-height: 32px; padding: 0 var(--s-12);
+  border: var(--line-hairline) solid var(--line); border-radius: var(--r-6); background: var(--surface);
+  color: var(--text-muted); text-decoration: none; font: 400 0.875rem/1 var(--font-sans);
+}
+.hz-horizon-search:hover { color: var(--text); border-color: var(--line-strong); }
+.hz-horizon-search .hz-symbol { font-size: 18px; }
+.hz-visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.hz-tick { font: 500 0.875rem/1.3 var(--font-sans); letter-spacing: 0; text-transform: none; color: var(--text-muted); }
+.hz-tick.is-current { font-weight: 600; }
+.hz-tick-new {
+  display: inline-flex; align-items: center; gap: 3px; margin-left: var(--s-4);
+  font: 400 0.75rem/1 var(--font-sans); font-style: normal; color: var(--text-muted);
+}
+.hz-tick-new::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.hz-walker::after { display: none; }
+
 /* On a Feldseite the line stands before .hz-feld (whose container would
    hold a fixed line on touch at the page's end) and keeps its frame. */
 body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset: var(--s-32); }
@@ -693,6 +727,15 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
   .hz-horizon.is-live .hz-tick span { left: 13px; }
   .hz-horizon.is-live .hz-tick.is-end span { right: 13px; }
   .hz-horizon.is-live .hz-tick:not(.is-current) span { max-width: min(var(--room, 24px), 28px); }
+  /* Since 0.18: at the thumb the place and search stay above the line, the
+     search with its symbol only. */
+  .hz-horizon:has(.hz-horizon-top) { --at: 48px; min-height: calc(84px + env(safe-area-inset-bottom, 0px)); }
+  body:has(.hz-horizon-top) { padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
+  .hz-horizon-top { top: var(--s-4); left: var(--inset); }
+  .hz-horizon-place, .hz-horizon-search { min-height: 36px; }
+  .hz-horizon-search { padding: 0 var(--s-8); }
+  .hz-horizon-search-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .hz-tick { font-size: 0.8125rem; }
 }
 
 /* --- Flurkarte (partials/nav/karte.html) ---

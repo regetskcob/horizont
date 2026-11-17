@@ -139,11 +139,14 @@
 
   // The map as a dialog: focus moves in, Escape and the backdrop close it.
   if (dialog && typeof dialog.showModal === "function") {
-    walker.addEventListener("click", function (e) {
-      e.preventDefault();
-      dialog.showModal();
-      var here = dialog.querySelector("[aria-current]");
-      if (here) here.focus({ preventScroll: true });
+    // The mark and, since 0.18, the place button with words open it.
+    nav.querySelectorAll("[data-hz-open-karte]").forEach(function (opener) {
+      opener.addEventListener("click", function (e) {
+        e.preventDefault();
+        dialog.showModal();
+        var here = dialog.querySelector("[aria-current]");
+        if (here) here.focus({ preventScroll: true });
+      });
     });
     dialog.addEventListener("click", function (e) {
       if (e.target === dialog) dialog.close();
