@@ -49,7 +49,8 @@ Es bringt mit:
   `HorizontPrimaryAction`, `HorizontSheetActions`, seit 0.13.0
   `HorizontSidebar`, `HorizontSidebarLabel` und `HorizontSidebarItem`, dazu
   `horizontDialogAction`, `showHorizontMessage`, `horizontSheetPadding`,
-  `horizontSelectionDecoration`, `horizontBackSymbol`, `resolveMotion` und
+  `horizontSelectionDecoration`, `horizontBackSymbol`, `resolveMotion`, seit 0.18.0
+  `HorizontWizard` mit `showHorizontWizard` und
   `HorizontTheme.of(context).criticalButton` (Muster unten unter
   „Bausteine“).
 - `HorizontProduct` und `HorizontGlyph`: Seit 0.16.0 legt ein Produkt sich selbst an (siehe
@@ -374,6 +375,19 @@ App nie nachbauen:
   `ListTile(selected: true)` bekommt aus dem Theme nur die Tönung; für die
   Linie die Kachel in `HorizontSelectable(selected:, padding:
   EdgeInsets.zero, minHeight: 0, child: ListTile(onTap: …))` legen.
+- **Wizard** (seit 0.18.0): für alles, was mehr als ein kurzes Formular ist und
+  etwas Neues anlegt (Produkt, Kanal, Plan); Bearbeiten bleibt ein Formular.
+  `showHorizontWizard(context, HorizontWizard(title:, finishLabel:, stepOf:,
+  steps: [HorizontWizardStep(title:, subtitle:, content:, canContinue:,
+  onContinue:, canGoBack:)]))`, liefert `true`, wenn er fertig wurde. Jeder
+  Schritt sagt in einem Satz, wofür er da ist (`subtitle`), und prüft mit
+  `onContinue`, bevor es weitergeht: Ein zurückgegebener Text steht als
+  kritische Statuszeile neben den Knöpfen. Nach dem Schritt, der etwas
+  anlegt, `canGoBack: false`. Ab `HzBreakpoint.medium` ein Dialog mit den
+  Schritten links auf `sunken`, darunter ganzseitig mit dem Schritt als
+  Kennung über dem Titel. „Weiter“, „Zurück“ und „Schließen“ kommen aus den
+  `MaterialLocalizations`; `stepOf` formuliert die Stelle, etwa
+  `(i, n) => l10n.stepOf(i, n)`.
 - **Hauptaktion:** `HorizontPrimaryAction(icon:, label:, onPressed:)`, dann
   `floatingActionButton: action.fab(context)` und `AppBar(actions:
   [...action.toolbar(context)])`. Auf Touch ein FAB mit Wort, auch am

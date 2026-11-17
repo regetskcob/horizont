@@ -16,10 +16,24 @@ import 'horizont.dart';
 
 /// The bundled fonts by family, as declared in the package's pubspec.
 const Map<String, List<String>> _fonts = {
-  'Literata': ['Literata-Light.ttf', 'Literata-LightItalic.ttf', 'Literata-SemiBold.ttf'],
-  'MonaSans': ['MonaSans-Regular.ttf', 'MonaSans-Medium.ttf', 'MonaSans-SemiBold.ttf'],
-  'MonaSansDisplayExpanded': ['MonaSansDisplayExpanded-Bold.ttf', 'MonaSansDisplayExpanded-Black.ttf'],
-  'MonaspaceArgon': ['MonaspaceArgon-Regular.otf', 'MonaspaceArgon-SemiBold.otf'],
+  'Literata': [
+    'Literata-Light.ttf',
+    'Literata-LightItalic.ttf',
+    'Literata-SemiBold.ttf',
+  ],
+  'MonaSans': [
+    'MonaSans-Regular.ttf',
+    'MonaSans-Medium.ttf',
+    'MonaSans-SemiBold.ttf',
+  ],
+  'MonaSansDisplayExpanded': [
+    'MonaSansDisplayExpanded-Bold.ttf',
+    'MonaSansDisplayExpanded-Black.ttf',
+  ],
+  'MonaspaceArgon': [
+    'MonaspaceArgon-Regular.otf',
+    'MonaspaceArgon-SemiBold.otf',
+  ],
   'MaterialSymbolsSharp': ['MaterialSymbolsSharp-300.ttf'],
 };
 
@@ -57,12 +71,19 @@ double _contrast(Color a, Color b) {
 ///
 /// A product that runs embedded names its [hosts]: there the neutrals are
 /// the host's, and the accent has to hold on them as well.
-List<String> productContrastProblems(HorizontProduct product, {Iterable<HorizontHost> hosts = const []}) {
+List<String> productContrastProblems(
+  HorizontProduct product, {
+  Iterable<HorizontHost> hosts = const [],
+}) {
   final problems = <String>[];
   for (final host in hosts) {
     for (final brightness in Brightness.values) {
       final c = HorizontColors.resolve(product, brightness, host: host);
-      for (final (name, paper) in [('bg', c.bg), ('surface', c.surface), ('accent-tint', c.accentTint)]) {
+      for (final (name, paper) in [
+        ('bg', c.bg),
+        ('surface', c.surface),
+        ('accent-tint', c.accentTint),
+      ]) {
         final r = _contrast(c.accentText, paper);
         if (r < 4.5) {
           problems.add(
@@ -72,12 +93,15 @@ List<String> productContrastProblems(HorizontProduct product, {Iterable<Horizont
       }
       final r = _contrast(c.accent, c.bg);
       if (r < 3)
-        problems.add('in ${host.displayName} ${brightness.name}: accent on bg is ${r.toStringAsFixed(2)}:1, needs 3:1');
+        problems.add(
+          'in ${host.displayName} ${brightness.name}: accent on bg is ${r.toStringAsFixed(2)}:1, needs 3:1',
+        );
     }
   }
   final styles = [
     HorizontStyle.standard,
-    if (product.softLight != null || product.softDark != null) HorizontStyle.soft,
+    if (product.softLight != null || product.softDark != null)
+      HorizontStyle.soft,
   ];
   for (final style in styles) {
     for (final brightness in Brightness.values) {
@@ -85,7 +109,10 @@ List<String> productContrastProblems(HorizontProduct product, {Iterable<Horizont
       final where = '${style.name} ${brightness.name}';
       void need(String name, Color a, Color b, double min) {
         final r = _contrast(a, b);
-        if (r < min) problems.add('$where: $name is ${r.toStringAsFixed(2)}:1, needs $min:1');
+        if (r < min)
+          problems.add(
+            '$where: $name is ${r.toStringAsFixed(2)}:1, needs $min:1',
+          );
       }
 
       final papers = {'bg': c.bg, 'surface': c.surface, 'sunken': c.sunken};
@@ -94,7 +121,8 @@ List<String> productContrastProblems(HorizontProduct product, {Iterable<Horizont
         need('text on $name', c.text, paper, 4.5);
         need('text-muted on $name', c.textMuted, paper, 4.5);
         // The soft style draws its outlines in `line` on purpose.
-        if (style == HorizontStyle.standard) need('line-strong on $name', c.lineStrong, paper, 3);
+        if (style == HorizontStyle.standard)
+          need('line-strong on $name', c.lineStrong, paper, 3);
       });
       need('on-accent on accent', c.onAccent, c.accent, 4.5);
       need('text on accent-tint', c.text, c.accentTint, 4.5);
@@ -112,9 +140,14 @@ List<String> productContrastProblems(HorizontProduct product, {Iterable<Horizont
 /// ```dart
 /// test('Landbote holds the contrast', () => expectProductHoldsContrast(landbote));
 /// ```
-void expectProductHoldsContrast(HorizontProduct product, {Iterable<HorizontHost> hosts = const []}) {
+void expectProductHoldsContrast(
+  HorizontProduct product, {
+  Iterable<HorizontHost> hosts = const [],
+}) {
   final problems = productContrastProblems(product, hosts: hosts);
   if (problems.isNotEmpty) {
-    throw StateError('${product.displayName} breaks the guard rails of Horizont:\n  ${problems.join('\n  ')}');
+    throw StateError(
+      '${product.displayName} breaks the guard rails of Horizont:\n  ${problems.join('\n  ')}',
+    );
   }
 }

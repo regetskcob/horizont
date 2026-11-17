@@ -127,7 +127,9 @@ class HorizontSectionHeader extends StatelessWidget {
           if (onToggle != null)
             ExcludeSemantics(
               child: Icon(
-                collapsed ? HorizontSymbols.expandMore : HorizontSymbols.expandLess,
+                collapsed
+                    ? HorizontSymbols.expandMore
+                    : HorizontSymbols.expandLess,
                 size: HzIconSize.row,
                 color: HorizontTheme.of(context).colors.textMuted,
               ),
@@ -136,7 +138,8 @@ class HorizontSectionHeader extends StatelessWidget {
       ),
     );
     if (onToggle == null) return head;
-    final pointer = HorizontTheme.of(context).density == HorizontDensity.pointer;
+    final pointer =
+        HorizontTheme.of(context).density == HorizontDensity.pointer;
     return Semantics(
       button: true,
       expanded: !collapsed,
@@ -144,8 +147,13 @@ class HorizontSectionHeader extends StatelessWidget {
         onTap: onToggle,
         // A head that folds is a button: at least the touch target high.
         child: ConstrainedBox(
-          constraints: BoxConstraints(minHeight: pointer ? HzSize.rowDense : HzSize.touch),
-          child: Align(alignment: AlignmentDirectional.bottomStart, child: head),
+          constraints: BoxConstraints(
+            minHeight: pointer ? HzSize.rowDense : HzSize.touch,
+          ),
+          child: Align(
+            alignment: AlignmentDirectional.bottomStart,
+            child: head,
+          ),
         ),
       ),
     );

@@ -216,7 +216,8 @@ ThemeData buildHorizontTheme(
     // Back, close and the drawer in Horizont's symbols, not Material's font:
     // BackButton and CloseButton stay adaptive (a chevron on Apple platforms).
     actionIconTheme: ActionIconThemeData(
-      backButtonIconBuilder: (context) => Icon(horizontBackSymbol(Theme.of(context).platform)),
+      backButtonIconBuilder: (context) =>
+          Icon(horizontBackSymbol(Theme.of(context).platform)),
       closeButtonIconBuilder: (context) => const Icon(HorizontSymbols.close),
       drawerButtonIconBuilder: (context) => const Icon(HorizontSymbols.menu),
       endDrawerButtonIconBuilder: (context) => const Icon(HorizontSymbols.menu),
@@ -248,10 +249,7 @@ ThemeData buildHorizontTheme(
       titleTextStyle: t(HzType.title1),
       // Actions in ink, not in the accent: the accent marks only the primary
       // action and the selection (decided for 0.9.0).
-      actionsIconTheme: IconThemeData(
-        color: c.text,
-        size: HzIconSize.bar,
-      ),
+      actionsIconTheme: IconThemeData(color: c.text, size: HzIconSize.bar),
       shape: Border(bottom: hairline),
     ),
     cardTheme: CardThemeData(
@@ -274,10 +272,10 @@ ThemeData buildHorizontTheme(
       iconColor: c.textMuted,
       textColor: c.text,
       titleTextStyle: t(HzType.body),
-      subtitleTextStyle: t(
-        HzType.data,
-        c.textMuted,
-      ).copyWith(fontSize: HzType.caption.size, height: HzType.caption.line / HzType.caption.size),
+      subtitleTextStyle: t(HzType.data, c.textMuted).copyWith(
+        fontSize: HzType.caption.size,
+        height: HzType.caption.line / HzType.caption.size,
+      ),
       selectedColor: c.text,
       selectedTileColor: c.accentTint,
     ),
@@ -628,20 +626,20 @@ class _CupertinoSwitch extends Adaptation<SwitchThemeData> {
 /// elsewhere, both from Horizont's symbols. `BackButton` uses it through the
 /// theme; take it for your own back buttons instead of `Icons.adaptive`.
 IconData horizontBackSymbol(TargetPlatform platform) => switch (platform) {
-      TargetPlatform.iOS || TargetPlatform.macOS => HorizontSymbols.chevronLeft,
-      _ => HorizontSymbols.arrowBack,
-    };
+  TargetPlatform.iOS || TargetPlatform.macOS => HorizontSymbols.chevronLeft,
+  _ => HorizontSymbols.arrowBack,
+};
 
 /// The "more" symbol of [platform]: three dots in a row on iOS and macOS,
 /// in a column elsewhere. Instead of `Icons.adaptive.more`.
 IconData horizontMoreSymbol(TargetPlatform platform) => switch (platform) {
-      TargetPlatform.iOS || TargetPlatform.macOS => HorizontSymbols.moreHoriz,
-      _ => HorizontSymbols.moreVert,
-    };
+  TargetPlatform.iOS || TargetPlatform.macOS => HorizontSymbols.moreHoriz,
+  _ => HorizontSymbols.moreVert,
+};
 
 /// The share symbol of [platform]: the box with the arrow on iOS and macOS,
 /// the three linked dots elsewhere. Instead of `Icons.adaptive.share`.
 IconData horizontShareSymbol(TargetPlatform platform) => switch (platform) {
-      TargetPlatform.iOS || TargetPlatform.macOS => HorizontSymbols.iosShare,
-      _ => HorizontSymbols.share,
-    };
+  TargetPlatform.iOS || TargetPlatform.macOS => HorizontSymbols.iosShare,
+  _ => HorizontSymbols.share,
+};

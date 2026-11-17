@@ -44,14 +44,22 @@ class HorizontHorizon extends StatelessWidget implements PreferredSizeWidget {
           curve: HzMotion.settle,
           builder: (context, v, _) => Align(
             alignment: AlignmentDirectional.centerStart,
-            child: FractionallySizedBox(widthFactor: v, heightFactor: 1, child: ColoredBox(color: c.accent)),
+            child: FractionallySizedBox(
+              widthFactor: v,
+              heightFactor: 1,
+              child: ColoredBox(color: c.accent),
+            ),
           ),
         ),
       ),
     );
     return semanticsLabel == null
         ? ExcludeSemantics(child: line)
-        : Semantics(label: semanticsLabel, value: '${(value.clamp(0.0, 1.0) * 100).round()} %', child: ExcludeSemantics(child: line));
+        : Semantics(
+            label: semanticsLabel,
+            value: '${(value.clamp(0.0, 1.0) * 100).round()} %',
+            child: ExcludeSemantics(child: line),
+          );
   }
 }
 
@@ -67,7 +75,13 @@ class HorizontHorizon extends StatelessWidget implements PreferredSizeWidget {
 /// this line says from when that is.
 class HorizontLage extends StatelessWidget {
   /// Creates the line with [text].
-  const HorizontLage(this.text, {this.status = HorizontStatus.neutral, this.icon, this.trailing, super.key});
+  const HorizontLage(
+    this.text, {
+    this.status = HorizontStatus.neutral,
+    this.icon,
+    this.trailing,
+    super.key,
+  });
 
   /// The words; they name the state and, when stale, its time.
   final String text;
@@ -87,27 +101,44 @@ class HorizontLage extends StatelessWidget {
     final h = HorizontTheme.of(context);
     final c = h.colors;
     final pointer = h.density == HorizontDensity.pointer;
-    final off = status == HorizontStatus.warning || status == HorizontStatus.critical;
+    final off =
+        status == HorizontStatus.warning || status == HorizontStatus.critical;
     return ColoredBox(
       color: off ? status.tint(c) : c.bg,
       child: Padding(
-        padding: EdgeInsetsDirectional.only(start: HzSpace.s16, end: trailing == null ? HzSpace.s16 : HzSpace.s4),
+        padding: EdgeInsetsDirectional.only(
+          start: HzSpace.s16,
+          end: trailing == null ? HzSpace.s16 : HzSpace.s4,
+        ),
         child: ConstrainedBox(
-          constraints: BoxConstraints(minHeight: pointer ? HzSize.rowDense : HzSize.touch),
-          child: Row(children: [
-            Icon(icon ?? status.icon, size: HzIconSize.row, color: status.color(c)),
-            const SizedBox(width: HzSpace.s8),
-            Expanded(
-              child: Semantics(
-                liveRegion: true,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: HzSpace.s8),
-                  child: Text(text, style: Theme.of(context).textTheme.bodySmall?.copyWith(color: off ? c.text : c.textMuted)),
+          constraints: BoxConstraints(
+            minHeight: pointer ? HzSize.rowDense : HzSize.touch,
+          ),
+          child: Row(
+            children: [
+              Icon(
+                icon ?? status.icon,
+                size: HzIconSize.row,
+                color: status.color(c),
+              ),
+              const SizedBox(width: HzSpace.s8),
+              Expanded(
+                child: Semantics(
+                  liveRegion: true,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: HzSpace.s8),
+                    child: Text(
+                      text,
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: off ? c.text : c.textMuted,
+                      ),
+                    ),
+                  ),
                 ),
               ),
-            ),
-            ?trailing,
-          ]),
+              ?trailing,
+            ],
+          ),
         ),
       ),
     );
@@ -126,9 +157,12 @@ class HorizontDot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ExcludeSemantics(
-        child: DecoratedBox(
-          decoration: BoxDecoration(color: HorizontTheme.of(context).colors.accent, shape: BoxShape.circle),
-          child: SizedBox.square(dimension: size),
-        ),
-      );
+    child: DecoratedBox(
+      decoration: BoxDecoration(
+        color: HorizontTheme.of(context).colors.accent,
+        shape: BoxShape.circle,
+      ),
+      child: SizedBox.square(dimension: size),
+    ),
+  );
 }

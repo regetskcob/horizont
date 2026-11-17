@@ -49,3 +49,4 @@ export 'src/widgets/navigation.dart';
 export 'src/widgets/selection.dart';
 export 'src/widgets/status.dart';
 export 'src/widgets/title.dart';
+export 'src/widgets/wizard.dart';

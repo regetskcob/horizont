@@ -30,7 +30,11 @@ class _ExampleAppState extends State<ExampleApp> {
       themeMode: _mode,
       themeAnimationStyle: AnimationStyle.noAnimation,
       theme: buildHorizontTheme(_product, Brightness.light, density: _density),
-      darkTheme: buildHorizontTheme(_product, Brightness.dark, density: _density),
+      darkTheme: buildHorizontTheme(
+        _product,
+        Brightness.dark,
+        density: _density,
+      ),
       home: Builder(
         builder: (context) {
           final c = HorizontTheme.of(context).colors;
@@ -49,29 +53,48 @@ class _ExampleAppState extends State<ExampleApp> {
                       children: [
                         SegmentedButton<HorizontProduct>(
                           segments: [
-                            for (final p in HorizontProduct.values) ButtonSegment(value: p, label: Text(p.displayName)),
+                            for (final p in HorizontProduct.values)
+                              ButtonSegment(
+                                value: p,
+                                label: Text(p.displayName),
+                              ),
                           ],
                           selected: {_product},
                           showSelectedIcon: false,
-                          onSelectionChanged: (s) => setState(() => _product = s.first),
+                          onSelectionChanged: (s) =>
+                              setState(() => _product = s.first),
                         ),
                         SegmentedButton<ThemeMode>(
                           segments: const [
-                            ButtonSegment(value: ThemeMode.light, label: Text('Hell')),
-                            ButtonSegment(value: ThemeMode.dark, label: Text('Dunkel')),
+                            ButtonSegment(
+                              value: ThemeMode.light,
+                              label: Text('Hell'),
+                            ),
+                            ButtonSegment(
+                              value: ThemeMode.dark,
+                              label: Text('Dunkel'),
+                            ),
                           ],
                           selected: {_mode},
                           showSelectedIcon: false,
-                          onSelectionChanged: (s) => setState(() => _mode = s.first),
+                          onSelectionChanged: (s) =>
+                              setState(() => _mode = s.first),
                         ),
                         SegmentedButton<HorizontDensity>(
                           segments: const [
-                            ButtonSegment(value: HorizontDensity.touch, label: Text('Touch')),
-                            ButtonSegment(value: HorizontDensity.pointer, label: Text('Zeiger')),
+                            ButtonSegment(
+                              value: HorizontDensity.touch,
+                              label: Text('Touch'),
+                            ),
+                            ButtonSegment(
+                              value: HorizontDensity.pointer,
+                              label: Text('Zeiger'),
+                            ),
                           ],
                           selected: {_density},
                           showSelectedIcon: false,
-                          onSelectionChanged: (s) => setState(() => _density = s.first),
+                          onSelectionChanged: (s) =>
+                              setState(() => _density = s.first),
                         ),
                       ],
                     ),

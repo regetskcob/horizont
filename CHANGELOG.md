@@ -4,6 +4,22 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.18.0
+
+### Neu
+
+- **Wizard für Flutter:** `HorizontWizard`, `HorizontWizardStep` und `showHorizontWizard` für
+  Aufgaben in wenigen Schritten, die etwas anlegen. Mit Zeiger und ab 600 px ein Dialog mit
+  den Schritten links, auf dem Telefon ganzseitig mit dem Schritt als Kennung. Jeder Schritt
+  prüft vor dem Weitergehen; eine Ablehnung steht als kritische Statuszeile (Wort, Zeichen,
+  Farbe) neben den Knöpfen. Nach einem Schritt, der etwas anlegt, führt kein Weg zurück.
+  Herkunft: der Wizard von Streuwerk, jetzt für Busclear und die anderen Apps.
+
+### Heben
+
+- `ref: v0.18.0`. Nichts zu tun; eigene Wizards einer App auf `HorizontWizard` umstellen, wenn
+  sie ohnehin angefasst werden (Muster: `docs/flutter.md`, „Bausteine“).
+
 ## 0.17.1
 
 ### Behoben

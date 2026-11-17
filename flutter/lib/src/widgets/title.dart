@@ -43,8 +43,12 @@ class HorizontTitle extends StatelessWidget {
   /// below, at least the bar's usual height. Without it, large text is cut.
   static double toolbarHeight(BuildContext context) {
     final scaler = MediaQuery.textScalerOf(context);
-    final pointer = HorizontTheme.of(context).density == HorizontDensity.pointer;
-    final content = scaler.scale(HzType.kennung.line) + scaler.scale(HzType.title1.line) + 2 * HzSpace.s8;
+    final pointer =
+        HorizontTheme.of(context).density == HorizontDensity.pointer;
+    final content =
+        scaler.scale(HzType.kennung.line) +
+        scaler.scale(HzType.title1.line) +
+        2 * HzSpace.s8;
     final usual = pointer ? HzSize.toolbarDesktop : 56.0;
     return content > usual ? content : usual;
   }
@@ -59,10 +63,7 @@ class HorizontTitle extends StatelessWidget {
         // Wraps at large text sizes: a date or place in the Kennung is
         // content, nothing is cut.
         Kennung(kennung, count: count),
-        Semantics(
-          header: true,
-          child: Text(title, style: titleStyle),
-        ),
+        Semantics(header: true, child: Text(title, style: titleStyle)),
         ?below,
       ],
     );

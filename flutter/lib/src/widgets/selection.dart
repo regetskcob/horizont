@@ -37,11 +37,17 @@ BoxDecoration horizontSelectionDecoration(
       border: BorderDirectional(bottom: divider),
     );
   }
-  final line = BorderSide(color: selected ? colors.accent : Colors.transparent, width: HzLine.selection);
+  final line = BorderSide(
+    color: selected ? colors.accent : Colors.transparent,
+    width: HzLine.selection,
+  );
   return BoxDecoration(
     color: selected ? colors.accentTint : null,
     border: switch (edge) {
-      HorizontSelectionEdge.start => BorderDirectional(start: line, bottom: divider),
+      HorizontSelectionEdge.start => BorderDirectional(
+        start: line,
+        bottom: divider,
+      ),
       HorizontSelectionEdge.bottom => BorderDirectional(bottom: line),
     },
   );
@@ -66,7 +72,10 @@ class HorizontSelectable extends StatelessWidget {
     this.onTap,
     this.onLongPress,
     this.edge = HorizontSelectionEdge.start,
-    this.padding = const EdgeInsetsDirectional.symmetric(horizontal: HzSpace.s12, vertical: HzSpace.s4),
+    this.padding = const EdgeInsetsDirectional.symmetric(
+      horizontal: HzSpace.s12,
+      vertical: HzSpace.s4,
+    ),
     this.minHeight,
     this.alignment = AlignmentDirectional.centerStart,
     this.semanticsLabel,
@@ -103,7 +112,11 @@ class HorizontSelectable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = HorizontTheme.of(context);
-    final full = minHeight ?? (theme.density == HorizontDensity.pointer ? HzSize.rowDense : HzSize.touch);
+    final full =
+        minHeight ??
+        (theme.density == HorizontDensity.pointer
+            ? HzSize.rowDense
+            : HzSize.touch);
     // Ink lays the line outside its child: a line at the bottom adds to the
     // height, so the child is that much lower.
     final height = edge == HorizontSelectionEdge.bottom && !theme.soft
@@ -125,7 +138,12 @@ class HorizontSelectable extends StatelessWidget {
           // Ink, not a plain decoration: the tint lies on the Material, so the
           // ripple (also that of a ListTile inside) shows above it.
           child: Ink(
-            decoration: horizontSelectionDecoration(theme.colors, selected: selected, edge: edge, style: theme.style),
+            decoration: horizontSelectionDecoration(
+              theme.colors,
+              selected: selected,
+              edge: edge,
+              style: theme.style,
+            ),
             child: Container(
               constraints: BoxConstraints(minHeight: height),
               alignment: alignment,
@@ -173,7 +191,9 @@ class HorizontSelectableCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = HorizontTheme.of(context);
     final c = theme.colors;
-    final radius = BorderRadius.all(Radius.circular(theme.soft ? HzSoft.card : HzRadius.r10));
+    final radius = BorderRadius.all(
+      Radius.circular(theme.soft ? HzSoft.card : HzRadius.r10),
+    );
     return Semantics(
       button: onTap != null,
       selected: selected,
@@ -195,7 +215,10 @@ class HorizontSelectableCard extends StatelessWidget {
             foregroundDecoration: selected && !theme.soft
                 ? BoxDecoration(
                     borderRadius: radius,
-                    border: Border.all(color: c.accent, width: HzLine.selection),
+                    border: Border.all(
+                      color: c.accent,
+                      width: HzLine.selection,
+                    ),
                   )
                 : null,
             child: Stack(
@@ -206,7 +229,11 @@ class HorizontSelectableCard extends StatelessWidget {
                     top: 0,
                     end: 0,
                     child: ExcludeSemantics(
-                      child: Icon(HorizontSymbols.check, size: HzIconSize.row, color: c.accentText),
+                      child: Icon(
+                        HorizontSymbols.check,
+                        size: HzIconSize.row,
+                        color: c.accentText,
+                      ),
                     ),
                   ),
               ],
