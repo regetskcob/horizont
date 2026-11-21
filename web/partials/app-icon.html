@@ -11,7 +11,8 @@
   Colours from tokens/horizont.json (color.product.<p>.icon). Kalkar IT
   Solutions is no product of the family but has an image for avatars (the
   GitHub organisation): its colours sit with its glyph under
-  color.mark.kalkar-it.icon. Kalkar Kompakt, the civic app of Kalkar IT, is a
+  color.mark.kalkar-it.icon (since 0.21: an open MacBook on a desk, on its
+  screen the town hall of Kalkar Kompakt, the ground is the desk top, no horizon line). Kalkar Kompakt, the civic app of Kalkar IT, is a
   product since 0.9.0: the town hall of Kalkar, accent Backstein. Gemarkung,
   the Git client, since 0.11.0: a signpost at a fork, accent Heide.
   Landbote, the RSS reader, since 0.12.0: a mailbox on its post at the
@@ -83,21 +84,17 @@
     </g>
     {{- end }}
 
-    {{- if eq $p "kalkar-it" }}
-    {{- /* The sender: a small beech far back on the right, without
-           outline, as on the regetskcob icon. */}}
-    <g stroke="none">
-      <path d="M80.4 66.7v-6.4h1.4v6.4z" fill="{{ $o.beechDark }}"/>
-      <g fill="{{ $o.beechDark }}"><circle cx="78" cy="58.2" r="4.2"/><circle cx="84.4" cy="57.8" r="3.9"/><circle cx="81.2" cy="54" r="4.6"/></g>
-      <g fill="{{ $o.beech }}"><circle cx="77.6" cy="57.4" r="3.2"/><circle cx="83.8" cy="57" r="2.9"/><circle cx="80.6" cy="53.2" r="3.6"/></g>
-    </g>
+
+
+    {{- if ne $p "kalkar-it" }}
+    <rect x="{{ $x0 }}" y="65.9" width="{{ $w }}" height="1.6" fill="{{ $c.horizon }}"/>
     {{- end }}
 
-    <rect x="{{ $x0 }}" y="65.9" width="{{ $w }}" height="1.6" fill="{{ $c.horizon }}"/>
-
     {{- if eq $p "kalkar-it" }}
-    {{- /* The prompt floats: its shadow lies on the ground below it. */}}
-    <ellipse cx="44" cy="70.2" rx="14" ry="1.8" fill="{{ $c.outline }}" opacity=".45" filter="url(#{{ $u }}f)"/>
+    {{- /* The ground is the desk top, no horizon line between wall and
+           desk. The MacBook's shadow lies on it. */}}
+    <rect x="{{ $x0 }}" y="66.7" width="{{ $w }}" height="{{ sub (add $y0 $h) 66.7 }}" fill="{{ $o.desk }}"/>
+    <ellipse cx="50" cy="80" rx="36" ry="2.8" fill="{{ $c.outline }}" opacity=".5" filter="url(#{{ $u }}f)"/>
     {{- end }}
     {{- end }}
 
@@ -139,11 +136,24 @@
         <circle cx="35.8" cy="44.1" r="1.25" fill="{{ $c.outline }}"/><circle cx="39.1" cy="44.1" r="1.25" fill="{{ $c.outline }}"/><circle cx="42.3" cy="44.1" r="1.25" fill="{{ $c.outline }}"/><circle cx="45.4" cy="44.1" r="1.25" fill="{{ $c.outline }}"/><circle cx="54.8" cy="44.1" r="1.25" fill="{{ $c.outline }}"/><circle cx="58.1" cy="44.1" r="1.25" fill="{{ $c.outline }}"/><circle cx="61.3" cy="44.1" r="1.25" fill="{{ $c.outline }}"/><circle cx="64.4" cy="44.1" r="1.25" fill="{{ $c.outline }}"/>
       </g>
     {{- else if eq $p "kalkar-it" }}
-      {{- /* The prompt > of the glyph, flat in one willow tone with the
-             dark outline and the soft shadow of the stage, no depth. It
-             floats above the horizon, which is its cursor; its shadow lies
-             on the ground below. */}}
-      <path d="M27 26h10l20 16-20 16H27l20-16z" fill="{{ $o.mid }}"/>
+      {{- /* A MacBook on the desk, aluminium in the beech tones. On its
+             screen the scene of Kalkar Kompakt, the town hall, cut to the
+             screen from the wide tv shape. The base is seen slightly from
+             above: as wide as the lid at the back, a little wider to the
+             front, rounded like the lid, with keyboard and trackpad and a
+             thin front edge for depth. */}}
+      <rect x="23" y="27" width="54" height="40" rx="2.6" fill="{{ $o.beech }}"/>
+      <rect x="26.4" y="30.4" width="47.2" height="33.2" rx=".8" fill="{{ $c.field }}" stroke="none"/>
+      <svg x="26.4" y="30.4" width="47.2" height="33.2" stroke="none" viewBox="18.6 1.5 105 73.8" preserveAspectRatio="xMidYMid slice" overflow="hidden">
+        <g transform="translate(-12.2 0)">{{ partial "horizont/app-icon.html" (dict "product" "kalkar-kompakt" "size" 166.6667 "shape" "tv") }}</g>
+      </svg>
+      <path d="M19.6 77.4h60.8v1.4c0 1.2-1 2.2-2.2 2.2H21.8c-1.2 0-2.2-1-2.2-2.2z" fill="{{ $o.beechDark }}"/>
+      <path d="M25.4 66.4h49.2c1 0 1.9.5 2.4 1.3l3.4 7.9c.5 1-.2 1.8-1.3 1.8H20.9c-1.1 0-1.8-.8-1.3-1.8l3.4-7.9c.5-.8 1.4-1.3 2.4-1.3z" fill="{{ $o.beech }}"/>
+      <g stroke="none">
+        <path d="M26.4 67.8h47.2l2 4.6H24.4z" fill="{{ $o.beechDark }}"/>
+        <g fill="{{ $o.beech }}" opacity=".55"><path d="M25.8 69.3h48.4l.15.3H25.65z"/><path d="M25.2 70.8h49.6l.15.3H25.05z"/></g>
+        <path d="M42.6 73.6h14.8l.6 2.6H42z" fill="{{ $o.beechDark }}" opacity=".7"/>
+      </g>
     {{- else if eq $p "kalkar-kompakt" }}
       {{- /* The town hall of Kalkar from the market, tall as it stands: a
              brick block with battlements and corner turrets under a steep

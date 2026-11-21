@@ -1,6 +1,6 @@
 {
   "_comment": "Horizont, das Designsystem von regetskcob und seinen Projekten. Einzige Quelle der Tokens: die Dokumentation (site/layouts/home.html) und die CSS-Schicht (web/css/tokens.css) lesen sie hier, Generatoren fuer Flutter und Swift sollen es ebenso tun. Farben je light und dark, beide von Hand gesetzt, nie aus einem Seed abgeleitet.",
-  "version": "0.20.1",
+  "version": "0.21.0",
   "color": {
     "neutral": {
       "light": {
@@ -415,7 +415,7 @@
         "name": "Kalkar IT Solutions",
         "prompt": { "light": "#5A7A4E", "dark": "#9DB98C" },
         "icon": {
-          "_comment": "Das Bild fuer Avatare (GitHub-Organisation), kein Produkt-Icon: die Buehne von regetskcob, Tinte und Papier, davor der Prompt flach in Weidengruen ueber der Linie, rechts hinten klein die Buche als Absender.",
+          "_comment": "Das Bild fuer Avatare (GitHub-Organisation), kein Produkt-Icon: die Buehne von regetskcob, Tinte und Papier, der Boden ist die Tischplatte ohne Horizontlinie, darauf ein aufgeklapptes MacBook, auf dem Bildschirm das Rathaus von Kalkar Kompakt.",
           "field": "#1B1C19",
           "glyph": "#9DB98C",
           "sky": "#F1EFE6",
@@ -427,7 +427,8 @@
           "obj": {
             "mid": "#7E9E6E",
             "beech": "#BFBDB1",
-            "beechDark": "#AAA89C"
+            "beechDark": "#AAA89C",
+            "desk": "#55493B"
           }
         }
       }

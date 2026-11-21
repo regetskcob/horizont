@@ -4,6 +4,20 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.21.0
+
+### Geändert
+
+- **Das Bild von Kalkar IT Solutions** (Avatar, Favicon, Social-Media-Profil) zeigt ein
+  aufgeklapptes MacBook auf einem Schreibtisch, auf dem Bildschirm das Rathaus von Kalkar Kompakt.
+  Der Boden ist die Tischplatte, ohne Horizontlinie und ohne Buche; der Prompt entfällt. Neue
+  Tokens `color.mark.kalkar-it.icon.obj.desk`.
+
+### Heben
+
+- **Kalkar IT:** `hugo mod get github.com/regetskcob/horizont@v0.21.0`.
+- **Blog, Busclear, Panzergefecht, Apps:** nur den Tag heben, sonst ändert sich nichts.
+
 ## 0.20.1
 
 ### Behoben
