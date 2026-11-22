@@ -319,5 +319,9 @@
   "offline_pin": "0xe90a",
   "wifi_off": "0xe648",
   "link": "0xe250",
-  "timer": "0xe425"
+  "timer": "0xe425",
+  "format_bold": "0xe238",
+  "format_italic": "0xe23f",
+  "format_list_numbered": "0xe242",
+  "format_quote": "0xe244"
 }
