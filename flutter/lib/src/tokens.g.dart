@@ -10,7 +10,7 @@ import 'package:flutter/widgets.dart';
 import 'glyph.dart';
 
 /// Version of the tokens this file was generated from.
-const String horizontTokensVersion = '0.21.0';
+const String horizontTokensVersion = '0.22.0';
 
 /// The neutral colours of one brightness.
 @immutable
@@ -1478,4 +1478,12 @@ abstract final class HorizontSymbols {
   static const IconData link = IconData(0xe250, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
   /// `timer`
   static const IconData timer = IconData(0xe425, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `format_bold`
+  static const IconData formatBold = IconData(0xe238, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `format_italic`
+  static const IconData formatItalic = IconData(0xe23f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `format_list_numbered`
+  static const IconData formatListNumbered = IconData(0xe242, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  /// `format_quote`
+  static const IconData formatQuote = IconData(0xe244, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
 }

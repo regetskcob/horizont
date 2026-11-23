@@ -358,3 +358,7 @@ offline_pin
 wifi_off
 link
 timer
+format_bold
+format_italic
+format_list_numbered
+format_quote

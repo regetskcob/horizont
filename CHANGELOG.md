@@ -4,6 +4,19 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.22.0
+
+### Neu
+
+- **Symbole für Textformatierung:** `HorizontSymbols.formatBold`, `formatItalic`,
+  `formatListNumbered` und `formatQuote` (Material Symbols Sharp, wie die übrigen). Redaktion
+  braucht sie für die Werkzeugleiste des Markdown-Editors.
+
+### Heben
+
+- **Redaktion:** Tag heben, in der Markdown-Leiste die Buchstaben durch die Symbole ersetzen.
+- **Alle anderen:** nur den Tag heben, sonst ändert sich nichts.
+
 ## 0.21.0
 
 ### Geändert
