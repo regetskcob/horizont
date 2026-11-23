@@ -4,6 +4,19 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.23.0
+
+### Geändert
+
+- **Kalkar-IT-Icon:** Der Schreibtisch ist jetzt Eiche (`obj.desk` #B8956A statt #55493B),
+  passend zum Eichentisch im Hero der Landingpage und den Instagram-Kacheln.
+
+### Heben
+
+- **Kalkar IT (Landingpage):** Tag heben; das Icon im Kopf zeigt den neuen Tisch. Profilbild
+  von @kalkar.it neu exportieren.
+- **Alle anderen:** nur den Tag heben, sonst ändert sich nichts.
+
 ## 0.22.0
 
 ### Neu
