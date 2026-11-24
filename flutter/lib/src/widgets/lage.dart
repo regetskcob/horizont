@@ -129,9 +129,8 @@ class HorizontLage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: HzSpace.s8),
                     child: Text(
                       text,
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: off ? c.text : c.textMuted,
-                      ),
+                      style: Theme.of(context).textTheme.bodySmall
+                          ?.copyWith(color: off ? c.text : c.textMuted),
                     ),
                   ),
                 ),

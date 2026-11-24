@@ -62,7 +62,7 @@ void main() {
         );
         expect(a.dx, HzSize.factTerm);
         expect(
-          _baseline(tester, 'ADRESSE'),
+          _baseline(tester, 'Adresse'),
           closeTo(_baseline(tester, '1.1.12'), 0.5),
         );
       },
@@ -102,7 +102,7 @@ void main() {
       );
       expect(
         tester.getTopLeft(find.text('Markt 20')).dy,
-        greaterThan(tester.getBottomLeft(find.text('ADRESSE')).dy - 0.5),
+        greaterThan(tester.getBottomLeft(find.text('Adresse')).dy - 0.5),
       );
     });
 
@@ -137,7 +137,7 @@ void main() {
     await tester.pumpWidget(
       _app(const HorizontTitle(kennung: 'Rathaus', title: 'Öffnungszeiten')),
     );
-    expect(find.text('RATHAUS'), findsOneWidget);
+    expect(find.text('Rathaus'), findsOneWidget);
     expect(
       tester.getSemantics(find.text('Öffnungszeiten')),
       isSemantics(isHeader: true),
@@ -525,7 +525,7 @@ void main() {
           greaterThan(tester.getTopLeft(find.text('Heute')).dx),
           reason: 'indented one step',
         );
-        expect(find.text('QUELLEN'), findsOneWidget);
+        expect(find.text('Quellen'), findsOneWidget);
         expect(find.text(' · 2'), findsOneWidget);
         expect(
           tester.getSemantics(find.text('Heute')),

@@ -20,12 +20,12 @@ void main() {
     handle.dispose();
   });
 
-  testWidgets('a Kennung is set in capitals but read as written', (
+  testWidgets('a Kennung is written as given and read as written', (
     tester,
   ) async {
     final handle = tester.ensureSemantics();
     await tester.pumpWidget(_app(const Kennung('Revier Buchenhain')));
-    expect(find.text('REVIER BUCHENHAIN'), findsOneWidget);
+    expect(find.text('Revier Buchenhain'), findsOneWidget);
     expect(find.bySemanticsLabel('Revier Buchenhain'), findsOneWidget);
     handle.dispose();
   });
@@ -153,7 +153,7 @@ void main() {
     expect(find.text(' · 14'), findsOneWidget);
     expect(tester.takeException(), isNull);
     final term = tester.widget<Text>(
-      find.text('HELLIGKEIT UND FARBTEMPERATUR'),
+      find.text('Helligkeit und Farbtemperatur'),
     );
     expect(term.maxLines, 1);
     expect(term.overflow, TextOverflow.ellipsis);
@@ -176,7 +176,7 @@ void main() {
         ),
       ),
     );
-    expect(find.text('EINRICHTUNGEN'), findsOneWidget);
+    expect(find.text('Einrichtungen'), findsOneWidget);
     expect(find.text('Alle'), findsOneWidget);
   });
 
@@ -195,7 +195,7 @@ void main() {
         ),
       ),
     );
-    expect(find.text('TELEGRAMME'), findsOneWidget);
+    expect(find.text('Telegramme'), findsOneWidget);
     expect(find.text('1.204'), findsOneWidget);
     expect(find.byIcon(HorizontSymbols.report), findsOneWidget);
     final value = tester.widget<Text>(find.text('3'));
