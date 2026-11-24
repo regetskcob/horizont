@@ -4,6 +4,17 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.26.2
+
+### Geändert
+
+- **Knopf am Daumen:** feste Breite (`--action-w`, 180 px); die Linie endet einen Randabstand
+  davor, links vom Knopf ist also so viel Luft wie rechts.
+
+### Heben
+
+- **Kalkar IT (Landingpage):** Tag heben.
+
 ## 0.26.1
 
 ### Geändert
