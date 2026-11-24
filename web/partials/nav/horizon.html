@@ -30,6 +30,11 @@
   title the full words for a tooltip. With fewer than three marks the line
   stands alone.
 
+  action: (dict "url" "/kundenportal/" "label" "Zum Kundenportal" "icon" "login")
+  a button at the end of the line, on its height; the line ends before it
+  (since 0.26, e.g. the sign-in of a customer portal). icon is optional, a
+  symbol name of horizont/symbol.html.
+
   lang: the switch at the end of the line, "current" the language of the
   page (marked with the accent line), "name" and "url" the other one.
 
@@ -104,6 +109,9 @@
   <a class="hz-walker" href="{{ .url }}" data-hint="{{ .hint }}" data-place="{{ $.place }}" aria-label="{{ .hint }}{{ with $.place }}, du bist in {{ . }}{{ end }}">{{ partial "horizont/mark.html" (dict "product" ($.mark | default $p) "size" 28 "object" true) }}</a>
   {{- else }}
   <a class="hz-walker" href="{{ $k.url | default (relURL "karte/") }}" data-hz-open-karte data-hint="{{ cond $en "Map" "Karte" }}" data-place="{{ .place }}" aria-label="{{ $map }}{{ with .place }}{{ cond $en ", you are in " ", du bist in " }}{{ . }}{{ end }}">{{ partial "horizont/mark.html" (dict "product" (.mark | default $p) "size" 28 "object" true) }}</a>
+  {{- end }}
+  {{- with .action }}
+  <a class="hz-horizon-action" href="{{ .url }}">{{ with .icon }}{{ partial "horizont/symbol.html" . }}{{ end }}<span>{{ .label }}</span></a>
   {{- end }}
   {{- with .lang }}
   <span class="hz-horizon-lang">

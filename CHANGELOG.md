@@ -4,6 +4,21 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.26.0
+
+### Neu
+
+- **Knopf am Ende der Horizontlinie:** `"action" (dict "url" … "label" … "icon" …)` im
+  Partial `horizont/nav/horizon.html` setzt einen Knopf rechts auf die Höhe der Linie; die
+  Linie endet davor (wie beim Sprachumschalter). Für eine Anmeldung oder einen Aufruf, statt
+  eines eigenen Knopfes über der Linie.
+
+### Heben
+
+- **Kalkar IT (Landingpage):** Tag heben, „Zum Kundenportal“ als `action` übergeben und den
+  eigenen Knopf entfernen.
+- **Alle anderen:** nur den Tag heben.
+
 ## 0.25.0
 
 ### Geändert
