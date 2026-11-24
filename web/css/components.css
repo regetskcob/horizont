@@ -610,13 +610,14 @@ body.hz { margin: 0; }
 .hz-horizon-lang a { color: var(--text-muted); border-left: var(--line-hairline) solid var(--line); }
 .hz-horizon-lang a:hover { color: var(--text); background: var(--sunken); }
 
-/* Since 0.26: one button at the end of the line, on its height (a sign-in,
-   a call to action). The line ends before it. */
-.hz-horizon:has(.hz-horizon-action) { --end: calc(var(--action-w, 172px) + var(--s-8)); }
+/* Since 0.26: one button at the right, under the line (a sign-in, a call
+   to action). The line keeps its full length; the bar grows by the
+   button. */
+.hz-horizon:has(.hz-horizon-action) { min-height: calc(var(--at) + var(--s-12) + 32px + var(--s-12)); }
 .hz-horizon-action {
   position: absolute;
   right: var(--inset);
-  top: calc(var(--at) - 16px);
+  top: calc(var(--at) + var(--s-12));
   z-index: 3;
   display: inline-flex;
   align-items: center;
@@ -757,6 +758,13 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
   .hz-horizon-search { padding: 0 var(--s-8); }
   .hz-horizon-search-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .hz-tick { font-size: 0.8125rem; }
+  /* At the thumb the button stays at the end of the line, on its height;
+     the line ends before it and the bar keeps its height. */
+  .hz-horizon:has(.hz-horizon-action) {
+    --end: calc(var(--action-w, 172px) + var(--s-8));
+    min-height: calc(64px + env(safe-area-inset-bottom, 0px));
+  }
+  .hz-horizon-action { top: calc(var(--at) - 16px); }
 }
 
 /* --- Flurkarte (partials/nav/karte.html) ---
