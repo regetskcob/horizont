@@ -119,7 +119,7 @@ void main() {
     (tester) async {
       final host = await _open(tester, const Size(390, 844));
       expect(find.byType(Dialog), findsOneWidget);
-      expect(find.text('KANAL ANLEGEN · SCHRITT 1 VON 3'), findsOneWidget);
+      expect(find.text('Kanal anlegen · Schritt 1 von 3'), findsOneWidget);
       expect(
         find.text('Zugang'),
         findsNothing,

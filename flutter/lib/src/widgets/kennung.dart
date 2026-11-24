@@ -42,11 +42,7 @@ class Kennung extends StatelessWidget {
     final style = color == null ? base : base.copyWith(color: color);
     final suffix = count == null ? '' : '$horizontMetaSeparator$count';
     if (!oneLine) {
-      return Text(
-        '${text.toUpperCase()}$suffix',
-        style: style,
-        semanticsLabel: '$text$suffix',
-      );
+      return Text('$text$suffix', style: style, semanticsLabel: '$text$suffix');
     }
     return Semantics(
       label: '$text$suffix',
@@ -56,7 +52,7 @@ class Kennung extends StatelessWidget {
           children: [
             Flexible(
               child: Text(
-                text.toUpperCase(),
+                text,
                 style: style,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,

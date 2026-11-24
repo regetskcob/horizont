@@ -4,6 +4,22 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.25.0
+
+### Geändert
+
+- **Kennungen ohne Großbuchstaben:** Kennungen, Seitenleisten-Labels, Fakten- und
+  Tabellenköpfe stehen in normaler Schreibweise und fett (700, Laufweite 0,02 em) statt in
+  Versalien. Token `type.kennung.upper` ist `false`; `HorizontKennung` und
+  `HorizontSectionHeader` setzen den Text nicht mehr groß. Im Web gilt das für `.hz-kennung`,
+  `.hz-facts dt`, `.hz-table th`, Tick-Beschriftungen, „Zurück“ und den Hinweis am Läufer.
+
+### Heben
+
+- **Alle:** Tag heben. Texte, die als Kennung stehen, so schreiben, wie sie erscheinen sollen
+  („Im Aufbau · Kalkar“), nicht in Großbuchstaben. Eigene Regeln mit `text-transform:
+  uppercase` für Kennungen entfernen.
+
 ## 0.24.0
 
 ### Geändert

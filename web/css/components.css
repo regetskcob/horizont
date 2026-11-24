@@ -263,9 +263,8 @@ body.hz { margin: 0; }
 .hz-table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
 .hz-table th {
   text-align: left;
-  font: 600 0.6875rem/1 var(--font-mono);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font: 700 0.6875rem/1 var(--font-mono);
+  letter-spacing: 0.02em;
   color: var(--text-muted);
   padding: var(--s-8) var(--s-12);
   border-bottom: var(--line-hairline) solid var(--line-strong);
@@ -470,9 +469,8 @@ body.hz { margin: 0; }
   margin: 0;
 }
 .hz-facts dt {
-  font: 600 0.6875rem/1.6 var(--font-mono);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font: 700 0.6875rem/1.6 var(--font-mono);
+  letter-spacing: 0.02em;
   color: var(--text-muted);
 }
 .hz-facts dd { margin: 0; }
@@ -560,9 +558,8 @@ body.hz { margin: 0; }
   position: absolute;
   left: 36px;
   top: 2px;
-  font: 600 0.625rem/1.6 var(--font-mono);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font: 700 0.625rem/1.6 var(--font-mono);
+  letter-spacing: 0.02em;
   white-space: nowrap;
   color: var(--text-muted);
   background: var(--bg);
@@ -574,7 +571,7 @@ body.hz { margin: 0; }
 .hz-walker:hover::after,
 .hz-walker:focus-visible::after { opacity: 1; }
 .hz-ticks { list-style: none; margin: 0; padding: calc(var(--at) + var(--s-8)) var(--inset) var(--s-8) calc(var(--inset) + 28px); display: flex; flex-wrap: wrap; gap: var(--s-4) var(--s-16); }
-.hz-tick { font: 600 0.5625rem/1.2 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); text-decoration: none; }
+.hz-tick { font: 700 0.5625rem/1.2 var(--font-mono); letter-spacing: 0.02em; color: var(--text-faint); text-decoration: none; }
 .hz-tick:hover, .hz-tick.is-current { color: var(--text); }
 /* Back hangs before the start of the line, outside the frame, its words on
    the line like a lockup; the line keeps its length. Shown by the script
@@ -583,9 +580,8 @@ body.hz { margin: 0; }
   position: absolute;
   right: calc(100% - var(--inset) + 14px + var(--s-8));
   top: calc(var(--at) - 11px);
-  font: 600 0.6875rem/1 var(--font-mono);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font: 700 0.6875rem/1 var(--font-mono);
+  letter-spacing: 0.02em;
   white-space: nowrap;
   color: var(--text-muted);
   text-decoration: none;
@@ -790,7 +786,7 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
 }
 .hz-parzelle-name { font: 300 1.125rem/1.2 var(--font-serif); display: inline-flex; align-items: center; gap: var(--s-8); min-width: 0; }
 .hz-parzelle-name .hz-mark { flex: none; width: 20px; height: 20px; color: var(--accent-text); }
-.hz-parzelle-count { font: 600 0.5625rem/1.6 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+.hz-parzelle-count { font: 700 0.5625rem/1.6 var(--font-mono); letter-spacing: 0.02em; color: var(--text-muted); }
 @container (max-width: 150px) {
   .hz-parzelle-name { font-size: 0.9375rem; gap: var(--s-4); }
   .hz-parzelle-name .hz-mark { width: 16px; height: 16px; }
@@ -1093,9 +1089,8 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
 
 .hz-lightbox-exif dt {
   margin-top: var(--s-12);
-  font: 600 0.6875rem/1.4545 var(--font-mono);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font: 700 0.6875rem/1.4545 var(--font-mono);
+  letter-spacing: 0.02em;
   color: var(--scrim-text-muted);
 }
 

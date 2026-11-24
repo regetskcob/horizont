@@ -131,9 +131,8 @@ ThemeData buildHorizontTheme(
   final visualDensity = pointer
       ? VisualDensity.compact
       : VisualDensity.standard;
-  final fieldText = t(
-    HzType.body,
-  ).copyWith(height: HzType.data.line / HzType.body.size);
+  final fieldText = t(HzType.body)
+      .copyWith(height: HzType.data.line / HzType.body.size);
   final fieldIcons = BoxConstraints(minWidth: control, minHeight: control);
   final fieldDecoration = InputDecorationTheme(
     filled: true,
@@ -515,8 +514,8 @@ ThemeData _soften(ThemeData base, HorizontColors c) {
         // Small headings in the text face; Mono stays with the addresses.
         kennung: base.textTheme.labelSmall?.copyWith(
           color: c.textMuted,
-          fontWeight: FontWeight.w600,
-          letterSpacing: 0.5,
+          fontWeight: FontWeight.w700,
+          letterSpacing: 0.2,
         ),
       ),
     ],

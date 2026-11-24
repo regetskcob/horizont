@@ -10,7 +10,7 @@ import 'package:flutter/widgets.dart';
 import 'glyph.dart';
 
 /// Version of the tokens this file was generated from.
-const String horizontTokensVersion = '0.24.0';
+const String horizontTokensVersion = '0.25.0';
 
 /// The neutral colours of one brightness.
 @immutable
@@ -922,14 +922,13 @@ abstract final class HzType {
     tracking: 0.0,
   );
 
-  /// mono 11/16, 600.
+  /// mono 11/16, 700.
   static const HzTypeSpec kennung = HzTypeSpec(
     family: HzFont.mono,
     size: 11.0,
     line: 16.0,
-    weight: FontWeight.w600,
-    tracking: 0.08,
-    upper: true,
+    weight: FontWeight.w700,
+    tracking: 0.02,
   );
 }
 
