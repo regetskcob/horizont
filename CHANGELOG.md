@@ -4,6 +4,21 @@ Jede Version gilt zugleich für Tokens (`tokens/horizont.json`), das
 Flutter-Paket (`flutter/pubspec.yaml`) und den Git-Tag. Apps und Seiten hängen
 an einem Tag; unter „Heben“ steht, was beim Wechsel zu tun ist.
 
+## 0.24.0
+
+### Geändert
+
+- **Kalkar-IT-Glyphe:** ein aufgeklappter Laptop auf der Linie statt des Prompts „>“, die
+  Zeichnung des Icons (MacBook auf dem Schreibtisch) als Glyphe. Web:
+  `partial "horizont/mark.html" (dict "product" "kalkar-it")`; Flutter neu:
+  `HorizontGlyphs.kalkarIt`.
+
+### Heben
+
+- **Kalkar IT (Landingpage):** Tag heben; der Läufer der Horizontlinie wird zum Laptop.
+- **Kundenportal (Redaktion):** Tag heben, als Zeichen `HorizontGlyphs.kalkarIt` nehmen.
+- **Alle anderen:** nur den Tag heben, sonst ändert sich nichts.
+
 ## 0.23.0
 
 ### Geändert

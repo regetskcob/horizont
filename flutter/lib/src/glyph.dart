@@ -53,6 +53,10 @@ abstract final class HorizontGlyphs {
     thin: _kalkarKompaktThin,
   );
 
+  /// Kalkar IT Solutions: an open laptop on the line, the icon's MacBook as
+  /// a glyph.
+  static const kalkarIt = HorizontGlyph(_kalkarIt);
+
   /// The signpost with two arms.
   static const gemarkung = HorizontGlyph(_gemarkung);
 
@@ -116,6 +120,18 @@ Path _panzergefecht() {
   _poly(p, [24, 66.7, 28, 54.7, 72, 54.7, 76, 66.7]);
   _poly(p, [40, 54.7, 40, 44, 58, 44, 58, 54.7]);
   _line(p, 58, 49, 82, 49);
+  return p;
+}
+
+Path _kalkarIt() {
+  final p = _horizon()
+    ..moveTo(31, 60)
+    ..lineTo(31, 32)
+    ..arcToPoint(const Offset(34, 29), radius: const Radius.circular(3))
+    ..lineTo(66, 29)
+    ..arcToPoint(const Offset(69, 32), radius: const Radius.circular(3))
+    ..lineTo(69, 60);
+  _poly(p, [18, 66.7, 24, 60, 76, 60, 82, 66.7]);
   return p;
 }
 
