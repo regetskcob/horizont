@@ -610,6 +610,29 @@ body.hz { margin: 0; }
 .hz-horizon-lang a { color: var(--text-muted); border-left: var(--line-hairline) solid var(--line); }
 .hz-horizon-lang a:hover { color: var(--text); background: var(--sunken); }
 
+/* Since 0.26: one button at the end of the line, on its height (a sign-in,
+   a call to action). The line ends before it. */
+.hz-horizon:has(.hz-horizon-action) { --end: calc(var(--action-w, 172px) + var(--s-8)); }
+.hz-horizon-action {
+  position: absolute;
+  right: var(--inset);
+  top: calc(var(--at) - 16px);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-8);
+  min-height: 32px;
+  padding: 0 var(--s-12);
+  font: 600 0.875rem/1 var(--font-sans);
+  color: var(--text);
+  text-decoration: none;
+  background: var(--surface);
+  border: var(--line-hairline) solid var(--line-strong);
+  border-radius: var(--r-6);
+}
+.hz-horizon-action:hover, .hz-horizon-action:focus-visible { border-color: var(--text); }
+.hz-horizon-action .hz-symbol { font-size: 18px; }
+
 /* Since 0.18: the place as a button with words above the start of the
    line, a search at its end, chapter words in reading size, a dot for what
    is new. With the row on top the bar is taller and the line lower. */
