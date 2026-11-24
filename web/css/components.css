@@ -761,10 +761,17 @@ body:has(> .hz-feld) > .hz-horizon { --horizon-width: var(--size-page); --inset:
   /* At the thumb the button stays at the end of the line, on its height;
      the line ends before it and the bar keeps its height. */
   .hz-horizon:has(.hz-horizon-action) {
-    --end: calc(var(--action-w, 172px) + var(--s-8));
+    --end: calc(var(--action-w, 180px) + var(--inset));
     min-height: calc(64px + env(safe-area-inset-bottom, 0px));
   }
-  .hz-horizon-action { top: calc(var(--at) - 16px); }
+  /* A fixed width, so the gap between line and button is the inset, as on
+     the right. */
+  .hz-horizon-action {
+    top: calc(var(--at) - 16px);
+    box-sizing: border-box;
+    width: var(--action-w, 180px);
+    justify-content: center;
+  }
 }
 
 /* --- Flurkarte (partials/nav/karte.html) ---
