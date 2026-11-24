@@ -4,8 +4,8 @@
   it: beech, raised hide, bus terminal, tank, town hall, signpost, mailbox.
   Same stroke, square caps.
   Three more are glyphs only (no app icon): "blog", an open book,
-  "horizont", the sun on the line, and "kalkar-it", a prompt > floating
-  above the line, which is its cursor, for Kalkar IT Solutions.
+  "horizont", the sun on the line, and "kalkar-it", an open laptop on the
+  line, for Kalkar IT Solutions.
 
     partial "horizont/mark.html" (dict "product" "knx" "size" 64 "icon" true)
 
@@ -19,8 +19,8 @@
   terminal red for plus and dark grey for minus (the walker of the horizon),
   Horizont: the sun rising on the line, orange with a golden core
   (color.mark.horizont); the blog: the open book, white pages in a brown
-  cover, floating above the line (color.mark.blog); Kalkar IT: the prompt
-  in willow green, light and dark (color.mark.kalkar-it). Other products
+  cover, floating above the line (color.mark.blog); Kalkar IT: the laptop
+  in currentColor. Other products
   draw their glyph.
 */ -}}
 {{- if .icon -}}
@@ -31,7 +31,7 @@
 {{- $icon := .icon | default false -}}
 {{- /* Three marks are glyphs only, no product with colours and app icon:
        the blog (an open book), Horizont itself (the sun on the line) and
-       Kalkar IT Solutions (a prompt above the line). */ -}}
+       Kalkar IT Solutions (an open laptop on the line). */ -}}
 {{- $glyphs := dict "blog" "Blog" "horizont" "Horizont" "kalkar-it" "Kalkar IT Solutions" -}}
 {{- $colors := dict -}}
 {{- $label := index $glyphs $p -}}
@@ -89,18 +89,11 @@
   <path d="M4 66.7H96"/>
   <path d="M27 66.7a23 23 0 0 1 46 0"/>
   {{- else if eq $p "kalkar-it" }}
-  {{- /* A terminal prompt: the > sits on the baseline, the horizon below
-     it is the cursor, the empty line waiting for what comes next. It
-     floats like the blog's book, about 2 px above the line at 28 px; on the
-     line it would close into a triangle at 16 px. Left third, so the
-     line runs on to the right like an input. */}}
+  {{- /* An open laptop, the drawing of Kalkar IT's icon (the MacBook on the
+     desk) as a glyph: the lid stands on the base, the base on the line.
+     Since 0.24 instead of the prompt. */}}
   <path d="M4 66.7H96"/>
-  {{- if and .object (not $icon) }}
-  {{- $o := index site.Data.horizont.color.mark "kalkar-it" }}
-  <path d="M24 24l20 15-20 15" style="stroke:light-dark({{ $o.prompt.light }}, {{ $o.prompt.dark }})"/>
-  {{- else }}
-  <path d="M24 24l20 15-20 15"/>
-  {{- end }}
+  <path d="M31 60V32a3 3 0 0 1 3-3h32a3 3 0 0 1 3 3v28M18 66.7l6-6.7h52l6 6.7"/>
   {{- else if eq $p "kalkar-kompakt" }}
   {{- /* The town hall as one outline: walls, steep roof, the tower's spire;
          two light lines set the tower off down to the ground. */}}

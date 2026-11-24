@@ -10,7 +10,7 @@ import 'package:flutter/widgets.dart';
 import 'glyph.dart';
 
 /// Version of the tokens this file was generated from.
-const String horizontTokensVersion = '0.23.0';
+const String horizontTokensVersion = '0.24.0';
 
 /// The neutral colours of one brightness.
 @immutable
@@ -125,7 +125,14 @@ class HzAccent {
 @immutable
 class HzSoftColors {
   /// Creates the set.
-  const HzSoftColors({this.bg, this.surface, this.line, this.lineStrong, this.accentTint, this.accentText});
+  const HzSoftColors({
+    this.bg,
+    this.surface,
+    this.line,
+    this.lineStrong,
+    this.accentTint,
+    this.accentText,
+  });
 
   /// `bg`
   final Color? bg;
@@ -159,6 +166,7 @@ abstract final class HzColors {
     textMuted: Color(0xFF5C5E57),
     textFaint: Color(0xFF85877F),
   );
+
   /// HzStatus, statusLight.
   static const HzStatus statusLight = HzStatus(
     positive: Color(0xFF2B7547),
@@ -171,6 +179,7 @@ abstract final class HzColors {
     info: Color(0xFF2F5E9E),
     infoTint: Color(0xFFE2EAF5),
   );
+
   /// HzNeutrals, neutralDark.
   static const HzNeutrals neutralDark = HzNeutrals(
     bg: Color(0xFF121311),
@@ -182,6 +191,7 @@ abstract final class HzColors {
     textMuted: Color(0xFFA0A398),
     textFaint: Color(0xFF6E7168),
   );
+
   /// HzStatus, statusDark.
   static const HzStatus statusDark = HzStatus(
     positive: Color(0xFF7FC79B),
@@ -194,6 +204,7 @@ abstract final class HzColors {
     info: Color(0xFF9DBBE3),
     infoTint: Color(0xFF1A2333),
   );
+
   /// Sequential data ramp, light: little to much.
   static const List<Color> dataRampLight = [
     Color(0xFFD8EBF6),
@@ -202,6 +213,7 @@ abstract final class HzColors {
     Color(0xFF377E9D),
     Color(0xFF0F5773),
   ];
+
   /// Sequential data ramp, dark: little to much.
   static const List<Color> dataRampDark = [
     Color(0xFF1A313C),
@@ -217,10 +229,13 @@ abstract final class HzColors {
 abstract final class HzScrim {
   /// `bg`
   static const Color bg = Color(0xFF000000);
+
   /// `text`
   static const Color text = Color(0xFFFFFFFF);
+
   /// `text-muted`
   static const Color textMuted = Color(0xFFB3B3B3);
+
   /// Opacity of the bars over the picture (black at 0.65).
   static const double barAlpha = 0.65;
 }
@@ -316,9 +331,7 @@ class HorizontProduct {
       accentTint: Color(0xFF1D2913),
       accentText: Color(0xFFA8DC6E),
     ),
-    softLight: HzSoftColors(
-      bg: Color(0xFFF6F8F2),
-    ),
+    softLight: HzSoftColors(bg: Color(0xFFF6F8F2)),
     softDark: HzSoftColors(
       bg: Color(0xFF171A15),
       surface: Color(0xFF22261F),
@@ -441,7 +454,16 @@ class HorizontProduct {
   );
 
   /// The products Horizont still lists itself, in the order of the tokens.
-  static const List<HorizontProduct> values = [regetskcob, jagdaufseher, knx, panzergefecht, kalkarKompakt, gemarkung, landbote, streuwerk];
+  static const List<HorizontProduct> values = [
+    regetskcob,
+    jagdaufseher,
+    knx,
+    panzergefecht,
+    kalkarKompakt,
+    gemarkung,
+    landbote,
+    streuwerk,
+  ];
 
   /// A stable identifier in camel case, e.g. `kalkarKompakt`.
   final String id;
@@ -505,7 +527,11 @@ enum HorizontHost {
     ),
   );
 
-  const HorizontHost({required this.displayName, required this.light, required this.dark});
+  const HorizontHost({
+    required this.displayName,
+    required this.light,
+    required this.dark,
+  });
 
   /// The host's name.
   final String displayName;
@@ -521,24 +547,34 @@ enum HorizontHost {
 abstract final class HzSpace {
   /// 0
   static const double s0 = 0.0;
+
   /// 2
   static const double s2 = 2.0;
+
   /// 4
   static const double s4 = 4.0;
+
   /// 8
   static const double s8 = 8.0;
+
   /// 12
   static const double s12 = 12.0;
+
   /// 16
   static const double s16 = 16.0;
+
   /// 24
   static const double s24 = 24.0;
+
   /// 32
   static const double s32 = 32.0;
+
   /// 48
   static const double s48 = 48.0;
+
   /// 64
   static const double s64 = 64.0;
+
   /// 96
   static const double s96 = 96.0;
 }
@@ -547,12 +583,16 @@ abstract final class HzSpace {
 abstract final class HzRadius {
   /// 0
   static const double r0 = 0.0;
+
   /// 2
   static const double r2 = 2.0;
+
   /// 6
   static const double r6 = 6.0;
+
   /// 10
   static const double r10 = 10.0;
+
   /// 16
   static const double r16 = 16.0;
 }
@@ -561,16 +601,22 @@ abstract final class HzRadius {
 abstract final class HzSoft {
   /// 16
   static const double box = 16.0;
+
   /// 14
   static const double card = 14.0;
+
   /// 8
   static const double control = 8.0;
+
   /// 12
   static const double tile = 12.0;
+
   /// 8
   static const double row = 8.0;
+
   /// 22
   static const double sheet = 22.0;
+
   /// 22
   static const double title = 22.0;
 }
@@ -579,14 +625,19 @@ abstract final class HzSoft {
 abstract final class HzLine {
   /// 1
   static const double hairline = 1.0;
+
   /// 1
   static const double rule = 1.0;
+
   /// 2
   static const double selection = 2.0;
+
   /// 2
   static const double focus = 2.0;
+
   /// 1.5
   static const double data = 1.5;
+
   /// 3
   static const double wall = 3.0;
 }
@@ -595,32 +646,46 @@ abstract final class HzLine {
 abstract final class HzSize {
   /// 44
   static const double touch = 44.0;
+
   /// 44
   static const double row = 44.0;
+
   /// 28
   static const double rowDense = 28.0;
+
   /// 720
   static const double textColumn = 720.0;
+
   /// 1120
   static const double page = 1120.0;
+
   /// 200
   static const double rail = 200.0;
+
   /// 240
   static const double sidebar = 240.0;
+
   /// 300
   static const double inspector = 300.0;
+
   /// 360
   static const double inspectorWide = 360.0;
+
   /// 240
   static const double gridCard = 240.0;
+
   /// 400
   static const double form = 400.0;
+
   /// 128
   static const double factTerm = 128.0;
+
   /// 320
   static const double search = 320.0;
+
   /// 28
   static const double controlDesktop = 28.0;
+
   /// 52
   static const double toolbarDesktop = 52.0;
 }
@@ -629,12 +694,16 @@ abstract final class HzSize {
 abstract final class HzIconSize {
   /// 14
   static const double badge = 14.0;
+
   /// 16
   static const double inline = 16.0;
+
   /// 18
   static const double row = 18.0;
+
   /// 22
   static const double bar = 22.0;
+
   /// 24
   static const double tab = 24.0;
 }
@@ -643,10 +712,13 @@ abstract final class HzIconSize {
 abstract final class HzBreakpoint {
   /// 0
   static const double compact = 0.0;
+
   /// 600
   static const double medium = 600.0;
+
   /// 840
   static const double expanded = 840.0;
+
   /// 1200
   static const double large = 1200.0;
 }
@@ -655,14 +727,19 @@ abstract final class HzBreakpoint {
 abstract final class HzTv {
   /// 80
   static const double safeHorizontal = 80.0;
+
   /// 60
   static const double safeVertical = 60.0;
+
   /// 1.5
   static const double typeScale = 1.5;
+
   /// 3
   static const double focus = 3.0;
+
   /// 4
   static const double focusGap = 4.0;
+
   /// 1.06
   static const double focusScale = 1.06;
 }
@@ -671,16 +748,22 @@ abstract final class HzTv {
 abstract final class HzMotion {
   /// 120 ms.
   static const Duration fast = Duration(milliseconds: 120);
+
   /// 200 ms.
   static const Duration base = Duration(milliseconds: 200);
+
   /// 320 ms.
   static const Duration slow = Duration(milliseconds: 320);
+
   /// 560 ms.
   static const Duration calm = Duration(milliseconds: 560);
+
   /// cubic-bezier(0.2, 0, 0, 1).
   static const Cubic standard = Cubic(0.2, 0, 0, 1);
+
   /// cubic-bezier(0.3, 0, 1, 1).
   static const Cubic exit = Cubic(0.3, 0, 1, 1);
+
   /// cubic-bezier(0.16, 1, 0.3, 1).
   static const Cubic settle = Cubic(0.16, 1, 0.3, 1);
 }
@@ -689,14 +772,19 @@ abstract final class HzMotion {
 abstract final class HzFont {
   /// The package that bundles the fonts.
   static const String package = 'horizont';
+
   /// Literata: what is read.
   static const String serif = 'Literata';
+
   /// Mona Sans: what is operated.
   static const String sans = 'MonaSans';
+
   /// Mona Sans Display Expanded: Panzergefecht's headlines.
   static const String sansExpanded = 'MonaSansDisplayExpanded';
+
   /// Monaspace Argon: what is measured.
   static const String mono = 'MonaspaceArgon';
+
   /// Material Symbols Sharp, weight 300, cut to icons/material-symbols.txt.
   static const String symbols = 'MaterialSymbolsSharp';
 }
@@ -743,6 +831,7 @@ abstract final class HzType {
     weight: FontWeight.w300,
     tracking: -0.01,
   );
+
   /// serif 30/36, 300.
   static const HzTypeSpec headline = HzTypeSpec(
     family: HzFont.serif,
@@ -751,6 +840,7 @@ abstract final class HzType {
     weight: FontWeight.w300,
     tracking: -0.005,
   );
+
   /// sans 24/30, 600.
   static const HzTypeSpec title1 = HzTypeSpec(
     family: HzFont.sans,
@@ -759,6 +849,7 @@ abstract final class HzType {
     weight: FontWeight.w600,
     tracking: -0.01,
   );
+
   /// sans 20/26, 600.
   static const HzTypeSpec title2 = HzTypeSpec(
     family: HzFont.sans,
@@ -767,6 +858,7 @@ abstract final class HzType {
     weight: FontWeight.w600,
     tracking: -0.005,
   );
+
   /// sans 17/24, 600.
   static const HzTypeSpec title3 = HzTypeSpec(
     family: HzFont.sans,
@@ -775,6 +867,7 @@ abstract final class HzType {
     weight: FontWeight.w600,
     tracking: 0.0,
   );
+
   /// sans 16/24, 400.
   static const HzTypeSpec body = HzTypeSpec(
     family: HzFont.sans,
@@ -783,6 +876,7 @@ abstract final class HzType {
     weight: FontWeight.w400,
     tracking: 0.0,
   );
+
   /// serif 18/28, 300.
   static const HzTypeSpec reading = HzTypeSpec(
     family: HzFont.serif,
@@ -791,6 +885,7 @@ abstract final class HzType {
     weight: FontWeight.w300,
     tracking: 0.0,
   );
+
   /// sans 14/20, 400.
   static const HzTypeSpec callout = HzTypeSpec(
     family: HzFont.sans,
@@ -799,6 +894,7 @@ abstract final class HzType {
     weight: FontWeight.w400,
     tracking: 0.0,
   );
+
   /// sans 13/16, 500.
   static const HzTypeSpec label = HzTypeSpec(
     family: HzFont.sans,
@@ -807,6 +903,7 @@ abstract final class HzType {
     weight: FontWeight.w500,
     tracking: 0.01,
   );
+
   /// sans 12/16, 400.
   static const HzTypeSpec caption = HzTypeSpec(
     family: HzFont.sans,
@@ -815,6 +912,7 @@ abstract final class HzType {
     weight: FontWeight.w400,
     tracking: 0.01,
   );
+
   /// mono 14/20, 400.
   static const HzTypeSpec data = HzTypeSpec(
     family: HzFont.mono,
@@ -823,6 +921,7 @@ abstract final class HzType {
     weight: FontWeight.w400,
     tracking: 0.0,
   );
+
   /// mono 11/16, 600.
   static const HzTypeSpec kennung = HzTypeSpec(
     family: HzFont.mono,
@@ -837,653 +936,2277 @@ abstract final class HzType {
 /// The Material Symbols Sharp icons bundled with the package.
 abstract final class HorizontSymbols {
   /// `home`
-  static const IconData home = IconData(0xe9b2, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData home = IconData(
+    0xe9b2,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `dashboard`
-  static const IconData dashboard = IconData(0xe871, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData dashboard = IconData(
+    0xe871,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `menu`
-  static const IconData menu = IconData(0xe5d2, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData menu = IconData(
+    0xe5d2,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `search`
-  static const IconData search = IconData(0xef7a, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData search = IconData(
+    0xef7a,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `add`
-  static const IconData add = IconData(0xe145, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData add = IconData(
+    0xe145,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `edit`
-  static const IconData edit = IconData(0xf097, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData edit = IconData(
+    0xf097,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `delete`
-  static const IconData delete = IconData(0xe92e, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData delete = IconData(
+    0xe92e,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `close`
-  static const IconData close = IconData(0xe5cd, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData close = IconData(
+    0xe5cd,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `check`
-  static const IconData check = IconData(0xe668, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData check = IconData(
+    0xe668,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `more_horiz`
-  static const IconData moreHoriz = IconData(0xe5d3, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData moreHoriz = IconData(
+    0xe5d3,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `more_vert`
-  static const IconData moreVert = IconData(0xe5d4, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData moreVert = IconData(
+    0xe5d4,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `chevron_left`
-  static const IconData chevronLeft = IconData(0xe5cb, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData chevronLeft = IconData(
+    0xe5cb,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `chevron_right`
-  static const IconData chevronRight = IconData(0xe5cc, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData chevronRight = IconData(
+    0xe5cc,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `expand_more`
-  static const IconData expandMore = IconData(0xe5cf, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData expandMore = IconData(
+    0xe5cf,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `expand_less`
-  static const IconData expandLess = IconData(0xe5ce, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData expandLess = IconData(
+    0xe5ce,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `arrow_back`
-  static const IconData arrowBack = IconData(0xe5c4, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData arrowBack = IconData(
+    0xe5c4,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `arrow_forward`
-  static const IconData arrowForward = IconData(0xe5c8, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData arrowForward = IconData(
+    0xe5c8,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `open_in_new`
-  static const IconData openInNew = IconData(0xe89e, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData openInNew = IconData(
+    0xe89e,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `share`
-  static const IconData share = IconData(0xe80d, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData share = IconData(
+    0xe80d,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `content_copy`
-  static const IconData contentCopy = IconData(0xe14d, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData contentCopy = IconData(
+    0xe14d,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `download`
-  static const IconData download = IconData(0xf090, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData download = IconData(
+    0xf090,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `upload`
-  static const IconData upload = IconData(0xf09b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData upload = IconData(
+    0xf09b,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `sync`
-  static const IconData sync = IconData(0xe627, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData sync = IconData(
+    0xe627,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `filter_list`
-  static const IconData filterList = IconData(0xe152, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData filterList = IconData(
+    0xe152,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `sort`
-  static const IconData sort = IconData(0xe164, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData sort = IconData(
+    0xe164,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `tune`
-  static const IconData tune = IconData(0xe429, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData tune = IconData(
+    0xe429,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `settings`
-  static const IconData settings = IconData(0xe8b8, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData settings = IconData(
+    0xe8b8,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `help`
-  static const IconData help = IconData(0xe8fd, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData help = IconData(
+    0xe8fd,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `logout`
-  static const IconData logout = IconData(0xe9ba, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData logout = IconData(
+    0xe9ba,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `history`
-  static const IconData history = IconData(0xe8b3, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData history = IconData(
+    0xe8b3,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `schedule`
-  static const IconData schedule = IconData(0xefd6, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData schedule = IconData(
+    0xefd6,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `undo`
-  static const IconData undo = IconData(0xe166, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData undo = IconData(
+    0xe166,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `calendar_today`
-  static const IconData calendarToday = IconData(0xe935, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData calendarToday = IconData(
+    0xe935,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `notifications`
-  static const IconData notifications = IconData(0xe7f5, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData notifications = IconData(
+    0xe7f5,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `person`
-  static const IconData person = IconData(0xf0d3, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData person = IconData(
+    0xf0d3,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `group`
-  static const IconData group = IconData(0xea21, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData group = IconData(
+    0xea21,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `lock`
-  static const IconData lock = IconData(0xe899, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData lock = IconData(
+    0xe899,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `visibility`
-  static const IconData visibility = IconData(0xe8f4, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData visibility = IconData(
+    0xe8f4,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `qr_code_2`
-  static const IconData qrCode2 = IconData(0xe00a, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData qrCode2 = IconData(
+    0xe00a,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `photo_camera`
-  static const IconData photoCamera = IconData(0xe412, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData photoCamera = IconData(
+    0xe412,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `image`
-  static const IconData image = IconData(0xe3f4, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData image = IconData(
+    0xe3f4,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `fit_screen`
-  static const IconData fitScreen = IconData(0xea10, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData fitScreen = IconData(
+    0xea10,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `my_location`
-  static const IconData myLocation = IconData(0xe55c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData myLocation = IconData(
+    0xe55c,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `location_on`
-  static const IconData locationOn = IconData(0xf1db, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData locationOn = IconData(
+    0xf1db,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `map`
-  static const IconData map = IconData(0xe55b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData map = IconData(
+    0xe55b,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `layers`
-  static const IconData layers = IconData(0xe53b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData layers = IconData(
+    0xe53b,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `check_circle`
-  static const IconData checkCircle = IconData(0xf0be, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData checkCircle = IconData(
+    0xf0be,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `warning`
-  static const IconData warning = IconData(0xf083, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData warning = IconData(
+    0xf083,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `report`
-  static const IconData report = IconData(0xf052, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData report = IconData(
+    0xf052,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `info`
-  static const IconData info = IconData(0xe88e, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData info = IconData(
+    0xe88e,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `circle`
-  static const IconData circle = IconData(0xef4a, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData circle = IconData(
+    0xef4a,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `error`
-  static const IconData error = IconData(0xf8b6, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData error = IconData(
+    0xf8b6,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `forest`
-  static const IconData forest = IconData(0xea99, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData forest = IconData(
+    0xea99,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `checklist`
-  static const IconData checklist = IconData(0xe6b1, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData checklist = IconData(
+    0xe6b1,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `pets`
-  static const IconData pets = IconData(0xe91d, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData pets = IconData(
+    0xe91d,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `cottage`
-  static const IconData cottage = IconData(0xe587, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData cottage = IconData(
+    0xe587,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `nature`
-  static const IconData nature = IconData(0xe406, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData nature = IconData(
+    0xe406,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `grass`
-  static const IconData grass = IconData(0xf205, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData grass = IconData(
+    0xf205,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `water_drop`
-  static const IconData waterDrop = IconData(0xe798, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData waterDrop = IconData(
+    0xe798,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `flag`
-  static const IconData flag = IconData(0xf0c6, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData flag = IconData(
+    0xf0c6,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `flag_fill`
-  static const IconData flagFill = IconData(0xff0c6, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData flagFill = IconData(
+    0xff0c6,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `deck`
-  static const IconData deck = IconData(0xea42, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData deck = IconData(
+    0xea42,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `cabin`
-  static const IconData cabin = IconData(0xe589, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData cabin = IconData(
+    0xe589,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `tools_ladder`
-  static const IconData toolsLadder = IconData(0xe2cb, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData toolsLadder = IconData(
+    0xe2cb,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `event_seat`
-  static const IconData eventSeat = IconData(0xe903, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData eventSeat = IconData(
+    0xe903,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `grain`
-  static const IconData grain = IconData(0xe3ea, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData grain = IconData(
+    0xe3ea,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `rice_bowl`
-  static const IconData riceBowl = IconData(0xf1f5, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData riceBowl = IconData(
+    0xf1f5,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `diamond`
-  static const IconData diamond = IconData(0xead5, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData diamond = IconData(
+    0xead5,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `yard`
-  static const IconData yard = IconData(0xf089, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData yard = IconData(
+    0xf089,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `gate`
-  static const IconData gate = IconData(0xe277, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData gate = IconData(
+    0xe277,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `bolt`
-  static const IconData bolt = IconData(0xea0b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData bolt = IconData(
+    0xea0b,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `category`
-  static const IconData category = IconData(0xe72c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData category = IconData(
+    0xe72c,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `terminal`
-  static const IconData terminal = IconData(0xeb8e, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData terminal = IconData(
+    0xeb8e,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `grid_view`
-  static const IconData gridView = IconData(0xe9b0, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData gridView = IconData(
+    0xe9b0,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `account_tree`
-  static const IconData accountTree = IconData(0xe97a, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData accountTree = IconData(
+    0xe97a,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `bar_chart`
-  static const IconData barChart = IconData(0xe26b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData barChart = IconData(
+    0xe26b,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `monitoring`
-  static const IconData monitoring = IconData(0xf190, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData monitoring = IconData(
+    0xf190,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `radio_button_checked`
-  static const IconData radioButtonChecked = IconData(0xe837, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData radioButtonChecked = IconData(
+    0xe837,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `fact_check`
-  static const IconData factCheck = IconData(0xf0c5, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData factCheck = IconData(
+    0xf0c5,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `pause`
-  static const IconData pause = IconData(0xe034, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData pause = IconData(
+    0xe034,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `play_arrow`
-  static const IconData playArrow = IconData(0xe037, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData playArrow = IconData(
+    0xe037,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `stop`
-  static const IconData stop = IconData(0xe047, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData stop = IconData(
+    0xe047,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `lightbulb`
-  static const IconData lightbulb = IconData(0xe90f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData lightbulb = IconData(
+    0xe90f,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `blinds`
-  static const IconData blinds = IconData(0xe286, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData blinds = IconData(
+    0xe286,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `thermostat`
-  static const IconData thermostat = IconData(0xf076, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData thermostat = IconData(
+    0xf076,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `sensors`
-  static const IconData sensors = IconData(0xe51e, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData sensors = IconData(
+    0xe51e,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `router`
-  static const IconData router = IconData(0xe328, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData router = IconData(
+    0xe328,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `lan`
-  static const IconData lan = IconData(0xeb2f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData lan = IconData(
+    0xeb2f,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `power`
-  static const IconData power = IconData(0xe63c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData power = IconData(
+    0xe63c,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `cloud_off`
-  static const IconData cloudOff = IconData(0xe2c1, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData cloudOff = IconData(
+    0xe2c1,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `cloud`
-  static const IconData cloud = IconData(0xf15c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData cloud = IconData(
+    0xf15c,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `left_panel_open`
-  static const IconData leftPanelOpen = IconData(0xf716, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData leftPanelOpen = IconData(
+    0xf716,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `left_panel_close`
-  static const IconData leftPanelClose = IconData(0xf717, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData leftPanelClose = IconData(
+    0xf717,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `space_dashboard`
-  static const IconData spaceDashboard = IconData(0xe66b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData spaceDashboard = IconData(
+    0xe66b,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `video_library`
-  static const IconData videoLibrary = IconData(0xe04a, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData videoLibrary = IconData(
+    0xe04a,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `show_chart`
-  static const IconData showChart = IconData(0xe6e1, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData showChart = IconData(
+    0xe6e1,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `format_list_bulleted`
-  static const IconData formatListBulleted = IconData(0xe241, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData formatListBulleted = IconData(
+    0xe241,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `arrow_upward`
-  static const IconData arrowUpward = IconData(0xe5d8, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData arrowUpward = IconData(
+    0xe5d8,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `track_changes`
-  static const IconData trackChanges = IconData(0xe8e1, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData trackChanges = IconData(
+    0xe8e1,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `delete_sweep`
-  static const IconData deleteSweep = IconData(0xe16c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData deleteSweep = IconData(
+    0xe16c,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `light_mode`
-  static const IconData lightMode = IconData(0xe518, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData lightMode = IconData(
+    0xe518,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `hvac`
-  static const IconData hvac = IconData(0xf10e, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData hvac = IconData(
+    0xf10e,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `window`
-  static const IconData window = IconData(0xf088, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData window = IconData(
+    0xf088,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `notification_important`
-  static const IconData notificationImportant = IconData(0xe004, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData notificationImportant = IconData(
+    0xe004,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `electric_meter`
-  static const IconData electricMeter = IconData(0xec1b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData electricMeter = IconData(
+    0xec1b,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `touch_app`
-  static const IconData touchApp = IconData(0xe913, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData touchApp = IconData(
+    0xe913,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `troubleshoot`
-  static const IconData troubleshoot = IconData(0xe1d2, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData troubleshoot = IconData(
+    0xe1d2,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `assignment_turned_in`
-  static const IconData assignmentTurnedIn = IconData(0xe862, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData assignmentTurnedIn = IconData(
+    0xe862,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `notifications_active`
-  static const IconData notificationsActive = IconData(0xe7f7, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData notificationsActive = IconData(
+    0xe7f7,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `monitor_heart`
-  static const IconData monitorHeart = IconData(0xeaa2, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData monitorHeart = IconData(
+    0xeaa2,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `insights`
-  static const IconData insights = IconData(0xf092, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData insights = IconData(
+    0xf092,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `hub`
-  static const IconData hub = IconData(0xe9f4, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData hub = IconData(
+    0xe9f4,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `unfold_more`
-  static const IconData unfoldMore = IconData(0xe5d7, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData unfoldMore = IconData(
+    0xe5d7,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `fast_rewind`
-  static const IconData fastRewind = IconData(0xe020, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData fastRewind = IconData(
+    0xe020,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `fast_forward`
-  static const IconData fastForward = IconData(0xe01f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData fastForward = IconData(
+    0xe01f,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `replay`
-  static const IconData replay = IconData(0xe042, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData replay = IconData(
+    0xe042,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `handyman`
-  static const IconData handyman = IconData(0xf10b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData handyman = IconData(
+    0xf10b,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `push_pin`
-  static const IconData pushPin = IconData(0xf10d, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData pushPin = IconData(
+    0xf10d,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `push_pin_fill`
-  static const IconData pushPinFill = IconData(0xff10d, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData pushPinFill = IconData(
+    0xff10d,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `star`
-  static const IconData star = IconData(0xf09a, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData star = IconData(
+    0xf09a,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `star_fill`
-  static const IconData starFill = IconData(0xff09a, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData starFill = IconData(
+    0xff09a,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `picture_as_pdf`
-  static const IconData pictureAsPdf = IconData(0xe415, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData pictureAsPdf = IconData(
+    0xe415,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `table_chart`
-  static const IconData tableChart = IconData(0xe265, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData tableChart = IconData(
+    0xe265,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `data_object`
-  static const IconData dataObject = IconData(0xead3, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData dataObject = IconData(
+    0xead3,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `edit_note`
-  static const IconData editNote = IconData(0xe745, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData editNote = IconData(
+    0xe745,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `upload_file`
-  static const IconData uploadFile = IconData(0xe9fc, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData uploadFile = IconData(
+    0xe9fc,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `layers_clear`
-  static const IconData layersClear = IconData(0xe53c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData layersClear = IconData(
+    0xe53c,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `link_off`
-  static const IconData linkOff = IconData(0xe16f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData linkOff = IconData(
+    0xe16f,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `translate`
-  static const IconData translate = IconData(0xe8e2, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData translate = IconData(
+    0xe8e2,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `bookmarks`
-  static const IconData bookmarks = IconData(0xe98b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData bookmarks = IconData(
+    0xe98b,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `bookmark_add`
-  static const IconData bookmarkAdd = IconData(0xe598, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData bookmarkAdd = IconData(
+    0xe598,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `label`
-  static const IconData label = IconData(0xe893, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData label = IconData(
+    0xe893,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `label_off`
-  static const IconData labelOff = IconData(0xe9b6, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData labelOff = IconData(
+    0xe9b6,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `check_box`
-  static const IconData checkBox = IconData(0xe9de, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData checkBox = IconData(
+    0xe9de,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `check_box_outline_blank`
-  static const IconData checkBoxOutlineBlank = IconData(0xe835, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData checkBoxOutlineBlank = IconData(
+    0xe835,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `radio_button_unchecked`
-  static const IconData radioButtonUnchecked = IconData(0xe836, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData radioButtonUnchecked = IconData(
+    0xe836,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `north_east`
-  static const IconData northEast = IconData(0xf1e1, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData northEast = IconData(
+    0xf1e1,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `south_west`
-  static const IconData southWest = IconData(0xf1e5, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData southWest = IconData(
+    0xf1e5,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `visibility_off`
-  static const IconData visibilityOff = IconData(0xe8f5, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData visibilityOff = IconData(
+    0xe8f5,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `ios_share`
-  static const IconData iosShare = IconData(0xe6b8, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData iosShare = IconData(
+    0xe6b8,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `sports_esports`
-  static const IconData sportsEsports = IconData(0xea28, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData sportsEsports = IconData(
+    0xea28,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `tv`
-  static const IconData tv = IconData(0xe63b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData tv = IconData(
+    0xe63b,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `smartphone`
-  static const IconData smartphone = IconData(0xe7ba, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData smartphone = IconData(
+    0xe7ba,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `watch`
-  static const IconData watch = IconData(0xe334, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData watch = IconData(
+    0xe334,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `shield`
-  static const IconData shield = IconData(0xe9e0, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData shield = IconData(
+    0xe9e0,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `speed`
-  static const IconData speed = IconData(0xe9e4, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData speed = IconData(
+    0xe9e4,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `groups`
-  static const IconData groups = IconData(0xf233, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData groups = IconData(
+    0xf233,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `emoji_events`
-  static const IconData emojiEvents = IconData(0xea23, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData emojiEvents = IconData(
+    0xea23,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `ac_unit`
-  static const IconData acUnit = IconData(0xeb3b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData acUnit = IconData(
+    0xeb3b,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `account_circle`
-  static const IconData accountCircle = IconData(0xf20b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData accountCircle = IconData(
+    0xf20b,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `add_location_alt`
-  static const IconData addLocationAlt = IconData(0xef3a, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData addLocationAlt = IconData(
+    0xef3a,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `adjust`
-  static const IconData adjust = IconData(0xe39e, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData adjust = IconData(
+    0xe39e,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `all_inbox`
-  static const IconData allInbox = IconData(0xe97f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData allInbox = IconData(
+    0xe97f,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `badge`
-  static const IconData badge = IconData(0xea67, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData badge = IconData(
+    0xea67,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `blur_on`
-  static const IconData blurOn = IconData(0xe3a5, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData blurOn = IconData(
+    0xe3a5,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `brightness_7`
-  static const IconData brightness7 = IconData(0xe3ac, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData brightness7 = IconData(
+    0xe3ac,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `build`
-  static const IconData build = IconData(0xf8cd, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData build = IconData(
+    0xf8cd,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `compare_arrows`
-  static const IconData compareArrows = IconData(0xe915, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData compareArrows = IconData(
+    0xe915,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `construction`
-  static const IconData construction = IconData(0xea3c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData construction = IconData(
+    0xea3c,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `delete_forever`
-  static const IconData deleteForever = IconData(0xe92b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData deleteForever = IconData(
+    0xe92b,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `description`
-  static const IconData description = IconData(0xe873, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData description = IconData(
+    0xe873,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `directions_car`
-  static const IconData directionsCar = IconData(0xeff7, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData directionsCar = IconData(
+    0xeff7,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `exit_to_app`
-  static const IconData exitToApp = IconData(0xe879, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData exitToApp = IconData(
+    0xe879,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `flight`
-  static const IconData flight = IconData(0xe539, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData flight = IconData(
+    0xe539,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `fort`
-  static const IconData fort = IconData(0xeaad, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData fort = IconData(
+    0xeaad,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `gps_fixed`
-  static const IconData gpsFixed = IconData(0xe55c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData gpsFixed = IconData(
+    0xe55c,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `health_and_safety`
-  static const IconData healthAndSafety = IconData(0xe1d5, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData healthAndSafety = IconData(
+    0xe1d5,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `horizontal_rule`
-  static const IconData horizontalRule = IconData(0xf108, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData horizontalRule = IconData(
+    0xf108,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `hourglass_top`
-  static const IconData hourglassTop = IconData(0xea5b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData hourglassTop = IconData(
+    0xea5b,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `inventory_2`
-  static const IconData inventory2 = IconData(0xe1a1, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData inventory2 = IconData(
+    0xe1a1,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `keyboard`
-  static const IconData keyboard = IconData(0xe312, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData keyboard = IconData(
+    0xe312,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `keyboard_double_arrow_up`
-  static const IconData keyboardDoubleArrowUp = IconData(0xeacf, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData keyboardDoubleArrowUp = IconData(
+    0xeacf,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `landscape`
-  static const IconData landscape = IconData(0xe564, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData landscape = IconData(
+    0xe564,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `language`
-  static const IconData language = IconData(0xea07, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData language = IconData(
+    0xea07,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `leaderboard`
-  static const IconData leaderboard = IconData(0xf20c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData leaderboard = IconData(
+    0xf20c,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `local_fire_department`
-  static const IconData localFireDepartment = IconData(0xef55, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData localFireDepartment = IconData(
+    0xef55,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `local_gas_station`
-  static const IconData localGasStation = IconData(0xe546, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData localGasStation = IconData(
+    0xe546,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `location_city`
-  static const IconData locationCity = IconData(0xe7f1, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData locationCity = IconData(
+    0xe7f1,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `login`
-  static const IconData login = IconData(0xea77, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData login = IconData(
+    0xea77,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `meeting_room`
-  static const IconData meetingRoom = IconData(0xeb4f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData meetingRoom = IconData(
+    0xeb4f,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `military_tech`
-  static const IconData militaryTech = IconData(0xea3f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData militaryTech = IconData(
+    0xea3f,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `mouse`
-  static const IconData mouse = IconData(0xe323, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData mouse = IconData(
+    0xe323,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `movie`
-  static const IconData movie = IconData(0xe404, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData movie = IconData(
+    0xe404,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `nightlight_round`
-  static const IconData nightlightRound = IconData(0xf03d, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData nightlightRound = IconData(
+    0xf03d,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `open_with`
-  static const IconData openWith = IconData(0xe89f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData openWith = IconData(
+    0xe89f,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `outlined_flag`
-  static const IconData outlinedFlag = IconData(0xf0c6, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData outlinedFlag = IconData(
+    0xf0c6,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `paid`
-  static const IconData paid = IconData(0xf041, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData paid = IconData(
+    0xf041,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `paragliding`
-  static const IconData paragliding = IconData(0xe50f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData paragliding = IconData(
+    0xe50f,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `park`
-  static const IconData park = IconData(0xea63, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData park = IconData(
+    0xea63,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `public`
-  static const IconData public = IconData(0xe80b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData public = IconData(
+    0xe80b,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `qr_code_scanner`
-  static const IconData qrCodeScanner = IconData(0xf206, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData qrCodeScanner = IconData(
+    0xf206,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `rocket_launch`
-  static const IconData rocketLaunch = IconData(0xeb9b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData rocketLaunch = IconData(
+    0xeb9b,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `school`
-  static const IconData school = IconData(0xe80c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData school = IconData(
+    0xe80c,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `settings_remote`
-  static const IconData settingsRemote = IconData(0xe8c7, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData settingsRemote = IconData(
+    0xe8c7,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `signal_cellular_alt`
-  static const IconData signalCellularAlt = IconData(0xe202, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData signalCellularAlt = IconData(
+    0xe202,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `signal_cellular_alt_1_bar`
-  static const IconData signalCellularAlt1Bar = IconData(0xebdf, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData signalCellularAlt1Bar = IconData(
+    0xebdf,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `signal_cellular_alt_2_bar`
-  static const IconData signalCellularAlt2Bar = IconData(0xebe3, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData signalCellularAlt2Bar = IconData(
+    0xebe3,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `skip_next`
-  static const IconData skipNext = IconData(0xe044, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData skipNext = IconData(
+    0xe044,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `splitscreen`
-  static const IconData splitscreen = IconData(0xf06d, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData splitscreen = IconData(
+    0xf06d,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `sports_baseball`
-  static const IconData sportsBaseball = IconData(0xea51, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData sportsBaseball = IconData(
+    0xea51,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `stop_circle`
-  static const IconData stopCircle = IconData(0xef71, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData stopCircle = IconData(
+    0xef71,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `swap_horiz`
-  static const IconData swapHoriz = IconData(0xe8d4, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData swapHoriz = IconData(
+    0xe8d4,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `terrain`
-  static const IconData terrain = IconData(0xe564, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData terrain = IconData(
+    0xe564,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `toys`
-  static const IconData toys = IconData(0xe332, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData toys = IconData(
+    0xe332,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `upgrade`
-  static const IconData upgrade = IconData(0xf0fb, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData upgrade = IconData(
+    0xf0fb,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `verified_user`
-  static const IconData verifiedUser = IconData(0xf013, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData verifiedUser = IconData(
+    0xf013,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `vertical_align_top`
-  static const IconData verticalAlignTop = IconData(0xe25a, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData verticalAlignTop = IconData(
+    0xe25a,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `volume_off`
-  static const IconData volumeOff = IconData(0xe04f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData volumeOff = IconData(
+    0xe04f,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `volume_up`
-  static const IconData volumeUp = IconData(0xe050, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData volumeUp = IconData(
+    0xe050,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `warning_amber`
-  static const IconData warningAmber = IconData(0xf083, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData warningAmber = IconData(
+    0xf083,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `waves`
-  static const IconData waves = IconData(0xe176, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData waves = IconData(
+    0xe176,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `wb_sunny`
-  static const IconData wbSunny = IconData(0xe430, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData wbSunny = IconData(
+    0xe430,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `workspace_premium`
-  static const IconData workspacePremium = IconData(0xe7af, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData workspacePremium = IconData(
+    0xe7af,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `storefront`
-  static const IconData storefront = IconData(0xea12, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData storefront = IconData(
+    0xea12,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `shopping_cart`
-  static const IconData shoppingCart = IconData(0xe8cc, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData shoppingCart = IconData(
+    0xe8cc,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `basket_woven`
-  static const IconData basketWoven = IconData(0x100000, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData basketWoven = IconData(
+    0x100000,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `steak`
-  static const IconData steak = IconData(0x100001, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData steak = IconData(
+    0x100001,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `pretzel`
-  static const IconData pretzel = IconData(0x100002, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData pretzel = IconData(
+    0x100002,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `liquor`
-  static const IconData liquor = IconData(0xea60, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData liquor = IconData(
+    0xea60,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `restaurant`
-  static const IconData restaurant = IconData(0xe56c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData restaurant = IconData(
+    0xe56c,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `local_cafe`
-  static const IconData localCafe = IconData(0xeb44, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData localCafe = IconData(
+    0xeb44,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `local_pizza`
-  static const IconData localPizza = IconData(0xe552, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData localPizza = IconData(
+    0xe552,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `lunch_dining`
-  static const IconData lunchDining = IconData(0xea61, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData lunchDining = IconData(
+    0xea61,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `icecream`
-  static const IconData icecream = IconData(0xea69, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData icecream = IconData(
+    0xea69,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `sports_bar`
-  static const IconData sportsBar = IconData(0xf1f3, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData sportsBar = IconData(
+    0xf1f3,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `wine_bar`
-  static const IconData wineBar = IconData(0xf1e8, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData wineBar = IconData(
+    0xf1e8,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `set_meal`
-  static const IconData setMeal = IconData(0xf1ea, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData setMeal = IconData(
+    0xf1ea,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `local_florist`
-  static const IconData localFlorist = IconData(0xe545, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData localFlorist = IconData(
+    0xe545,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `local_pharmacy`
-  static const IconData localPharmacy = IconData(0xe550, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData localPharmacy = IconData(
+    0xe550,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `apparel`
-  static const IconData apparel = IconData(0xef7b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData apparel = IconData(
+    0xef7b,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `menu_book`
-  static const IconData menuBook = IconData(0xea19, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData menuBook = IconData(
+    0xea19,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `eyeglasses`
-  static const IconData eyeglasses = IconData(0xf6ee, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData eyeglasses = IconData(
+    0xf6ee,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `newspaper`
-  static const IconData newspaper = IconData(0xeb81, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData newspaper = IconData(
+    0xeb81,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `hardware`
-  static const IconData hardware = IconData(0xea59, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData hardware = IconData(
+    0xea59,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `pedal_bike`
-  static const IconData pedalBike = IconData(0xeb29, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData pedalBike = IconData(
+    0xeb29,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `devices`
-  static const IconData devices = IconData(0xe326, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData devices = IconData(
+    0xe326,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `content_cut`
-  static const IconData contentCut = IconData(0xe14e, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData contentCut = IconData(
+    0xe14e,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `local_post_office`
-  static const IconData localPostOffice = IconData(0xe554, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData localPostOffice = IconData(
+    0xe554,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `account_balance`
-  static const IconData accountBalance = IconData(0xe84f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData accountBalance = IconData(
+    0xe84f,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `hotel`
-  static const IconData hotel = IconData(0xe549, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData hotel = IconData(
+    0xe549,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `dry_cleaning`
-  static const IconData dryCleaning = IconData(0xea58, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData dryCleaning = IconData(
+    0xea58,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `car_repair`
-  static const IconData carRepair = IconData(0xea56, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData carRepair = IconData(
+    0xea56,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `spa`
-  static const IconData spa = IconData(0xeb4c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData spa = IconData(
+    0xeb4c,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `sports_soccer`
-  static const IconData sportsSoccer = IconData(0xea2f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData sportsSoccer = IconData(
+    0xea2f,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `sports_handball`
-  static const IconData sportsHandball = IconData(0xea33, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData sportsHandball = IconData(
+    0xea33,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `sports_tennis`
-  static const IconData sportsTennis = IconData(0xea32, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData sportsTennis = IconData(
+    0xea32,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `golf_course`
-  static const IconData golfCourse = IconData(0xeb45, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData golfCourse = IconData(
+    0xeb45,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `pool`
-  static const IconData pool = IconData(0xeb48, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData pool = IconData(
+    0xeb48,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `sailing`
-  static const IconData sailing = IconData(0xe502, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData sailing = IconData(
+    0xe502,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `scuba_diving`
-  static const IconData scubaDiving = IconData(0xebce, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData scubaDiving = IconData(
+    0xebce,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `target`
-  static const IconData target = IconData(0xe719, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData target = IconData(
+    0xe719,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `sports_martial_arts`
-  static const IconData sportsMartialArts = IconData(0xeae9, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData sportsMartialArts = IconData(
+    0xeae9,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `sports_gymnastics`
-  static const IconData sportsGymnastics = IconData(0xebc4, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData sportsGymnastics = IconData(
+    0xebc4,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `fitness_center`
-  static const IconData fitnessCenter = IconData(0xeb43, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData fitnessCenter = IconData(
+    0xeb43,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `horseshoe`
-  static const IconData horseshoe = IconData(0x100003, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData horseshoe = IconData(
+    0x100003,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `playground`
-  static const IconData playground = IconData(0xf28e, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData playground = IconData(
+    0xf28e,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `local_hospital`
-  static const IconData localHospital = IconData(0xe548, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData localHospital = IconData(
+    0xe548,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `stethoscope`
-  static const IconData stethoscope = IconData(0xf805, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData stethoscope = IconData(
+    0xf805,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `dentistry`
-  static const IconData dentistry = IconData(0xe0a6, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData dentistry = IconData(
+    0xe0a6,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `child_care`
-  static const IconData childCare = IconData(0xeb41, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData childCare = IconData(
+    0xeb41,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `local_library`
-  static const IconData localLibrary = IconData(0xe54b, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData localLibrary = IconData(
+    0xe54b,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `local_atm`
-  static const IconData localAtm = IconData(0xe53e, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData localAtm = IconData(
+    0xe53e,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `door_front`
-  static const IconData doorFront = IconData(0xeffd, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData doorFront = IconData(
+    0xeffd,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `chair`
-  static const IconData chair = IconData(0xefed, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData chair = IconData(
+    0xefed,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `outlet`
-  static const IconData outlet = IconData(0xf1d4, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData outlet = IconData(
+    0xf1d4,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `doorbell`
-  static const IconData doorbell = IconData(0xefff, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData doorbell = IconData(
+    0xefff,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `garage`
-  static const IconData garage = IconData(0xf011, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData garage = IconData(
+    0xf011,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `detector_smoke`
-  static const IconData detectorSmoke = IconData(0xe285, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData detectorSmoke = IconData(
+    0xe285,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `straighten`
-  static const IconData straighten = IconData(0xe41c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData straighten = IconData(
+    0xe41c,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `reply`
-  static const IconData reply = IconData(0xe15e, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData reply = IconData(
+    0xe15e,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `redo`
-  static const IconData redo = IconData(0xe15a, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData redo = IconData(
+    0xe15a,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `save`
-  static const IconData save = IconData(0xe161, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData save = IconData(
+    0xe161,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `signature`
-  static const IconData signature = IconData(0xf74c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData signature = IconData(
+    0xf74c,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `feedback`
-  static const IconData feedback = IconData(0xe87f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData feedback = IconData(
+    0xe87f,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `bug_report`
-  static const IconData bugReport = IconData(0xe868, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData bugReport = IconData(
+    0xe868,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `repeat`
-  static const IconData repeat = IconData(0xe040, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData repeat = IconData(
+    0xe040,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `valve`
-  static const IconData valve = IconData(0xe224, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData valve = IconData(
+    0xe224,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `electric_bolt`
-  static const IconData electricBolt = IconData(0xec1c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData electricBolt = IconData(
+    0xec1c,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `motion_sensor_active`
-  static const IconData motionSensorActive = IconData(0xe792, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData motionSensorActive = IconData(
+    0xe792,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `wb_twilight`
-  static const IconData wbTwilight = IconData(0xe1c6, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData wbTwilight = IconData(
+    0xe1c6,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `roofing`
-  static const IconData roofing = IconData(0xf201, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData roofing = IconData(
+    0xf201,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `sensor_window`
-  static const IconData sensorWindow = IconData(0xf1b4, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData sensorWindow = IconData(
+    0xf1b4,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `keyboard_arrow_left`
-  static const IconData keyboardArrowLeft = IconData(0xe314, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData keyboardArrowLeft = IconData(
+    0xe314,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `keyboard_arrow_right`
-  static const IconData keyboardArrowRight = IconData(0xe315, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData keyboardArrowRight = IconData(
+    0xe315,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `socket_schuko`
-  static const IconData socketSchuko = IconData(0x100004, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData socketSchuko = IconData(
+    0x100004,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `rss_feed`
-  static const IconData rssFeed = IconData(0xe0e5, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData rssFeed = IconData(
+    0xe0e5,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `bookmark`
-  static const IconData bookmark = IconData(0xe8e7, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData bookmark = IconData(
+    0xe8e7,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `bookmark_fill`
-  static const IconData bookmarkFill = IconData(0xfe8e7, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData bookmarkFill = IconData(
+    0xfe8e7,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `done_all`
-  static const IconData doneAll = IconData(0xe877, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData doneAll = IconData(
+    0xe877,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `mark_email_unread`
-  static const IconData markEmailUnread = IconData(0xf18a, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData markEmailUnread = IconData(
+    0xf18a,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `article`
-  static const IconData article = IconData(0xef42, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData article = IconData(
+    0xef42,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `today`
-  static const IconData today = IconData(0xe8df, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData today = IconData(
+    0xe8df,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `inbox`
-  static const IconData inbox = IconData(0xe156, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData inbox = IconData(
+    0xe156,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `archive`
-  static const IconData archive = IconData(0xe149, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData archive = IconData(
+    0xe149,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `filter_alt`
-  static const IconData filterAlt = IconData(0xef4f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData filterAlt = IconData(
+    0xef4f,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `cloud_sync`
-  static const IconData cloudSync = IconData(0xeb5a, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData cloudSync = IconData(
+    0xeb5a,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `open_in_browser`
-  static const IconData openInBrowser = IconData(0xe89d, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData openInBrowser = IconData(
+    0xe89d,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `text_fields`
-  static const IconData textFields = IconData(0xe262, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData textFields = IconData(
+    0xe262,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `format_size`
-  static const IconData formatSize = IconData(0xe245, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData formatSize = IconData(
+    0xe245,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `palette`
-  static const IconData palette = IconData(0xe40a, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData palette = IconData(
+    0xe40a,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `volunteer_activism`
-  static const IconData volunteerActivism = IconData(0xea70, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData volunteerActivism = IconData(
+    0xea70,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `view_agenda`
-  static const IconData viewAgenda = IconData(0xe8e9, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData viewAgenda = IconData(
+    0xe8e9,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `hide_image`
-  static const IconData hideImage = IconData(0xf022, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData hideImage = IconData(
+    0xf022,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `rule`
-  static const IconData rule = IconData(0xf1c2, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData rule = IconData(
+    0xf1c2,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `folder`
-  static const IconData folder = IconData(0xe2c7, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData folder = IconData(
+    0xe2c7,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `add_link`
-  static const IconData addLink = IconData(0xe178, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData addLink = IconData(
+    0xe178,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `travel_explore`
-  static const IconData travelExplore = IconData(0xe2db, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData travelExplore = IconData(
+    0xe2db,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `unfold_less`
-  static const IconData unfoldLess = IconData(0xe5d6, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData unfoldLess = IconData(
+    0xe5d6,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `vibration`
-  static const IconData vibration = IconData(0xf2cb, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData vibration = IconData(
+    0xf2cb,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `refresh`
-  static const IconData refresh = IconData(0xe5d5, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData refresh = IconData(
+    0xe5d5,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `block`
-  static const IconData block = IconData(0xf08c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData block = IconData(
+    0xf08c,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `auto_awesome`
-  static const IconData autoAwesome = IconData(0xe65f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData autoAwesome = IconData(
+    0xe65f,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `contrast`
-  static const IconData contrast = IconData(0xeb37, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData contrast = IconData(
+    0xeb37,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `dark_mode`
-  static const IconData darkMode = IconData(0xe51c, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData darkMode = IconData(
+    0xe51c,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `format_line_spacing`
-  static const IconData formatLineSpacing = IconData(0xe240, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData formatLineSpacing = IconData(
+    0xe240,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `format_align_left`
-  static const IconData formatAlignLeft = IconData(0xe236, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData formatAlignLeft = IconData(
+    0xe236,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `widgets`
-  static const IconData widgets = IconData(0xe1bd, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData widgets = IconData(
+    0xe1bd,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `offline_pin`
-  static const IconData offlinePin = IconData(0xe90a, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData offlinePin = IconData(
+    0xe90a,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `wifi_off`
-  static const IconData wifiOff = IconData(0xe648, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData wifiOff = IconData(
+    0xe648,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `link`
-  static const IconData link = IconData(0xe250, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData link = IconData(
+    0xe250,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `timer`
-  static const IconData timer = IconData(0xe425, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData timer = IconData(
+    0xe425,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `format_bold`
-  static const IconData formatBold = IconData(0xe238, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData formatBold = IconData(
+    0xe238,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `format_italic`
-  static const IconData formatItalic = IconData(0xe23f, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData formatItalic = IconData(
+    0xe23f,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `format_list_numbered`
-  static const IconData formatListNumbered = IconData(0xe242, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData formatListNumbered = IconData(
+    0xe242,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
+
   /// `format_quote`
-  static const IconData formatQuote = IconData(0xe244, fontFamily: HzFont.symbols, fontPackage: HzFont.package);
+  static const IconData formatQuote = IconData(
+    0xe244,
+    fontFamily: HzFont.symbols,
+    fontPackage: HzFont.package,
+  );
 }
